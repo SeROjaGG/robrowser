@@ -140,6 +140,14 @@ class CharEngine {
  * Request to go back to Login Window
  */
 function onExitRequest() {
+	// eXRo: this is a passwordless single-server deploy served from /play, so the
+	// in-client login window has no usable form (autoLogin is one-shot and already
+	// consumed). "Exit char-select" (ESC / Cancel) instead reloads the page — the
+	// /play boot script re-mints a play-token and auto-logs straight back in.
+	if (typeof window !== 'undefined' && window.location && window.ROConfigBase) {
+		window.location.reload();
+		return;
+	}
 	import('Engine/LoginEngine.js').then(m => m.default.reload());
 }
 
