@@ -52,8 +52,12 @@ services:
             context: ./rathena/tools/docker
             dockerfile: Dockerfile
         environment:
-            BUILDER_CONFIGURE: '--enable-packetver=20250618' # <- Configure your wanted packet version here
-            MAKEFLAGS: '-j2'
+            BUILDER_CONFIGURE: '--enable-packetver=20251001' # <- Configure your wanted packet version here
+            # -j1: 3rdparty/libconfig/Makefile has a parallel-build race (`obj` is a
+            # plain prereq of `libconfig`, not order-only, and `obj/%.o` doesn't depend
+            # on the dir) — `-j2` loses the race with "can't create obj/libconfig.o".
+            # Serial is reliable for the one-time first build; builder is a no-op after.
+            MAKEFLAGS: '-j1'
 
     # --- RATHENA LOGIN SERVER (rAthena Native) ---
     login:
@@ -236,3 +240,8 @@ services:
             - DEBUG=true
             - CLIENT_RESPATH=/var/www/html/resources/
             - CLIENT_DATAINI=DATA.INI
+        # docker/apache/Dockerfile has no COPY — the app is bind-mounted, same as the
+        # RemoteClient's own docker-compose.yml. resources/ (data.grf + DATA.INI) rides
+        # along as a subdir. PLAN-006.
+        volumes:
+            - './roBrowserLegacy-RemoteClient-PHP:/var/www/html'
