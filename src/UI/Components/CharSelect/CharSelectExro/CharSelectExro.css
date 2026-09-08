@@ -1,0 +1,464 @@
+/**
+ * CharSelectExro.css — eXRo custom character-select (PLAN-009).
+ *
+ * eXRo's own visual language, mirroring the www design tokens by hand
+ * (www/app/globals.css dark palette). NOT a copy of any reference server.
+ * Injected into the component's shadow root by GUIComponent.
+ */
+
+:host,
+.cs {
+	--cs-bg: #0a0a10;
+	--cs-surface: rgba(20, 20, 32, 0.72);
+	--cs-surface-solid: #14141f;
+	--cs-border: rgba(205, 196, 255, 0.14);
+	--cs-text: #edecf5;
+	--cs-muted: #9a97b5;
+	--cs-brand: #7c5cff;
+	--cs-brand-2: #3de0d0;
+	--cs-accent: #211d3d;
+	--cs-danger: #ff6b6b;
+	--cs-radius: 14px;
+	--cs-blur: 18px;
+}
+
+.cs {
+	position: fixed;
+	inset: 0;
+	z-index: 50;
+	display: grid;
+	grid-template-columns: 320px 1fr 300px;
+	grid-template-rows: auto 1fr auto;
+	grid-template-areas:
+		'top      top      top'
+		'stats    carousel rail'
+		'actions  actions  actions';
+	gap: 18px 22px;
+	padding: 26px 30px 22px;
+	box-sizing: border-box;
+	font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+	color: var(--cs-text);
+	background: var(--cs-bg);
+	user-select: none;
+}
+
+.cs.busy {
+	pointer-events: none;
+}
+.cs.busy .cs-carousel,
+.cs.busy .cs-rail,
+.cs.busy .cs-actions,
+.cs.busy .cs-tools {
+	opacity: 0.5;
+}
+
+/* full-bleed painted background — placeholder gradient until Task 2 art lands
+   (swap to `background-image: url(...)` with no other change) */
+.cs-bg {
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	background:
+		radial-gradient(circle at 22% 18%, rgba(124, 92, 255, 0.28), transparent 55%),
+		radial-gradient(circle at 82% 80%, rgba(61, 224, 208, 0.22), transparent 55%),
+		linear-gradient(160deg, #0c0c16 0%, #05050a 60%, #0a0a12 100%);
+}
+
+/* ── top bar ─────────────────────────────────────────────── */
+.cs-top {
+	grid-area: top;
+	display: grid;
+	grid-template-columns: 1fr auto 1fr;
+	align-items: center;
+}
+.cs-back {
+	justify-self: start;
+	padding: 7px 14px;
+	border: 1px solid var(--cs-border);
+	border-radius: 999px;
+	background: var(--cs-surface);
+	backdrop-filter: blur(var(--cs-blur));
+	color: var(--cs-muted);
+	font-size: 13px;
+	cursor: pointer;
+}
+.cs-back:hover {
+	color: var(--cs-text);
+}
+.cs-brand {
+	justify-self: center;
+	font-size: 30px;
+	font-weight: 800;
+	letter-spacing: 0.02em;
+}
+.cs-brand .ro {
+	color: var(--cs-brand-2);
+}
+.cs-count {
+	justify-self: end;
+}
+.cs-count {
+	padding: 6px 14px;
+	border: 1px solid var(--cs-border);
+	border-radius: 999px;
+	background: var(--cs-surface);
+	backdrop-filter: blur(var(--cs-blur));
+	font-size: 13px;
+	color: var(--cs-muted);
+}
+.cs-count .used {
+	color: var(--cs-text);
+	font-weight: 700;
+}
+
+/* ── detached stat card ──────────────────────────────────── */
+.cs-stats {
+	grid-area: stats;
+	align-self: center;
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+	padding: 20px;
+	border: 1px solid var(--cs-border);
+	border-radius: var(--cs-radius);
+	background: var(--cs-surface);
+	backdrop-filter: blur(var(--cs-blur));
+	box-shadow: 0 18px 50px -20px rgba(0, 0, 0, 0.7);
+}
+.cs-stats[hidden] {
+	display: none;
+}
+.cs-name {
+	font-size: 20px;
+	font-weight: 700;
+}
+.cs-sub {
+	margin-top: -8px;
+	font-size: 13px;
+	color: var(--cs-muted);
+}
+.cs-bars {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+.barrow {
+	display: grid;
+	grid-template-columns: 28px 1fr auto;
+	align-items: center;
+	gap: 8px;
+	font-size: 12px;
+	color: var(--cs-muted);
+}
+.bar {
+	height: 8px;
+	border-radius: 999px;
+	background: rgba(255, 255, 255, 0.08);
+	overflow: hidden;
+}
+.bar i {
+	display: block;
+	height: 100%;
+	width: 0;
+	border-radius: inherit;
+	transition: width 0.25s ease;
+}
+.bar.hp i {
+	background: linear-gradient(90deg, #4ade80, #22c55e);
+}
+.bar.sp i {
+	background: linear-gradient(90deg, var(--cs-brand-2), var(--cs-brand));
+}
+.hpv,
+.spv {
+	font-variant-numeric: tabular-nums;
+	color: var(--cs-text);
+}
+.cs-info {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+	font-size: 12px;
+}
+.cs-attr {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 6px 14px;
+	font-size: 12px;
+}
+.cs-info div,
+.cs-attr div {
+	display: flex;
+	justify-content: space-between;
+	gap: 8px;
+}
+.cs-info span,
+.cs-attr span {
+	color: var(--cs-muted);
+}
+.cs-info b,
+.cs-attr b {
+	font-weight: 600;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.cs-tools {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	padding-top: 4px;
+}
+.cs-tools .sep {
+	flex: 1;
+}
+.tool {
+	border: 0;
+	background: none;
+	color: var(--cs-muted);
+	font-size: 12px;
+	cursor: pointer;
+	padding: 4px 2px;
+}
+.tool:hover {
+	color: var(--cs-text);
+}
+.tool.delete:hover,
+.tool.finaldelete {
+	color: var(--cs-danger);
+}
+.tool[hidden] {
+	display: none;
+}
+.tool:disabled {
+	opacity: 0.4;
+	cursor: default;
+}
+
+/* ── centre carousel ─────────────────────────────────────── */
+.cs-carousel {
+	grid-area: carousel;
+	align-self: center;
+	/* arrows and card sit in one row with real spacing; dots wrap to the line
+	   directly below (align-content: center keeps the two lines packed together) */
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	align-content: center;
+	justify-content: center;
+	column-gap: 20px;
+	row-gap: 12px;
+	margin-inline: auto;
+}
+.cs-cards {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 300px;
+}
+.card {
+	/* only the selected card is shown; neighbours are reached via the arrows / rail */
+	display: none;
+	flex-direction: column;
+	align-items: center;
+	gap: 6px;
+	width: 220px;
+	padding: 14px;
+	border: 1px solid rgba(124, 92, 255, 0.6);
+	border-radius: var(--cs-radius);
+	background: rgba(10, 10, 18, 0.5);
+	box-shadow: 0 0 0 1px rgba(124, 92, 255, 0.35), 0 24px 60px -24px rgba(124, 92, 255, 0.5);
+	cursor: pointer;
+	overflow: hidden;
+}
+.card.on {
+	display: flex;
+}
+.card canvas.shot {
+	width: 180px;
+	height: 240px;
+	image-rendering: pixelated;
+	transform: scale(1.55);
+	transform-origin: center bottom;
+}
+.card .nm {
+	font-weight: 700;
+	font-size: 15px;
+}
+.card .jb {
+	font-size: 12px;
+	color: var(--cs-muted);
+}
+.card.reserved {
+	filter: grayscale(0.7);
+}
+.card .timer {
+	font-size: 11px;
+	color: var(--cs-danger);
+	font-variant-numeric: tabular-nums;
+}
+.cs-nav {
+	flex: 0 0 auto;
+	width: 40px;
+	height: 40px;
+	border: 1px solid var(--cs-border);
+	border-radius: 999px;
+	background: var(--cs-surface);
+	backdrop-filter: blur(var(--cs-blur));
+	color: var(--cs-text);
+	font-size: 20px;
+	line-height: 1;
+	cursor: pointer;
+}
+.cs-nav.prev {
+	order: 1;
+}
+.cs-cards {
+	order: 2;
+}
+.cs-nav.next {
+	order: 3;
+}
+.cs-dots {
+	order: 4;
+	flex-basis: 100%;
+	display: flex;
+	justify-content: center;
+	gap: 7px;
+}
+.cs-nav:disabled {
+	opacity: 0.25;
+	cursor: default;
+}
+.cs-dots span {
+	width: 7px;
+	height: 7px;
+	border-radius: 999px;
+	background: rgba(255, 255, 255, 0.2);
+	cursor: pointer;
+}
+.cs-dots span.on {
+	background: var(--cs-brand-2);
+}
+
+/* empty state */
+.cs-carousel.empty .cs-cards::after {
+	content: 'No characters yet — create one on the right.';
+	color: var(--cs-muted);
+	font-size: 13px;
+}
+
+/* ── right rail ──────────────────────────────────────────── */
+.cs-rail {
+	grid-area: rail;
+	align-self: center;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	max-height: 100%;
+	overflow-y: auto;
+}
+.cs-new {
+	padding: 12px 14px;
+	border: 1px dashed var(--cs-border);
+	border-radius: var(--cs-radius);
+	background: none;
+	color: var(--cs-muted);
+	font-size: 13px;
+	text-align: left;
+	cursor: pointer;
+}
+.cs-new:hover {
+	color: var(--cs-text);
+	border-color: rgba(124, 92, 255, 0.5);
+}
+.cs-new:disabled {
+	opacity: 0.4;
+	cursor: default;
+}
+.cs-slots {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+}
+.slot {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	padding: 8px 12px;
+	border: 1px solid var(--cs-border);
+	border-radius: 12px;
+	background: rgba(255, 255, 255, 0.02);
+	cursor: pointer;
+	transition: background 0.15s ease, border-color 0.15s ease;
+}
+.slot:hover {
+	background: rgba(255, 255, 255, 0.05);
+}
+.slot.on {
+	border-color: rgba(124, 92, 255, 0.6);
+	background: var(--cs-accent);
+}
+.slot canvas.por {
+	width: 52px;
+	height: 65px;
+	flex: 0 0 52px;
+	image-rendering: pixelated;
+	border-radius: 10px;
+	background: rgba(255, 255, 255, 0.04);
+}
+.slot .txt {
+	min-width: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+}
+.slot .nm {
+	font-size: 13px;
+	font-weight: 600;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.slot .jb {
+	font-size: 11px;
+	color: var(--cs-muted);
+}
+.slot.reserved .nm {
+	color: var(--cs-danger);
+}
+
+/* ── action bar ──────────────────────────────────────────── */
+.cs-actions {
+	grid-area: actions;
+	display: flex;
+	justify-content: center;
+	gap: 14px;
+	margin-bottom: 52px;
+}
+.btn {
+	min-width: 150px;
+	padding: 12px 22px;
+	border: 0;
+	border-radius: 999px;
+	font-size: 14px;
+	font-weight: 700;
+	cursor: pointer;
+}
+.btn.enter {
+	background: linear-gradient(110deg, var(--cs-brand), var(--cs-brand-2));
+	color: #0a0a10;
+}
+.btn.enter[hidden] {
+	display: none;
+}
+.btn.ghost {
+	background: var(--cs-surface);
+	border: 1px solid var(--cs-border);
+	color: var(--cs-text);
+	backdrop-filter: blur(var(--cs-blur));
+}
+.btn:disabled {
+	opacity: 0.4;
+	cursor: default;
+}

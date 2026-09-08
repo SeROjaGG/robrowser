@@ -1,0 +1,66 @@
+<div class="cc">
+	<div class="cc-bg"></div>
+
+	<div class="cc-top">
+		<button type="button" class="cc-back" aria-label="Back">&lsaquo; Back</button>
+		<div class="cc-brand">e<span class="ro">XR</span>o</div>
+		<div class="cc-step">New character</div>
+	</div>
+
+	<div class="cc-stage">
+		<button type="button" class="cc-turn left" aria-label="Rotate left">&lsaquo;</button>
+		<div class="cc-card">
+			<canvas class="cc-canvas" width="190" height="250"></canvas>
+			<div class="nm">&nbsp;</div>
+			<div class="jb">Human · Male</div>
+		</div>
+		<button type="button" class="cc-turn right" aria-label="Rotate right">&rsaquo;</button>
+	</div>
+
+	<div class="cc-panel">
+		<div class="cc-field">
+			<label class="cc-label" for="cc-name">Name</label>
+			<input type="text" id="cc-name" class="cc-name" maxlength="23" autocomplete="off" spellcheck="false" />
+		</div>
+
+		<div class="cc-row">
+			<span class="cc-label">Race</span>
+			<div class="cc-seg cc-race">
+				<button type="button" data-race="0" class="on">Human</button>
+				<button type="button" data-race="4218">Doram</button>
+			</div>
+		</div>
+
+		<div class="cc-row">
+			<span class="cc-label">Gender</span>
+			<div class="cc-seg cc-sex">
+				<button type="button" data-sex="1" class="on">Male</button>
+				<button type="button" data-sex="0">Female</button>
+			</div>
+		</div>
+
+		<div class="cc-row">
+			<span class="cc-label">Hair style</span>
+			<div class="cc-stepper cc-hair">
+				<button type="button" data-d="-1">&lsaquo;</button>
+				<b class="val">1</b>
+				<button type="button" data-d="1">&rsaquo;</button>
+			</div>
+		</div>
+
+		<div class="cc-row cc-color-row" hidden>
+			<span class="cc-label">Hair color</span>
+			<div class="cc-stepper cc-color">
+				<button type="button" data-d="-1">&lsaquo;</button>
+				<b class="val">0</b>
+				<button type="button" data-d="1">&rsaquo;</button>
+			</div>
+		</div>
+
+		<div class="cc-actions">
+			<button type="button" class="btn create">Create</button>
+		</div>
+
+		<div class="cc-hint"></div>
+	</div>
+</div>

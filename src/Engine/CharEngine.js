@@ -122,6 +122,9 @@ class CharEngine {
 		Network.hookPacket(PACKET.HC.SECOND_PASSWD_LOGIN, onPincodeCheckSuccess);
 		Network.hookPacket(PACKET.HC.DELETE_CHAR3_RESERVED, onRequestCharDel);
 		Network.hookPacket(PACKET.HC.CHARLIST_NOTIFY, onCharListNotify);
+		// eXRo PLAN-009 — character rename (packets existed, wiring did not)
+		Network.hookPacket(PACKET.HC.ACK_IS_VALID_CHARNAME, onRenameValidAnswer);
+		Network.hookPacket(PACKET.HC.ACK_CHANGE_CHARACTERNAME, onRenameChangeAnswer);
 		JoystickUI.onRestore();
 	}
 
@@ -209,6 +212,9 @@ function onConnectionAccepted(pkt) {
 	ChSel.onDeleteRequest = onDeleteRequest;
 	ChSel.onDeleteReqDelay = onDeleteReqDelay;
 	ChSel.onCancelDeleteRequest = onCancelDeleteRequest;
+	if (ChSel.onRenameRequest !== undefined) {
+		ChSel.onRenameRequest = onRenameRequest; // eXRo PLAN-009
+	}
 	ChSel.append();
 	ChSel.setInfo(pkt);
 
@@ -602,6 +608,12 @@ function onCreationFail(pkt) {
 	}
 
 	UIManager.showMessageBox(DB.getMessage(msg_id), 'ok');
+
+	// eXRo PLAN-009 — echo the refusal inline on the custom create screen
+	const ChCre = CharCreate.getUI();
+	if (ChCre && ChCre.creationRefused) {
+		ChCre.creationRefused(DB.getMessage(msg_id));
+	}
 }
 
 /*function sendPincodeRequest() {
@@ -847,7 +859,7 @@ function onReceiveMapInfo(pkt) {
 	MapEngine.init(pkt.addr.ip, pkt.addr.port, pkt.mapName);
 }
 
-// TODO: Add support for captcha, rename, changeslot and pincode.
+// TODO: Add support for captcha, changeslot and pincode.
 /*
  * Captcha
  *
@@ -858,20 +870,97 @@ function onReceiveMapInfo(pkt) {
  */
 
 /*
- * Rename (http://ragnarok.levelupgames.ph/main/new-loki-server-merge-faq/)
- *
- * S 08fc <char ID>.l <new name>.24B (new one) - Ask if valid
- * S 028d PACKET.CH.REQ_IS_VALID_CHARNAME - Ask if valid
- * R 028e PACKET.HC.ACK_IS_VALID_CHARNAME - Result
- * S 028f PACKET.CH.REQ_CHANGE_CHARNAME (confirm)
- */
-
-/*
  * Change slot (http://ragnarok.levelupgames.ph/main/new-loki-server-merge-faq/)
  *
  * S 08d4 <from>.W <to>.W <unk>.W
  * R 08d5 <len>.W <success>.W <unk>.W
  */
+
+/* ─── Character rename (eXRo PLAN-009) ────────────────────────────────────────
+ *
+ * Two-step protocol. At PACKETVER >= 20111101 (our 20251001) the confirm/ack
+ * opcodes are 0x8fc / 0x8fd (the 0x28f / 0x290 pair is the pre-20111101 form and
+ * is NOT what rAthena speaks here) — the 0x8fc struct carries the name.
+ *
+ *   1. onRenameRequest(char, newName)
+ *        -> S 028d CH_REQ_IS_VALID_CHARNAME { dwAID, dwGID, szCharName }
+ *   2. R 028e HC_ACK_IS_VALID_CHARNAME { sResult }   (rAthena: 1 = name ok, 0 = bad)
+ *        ok  -> S 08fc CH_REQ_CHANGE_CHARACTERNAME { CID, name }
+ *        bad -> ChSel.renameAnswer(generic)
+ *   3. R 08fd HC_ACK_CHANGE_CHARACTERNAME { result }  (char_rename_char_sql:
+ *        0 = applied, 1 = no rename credit, 4 = name taken, 5 = guild, 6 = party,
+ *        8 = invalid, others = server error)
+ *        0       -> ChSel.updateCharName(char, newName)
+ *        != 0    -> ChSel.renameAnswer(reason)
+ */
+let _pendingRename = null;
+
+function onRenameRequest(char, newName) {
+	if (!char || !newName) {
+		return;
+	}
+	_pendingRename = { char: char, name: newName };
+
+	const pkt = new PACKET.CH.REQ_IS_VALID_CHARNAME();
+	pkt.dwAID = Session.AID;
+	pkt.dwGID = char.GID;
+	pkt.szCharName = newName;
+	Network.sendPacket(pkt);
+}
+
+function renameReason(result) {
+	switch (result) {
+		case 1:
+			return 'This character has no rename available.';
+		case 4:
+			return 'That name is already in use.';
+		case 5:
+			return 'You must leave your guild before renaming.';
+		case 6:
+			return 'You must leave your party before renaming.';
+		case 8:
+			return 'That name is not allowed.';
+		default:
+			return 'That name could not be applied.';
+	}
+}
+
+function onRenameValidAnswer(pkt) {
+	if (!_pendingRename) {
+		return;
+	}
+	const ChSel = CharSelect.getUI();
+
+	// rAthena chclif_reqrename_response: result = 1 when the name is valid.
+	if (pkt.sResult) {
+		const confirm = new PACKET.CH.REQ_CHANGE_CHARACTERNAME();
+		confirm.CID = _pendingRename.char.GID;
+		confirm.name = _pendingRename.name;
+		Network.sendPacket(confirm);
+		return;
+	}
+
+	if (ChSel && ChSel.renameAnswer) {
+		ChSel.renameAnswer('That name cannot be used.');
+	}
+	_pendingRename = null;
+}
+
+function onRenameChangeAnswer(pkt) {
+	if (!_pendingRename) {
+		return;
+	}
+	const ChSel = CharSelect.getUI();
+
+	if (pkt.result === 0) {
+		if (ChSel && ChSel.updateCharName) {
+			ChSel.updateCharName(_pendingRename.char, _pendingRename.name);
+		}
+	} else if (ChSel && ChSel.renameAnswer) {
+		ChSel.renameAnswer(renameReason(pkt.result));
+	}
+	_pendingRename = null;
+}
 
 /**
  * Export

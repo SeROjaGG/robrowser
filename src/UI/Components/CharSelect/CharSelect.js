@@ -11,12 +11,14 @@ import CharSelect from './CharSelect/CharSelect.js';
 import CharSelectV2 from './CharSelectV2/CharSelectV2.js';
 import CharSelectV3 from './CharSelectV3/CharSelectV3.js';
 import CharSelectV4 from './CharSelectV4/CharSelectV4.js';
+import CharSelectExro from './CharSelectExro/CharSelectExro.js'; // eXRo PLAN-009
 import UIVersionManager from 'UI/UIVersionManager.js';
 
 const publicName = 'CharSelect';
 const versionInfo = {
 	default: CharSelect,
 	common: {
+		20251001: CharSelectExro, // eXRo PLAN-009 — custom char-select
 		20180124: CharSelectV4,
 		20141016: CharSelectV3,
 		20100803: CharSelectV2,

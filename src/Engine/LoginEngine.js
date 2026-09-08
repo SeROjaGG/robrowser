@@ -382,6 +382,15 @@ function onCharServerSelected(index) {
 function onConnectionAccepted(pkt) {
 	UIManager.removeComponents();
 
+	// eXRo /play: login succeeded — reset the "account still online" retry counter.
+	if (typeof window !== 'undefined' && window.ROConfigBase) {
+		try {
+			window.sessionStorage.removeItem('exro_relogin');
+		} catch (_e) {
+			/* private mode / storage disabled */
+		}
+	}
+
 	Session.AuthCode = pkt.AuthCode;
 	Session.AID = pkt.AID;
 	Session.UserLevel = pkt.userLevel;
@@ -812,6 +821,38 @@ function onConnectionRefused(pkt) {
 		case 5301:
 			error = 3539;
 			break;
+	}
+
+	// eXRo /play: the in-client WinLogin form is unusable on this passwordless deploy.
+	// ErrorCode 3 ("rejected from server") / 8 ("server still recognises your last
+	// login") are the transient "account still online" refusals — the login server
+	// kicks the stale session on this same attempt, so a reload a few seconds later
+	// re-mints a token and succeeds. Bounded so a real failure still surfaces.
+	if (typeof window !== 'undefined' && window.ROConfigBase) {
+		let tries = 0;
+		try {
+			tries = parseInt(window.sessionStorage.getItem('exro_relogin') || '0', 10) || 0;
+		} catch (_e) {
+			/* storage disabled */
+		}
+		if ((pkt.ErrorCode === 3 || pkt.ErrorCode === 8) && tries < 4) {
+			try {
+				window.sessionStorage.setItem('exro_relogin', String(tries + 1));
+			} catch (_e) {
+				/* storage disabled */
+			}
+			Network.close();
+			setTimeout(() => {
+				window.onbeforeunload = null;
+				window.location.reload();
+			}, 4000);
+			return;
+		}
+		try {
+			window.sessionStorage.removeItem('exro_relogin');
+		} catch (_e) {
+			/* storage disabled */
+		}
 	}
 
 	UIManager.showMessageBox(

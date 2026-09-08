@@ -1,0 +1,258 @@
+/**
+ * CharCreateExro.css — eXRo custom character-create (PLAN-009).
+ * Shares the CharSelectExro token language (mirrored from www dark palette).
+ */
+
+:host,
+.cc {
+	--cc-bg: #0a0a10;
+	--cc-surface: rgba(20, 20, 32, 0.72);
+	--cc-border: rgba(205, 196, 255, 0.14);
+	--cc-text: #edecf5;
+	--cc-muted: #9a97b5;
+	--cc-brand: #7c5cff;
+	--cc-brand-2: #3de0d0;
+	--cc-accent: #211d3d;
+	--cc-danger: #ff6b6b;
+	--cc-radius: 14px;
+	--cc-blur: 18px;
+}
+
+.cc {
+	position: fixed;
+	inset: 0;
+	z-index: 50;
+	display: grid;
+	grid-template-columns: 1fr 360px;
+	grid-template-rows: auto 1fr;
+	grid-template-areas:
+		'top   top'
+		'stage panel';
+	gap: 24px;
+	padding: 26px 30px;
+	box-sizing: border-box;
+	font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+	color: var(--cc-text);
+	background: var(--cc-bg);
+	user-select: none;
+}
+
+.cc-bg {
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	background:
+		radial-gradient(circle at 30% 20%, rgba(124, 92, 255, 0.26), transparent 55%),
+		radial-gradient(circle at 78% 82%, rgba(61, 224, 208, 0.2), transparent 55%),
+		linear-gradient(160deg, #0c0c16 0%, #05050a 60%, #0a0a12 100%);
+}
+
+.cc-top {
+	grid-area: top;
+	display: grid;
+	grid-template-columns: 1fr auto 1fr;
+	align-items: center;
+}
+.cc-back {
+	justify-self: start;
+	padding: 7px 14px;
+	border: 1px solid var(--cc-border);
+	border-radius: 999px;
+	background: var(--cc-surface);
+	backdrop-filter: blur(var(--cc-blur));
+	color: var(--cc-muted);
+	font-size: 13px;
+	cursor: pointer;
+}
+.cc-back:hover {
+	color: var(--cc-text);
+}
+.cc-brand {
+	justify-self: center;
+	font-size: 30px;
+	font-weight: 800;
+	letter-spacing: 0.02em;
+}
+.cc-brand .ro {
+	color: var(--cc-brand-2);
+}
+.cc-step {
+	justify-self: end;
+	padding: 6px 14px;
+	border: 1px solid var(--cc-border);
+	border-radius: 999px;
+	background: var(--cc-surface);
+	backdrop-filter: blur(var(--cc-blur));
+	font-size: 13px;
+	color: var(--cc-muted);
+}
+
+/* ── stage / preview ─────────────────────────────────────── */
+.cc-stage {
+	grid-area: stage;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 18px;
+}
+.cc-card {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 6px;
+	padding: 14px 18px 16px;
+	border: 1px solid rgba(124, 92, 255, 0.5);
+	border-radius: var(--cc-radius);
+	background: rgba(10, 10, 18, 0.5);
+	box-shadow: 0 0 0 1px rgba(124, 92, 255, 0.3), 0 28px 70px -28px rgba(124, 92, 255, 0.5);
+	overflow: hidden;
+}
+.cc-canvas {
+	width: 190px;
+	height: 250px;
+	image-rendering: pixelated;
+	transform: scale(1.5);
+	transform-origin: center bottom;
+}
+.cc-card .nm {
+	font-weight: 700;
+	font-size: 15px;
+	min-height: 18px;
+}
+.cc-card .jb {
+	font-size: 12px;
+	color: var(--cc-muted);
+}
+.cc-turn {
+	width: 40px;
+	height: 40px;
+	border: 1px solid var(--cc-border);
+	border-radius: 999px;
+	background: var(--cc-surface);
+	backdrop-filter: blur(var(--cc-blur));
+	color: var(--cc-text);
+	font-size: 20px;
+	line-height: 1;
+	cursor: pointer;
+}
+
+/* ── right panel ─────────────────────────────────────────── */
+.cc-panel {
+	grid-area: panel;
+	align-self: center;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	padding: 22px;
+	border: 1px solid var(--cc-border);
+	border-radius: var(--cc-radius);
+	background: var(--cc-surface);
+	backdrop-filter: blur(var(--cc-blur));
+	box-shadow: 0 18px 50px -20px rgba(0, 0, 0, 0.7);
+}
+.cc-label {
+	font-size: 12px;
+	color: var(--cc-muted);
+}
+.cc-field {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+}
+.cc-name {
+	padding: 10px 12px;
+	border: 1px solid var(--cc-border);
+	border-radius: 10px;
+	background: rgba(0, 0, 0, 0.35);
+	color: var(--cc-text);
+	font-size: 14px;
+	outline: none;
+}
+.cc-name:focus {
+	border-color: rgba(124, 92, 255, 0.7);
+}
+.cc-row {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+}
+.cc-row[hidden] {
+	display: none;
+}
+.cc-seg {
+	display: inline-flex;
+	border: 1px solid var(--cc-border);
+	border-radius: 999px;
+	overflow: hidden;
+}
+.cc-seg button {
+	border: 0;
+	background: none;
+	color: var(--cc-muted);
+	font-size: 13px;
+	padding: 7px 16px;
+	cursor: pointer;
+}
+.cc-seg button.on {
+	background: var(--cc-accent);
+	color: var(--cc-text);
+}
+.cc-seg button:disabled {
+	opacity: 0.35;
+	cursor: default;
+}
+.cc-stepper {
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+}
+.cc-stepper button {
+	width: 30px;
+	height: 30px;
+	border: 1px solid var(--cc-border);
+	border-radius: 999px;
+	background: none;
+	color: var(--cc-text);
+	font-size: 15px;
+	line-height: 1;
+	cursor: pointer;
+}
+.cc-stepper .val {
+	min-width: 28px;
+	text-align: center;
+	font-variant-numeric: tabular-nums;
+}
+.cc-actions {
+	display: flex;
+	gap: 12px;
+	padding-top: 4px;
+}
+.btn {
+	flex: 1;
+	padding: 12px 18px;
+	border: 0;
+	border-radius: 999px;
+	font-size: 14px;
+	font-weight: 700;
+	cursor: pointer;
+}
+.btn.create {
+	background: linear-gradient(110deg, var(--cc-brand), var(--cc-brand-2));
+	color: #0a0a10;
+}
+.btn.ghost {
+	background: none;
+	border: 1px solid var(--cc-border);
+	color: var(--cc-text);
+}
+.btn:disabled {
+	opacity: 0.4;
+	cursor: default;
+}
+.cc-hint {
+	min-height: 16px;
+	font-size: 12px;
+	color: var(--cc-danger);
+}
