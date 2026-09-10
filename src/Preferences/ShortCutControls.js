@@ -519,4 +519,8 @@ ShortCuts.ExroMall = {
 
 const ShortCutControls = { ShortCuts: ShortCuts };
 
-export default Preferences.get('ShortCutControls', ShortCutControls, 1.2);
+// 1.3: PLAN-018 D3c/D4c added ShortCuts.ExroMarket / ExroMall above. The
+// version bump forces Preferences.get to discard a stored 1.2 copy that
+// predates those entries, so Ctrl+E / Ctrl+Shift+E bind for existing clients
+// (cost: any customised keybinds reset to default — roBrowser has no migration).
+export default Preferences.get('ShortCutControls', ShortCutControls, 1.3);
