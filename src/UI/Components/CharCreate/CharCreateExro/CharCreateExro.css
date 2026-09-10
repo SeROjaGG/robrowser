@@ -172,6 +172,11 @@
 .cc-name:focus {
 	border-color: rgba(124, 92, 255, 0.7);
 }
+.cc-name-hint {
+	margin: 0;
+	font-size: 11px;
+	color: var(--cc-muted);
+}
 .cc-row {
 	display: flex;
 	align-items: center;

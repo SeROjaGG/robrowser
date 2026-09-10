@@ -111,6 +111,11 @@ function rotate(step) {
 	}
 }
 
+// Mirrors the server's char_name_option:1 + char_name_letters set (eXRo allows
+// letters, digits, space, and _ - .). Client-side so the player gets instant
+// feedback instead of a bare "creation denied" from the char-server.
+const NAME_RE = /^[A-Za-z0-9 _.-]{4,23}$/;
+
 function create() {
 	const root = Component.getRoot();
 	const name = root.querySelector('.cc-name').value.trim();
@@ -118,8 +123,8 @@ function create() {
 		hint('Enter a name.');
 		return;
 	}
-	if (name.length > 23) {
-		hint('Name is too long (max 23).');
+	if (!NAME_RE.test(name)) {
+		hint('Names: letters, numbers, space, and _ - . — 4 to 23 characters.');
 		return;
 	}
 	hint('');
