@@ -159,6 +159,7 @@ services:
             # gitignored) + channels (D6b; map_conf.txt points channel_conf here).
             - './rathena/tools/docker/asset/item_cash.yml:/rathena/db/import/item_cash.yml'
             - './rathena/tools/docker/asset/attendance.yml:/rathena/db/import/attendance.yml'
+            - './rathena/tools/docker/asset/enchantgrade.yml:/rathena/db/import/enchantgrade.yml'
             - './rathena/tools/docker/asset/channels_exro.conf:/rathena/conf/import/channels_exro.conf'
         init: true
         tty: true
