@@ -218,7 +218,9 @@ CashShop.init = function init() {
 
 		const chargeBtn = e.target.closest('.panel-cart-charge-btn');
 		if (chargeBtn) {
-			window.open(DB.getMessage(3301), '_blank');
+			// eXRo: Cash Points are bought on the website /donate page (ADR-0006),
+			// not kRO's charge URL (msg 3301). window.ROConfigBase marks the /play deploy.
+			window.open(window.ROConfigBase ? '/donate' : DB.getMessage(3301), '_blank');
 			return;
 		}
 	});
