@@ -150,6 +150,11 @@ services:
             - './rathena/tools/docker/asset/inter_conf.txt:/rathena/conf/import/inter_conf.txt'
             - './rathena/tools/docker/asset/char_conf.txt:/rathena/conf/import/char_conf.txt'
             - './rathena/tools/docker/asset/map_conf.txt:/rathena/conf/import/map_conf.txt'
+            # PLAN-011 roulette-off + PLAN-015 rates/@commands/MOTD (conf/import is
+            # gitignored, so these ride in as tracked asset mounts).
+            - './rathena/tools/docker/asset/battle_conf.txt:/rathena/conf/import/battle_conf.txt'
+            - './rathena/tools/docker/asset/groups.yml:/rathena/conf/import/groups.yml'
+            - './rathena/tools/docker/asset/motd_exro.txt:/rathena/conf/import/motd_exro.txt'
         init: true
         tty: true
         stdin_open: true
