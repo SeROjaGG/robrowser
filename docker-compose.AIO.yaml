@@ -161,6 +161,7 @@ services:
             - './rathena/tools/docker/asset/attendance.yml:/rathena/db/import/attendance.yml'
             - './rathena/tools/docker/asset/enchantgrade.yml:/rathena/db/import/enchantgrade.yml'
             - './rathena/tools/docker/asset/channels_exro.conf:/rathena/conf/import/channels_exro.conf'
+            - './rathena/tools/docker/asset/log_conf.txt:/rathena/conf/import/log_conf.txt'
         init: true
         tty: true
         stdin_open: true
