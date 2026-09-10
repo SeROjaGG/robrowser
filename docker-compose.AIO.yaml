@@ -155,6 +155,11 @@ services:
             - './rathena/tools/docker/asset/battle_conf.txt:/rathena/conf/import/battle_conf.txt'
             - './rathena/tools/docker/asset/groups.yml:/rathena/conf/import/groups.yml'
             - './rathena/tools/docker/asset/motd_exro.txt:/rathena/conf/import/motd_exro.txt'
+            # PLAN-018 Phase D — Cash Shop / Daily Check-in catalogs (db/import is
+            # gitignored) + channels (D6b; map_conf.txt points channel_conf here).
+            - './rathena/tools/docker/asset/item_cash.yml:/rathena/db/import/item_cash.yml'
+            - './rathena/tools/docker/asset/attendance.yml:/rathena/db/import/attendance.yml'
+            - './rathena/tools/docker/asset/channels_exro.conf:/rathena/conf/import/channels_exro.conf'
         init: true
         tty: true
         stdin_open: true
