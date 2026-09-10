@@ -87,10 +87,9 @@ function syncPanel() {
 	root.querySelector('.cc-race button[data-race="4218"]').disabled = !_doramEnabled;
 
 	// Hair-colour palettes: DB.getHeadPalPath resolves data/palette/도람족/머리/… for
-	// Doram (present in the client pack) but data/palette/머리/… for Human (NOT in the
-	// pack — same missing-KR-asset gap as the mojibake map names). Hide the control
-	// where it can't do anything; drop this guard once the Human palettes ship.
-	root.querySelector('.cc-row.cc-color-row').hidden = _state.race !== 4218;
+	// Doram and data/palette/머리/… for Human. PLAN-019 stages the 749 Human hair
+	// palettes into the /play overlay (assets/extract-hair-palettes.sh), so the
+	// colour control is now live for both races.
 
 	ensureEntity();
 }

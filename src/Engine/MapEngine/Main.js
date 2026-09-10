@@ -1037,7 +1037,3 @@ export default function MainEngine() {
 	Network.hookPacket(PACKET.ZC.ACK_STATUS_GM, onGMCheckStatus);
 }
 
-/* PLAN-018 D3c — additive: the exroBridge (UI/Components/ExroCommon/exroBridge.js)
- * re-hooks ZC.NOTIFY_PLAYERCHAT to sniff EXRO-prefixed dispbottom replies, and
- * calls this for every non-eXRo line so the chatbox / overhead dialog still work. */
-export { onPlayerMessage };
