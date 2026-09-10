@@ -57,6 +57,10 @@ import SkillListMH from 'UI/Components/SkillListMH/SkillListMH.js';
 import MobileUI from 'UI/Components/MobileUI/MobileUI.js';
 import CashShop from 'UI/Components/CashShop/CashShop.js';
 import Bank from 'UI/Components/Bank/Bank.js';
+// PLAN-018 D3c/D4c — eXRo in-client Player Market + Equipment Mall windows.
+// Side-effect import: each module ends with UIManager.addComponent(...).
+import 'UI/Components/ExroMarket/ExroMarket.js';
+import 'UI/Components/ExroMall/ExroMall.js';
 import ItemReform from 'UI/Components/ItemReform/ItemReform.js';
 import LaphineSys from 'UI/Components/LaphineSys/LaphineSys.js';
 import LaphineUpg from 'UI/Components/LaphineUpg/LaphineUpg.js';

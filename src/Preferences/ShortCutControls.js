@@ -502,6 +502,21 @@ ShortCuts.Flag9 = {
 	cmd: 'EXECUTE_FLAG_9'
 };
 
+// PLAN-018 D3c/D4c — eXRo in-client windows. Ctrl+E = Player Market,
+// Ctrl+Shift+E = Equipment Mall. Both open/close on the same key (cmd TOGGLE).
+ShortCuts.ExroMarket = {
+	init: { key: KEYS.E, alt: false, ctrl: true, shift: false },
+	cust: false,
+	component: 'ExroMarket',
+	cmd: 'TOGGLE'
+};
+ShortCuts.ExroMall = {
+	init: { key: KEYS.E, alt: false, ctrl: true, shift: true },
+	cust: false,
+	component: 'ExroMall',
+	cmd: 'TOGGLE'
+};
+
 const ShortCutControls = { ShortCuts: ShortCuts };
 
 export default Preferences.get('ShortCutControls', ShortCutControls, 1.2);
