@@ -131,11 +131,16 @@ services:
         container_name: 'rathena-map'
         command: >
             sh -c "
-            until (true 2>/dev/null >> /rathena/map-server); do sleep 10; done && 
+            until (true 2>/dev/null >> /rathena/map-server); do sleep 10; done &&
             echo 'Arquivo livre! Aplicando permissões e iniciando...' &&
-            chmod +x /rathena/map-server &&  
+            chmod +x /rathena/map-server &&
             /rathena/map-server
             "
+        # WoE is one global event authored in UTC (PLAN-012). Euphy's WoE
+        # Controller schedules off the container wall clock, so pin it to UTC to
+        # match www/lib/config/woe.ts (timeZone: "UTC"). UTC needs no tzdata.
+        environment:
+            TZ: UTC
         ports:
             - '5121:5121'
         networks:
