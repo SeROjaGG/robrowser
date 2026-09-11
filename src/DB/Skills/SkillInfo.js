@@ -13639,4 +13639,244 @@ SkillInfo[SK.NPC_DEADLYCURSE2] = {
 	]
 };
 
+// eXRo RPT-004 #6/#7: Night Watch / Hyper Novice skill metadata.
+// SkillTreeView.js already has the tree structure for these (list:3), but
+// prepareSkillTree() silently drops any skill missing from SkillInfo -- so
+// the whole 4th tab stayed empty/hidden. Values mirror db/re/skill_db.yml
+// (Description/MaxLevel/SpCost/Range); AttackRange defaults to 0 (self/
+// passive) where skill_db has no Range, matching the SK.RL_RICHS_COIN-style
+// convention already used in this file.
+SkillInfo[SK.NW_P_F_I] = {
+	Name: 'NW_P_F_I',
+	SkillName: 'P.F.I',
+	MaxLv: 10,
+	SpAmount: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+	bSeperateLv: false,
+	AttackRange: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+};
+SkillInfo[SK.NW_GRENADE_MASTERY] = {
+	Name: 'NW_GRENADE_MASTERY',
+	SkillName: 'Grenade Mastery',
+	MaxLv: 10,
+	SpAmount: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+	bSeperateLv: false,
+	AttackRange: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+};
+SkillInfo[SK.NW_INTENSIVE_AIM] = {
+	Name: 'NW_INTENSIVE_AIM',
+	SkillName: 'Intensive Aim',
+	MaxLv: 1,
+	SpAmount: [0],
+	bSeperateLv: false,
+	AttackRange: [0]
+};
+SkillInfo[SK.NW_GRENADE_FRAGMENT] = {
+	Name: 'NW_GRENADE_FRAGMENT',
+	SkillName: 'Grenade Fragment',
+	MaxLv: 7,
+	SpAmount: [50, 50, 50, 50, 50, 50, 50],
+	bSeperateLv: false,
+	AttackRange: [0, 0, 0, 0, 0, 0, 0]
+};
+SkillInfo[SK.NW_THE_VIGILANTE_AT_NIGHT] = {
+	Name: 'NW_THE_VIGILANTE_AT_NIGHT',
+	SkillName: 'The Vigilante at Night',
+	MaxLv: 5,
+	SpAmount: [0, 0, 0, 0, 0],
+	bSeperateLv: false,
+	AttackRange: [0, 0, 0, 0, 0]
+};
+SkillInfo[SK.NW_ONLY_ONE_BULLET] = {
+	Name: 'NW_ONLY_ONE_BULLET',
+	SkillName: 'Only One Bullet',
+	MaxLv: 5,
+	SpAmount: [0, 0, 0, 0, 0],
+	bSeperateLv: false,
+	AttackRange: [0, 0, 0, 0, 0]
+};
+SkillInfo[SK.NW_SPIRAL_SHOOTING] = {
+	Name: 'NW_SPIRAL_SHOOTING',
+	SkillName: 'Spiral Shooting',
+	MaxLv: 5,
+	SpAmount: [0, 0, 0, 0, 0],
+	bSeperateLv: false,
+	AttackRange: [0, 0, 0, 0, 0]
+};
+SkillInfo[SK.NW_MAGAZINE_FOR_ONE] = {
+	Name: 'NW_MAGAZINE_FOR_ONE',
+	SkillName: 'Magazine for One',
+	MaxLv: 5,
+	SpAmount: [0, 0, 0, 0, 0],
+	bSeperateLv: false,
+	AttackRange: [0, 0, 0, 0, 0]
+};
+SkillInfo[SK.NW_WILD_FIRE] = {
+	Name: 'NW_WILD_FIRE',
+	SkillName: 'Wild Fire',
+	MaxLv: 5,
+	SpAmount: [0, 0, 0, 0, 0],
+	bSeperateLv: false,
+	AttackRange: [0, 0, 0, 0, 0]
+};
+SkillInfo[SK.NW_BASIC_GRENADE] = {
+	Name: 'NW_BASIC_GRENADE',
+	SkillName: 'Basic Grenade',
+	MaxLv: 5,
+	SpAmount: [0, 0, 0, 0, 0],
+	bSeperateLv: false,
+	AttackRange: [0, 0, 0, 0, 0]
+};
+SkillInfo[SK.NW_HASTY_FIRE_IN_THE_HOLE] = {
+	Name: 'NW_HASTY_FIRE_IN_THE_HOLE',
+	SkillName: 'Hasty Fire in the Hole',
+	MaxLv: 5,
+	SpAmount: [0, 0, 0, 0, 0],
+	bSeperateLv: false,
+	AttackRange: [0, 0, 0, 0, 0]
+};
+SkillInfo[SK.NW_GRENADES_DROPPING] = {
+	Name: 'NW_GRENADES_DROPPING',
+	SkillName: 'Grenades Dropping',
+	MaxLv: 5,
+	SpAmount: [0, 0, 0, 0, 0],
+	bSeperateLv: false,
+	AttackRange: [0, 0, 0, 0, 0]
+};
+SkillInfo[SK.NW_AUTO_FIRING_LAUNCHER] = {
+	Name: 'NW_AUTO_FIRING_LAUNCHER',
+	SkillName: 'Auto Firing Launcher',
+	MaxLv: 5,
+	SpAmount: [0, 0, 0, 0, 0],
+	bSeperateLv: false,
+	AttackRange: [0, 0, 0, 0, 0]
+};
+SkillInfo[SK.NW_HIDDEN_CARD] = {
+	Name: 'NW_HIDDEN_CARD',
+	SkillName: 'Hidden Card',
+	MaxLv: 10,
+	SpAmount: [150, 150, 150, 150, 150, 150, 150, 150, 150, 150],
+	bSeperateLv: false,
+	AttackRange: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+};
+SkillInfo[SK.NW_MISSION_BOMBARD] = {
+	Name: 'NW_MISSION_BOMBARD',
+	SkillName: 'Mission Bombard',
+	MaxLv: 10,
+	SpAmount: [100, 100, 100, 100, 100, 100, 100, 100, 100, 100],
+	bSeperateLv: false,
+	AttackRange: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+};
+SkillInfo[SK.HN_SELFSTUDY_TATICS] = {
+	Name: 'HN_SELFSTUDY_TATICS',
+	SkillName: 'Self Study Tactics',
+	MaxLv: 10,
+	SpAmount: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+	bSeperateLv: false,
+	AttackRange: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+};
+SkillInfo[SK.HN_SELFSTUDY_SOCERY] = {
+	Name: 'HN_SELFSTUDY_SOCERY',
+	SkillName: 'Self Study Sorcery',
+	MaxLv: 10,
+	SpAmount: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+	bSeperateLv: false,
+	AttackRange: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+};
+SkillInfo[SK.HN_DOUBLEBOWLINGBASH] = {
+	Name: 'HN_DOUBLEBOWLINGBASH',
+	SkillName: 'Double Bowling Bash',
+	MaxLv: 10,
+	SpAmount: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+	bSeperateLv: false,
+	AttackRange: [2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
+};
+SkillInfo[SK.HN_MEGA_SONIC_BLOW] = {
+	Name: 'HN_MEGA_SONIC_BLOW',
+	SkillName: 'Mega Sonic Blow',
+	MaxLv: 10,
+	SpAmount: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+	bSeperateLv: false,
+	AttackRange: [2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
+};
+SkillInfo[SK.HN_SHIELD_CHAIN_RUSH] = {
+	Name: 'HN_SHIELD_CHAIN_RUSH',
+	SkillName: 'Shield Chain Rush',
+	MaxLv: 10,
+	SpAmount: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+	bSeperateLv: false,
+	AttackRange: [7, 7, 7, 7, 7, 7, 7, 7, 7, 7]
+};
+SkillInfo[SK.HN_SPIRAL_PIERCE_MAX] = {
+	Name: 'HN_SPIRAL_PIERCE_MAX',
+	SkillName: 'Spiral Pierce Max',
+	MaxLv: 10,
+	SpAmount: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+	bSeperateLv: false,
+	AttackRange: [7, 7, 7, 7, 7, 7, 7, 7, 7, 7]
+};
+SkillInfo[SK.HN_METEOR_STORM_BUSTER] = {
+	Name: 'HN_METEOR_STORM_BUSTER',
+	SkillName: 'Meteor Storm Buster',
+	MaxLv: 10,
+	SpAmount: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+	bSeperateLv: false,
+	AttackRange: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+};
+SkillInfo[SK.HN_JUPITEL_THUNDER_STORM] = {
+	Name: 'HN_JUPITEL_THUNDER_STORM',
+	SkillName: 'Jupitel Thunderstorm',
+	MaxLv: 10,
+	SpAmount: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+	bSeperateLv: false,
+	AttackRange: [11, 11, 11, 11, 11, 11, 11, 11, 11, 11]
+};
+SkillInfo[SK.HN_JACK_FROST_NOVA] = {
+	Name: 'HN_JACK_FROST_NOVA',
+	SkillName: 'Jack Frost Nova',
+	MaxLv: 10,
+	SpAmount: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+	bSeperateLv: false,
+	AttackRange: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+};
+SkillInfo[SK.HN_HELLS_DRIVE] = {
+	Name: 'HN_HELLS_DRIVE',
+	SkillName: 'Hell\'s Drive',
+	MaxLv: 10,
+	SpAmount: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+	bSeperateLv: false,
+	AttackRange: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+};
+SkillInfo[SK.HN_GROUND_GRAVITATION] = {
+	Name: 'HN_GROUND_GRAVITATION',
+	SkillName: 'Ground Gravitation',
+	MaxLv: 10,
+	SpAmount: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+	bSeperateLv: false,
+	AttackRange: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+};
+SkillInfo[SK.HN_NAPALM_VULCAN_STRIKE] = {
+	Name: 'HN_NAPALM_VULCAN_STRIKE',
+	SkillName: 'Napalm Vulcan Strike',
+	MaxLv: 10,
+	SpAmount: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+	bSeperateLv: false,
+	AttackRange: [11, 11, 11, 11, 11, 11, 11, 11, 11, 11]
+};
+SkillInfo[SK.HN_BREAKINGLIMIT] = {
+	Name: 'HN_BREAKINGLIMIT',
+	SkillName: 'Breaking Limit',
+	MaxLv: 1,
+	SpAmount: [150],
+	bSeperateLv: false,
+	AttackRange: [0]
+};
+SkillInfo[SK.HN_RULEBREAK] = {
+	Name: 'HN_RULEBREAK',
+	SkillName: 'Rule Break',
+	MaxLv: 1,
+	SpAmount: [150],
+	bSeperateLv: false,
+	AttackRange: [0]
+};
+
 export default SkillInfo;
