@@ -1544,7 +1544,7 @@ SkillTreeView[JobId.SOUL_ASCETIC] = {
 	[SK.SOA_SOUL_OF_HEAVEN_AND_EARTH]: 40
 };
 SkillTreeView[JobId.NIGHT_WATCH] = {
-	list: 3,
+	list: 4,
 	beforeJob: JobId.REBELLION,
 	[SK.NW_P_F_I]: 2,
 	[SK.NW_GRENADE_MASTERY]: 5,
@@ -1563,7 +1563,7 @@ SkillTreeView[JobId.NIGHT_WATCH] = {
 	[SK.NW_MISSION_BOMBARD]: 33
 };
 SkillTreeView[JobId.HYPER_NOVICE] = {
-	list: 3,
+	list: 4,
 	beforeJob: JobId.SUPERNOVICE2,
 	[SK.HN_SELFSTUDY_TATICS]: 0,
 	[SK.HN_SELFSTUDY_SOCERY]: 3,
