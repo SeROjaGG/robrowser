@@ -25,7 +25,7 @@ import Sound from 'Audio/SoundManager.js';
 import Events from 'Core/Events.js';
 import Guild from 'Engine/MapEngine/Guild.js';
 import Session from 'Engine/SessionStorage.js';
-import { consume as exroConsume } from 'UI/Components/ExroCommon/exroBridge.js';
+import { consume as serojaConsume } from 'UI/Components/SeROjaCommon/serojaBridge.js';
 import Network from 'Network/NetworkManager.js';
 import PACKETVER from 'Network/PacketVerManager.js';
 import PACKET from 'Network/PacketStructure.js';
@@ -1047,10 +1047,10 @@ function onEntityTalk(pkt) {
  * @param {object} pkt - PACKET.ZC.NPC_CHAT
  */
 function onEntityTalkColor(pkt) {
-	/* PLAN-019: eXRo market/mall bridge. rAthena `dispbottom` sends 0x2C1
-	 * (ZC_NPC_CHAT) — NOT 0x8e — so the bridge's EXRO<TAB>… reply lines land
+	/* PLAN-019: SeROja market/mall bridge. rAthena `dispbottom` sends 0x2C1
+	 * (ZC_NPC_CHAT) — NOT 0x8e — so the bridge's SEROJA<TAB>… reply lines land
 	 * here. Swallow them before the chatbox; resolve the matching request. */
-	if (exroConsume(pkt.msg)) {
+	if (serojaConsume(pkt.msg)) {
 		return;
 	}
 

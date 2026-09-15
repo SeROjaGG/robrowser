@@ -502,24 +502,24 @@ ShortCuts.Flag9 = {
 	cmd: 'EXECUTE_FLAG_9'
 };
 
-// PLAN-018 D3c/D4c — eXRo in-client windows. Ctrl+E = Player Market,
+// PLAN-018 D3c/D4c — SeROja in-client windows. Ctrl+E = Player Market,
 // Ctrl+Shift+E = Equipment Mall. Both open/close on the same key (cmd TOGGLE).
-ShortCuts.ExroMarket = {
+ShortCuts.SeROjaMarket = {
 	init: { key: KEYS.E, alt: false, ctrl: true, shift: false },
 	cust: false,
-	component: 'ExroMarket',
+	component: 'SeROjaMarket',
 	cmd: 'TOGGLE'
 };
-ShortCuts.ExroMall = {
+ShortCuts.SeROjaMall = {
 	init: { key: KEYS.E, alt: false, ctrl: true, shift: true },
 	cust: false,
-	component: 'ExroMall',
+	component: 'SeROjaMall',
 	cmd: 'TOGGLE'
 };
 
 const ShortCutControls = { ShortCuts: ShortCuts };
 
-// 1.3: PLAN-018 D3c/D4c added ShortCuts.ExroMarket / ExroMall above. The
+// 1.3: PLAN-018 D3c/D4c added ShortCuts.SeROjaMarket / SeROjaMall above. The
 // version bump forces Preferences.get to discard a stored 1.2 copy that
 // predates those entries, so Ctrl+E / Ctrl+Shift+E bind for existing clients
 // (cost: any customised keybinds reset to default — roBrowser has no migration).

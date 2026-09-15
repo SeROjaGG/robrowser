@@ -1,10 +1,10 @@
 /**
- * UI/Components/ExroMarket/ExroMarket.js
+ * UI/Components/SeROjaMarket/SeROjaMarket.js
  *
- * eXRo in-client Player Market window (PLAN-018 Phase D / D3c). Browse + buy
+ * SeROja in-client Player Market window (PLAN-018 Phase D / D3c). Browse + buy
  * over the same www_market_* tables as the website /market and the in-town
- * Market Kiosk NPC. Data comes through exroBridge (chat-atcommand transport,
- * no new packet). Buys settle on the map-server via F_ExroMktBuy — the website
+ * Market Kiosk NPC. Data comes through serojaBridge (chat-atcommand transport,
+ * no new packet). Buys settle on the map-server via F_SeROjaMktBuy — the website
  * buyListing stays the canonical path (ADR-0011).
  *
  * Standalone GUIComponent, additively registered in Engine/MapEngine.js.
@@ -19,14 +19,14 @@ import Preferences from 'Core/Preferences.js';
 import Renderer from 'Renderer/Renderer.js';
 import UIManager from 'UI/UIManager.js';
 import GUIComponent from 'UI/GUIComponent.js';
-import { request } from '../ExroCommon/exroBridge.js';
-import htmlText from './ExroMarket.html?raw';
-import cssText from '../ExroCommon/exroShop.css?raw';
+import { request } from '../SeROjaCommon/serojaBridge.js';
+import htmlText from './SeROjaMarket.html?raw';
+import cssText from '../SeROjaCommon/serojaShop.css?raw';
 
-const ExroMarket = new GUIComponent('ExroMarket', cssText);
-ExroMarket.render = () => htmlText;
+const SeROjaMarket = new GUIComponent('SeROjaMarket', cssText);
+SeROjaMarket.render = () => htmlText;
 
-const _prefs = Preferences.get('ExroMarket', { x: 120, y: 90 }, 1.0);
+const _prefs = Preferences.get('SeROjaMarket', { x: 120, y: 90 }, 1.0);
 
 let _tab = 'browse';
 let _page = 0;
@@ -38,7 +38,7 @@ let _armTimer = null;
 /* ── helpers ─────────────────────────────────────────────── */
 
 function $(sel) {
-	return ExroMarket.getRoot().querySelector(sel);
+	return SeROjaMarket.getRoot().querySelector(sel);
 }
 
 function setStatus(text, cls) {
@@ -133,7 +133,7 @@ async function fetchWallet() {
 }
 
 async function refresh() {
-	const root = ExroMarket.getRoot();
+	const root = SeROjaMarket.getRoot();
 	root.querySelectorAll('.exs-tabs button').forEach(b => b.classList.toggle('on', b.dataset.tab === _tab));
 	$('.exs-filters').style.display = _tab === 'browse' ? '' : 'none';
 	$('.exs-foot .pg').style.display = _tab === 'browse' ? '' : 'none';
@@ -182,7 +182,7 @@ async function buy(id, price, name) {
 
 /* ── events ──────────────────────────────────────────────── */
 
-ExroMarket.init = function init() {
+SeROjaMarket.init = function init() {
 	const root = this.getRoot();
 	this.draggable(root.querySelector('.exs-bar'));
 
@@ -235,7 +235,7 @@ ExroMarket.init = function init() {
 
 // re-skin buttons after a disarm without a server round-trip
 function renderBrowseFromDom() {
-	ExroMarket.getRoot()
+	SeROjaMarket.getRoot()
 		.querySelectorAll('.exs-list button')
 		.forEach(btn => {
 			btn.textContent = 'Buy';
@@ -244,7 +244,7 @@ function renderBrowseFromDom() {
 		});
 }
 
-ExroMarket.onAppend = function onAppend() {
+SeROjaMarket.onAppend = function onAppend() {
 	this._host.style.left =
 		Math.min(Math.max(0, _prefs.x), Renderer.width - this._host.offsetWidth) + 'px';
 	this._host.style.top =
@@ -254,14 +254,14 @@ ExroMarket.onAppend = function onAppend() {
 	refresh();
 };
 
-ExroMarket.onRemove = function onRemove() {
+SeROjaMarket.onRemove = function onRemove() {
 	_prefs.x = parseInt(this._host.style.left, 10) || _prefs.x;
 	_prefs.y = parseInt(this._host.style.top, 10) || _prefs.y;
 	_prefs.save();
 	disarm();
 };
 
-ExroMarket.onKeyDown = function onKeyDown(event) {
+SeROjaMarket.onKeyDown = function onKeyDown(event) {
 	if (event.which === KEYS.ESCAPE) {
 		this.remove();
 		event.stopImmediatePropagation();
@@ -270,13 +270,13 @@ ExroMarket.onKeyDown = function onKeyDown(event) {
 	return true;
 };
 
-ExroMarket.onShortCut = function onShortCut(key) {
+SeROjaMarket.onShortCut = function onShortCut(key) {
 	if (key.cmd === 'TOGGLE') {
 		this.toggle();
 	}
 };
 
-ExroMarket.toggle = function toggle() {
+SeROjaMarket.toggle = function toggle() {
 	if (this.__active) {
 		this.remove();
 	} else {
@@ -284,8 +284,8 @@ ExroMarket.toggle = function toggle() {
 	}
 };
 
-ExroMarket.mouseMode = GUIComponent.MouseMode.STOP;
-ExroMarket.captureKeyEvents = true;
-ExroMarket.needFocus = true;
+SeROjaMarket.mouseMode = GUIComponent.MouseMode.STOP;
+SeROjaMarket.captureKeyEvents = true;
+SeROjaMarket.needFocus = true;
 
-export default UIManager.addComponent(ExroMarket);
+export default UIManager.addComponent(SeROjaMarket);

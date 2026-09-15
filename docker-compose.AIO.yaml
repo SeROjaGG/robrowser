@@ -154,13 +154,13 @@ services:
             # gitignored, so these ride in as tracked asset mounts).
             - './rathena/tools/docker/asset/battle_conf.txt:/rathena/conf/import/battle_conf.txt'
             - './rathena/tools/docker/asset/groups.yml:/rathena/conf/import/groups.yml'
-            - './rathena/tools/docker/asset/motd_exro.txt:/rathena/conf/import/motd_exro.txt'
+            - './rathena/tools/docker/asset/motd_seroja.txt:/rathena/conf/import/motd_seroja.txt'
             # PLAN-018 Phase D — Cash Shop / Daily Check-in catalogs (db/import is
             # gitignored) + channels (D6b; map_conf.txt points channel_conf here).
             - './rathena/tools/docker/asset/item_cash.yml:/rathena/db/import/item_cash.yml'
             - './rathena/tools/docker/asset/attendance.yml:/rathena/db/import/attendance.yml'
             - './rathena/tools/docker/asset/enchantgrade.yml:/rathena/db/import/enchantgrade.yml'
-            - './rathena/tools/docker/asset/channels_exro.conf:/rathena/conf/import/channels_exro.conf'
+            - './rathena/tools/docker/asset/channels_seroja.conf:/rathena/conf/import/channels_seroja.conf'
             - './rathena/tools/docker/asset/log_conf.txt:/rathena/conf/import/log_conf.txt'
         init: true
         tty: true

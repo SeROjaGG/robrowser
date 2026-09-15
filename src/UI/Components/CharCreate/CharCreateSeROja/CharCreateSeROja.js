@@ -1,7 +1,7 @@
 /**
- * UI/Components/CharCreate/CharCreateExro/CharCreateExro.js
+ * UI/Components/CharCreate/CharCreateSeROja/CharCreateSeROja.js
  *
- * eXRo custom character-create screen (PLAN-009).
+ * SeROja custom character-create screen (PLAN-009).
  *
  * Standalone GUIComponent — implements the CharEngine API directly, does NOT
  * go through createCharCreate(). CharCreateCommon.js is untouched. Registered
@@ -26,8 +26,8 @@ import UIManager from 'UI/UIManager.js';
 import GUIComponent from 'UI/GUIComponent.js';
 import 'UI/Elements/Elements.js';
 import { makePreviewEntity, drawPreviewEntity } from '../../CharSelect/charSprite.js';
-import htmlText from './CharCreateExro.html?raw';
-import cssText from './CharCreateExro.css?raw';
+import htmlText from './CharCreateSeROja.html?raw';
+import cssText from './CharCreateSeROja.css?raw';
 
 /** preview sprite anchor inside the cc-canvas (190x250) */
 const PREVIEW_ANCHOR = { x: 95, y: 236 };
@@ -39,7 +39,7 @@ const HAIR_MAX = 27;
 const COLOR_MIN = 0;
 const COLOR_MAX = 8;
 
-const Component = new GUIComponent('CharCreateExro', cssText);
+const Component = new GUIComponent('CharCreateSeROja', cssText);
 
 Component.render = () => htmlText;
 
@@ -111,7 +111,7 @@ function rotate(step) {
 	}
 }
 
-// Mirrors the server's char_name_option:1 + char_name_letters set (eXRo allows
+// Mirrors the server's char_name_option:1 + char_name_letters set (SeROja allows
 // letters, digits, space, and _ - .). Client-side so the player gets instant
 // feedback instead of a bare "creation denied" from the char-server.
 const NAME_RE = /^[A-Za-z0-9 _.-]{4,23}$/;

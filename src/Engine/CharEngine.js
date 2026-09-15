@@ -122,7 +122,7 @@ class CharEngine {
 		Network.hookPacket(PACKET.HC.SECOND_PASSWD_LOGIN, onPincodeCheckSuccess);
 		Network.hookPacket(PACKET.HC.DELETE_CHAR3_RESERVED, onRequestCharDel);
 		Network.hookPacket(PACKET.HC.CHARLIST_NOTIFY, onCharListNotify);
-		// eXRo PLAN-009 — character rename (packets existed, wiring did not)
+		// SeROja PLAN-009 — character rename (packets existed, wiring did not)
 		Network.hookPacket(PACKET.HC.ACK_IS_VALID_CHARNAME, onRenameValidAnswer);
 		Network.hookPacket(PACKET.HC.ACK_CHANGE_CHARACTERNAME, onRenameChangeAnswer);
 		JoystickUI.onRestore();
@@ -143,7 +143,7 @@ class CharEngine {
  * Request to go back to Login Window
  */
 function onExitRequest() {
-	// eXRo: this is a passwordless single-server deploy served from /play, so the
+	// SeROja: this is a passwordless single-server deploy served from /play, so the
 	// in-client login window has no usable form (autoLogin is one-shot and already
 	// consumed). "Exit char-select" (ESC / Cancel) instead reloads the page — the
 	// /play boot script re-mints a play-token and auto-logs straight back in.
@@ -213,7 +213,7 @@ function onConnectionAccepted(pkt) {
 	ChSel.onDeleteReqDelay = onDeleteReqDelay;
 	ChSel.onCancelDeleteRequest = onCancelDeleteRequest;
 	if (ChSel.onRenameRequest !== undefined) {
-		ChSel.onRenameRequest = onRenameRequest; // eXRo PLAN-009
+		ChSel.onRenameRequest = onRenameRequest; // SeROja PLAN-009
 	}
 	ChSel.append();
 	ChSel.setInfo(pkt);
@@ -609,7 +609,7 @@ function onCreationFail(pkt) {
 
 	UIManager.showMessageBox(DB.getMessage(msg_id), 'ok');
 
-	// eXRo PLAN-009 — echo the refusal inline on the custom create screen
+	// SeROja PLAN-009 — echo the refusal inline on the custom create screen
 	const ChCre = CharCreate.getUI();
 	if (ChCre && ChCre.creationRefused) {
 		ChCre.creationRefused(DB.getMessage(msg_id));
@@ -876,7 +876,7 @@ function onReceiveMapInfo(pkt) {
  * R 08d5 <len>.W <success>.W <unk>.W
  */
 
-/* ─── Character rename (eXRo PLAN-009) ────────────────────────────────────────
+/* ─── Character rename (SeROja PLAN-009) ────────────────────────────────────────
  *
  * Two-step protocol. At PACKETVER >= 20111101 (our 20251001) the confirm/ack
  * opcodes are 0x8fc / 0x8fd (the 0x28f / 0x290 pair is the pre-20111101 form and

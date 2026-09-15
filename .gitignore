@@ -28,8 +28,8 @@ Config.local.js
 !.vscode/extensions.json
 !.vscode/*.code-snippets
 
-# exro: rathena is a symlink to ../rathena (see .claude/kbase/architecture/rathena.md)
+# seroja: rathena is a symlink to ../rathena (see .claude/kbase/architecture/rathena.md)
 /rathena
 
-# exro: RemoteClient-PHP is vendored with its own .git (see .claude/kbase/architecture/robrowser.md)
+# seroja: RemoteClient-PHP is vendored with its own .git (see .claude/kbase/architecture/robrowser.md)
 /roBrowserLegacy-RemoteClient-PHP/

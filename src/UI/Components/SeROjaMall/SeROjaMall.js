@@ -1,11 +1,11 @@
 /**
- * UI/Components/ExroMall/ExroMall.js
+ * UI/Components/SeROjaMall/SeROjaMall.js
  *
- * eXRo in-client Equipment Mall window (PLAN-018 Phase D / D4c). A curated zeny
+ * SeROja in-client Equipment Mall window (PLAN-018 Phase D / D4c). A curated zeny
  * sink over www_mall_catalog, mirroring the in-town Equipment Mall NPC. Data +
- * buys go through exroBridge (chat-atcommand transport); the map-server catalog
+ * buys go through serojaBridge (chat-atcommand transport); the map-server catalog
  * is job-filtered server-side, and the buy debits Zeny then delivers
- * (F_ExroMallBuy in npc/custom/exro/mall.txt).
+ * (F_SeROjaMallBuy in npc/custom/seroja/mall.txt).
  *
  * Standalone GUIComponent, additively registered in Engine/MapEngine.js.
  */
@@ -15,14 +15,14 @@ import Renderer from 'Renderer/Renderer.js';
 import Session from 'Engine/SessionStorage.js';
 import UIManager from 'UI/UIManager.js';
 import GUIComponent from 'UI/GUIComponent.js';
-import { request } from '../ExroCommon/exroBridge.js';
-import htmlText from './ExroMall.html?raw';
-import cssText from '../ExroCommon/exroShop.css?raw';
+import { request } from '../SeROjaCommon/serojaBridge.js';
+import htmlText from './SeROjaMall.html?raw';
+import cssText from '../SeROjaCommon/serojaShop.css?raw';
 
-const ExroMall = new GUIComponent('ExroMall', cssText);
-ExroMall.render = () => htmlText;
+const SeROjaMall = new GUIComponent('SeROjaMall', cssText);
+SeROjaMall.render = () => htmlText;
 
-const _prefs = Preferences.get('ExroMall', { x: 160, y: 110 }, 1.0);
+const _prefs = Preferences.get('SeROjaMall', { x: 160, y: 110 }, 1.0);
 
 let _page = 0;
 let _cat = '-';
@@ -30,7 +30,7 @@ let _armed = null;
 let _armTimer = null;
 
 function $(sel) {
-	return ExroMall.getRoot().querySelector(sel);
+	return SeROjaMall.getRoot().querySelector(sel);
 }
 
 function setStatus(text, cls) {
@@ -120,7 +120,7 @@ async function buy(id, name) {
 	await refresh();
 }
 
-ExroMall.init = function init() {
+SeROjaMall.init = function init() {
 	const root = this.getRoot();
 	this.draggable(root.querySelector('.exs-bar'));
 
@@ -165,7 +165,7 @@ ExroMall.init = function init() {
 	});
 };
 
-ExroMall.onAppend = function onAppend() {
+SeROjaMall.onAppend = function onAppend() {
 	this._host.style.left =
 		Math.min(Math.max(0, _prefs.x), Renderer.width - this._host.offsetWidth) + 'px';
 	this._host.style.top =
@@ -174,14 +174,14 @@ ExroMall.onAppend = function onAppend() {
 	refresh();
 };
 
-ExroMall.onRemove = function onRemove() {
+SeROjaMall.onRemove = function onRemove() {
 	_prefs.x = parseInt(this._host.style.left, 10) || _prefs.x;
 	_prefs.y = parseInt(this._host.style.top, 10) || _prefs.y;
 	_prefs.save();
 	disarm();
 };
 
-ExroMall.onKeyDown = function onKeyDown(event) {
+SeROjaMall.onKeyDown = function onKeyDown(event) {
 	if (event.which === KEYS.ESCAPE) {
 		this.remove();
 		event.stopImmediatePropagation();
@@ -190,13 +190,13 @@ ExroMall.onKeyDown = function onKeyDown(event) {
 	return true;
 };
 
-ExroMall.onShortCut = function onShortCut(key) {
+SeROjaMall.onShortCut = function onShortCut(key) {
 	if (key.cmd === 'TOGGLE') {
 		this.toggle();
 	}
 };
 
-ExroMall.toggle = function toggle() {
+SeROjaMall.toggle = function toggle() {
 	if (this.__active) {
 		this.remove();
 	} else {
@@ -204,8 +204,8 @@ ExroMall.toggle = function toggle() {
 	}
 };
 
-ExroMall.mouseMode = GUIComponent.MouseMode.STOP;
-ExroMall.captureKeyEvents = true;
-ExroMall.needFocus = true;
+SeROjaMall.mouseMode = GUIComponent.MouseMode.STOP;
+SeROjaMall.captureKeyEvents = true;
+SeROjaMall.needFocus = true;
 
-export default UIManager.addComponent(ExroMall);
+export default UIManager.addComponent(SeROjaMall);

@@ -382,10 +382,10 @@ function onCharServerSelected(index) {
 function onConnectionAccepted(pkt) {
 	UIManager.removeComponents();
 
-	// eXRo /play: login succeeded — reset the "account still online" retry counter.
+	// SeROja /play: login succeeded — reset the "account still online" retry counter.
 	if (typeof window !== 'undefined' && window.ROConfigBase) {
 		try {
-			window.sessionStorage.removeItem('exro_relogin');
+			window.sessionStorage.removeItem('seroja_relogin');
 		} catch (_e) {
 			/* private mode / storage disabled */
 		}
@@ -823,7 +823,7 @@ function onConnectionRefused(pkt) {
 			break;
 	}
 
-	// eXRo /play: the in-client WinLogin form is unusable on this passwordless deploy.
+	// SeROja /play: the in-client WinLogin form is unusable on this passwordless deploy.
 	// ErrorCode 3 ("rejected from server") / 8 ("server still recognises your last
 	// login") are the transient "account still online" refusals — the login server
 	// kicks the stale session on this same attempt, so a reload a few seconds later
@@ -831,13 +831,13 @@ function onConnectionRefused(pkt) {
 	if (typeof window !== 'undefined' && window.ROConfigBase) {
 		let tries = 0;
 		try {
-			tries = parseInt(window.sessionStorage.getItem('exro_relogin') || '0', 10) || 0;
+			tries = parseInt(window.sessionStorage.getItem('seroja_relogin') || '0', 10) || 0;
 		} catch (_e) {
 			/* storage disabled */
 		}
 		if ((pkt.ErrorCode === 3 || pkt.ErrorCode === 8) && tries < 4) {
 			try {
-				window.sessionStorage.setItem('exro_relogin', String(tries + 1));
+				window.sessionStorage.setItem('seroja_relogin', String(tries + 1));
 			} catch (_e) {
 				/* storage disabled */
 			}
@@ -849,7 +849,7 @@ function onConnectionRefused(pkt) {
 			return;
 		}
 		try {
-			window.sessionStorage.removeItem('exro_relogin');
+			window.sessionStorage.removeItem('seroja_relogin');
 		} catch (_e) {
 			/* storage disabled */
 		}

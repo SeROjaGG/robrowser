@@ -57,15 +57,14 @@ import SkillListMH from 'UI/Components/SkillListMH/SkillListMH.js';
 import MobileUI from 'UI/Components/MobileUI/MobileUI.js';
 import CashShop from 'UI/Components/CashShop/CashShop.js';
 import Bank from 'UI/Components/Bank/Bank.js';
-// PLAN-018 D3c/D4c — eXRo in-client Player Market + Equipment Mall windows.
+// PLAN-018 D3c/D4c — SeROja in-client Player Market + Equipment Mall windows.
 // Side-effect import: each module ends with UIManager.addComponent(...).
-import 'UI/Components/ExroMarket/ExroMarket.js';
-import 'UI/Components/ExroMall/ExroMall.js';
+import 'UI/Components/SeROjaMarket/SeROjaMarket.js';
+import 'UI/Components/SeROjaMall/SeROjaMall.js';
 import ItemReform from 'UI/Components/ItemReform/ItemReform.js';
 import LaphineSys from 'UI/Components/LaphineSys/LaphineSys.js';
 import LaphineUpg from 'UI/Components/LaphineUpg/LaphineUpg.js';
 import Rodex from 'UI/Components/Rodex/Rodex.js';
-import RodexIcon from 'UI/Components/Rodex/RodexIcon.js';
 import Roulette from 'UI/Components/Roulette/Roulette.js';
 import PCGoldTimer from 'UI/Components/PCGoldTimer/PCGoldTimer.js';
 import Refine from 'UI/Components/Refine/Refine.js';
@@ -92,6 +91,8 @@ import Quest from 'UI/Components/Quest/Quest.js';
 import PlayerViewEquip from 'UI/Components/PlayerViewEquip/PlayerViewEquip.js';
 import JoystickUI from 'UI/Components/JoystickUI/JoystickUI.js';
 import CashShopIcon from 'UI/Components/CashShopIcon/CashShopIcon.js';
+import SeROjaMallIcon from 'UI/Components/SeROjaMallIcon/SeROjaMallIcon.js';
+import SeROjaMarketIcon from 'UI/Components/SeROjaMarketIcon/SeROjaMarketIcon.js';
 import Achievement from 'UI/Components/Achievement/Achievement.js';
 
 import MainEngine from './MapEngine/Main.js';
@@ -358,7 +359,6 @@ class MapEngine {
 			SkillListMH.homunculus.prepare();
 			SkillListMH.mercenary.prepare();
 			Rodex.prepare();
-			RodexIcon.prepare();
 			Roulette.prepare();
 			PCGoldTimer.prepare();
 			Navigation.prepare();
@@ -376,6 +376,9 @@ class MapEngine {
 				CashShopIcon.prepare();
 				CashShop.prepare();
 			}
+
+			SeROjaMallIcon.prepare();
+			SeROjaMarketIcon.prepare();
 
 			if (Configs.get('enableBank')) {
 				Bank.prepare();
@@ -746,6 +749,9 @@ function onMapChange(pkt) {
 		if (Configs.get('enableCashShop')) {
 			CashShopIcon.append();
 		}
+
+		SeROjaMallIcon.append();
+		SeROjaMarketIcon.append();
 
 		if (Configs.get('enableCheckAttendance') && PACKETVER.value >= 20180307) {
 			CheckAttendance.append();

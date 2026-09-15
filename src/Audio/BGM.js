@@ -92,7 +92,7 @@ class BGM {
 	 * @param {string} filename
 	 */
 	static play(filename) {
-		// PLAN-018 G2a — eXRo ships no BGM/*.mp3; `disableBGM: true` in the /play
+		// PLAN-018 G2a — SeROja ships no BGM/*.mp3; `disableBGM: true` in the /play
 		// Config.js short-circuits here so a missing file can't spam NotSupportedError.
 		if (Configs.get('disableBGM')) return;
 		if (!filename) return;

@@ -237,14 +237,13 @@ class Background {
 	}
 
 	/**
-	 * Add loading background
+	 * Add loading background — same backdrop as the login screen (t_login.jpg),
+	 * used for every loading transition, no separate logo/tagline overlay.
 	 *
 	 * @param {function} callback once the loading is display (optional)
 	 */
 	static setLoading(callback) {
-		const index = Math.floor(Math.random() * _loading.length);
-
-		Background.setImage(_loading[index] || 'loading01.jpg', () => {
+		Background.setImage(Background.getLoginBackgroundName(), () => {
 			_canvas.style.zIndex = '999';
 			Background.setPercent(0.0);
 

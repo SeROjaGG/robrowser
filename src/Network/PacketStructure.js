@@ -3092,7 +3092,7 @@ PACKET.CH.REQ_CHANGE_CHARNAME.prototype.build = function () {
 };
 
 // 0x8fc — CH_REQ_CHANGE_CHARNAME for PACKETVER >= 20111101 (carries the new name;
-// the pre-20111101 0x28f above is a bare GID confirm). eXRo PLAN-009.
+// the pre-20111101 0x28f above is a bare GID confirm). SeROja PLAN-009.
 PACKET.CH.REQ_CHANGE_CHARACTERNAME = function PACKET_CH_REQ_CHANGE_CHARACTERNAME() {
 	this.CID = 0;
 	this.name = '';
@@ -8291,7 +8291,7 @@ PACKET.HC.ACK_CHANGE_CHARNAME = function PACKET_HC_ACK_CHANGE_CHARNAME(fp, end) 
 PACKET.HC.ACK_CHANGE_CHARNAME.size = 4;
 
 // 0x8fd — HC_ACK_CHANGE_CHARNAME for PACKETVER >= 20111101 (result is a uint32
-// from char_rename_char_sql: 0 = success). eXRo PLAN-009.
+// from char_rename_char_sql: 0 = success). SeROja PLAN-009.
 PACKET.HC.ACK_CHANGE_CHARACTERNAME = function PACKET_HC_ACK_CHANGE_CHARACTERNAME(fp, end) {
 	this.result = fp.readLong();
 };

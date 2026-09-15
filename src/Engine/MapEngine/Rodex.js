@@ -253,16 +253,14 @@ WriteRodex.validateName = function (name) {
  */
 
 /**
- * Server sent request about Rodex Icon
+ * Server sent request about Rodex Icon — SeROja keeps the top-right map bar
+ * market-only; mail stays reachable from the BasicInfo menu (Rodex.toggle()),
+ * so this button is never shown regardless of what the server requests.
  *
  * @param {object} pkt - PACKET.ZC.RODEX_ICON
  */
-function rodexIcon(pkt) {
-	if (pkt.show) {
-		RodexIcon.append();
-	} else {
-		RodexIcon.remove();
-	}
+function rodexIcon() {
+	RodexIcon.remove();
 }
 
 /**

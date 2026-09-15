@@ -1,7 +1,7 @@
 /**
- * UI/Components/CharSelect/CharSelectExro/CharSelectExro.js
+ * UI/Components/CharSelect/CharSelectSeROja/CharSelectSeROja.js
  *
- * eXRo custom character-select screen (PLAN-009).
+ * SeROja custom character-select screen (PLAN-009).
  *
  * Standalone GUIComponent — implements the CharEngine API directly, does NOT
  * go through createCharSelect(). CharSelectCommon.js is untouched. Registered
@@ -37,8 +37,8 @@ import GUIComponent from 'UI/GUIComponent.js';
 import InputBox from 'UI/Components/InputBox/InputBox.js';
 import 'UI/Elements/Elements.js';
 import { makeCharEntity, drawCharEntity } from '../charSprite.js';
-import htmlText from './CharSelectExro.html?raw';
-import cssText from './CharSelectExro.css?raw';
+import htmlText from './CharSelectSeROja.html?raw';
+import cssText from './CharSelectSeROja.css?raw';
 
 /** canvas intrinsic size + sprite anchor (px). Canvases are kept small (native
  * RO sprite scale) and enlarged with a CSS transform on .card/.slot. */
@@ -52,11 +52,11 @@ const PORTRAIT_W = 88;
 const PORTRAIT_H = 110;
 const PORTRAIT_ANCHOR = { x: 44, y: 106 };
 
-const Component = new GUIComponent('CharSelectExro', cssText);
+const Component = new GUIComponent('CharSelectSeROja', cssText);
 
 Component.render = () => htmlText;
 
-const _prefs = Preferences.get('CharSelectExro', { index: 0 }, 1.0);
+const _prefs = Preferences.get('CharSelectSeROja', { index: 0 }, 1.0);
 
 let _list = []; // characters, in the order the carousel/rail show them
 let _index = 0; // active entry in _list
@@ -293,7 +293,7 @@ function connect() {
 	}
 }
 
-// Leave the game client entirely and return to the eXRo site. This intentionally
+// Leave the game client entirely and return to the SeROja site. This intentionally
 // diverges from the PLAN-008 char-select behaviour (which reloaded /play): the
 // only bottom action now is "Enter World", and leaving goes to the account page.
 function back() {

@@ -1,11 +1,11 @@
 /**
  * UI/Components/CharSelect/charSprite.js
  *
- * eXRo (PLAN-009) — shared character-sprite canvas helper.
+ * SeROja (PLAN-009) — shared character-sprite canvas helper.
  *
  * The build + one-frame draw lifted (copied, not imported) from the render
  * routines in CharSelectCommon.js / CharCreateCommon.js so the standalone
- * CharSelectExro / CharCreateExro components can draw RO sprites without
+ * CharSelectSeROja / CharCreateSeROja components can draw RO sprites without
  * touching the stock factory files. The animating render loop
  * (Renderer.render / Renderer.stop) stays owned by each component's
  * onAppend / onRemove, exactly as the stock V4 does.

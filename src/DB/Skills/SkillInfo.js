@@ -13639,7 +13639,7 @@ SkillInfo[SK.NPC_DEADLYCURSE2] = {
 	]
 };
 
-// eXRo RPT-004 #6/#7: Night Watch / Hyper Novice skill metadata.
+// SeROja RPT-004 #6/#7: Night Watch / Hyper Novice skill metadata.
 // SkillTreeView.js already has the tree structure for these (list:3), but
 // prepareSkillTree() silently drops any skill missing from SkillInfo -- so
 // the whole 4th tab stayed empty/hidden. Values mirror db/re/skill_db.yml

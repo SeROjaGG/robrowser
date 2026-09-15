@@ -1,17 +1,17 @@
 :host {
 	width: 43px;
 	height: 45px;
-	right: 145px;
+	right: 261px;
 	top: 17px;
 }
 
-#CashShopIcon {
+#SeROjaMarketIcon {
 	position: absolute;
 	width: 43px;
 	height: 45px;
 }
 
-#CashShopIcon .cashshop-icon {
+#SeROjaMarketIcon .market-icon {
 	width: 43px;
 	height: 45px;
 	border: none;
