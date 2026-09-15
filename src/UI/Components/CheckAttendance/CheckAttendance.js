@@ -188,7 +188,7 @@ CheckAttendance.updateUI = function updateUI() {
 				`<div class="item" data-background="${DB.INTERFACE_PATH}item/${item.identifiedResourceName}.bmp">` +
 				`<span class="item-quantity">${_CheckAttendanceInfo.Rewards[i].quantity}</span>` +
 				`<span class="name">${item.identifiedDisplayName}</span>` +
-				`<div class="${checked}" data-background="check_attendance/${slot_complete_string}.tga"></div>` +
+				`<div class="${checked}" data-background="check_attendance/${slot_complete_string}.png"></div>` +
 				'</div>' +
 				`<div class="day">${day} Day</div>` +
 				'</li>';
@@ -256,7 +256,7 @@ function onClickAttendance(e) {
 	}
 	const completedDiv = document.createElement('div');
 	completedDiv.className = 'completed';
-	completedDiv.dataset.background = 'check_attendance/bt_slot_complete.tga';
+	completedDiv.dataset.background = 'check_attendance/bt_slot_complete.png';
 	el.appendChild(completedDiv);
 	GUIComponent.processDataAttrs(completedDiv);
 
