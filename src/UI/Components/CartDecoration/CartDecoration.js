@@ -19,17 +19,22 @@ import GUIComponent from 'UI/GUIComponent.js';
 import Client from 'Core/Client.js';
 import DB from 'DB/DBManager.js';
 import htmlText from './CartDecoration.html?raw';
+import htmlTextClassic from './CartDecoration.classic.html?raw';
 import cssText from './CartDecoration.css?raw';
+import cssTextClassic from './CartDecoration.classic.css?raw';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 
 /**
  * Create Component
  */
-const CartDecoration = new GUIComponent('CartDecoration', cssText);
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const CartDecoration = new GUIComponent('CartDecoration', isClassic ? cssTextClassic : themeText + cssText);
 
 /**
  * Render HTML
  */
-CartDecoration.render = () => htmlText;
+CartDecoration.render = () => (isClassic ? htmlTextClassic : htmlText);
 
 /**
  * @var {object} loaded cart sprite data keyed by cart type id

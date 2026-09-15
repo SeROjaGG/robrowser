@@ -14,9 +14,13 @@ import KEYS from 'Controls/KeyEventHandler.js';
 import UIManager from 'UI/UIManager.js';
 import GUIComponent from 'UI/GUIComponent.js';
 import 'UI/Elements/Elements.js';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 
-export function createWinLogin({ name, htmlText, cssText }) {
-	const Component = new GUIComponent(name, cssText);
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+
+export function createWinLogin({ name, htmlText, cssText, cssTextClassic }) {
+	const Component = new GUIComponent(name, isClassic && cssTextClassic ? cssTextClassic : themeText + cssText);
 	Component.render = () => htmlText;
 	Component.needFocus = false;
 
@@ -87,6 +91,15 @@ export function createWinLogin({ name, htmlText, cssText }) {
 	};
 
 	Component.onAppend = function onAppend() {
+		// SeROja: real auth lives in `www` (one-shot autoLogin token) — this
+		// classic login form can never actually connect. Landing here always
+		// means the token is gone/expired, so force a reload instead of
+		// letting the player sit on a form that will just fail forever.
+		UIManager.showMessageBox('This session has ended. Please reload the page to continue.', 'Reload', () => {
+			window.onbeforeunload = null;
+			window.location.reload();
+		});
+
 		_inputUsername.value = _preferences.saveID ? _preferences.ID : '';
 		_inputPassword.value = '';
 

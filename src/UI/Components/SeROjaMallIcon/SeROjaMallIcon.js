@@ -10,8 +10,9 @@ import GUIComponent from 'UI/GUIComponent.js';
 import 'UI/Elements/Elements.js';
 import htmlText from './SeROjaMallIcon.html?raw';
 import cssText from './SeROjaMallIcon.css?raw';
+import themeText from '../SeROjaCommon/glassTheme.css?raw';
 
-const SeROjaMallIcon = new GUIComponent('SeROjaMallIcon', cssText);
+const SeROjaMallIcon = new GUIComponent('SeROjaMallIcon', themeText + cssText);
 
 SeROjaMallIcon.render = () => htmlText;
 

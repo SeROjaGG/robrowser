@@ -16,12 +16,17 @@ import UIManager from 'UI/UIManager.js';
 import GUIComponent from 'UI/GUIComponent.js';
 import 'UI/Elements/Elements.js';
 import htmlText from './Reputation.html?raw';
+import htmlTextClassic from './Reputation.classic.html?raw';
 import cssText from './Reputation.css?raw';
+import cssTextClassic from './Reputation.classic.css?raw';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 
 /**
  * Create Component
  */
-const Reputation = new GUIComponent('Reputation', cssText);
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const Reputation = new GUIComponent('Reputation', isClassic ? cssTextClassic : themeText + cssText);
 
 /**
  * @var {Preferences} Window preferences
@@ -80,7 +85,7 @@ function _root() {
 /**
  * Render HTML
  */
-Reputation.render = () => htmlText;
+Reputation.render = () => (isClassic ? htmlTextClassic : htmlText);
 
 /**
  * Input protection for search field

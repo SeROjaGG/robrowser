@@ -27,14 +27,19 @@ import ChatBox from 'UI/Components/ChatBox/ChatBox.js';
 import Inventory from 'UI/Components/Inventory/Inventory.js';
 import { InventoryItemTransferPriority } from 'UI/Components/Inventory/InventoryItemTransfer.js';
 import htmlText from './NpcStore.html?raw';
+import htmlTextClassic from './NpcStore.classic.html?raw';
 import cssText from './NpcStore.css?raw';
+import cssTextClassic from './NpcStore.classic.css?raw';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 
 /**
  * Create NPC Store component
  */
-const NpcStore = new GUIComponent('NpcStore', cssText);
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const NpcStore = new GUIComponent('NpcStore', isClassic ? cssTextClassic : themeText + cssText);
 
-NpcStore.render = () => htmlText;
+NpcStore.render = () => (isClassic ? htmlTextClassic : htmlText);
 
 /**
  * @let {enum} Store type

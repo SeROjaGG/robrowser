@@ -13,17 +13,22 @@ import Client from 'Core/Client.js';
 import UIManager from 'UI/UIManager.js';
 import GUIComponent from 'UI/GUIComponent.js';
 import htmlText from './CardIllustration.html?raw';
+import htmlTextClassic from './CardIllustration.classic.html?raw';
 import cssText from './CardIllustration.css?raw';
+import cssTextClassic from './CardIllustration.classic.css?raw';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 
 /**
  * Create Component
  */
-const CardIllustration = new GUIComponent('CardIllustration', cssText);
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const CardIllustration = new GUIComponent('CardIllustration', isClassic ? cssTextClassic : themeText + cssText);
 
 /**
  * Render HTML
  */
-CardIllustration.render = () => htmlText;
+CardIllustration.render = () => (isClassic ? htmlTextClassic : htmlText);
 
 /**
  * Initialize events

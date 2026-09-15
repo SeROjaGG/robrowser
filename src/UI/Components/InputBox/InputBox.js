@@ -15,14 +15,19 @@ import UIManager from 'UI/UIManager.js';
 import GUIComponent from 'UI/GUIComponent.js';
 import 'UI/Elements/Elements.js';
 import htmlText from './InputBox.html?raw';
+import htmlTextClassic from './InputBox.classic.html?raw';
 import cssText from './InputBox.css?raw';
+import cssTextClassic from './InputBox.classic.css?raw';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 
 /**
  * Create InputBox component
  */
-const InputBox = new GUIComponent('InputBox', cssText);
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const InputBox = new GUIComponent('InputBox', isClassic ? cssTextClassic : themeText + cssText);
 
-InputBox.render = () => htmlText;
+InputBox.render = () => (isClassic ? htmlTextClassic : htmlText);
 
 /**
  * Freeze mouse — modal dialog

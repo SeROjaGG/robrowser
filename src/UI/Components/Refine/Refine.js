@@ -23,12 +23,17 @@ import ItemCompare from 'UI/Components/ItemCompare/ItemCompare.js';
 import ItemInfo from 'UI/Components/ItemInfo/ItemInfo.js';
 import 'UI/Elements/Elements.js';
 import htmlText from './Refine.html?raw';
+import htmlTextClassic from './Refine.classic.html?raw';
 import cssText from './Refine.css?raw';
+import cssTextClassic from './Refine.classic.css?raw';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 
 /**
  * Create Component
  */
-const Refine = new GUIComponent('Refine', cssText);
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const Refine = new GUIComponent('Refine', isClassic ? cssTextClassic : themeText + cssText);
 
 /**
  * Blacksmtith's Blessing ItemID
@@ -171,7 +176,7 @@ function _root() {
 /**
  * Render HTML
  */
-Refine.render = () => htmlText;
+Refine.render = () => (isClassic ? htmlTextClassic : htmlText);
 
 /**
  * Initialize UI

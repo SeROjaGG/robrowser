@@ -29,8 +29,9 @@
 	margin-right: 3px;
 }
 #Rodex .body .titlebar .right .close {
-	width: 11px;
-	height: 11px;
+	width: 16px;
+	height: 16px;
+	font-size: 10px;
 }
 
 #Rodex .body .iconbar {
@@ -52,9 +53,13 @@
 	z-index: 1;
 	top: -20px;
 	left: 0px;
-	background-color: rgba(0, 0, 0, 0.6);
-	text-shadow: 1px 1px black;
-	color: white;
+	background-color: var(--sj-glass-strong);
+	backdrop-filter: blur(var(--sj-blur)) saturate(160%);
+	-webkit-backdrop-filter: blur(var(--sj-blur)) saturate(160%);
+	border: 1px solid var(--sj-border);
+	border-radius: var(--sj-radius-sm);
+	text-shadow: none;
+	color: var(--sj-text);
 	padding: 5px;
 	white-space: nowrap;
 	font-size: 0.6rem;
@@ -75,9 +80,13 @@
 	z-index: 1;
 	top: -20px;
 	left: 0px;
-	background-color: rgba(0, 0, 0, 0.6);
-	text-shadow: 1px 1px black;
-	color: white;
+	background-color: var(--sj-glass-strong);
+	backdrop-filter: blur(var(--sj-blur)) saturate(160%);
+	-webkit-backdrop-filter: blur(var(--sj-blur)) saturate(160%);
+	border: 1px solid var(--sj-border);
+	border-radius: var(--sj-radius-sm);
+	text-shadow: none;
+	color: var(--sj-text);
 	padding: 5px;
 	white-space: nowrap;
 	font-size: 0.6rem;
@@ -94,9 +103,9 @@
 }
 #Rodex .body .searchbar .search-title {
 	position: absolute;
-	width: 10px;
-	height: 10px;
-	top: 13px;
+	width: 14px;
+	height: 14px;
+	top: 10px;
 	left: 23px;
 }
 #Rodex .body .searchbar .search-title-text {
@@ -108,9 +117,9 @@
 }
 #Rodex .body .searchbar .search-sender {
 	position: absolute;
-	width: 10px;
-	height: 10px;
-	top: 13px;
+	width: 14px;
+	height: 14px;
+	top: 10px;
 	left: 75px;
 }
 #Rodex .body .searchbar .search-sender-text {
@@ -121,7 +130,7 @@
 	left: 87px;
 }
 #Rodex .body .searchbar .search-text {
-	color: #212163;
+	color: var(--sj-muted);
 }
 #Rodex .body .searchbar .search {
 	position: absolute;
@@ -129,14 +138,14 @@
 	height: 14px;
 	top: 10px;
 	left: 135px;
-	border: none;
 }
 #Rodex .body .searchbar .search-btn {
 	position: absolute;
-	width: 32px;
+	width: 20px;
 	height: 18px;
 	top: 9px;
 	right: 13px;
+	font-size: 10px;
 }
 
 #Rodex .body .navbar {
@@ -151,7 +160,7 @@
 	margin: 0px;
 	padding: 0px;
 	letter-spacing: 1px;
-	color: #c6cee7;
+	color: var(--sj-muted);
 }
 #Rodex .body .navbar .nav .nav-item {
 	float: left;
@@ -160,16 +169,17 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	cursor: pointer;
 }
 #Rodex .body .navbar .nav .nav-item.active {
-	border-bottom: 4px solid;
+	border-bottom: 2px solid var(--sj-accent);
 	font-weight: bolder;
-	color: #506dc4;
+	color: var(--sj-text);
 }
 #Rodex .body .navbar .nav .nav-item:hover {
-	border-bottom: 4px solid;
+	border-bottom: 2px solid var(--sj-accent);
 	font-weight: bolder;
-	color: #506dc4;
+	color: var(--sj-text);
 }
 
 #Rodex .body .rodex-list {
@@ -213,7 +223,7 @@
 	height: 50%;
 	display: flex;
 	align-items: flex-end;
-	color: #0c0c23;
+	color: var(--sj-text);
 	position: relative;
 }
 #Rodex .body .rodex-list .mail-list .mail-item .mail-text .title .text span {
@@ -222,15 +232,19 @@
 	z-index: 1;
 	top: -20px;
 	left: 0px;
-	background-color: rgba(0, 0, 0, 0.6);
-	text-shadow: 1px 1px black;
-	color: white;
+	background-color: var(--sj-glass-strong);
+	backdrop-filter: blur(var(--sj-blur)) saturate(160%);
+	-webkit-backdrop-filter: blur(var(--sj-blur)) saturate(160%);
+	border: 1px solid var(--sj-border);
+	border-radius: var(--sj-radius-sm);
+	text-shadow: none;
+	color: var(--sj-text);
 	padding: 5px;
 	white-space: nowrap;
 	font-size: 0.6rem;
 }
 #Rodex .body .rodex-list .mail-list .mail-item .mail-text .title .text.deleted {
-	color: lightgray;
+	color: var(--sj-muted);
 }
 #Rodex .body .rodex-list .mail-list .mail-item .mail-text .title .text:hover span {
 	display: block;
@@ -241,7 +255,7 @@
 	height: 50%;
 	display: flex;
 	align-items: center;
-	color: darkblue;
+	color: var(--sj-accent-2);
 	font-weight: bold;
 	position: relative;
 }
@@ -251,9 +265,13 @@
 	z-index: 1;
 	top: -20px;
 	left: 0px;
-	background-color: rgba(0, 0, 0, 0.6);
-	text-shadow: 1px 1px black;
-	color: white;
+	background-color: var(--sj-glass-strong);
+	backdrop-filter: blur(var(--sj-blur)) saturate(160%);
+	-webkit-backdrop-filter: blur(var(--sj-blur)) saturate(160%);
+	border: 1px solid var(--sj-border);
+	border-radius: var(--sj-radius-sm);
+	text-shadow: none;
+	color: var(--sj-text);
 	padding: 5px;
 	white-space: nowrap;
 	font-size: 0.6rem;
@@ -288,30 +306,34 @@
 #Rodex .body .footer .delete-all {
 	position: absolute;
 	width: 80px;
-	height: 20px;
-	top: 5px;
+	height: 22px;
+	padding: 0;
+	font-size: 11px;
+	top: 3px;
 	left: 10px;
-	background-size: 100% 100%;
 }
 #Rodex .body .footer .retrieve-all {
 	position: absolute;
 	width: 80px;
-	height: 20px;
-	top: 5px;
+	height: 22px;
+	padding: 0;
+	font-size: 11px;
+	top: 3px;
 	left: 100px;
-	background-size: 100% 100%;
 }
 #Rodex .body .footer .previous-page {
 	position: absolute;
-	width: 24px;
-	height: 24px;
+	width: 20px;
+	height: 20px;
 	top: 3px;
 	right: 30px;
+	font-size: 11px;
 }
 #Rodex .body .footer .next-page {
 	position: absolute;
-	width: 24px;
-	height: 24px;
+	width: 20px;
+	height: 20px;
 	top: 3px;
 	right: 5px;
+	font-size: 11px;
 }

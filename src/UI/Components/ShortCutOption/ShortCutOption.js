@@ -15,10 +15,15 @@ import 'UI/Elements/Elements.js';
 import ShortCutControls from 'Preferences/ShortCutControls.js';
 import BattleMode from 'Controls/BattleMode.js';
 import htmlText from './ShortCutOption.html?raw';
+import htmlTextClassic from './ShortCutOption.classic.html?raw';
 import cssText from './ShortCutOption.css?raw';
+import cssTextClassic from './ShortCutOption.classic.css?raw';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 import Controls from 'Preferences/Controls.js';
 
-const ShortCutOption = new GUIComponent('ShortCutOption', cssText);
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const ShortCutOption = new GUIComponent('ShortCutOption', isClassic ? cssTextClassic : themeText + cssText);
 
 const ShortCuts = ShortCutControls.ShortCuts;
 let ShortCutsTemp = {};
@@ -40,7 +45,7 @@ const _preferences = Preferences.get(
 /**
  * Render HTML
  */
-ShortCutOption.render = () => htmlText;
+ShortCutOption.render = () => (isClassic ? htmlTextClassic : htmlText);
 
 /**
  * Initialize UI

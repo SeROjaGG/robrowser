@@ -10,12 +10,16 @@
 
 import { createEquipment } from '../EquipmentCommon.js';
 import htmlText from './EquipmentV4.html?raw';
+import htmlTextClassic from './EquipmentV4.classic.html?raw';
 import cssText from './EquipmentV4.css?raw';
+import cssTextClassic from './EquipmentV4.classic.css?raw';
 
 export default createEquipment({
 	name: 'EquipmentV4',
 	htmlText,
 	cssText,
+	htmlTextClassic,
+	cssTextClassic,
 	enchantGrade: true,
 	switchEquip: true,
 	titles: true,

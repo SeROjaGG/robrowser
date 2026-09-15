@@ -9,17 +9,8 @@
 	position: absolute;
 	width: 280px;
 	height: 380px;
-	background-color: white;
-	border-radius: 5px;
 }
 
-#PetEvolution .titlebar {
-	width: 100%;
-	height: 17px;
-	background-color: white;
-	background-repeat: repeat-x;
-	border-radius: 3px 3px 0px 0px;
-}
 #PetEvolution .titlebar .base {
 	width: 11px;
 	height: 11px;
@@ -28,8 +19,13 @@
 	background-repeat: no-repeat;
 	vertical-align: middle;
 }
+#PetEvolution .titlebar .close {
+	width: 16px;
+	height: 16px;
+	font-size: 10px;
+}
 #PetEvolution .titlebar .text {
-	text-shadow: 1px 1px white;
+	text-shadow: none;
 	vertical-align: -2px;
 	white-space: nowrap;
 	display: inline-block;
@@ -52,7 +48,6 @@
 }
 
 #PetEvolution .content {
-	background-repeat: no-repeat;
 	position: relative;
 	width: 100%;
 	height: calc(100% - 17px);
@@ -79,7 +74,7 @@
 #PetEvolution .next {
 	font-size: 18px;
 	margin: 0 10px;
-	color: #333;
+	color: var(--sj-muted);
 }
 
 #PetEvolution .pet_eggID_holder {
@@ -93,7 +88,7 @@
 #PetEvolution .base_petEggId,
 #PetEvolution .target_petEggId {
 	cursor: pointer;
-	color: blue;
+	color: var(--sj-accent-2);
 	text-decoration: underline;
 	font-size: 11px;
 }
@@ -110,7 +105,7 @@
 }
 
 #PetEvolution .evo_item_name {
-	color: blue;
+	color: var(--sj-accent-2);
 	text-decoration: underline;
 }
 
@@ -125,9 +120,8 @@
 
 #PetEvolution .evolve,
 #PetEvolution .big_cancel {
-	width: 42px;
-	height: 20px;
-	border: 0;
-	background-repeat: no-repeat;
-	background-color: transparent;
+	width: 56px;
+	height: 22px;
+	padding: 0;
+	font-size: 11px;
 }

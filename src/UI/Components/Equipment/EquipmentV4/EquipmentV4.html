@@ -1,44 +1,32 @@
-<div id="EquipmentV4" data-repload="basic_interface/item_invert.bmp">
-	<div class="titlebar" data-background="basic_interface/titlebar_mid.bmp">
+<div id="EquipmentV4" class="sj-panel">
+	<div class="titlebar sj-titlebar">
 		<div class="left">
-			<button
-				class="base"
-				data-background="basic_interface/sys_base_off.bmp"
-				data-hover="basic_interface/sys_base_on.bmp"
-			></button>
+			<button class="base"></button>
 			<span class="text" data-text="104">Equipment</span>
 		</div>
 		<div class="right">
-			<button
-				class="base mini"
-				data-background="basic_interface/sys_mini_off.bmp"
-				data-hover="basic_interface/sys_mini_on.bmp"
-			></button>
-			<button
-				class="base close"
-				data-background="basic_interface/sys_close_off.bmp"
-				data-hover="basic_interface/sys_close_on.bmp"
-			></button>
+			<button class="base mini sj-winbtn">–</button>
+			<button class="base close sj-winbtn">×</button>
 		</div>
 		<div class="clear"></div>
 	</div>
 	<div class="overlay"></div>
 	<div class="tab-manager" id="tabs">
 		<div class="tab">
-			<a href="#general"><span data-text="3158">General</span></a>
+			<a href="#general" class="sj-tab"><span data-text="3158">General</span></a>
 		</div>
 		<div class="tab">
-			<a href="#costume"><span data-text="3159">Costume</span></a>
+			<a href="#costume" class="sj-tab"><span data-text="3159">Costume</span></a>
 		</div>
 		<div class="tab">
-			<a href="#title"><span data-text="3160">Title</span></a>
+			<a href="#title" class="sj-tab"><span data-text="3160">Title</span></a>
 		</div>
 		<div class="tab">
-			<a href="#damageskin"><span data-text="3990">Damage Font</span></a>
+			<a href="#damageskin" class="sj-tab"><span data-text="3990">Damage Font</span></a>
 		</div>
 	</div>
 	<div class="panel">
-		<table class="content" id="general" data-background="basic_interface/equipwin_bg.bmp">
+		<table class="content" id="general">
 			<tr>
 				<td class="head_top col1"></td>
 				<td rowspan="6">
@@ -73,7 +61,7 @@
 				<td class="accessory2 col3"></td>
 			</tr>
 		</table>
-		<table class="content" id="costume" data-background="basic_interface/equipwin_special.bmp">
+		<table class="content" id="costume">
 			<tr>
 				<td class="costume_head_top col1"></td>
 				<td rowspan="6">
@@ -112,7 +100,7 @@
 			<!-- Select Damage Font -->
 			<tr>
 				<td colspan="3">
-					<div class="damageskin-selector" data-background="showdamage/bg_damage.bmp">
+					<div class="damageskin-selector sj-panel">
 						<div class="skin-wrapper">
 							<div>
 								<button
@@ -177,7 +165,7 @@
 				</td>
 			</tr>
 		</table>
-		<div class="footer" id="equipment_footer" data-background="basic_interface/equipwin_bg2.bmp">
+		<div class="footer" id="equipment_footer">
 			<div class="left">
 				<button class="show_equip" data-background="checkbox_0.bmp" data-preload="checkbox_1.bmp"></button>
 				<span data-text="1362">Show Equip</span>

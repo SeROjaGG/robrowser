@@ -17,12 +17,17 @@ import UIManager from 'UI/UIManager.js';
 import GUIComponent from 'UI/GUIComponent.js';
 
 import htmlText from './Rodex.html?raw';
+import htmlTextClassic from './Rodex.classic.html?raw';
 import cssText from './Rodex.css?raw';
+import cssTextClassic from './Rodex.classic.css?raw';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 
 /**
  * Create Component
  */
-const Rodex = new GUIComponent('Rodex', cssText);
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const Rodex = new GUIComponent('Rodex', isClassic ? cssTextClassic : themeText + cssText);
 
 /**
  * Store Rodex items
@@ -83,7 +88,7 @@ function _root() {
 /**
  * Render HTML
  */
-Rodex.render = () => htmlText;
+Rodex.render = () => (isClassic ? htmlTextClassic : htmlText);
 
 /**
  * Apply preferences once append to body

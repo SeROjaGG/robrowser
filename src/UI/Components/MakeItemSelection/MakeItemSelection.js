@@ -16,14 +16,19 @@ import GUIComponent from 'UI/GUIComponent.js';
 import Inventory from 'UI/Components/Inventory/Inventory.js';
 import 'UI/Elements/Elements.js';
 import htmlText from './MakeItemSelection.html?raw';
+import htmlTextClassic from './MakeItemSelection.classic.html?raw';
 import cssText from './MakeItemSelection.css?raw';
+import cssTextClassic from './MakeItemSelection.classic.css?raw';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 
 /**
  * Create MakeItemSelection namespace
  */
-const MakeItemSelection = new GUIComponent('MakeItemSelection', cssText);
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const MakeItemSelection = new GUIComponent('MakeItemSelection', isClassic ? cssTextClassic : themeText + cssText);
 
-MakeItemSelection.render = () => htmlText;
+MakeItemSelection.render = () => (isClassic ? htmlTextClassic : htmlText);
 
 /**
  * Sanitize HTML, allowing only whitelisted tags (font, i, b)

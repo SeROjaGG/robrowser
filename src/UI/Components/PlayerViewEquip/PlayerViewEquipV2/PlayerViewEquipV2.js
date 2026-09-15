@@ -9,6 +9,7 @@
  */
 
 import baseCss from '../PlayerViewEquip.css?raw';
+import baseCssClassic from '../PlayerViewEquip.classic.css?raw';
 import { createPlayerViewEquip } from '../PlayerViewEquipCommon.js';
 
 const costumeRows = [
@@ -22,6 +23,7 @@ const costumeRows = [
 export default createPlayerViewEquip({
 	name: 'PlayerViewEquipV2',
 	cssText: baseCss,
+	cssTextClassic: baseCssClassic,
 	hasTabs: true,
 	costumeRows,
 	costumeTableBg: 'basic_interface/equipwin_special.bmp'

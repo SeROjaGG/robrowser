@@ -22,7 +22,11 @@ import SpriteRenderer from 'Renderer/SpriteRenderer.js';
 import Sprite from 'Loaders/Sprite.js';
 import Action from 'Loaders/Action.js';
 import htmlText from './ItemCompare.html?raw';
+import htmlTextClassic from './ItemCompare.classic.html?raw';
 import cssText from './ItemCompare.css?raw';
+import cssTextClassic from './ItemCompare.classic.css?raw';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 import ItemInfo from 'UI/Components/ItemInfo/ItemInfo.js';
 import Entity from 'Renderer/Entity/Entity.js';
 
@@ -58,9 +62,10 @@ function _escapeHTML(text) {
 /**
  * Create Component
  */
-const ItemCompare = new GUIComponent('ItemCompare', cssText);
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const ItemCompare = new GUIComponent('ItemCompare', isClassic ? cssTextClassic : themeText + cssText);
 
-ItemCompare.render = () => htmlText;
+ItemCompare.render = () => (isClassic ? htmlTextClassic : htmlText);
 
 /**
  * @let {number} ItemCompare unique id

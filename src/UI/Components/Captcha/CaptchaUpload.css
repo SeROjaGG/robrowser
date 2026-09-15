@@ -7,9 +7,7 @@
 #CaptchaUpload {
 	width: 100%;
 	height: 100%;
-	background-color: #ffffff;
 	font-size: 12px;
-	border-radius: 3px;
 }
 
 #CaptchaUpload .clear {
@@ -19,28 +17,18 @@
 #CaptchaUpload .titlebar {
 	width: 280px;
 	height: 17px;
-	background-color: white;
-	background-repeat: repeat-x;
-	border-radius: 3px 3px 0px 0px;
-}
-
-#CaptchaUpload .titlebar .base {
-	width: 11px;
-	height: 11px;
-	background-color: transparent;
-	background-repeat: no-repeat;
-	vertical-align: middle;
 }
 
 #CaptchaUpload .titlebar .text {
-	text-shadow: 1px 1px white;
+	text-shadow: none;
 	vertical-align: -2px;
 	white-space: nowrap;
 	display: inline-block;
-	width: 32px;
+	width: auto;
 	height: 13px;
 	font-size: 11px;
 	font-weight: bold;
+	color: var(--sj-text);
 }
 
 #CaptchaUpload .titlebar .left {
@@ -63,11 +51,8 @@
 }
 
 #CaptchaUpload .btn {
-	width: 42px;
-	height: 20px;
-	background-repeat: no-repeat;
-	background-color: transparent;
-	border: 0;
+	width: 56px;
+	height: 22px;
 	margin-left: 5px;
 }
 
@@ -77,34 +62,27 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	gap: 5px;
 }
 
 #CaptchaUpload .captcha_file_text {
 	width: 170px;
-	border: 1px solid #7f9db9;
-	background-color: #fff;
-	color: #000;
-	height: 14px;
+	height: 20px;
 }
 
 #CaptchaUpload .btn_browse {
-	width: 18px;
-	height: 18px;
+	width: 28px;
+	height: 22px;
 	cursor: pointer;
-	background-color: transparent;
-	background-repeat: no-repeat;
-}
-
-#CaptchaUpload .btn_browse:active {
-	border-color: #696969 #fff #fff #696969;
 }
 
 #CaptchaUpload .preview_box {
 	width: 220px;
 	height: 90px;
-	border: 1px solid #999;
+	border: 1px solid var(--sj-border);
+	border-radius: var(--sj-radius-sm);
 	margin: 0 auto 10px auto;
-	background-color: transparent;
+	background-color: var(--sj-glass);
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -119,7 +97,6 @@
 #CaptchaUpload input[type='text'].answer_input {
 	width: 150px;
 	margin-right: 5px;
-	border: 1px solid #7f9db9;
 }
 
 #CaptchaUpload .controls {

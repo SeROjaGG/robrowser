@@ -18,8 +18,9 @@ import GUIComponent from 'UI/GUIComponent.js';
 import { request } from '../SeROjaCommon/serojaBridge.js';
 import htmlText from './SeROjaMall.html?raw';
 import cssText from '../SeROjaCommon/serojaShop.css?raw';
+import themeText from '../SeROjaCommon/glassTheme.css?raw';
 
-const SeROjaMall = new GUIComponent('SeROjaMall', cssText);
+const SeROjaMall = new GUIComponent('SeROjaMall', themeText + cssText);
 SeROjaMall.render = () => htmlText;
 
 const _prefs = Preferences.get('SeROjaMall', { x: 160, y: 110 }, 1.0);

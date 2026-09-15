@@ -16,16 +16,21 @@ import 'UI/Elements/Elements.js';
 import ItemInfo from 'UI/Components/ItemInfo/ItemInfo.js';
 import Navigation from 'UI/Components/Navigation/Navigation.js';
 import htmlText from './NpcBox.html?raw';
+import htmlTextClassic from './NpcBox.classic.html?raw';
 import cssText from './NpcBox.css?raw';
+import cssTextClassic from './NpcBox.classic.css?raw';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 import NpcMenu from 'UI/Components/NpcMenu/NpcMenu.js';
 import InputBox from 'UI/Components/InputBox/InputBox.js';
 
 /**
  * Create NpcBox component
  */
-const NpcBox = new GUIComponent('NpcBox', cssText);
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const NpcBox = new GUIComponent('NpcBox', isClassic ? cssTextClassic : themeText + cssText);
 
-NpcBox.render = () => htmlText;
+NpcBox.render = () => (isClassic ? htmlTextClassic : htmlText);
 
 /**
  * Freeze mouse — NPC dialog blocks interaction

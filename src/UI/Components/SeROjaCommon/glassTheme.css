@@ -1,0 +1,224 @@
+/**
+ * glassTheme.css — SeROja shared glass design tokens (PLAN-022).
+ *
+ * Imported as raw text and concatenated ahead of a component's own cssText
+ * at its `new GUIComponent(name, cssText)` call site — see PLAN-022 §"Chosen
+ * architecture". Shadow DOM isolates each component, so this has to be
+ * re-concatenated per component rather than loaded once globally.
+ *
+ * Only tokens + reusable utility classes live here. Component-specific
+ * layout stays in that component's own .css file.
+ */
+
+:host {
+	/* PLAN-024: light frosted glass (matches assets/work/UI_Concept.png) —
+	   was a dark navy theme, flipped to light + dark text. --sj-bg stays dark:
+	   it's only used by CharSelectSeROja/CharCreateSeROja's own full-screen
+	   backdrop and WorldMap, none of which this change is about. */
+	--sj-bg: #060a14;
+	--sj-glass: rgba(202, 213, 231, 0.8);
+	--sj-glass-strong: rgba(190, 202, 222, 0.92);
+	--sj-glass-solid: #dbe3f0;
+	--sj-border: rgba(70, 95, 140, 0.28);
+	--sj-border-strong: rgba(60, 85, 130, 0.5);
+	--sj-text: #17233d;
+	--sj-muted: #5b6b85;
+	--sj-accent: #2f9fe0;
+	--sj-accent-2: #1f7fc4;
+	--sj-hp-a: #ff8a5c;
+	--sj-hp-b: #ff4d4d;
+	--sj-sp-a: #5b9dff;
+	--sj-sp-b: #3b6fe0;
+	--sj-ap-a: #9aa8c2;
+	--sj-ap-b: #6b7a99;
+	--sj-danger: #dc3d3d;
+	--sj-success: #22a35e;
+	--sj-radius: 10px;
+	--sj-radius-sm: 6px;
+	--sj-blur: 20px;
+	--sj-shadow: 0 12px 32px -16px rgba(30, 41, 59, 0.35);
+	--sj-font: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+	/* Overlay tint for hover/fill states — dark-on-light instead of the old
+	   light-on-dark, so ".sj-btn:hover" etc. actually darken, not vanish. */
+	--sj-overlay: 15, 23, 42;
+}
+
+/* ── panel ───────────────────────────────────────────────── */
+.sj-panel {
+	background: var(--sj-glass);
+	backdrop-filter: blur(var(--sj-blur)) saturate(160%);
+	-webkit-backdrop-filter: blur(var(--sj-blur)) saturate(160%);
+	border: 1px solid var(--sj-border);
+	border-radius: var(--sj-radius);
+	box-shadow: var(--sj-shadow);
+	color: var(--sj-text);
+	font-family: var(--sj-font);
+}
+.sj-panel.strong {
+	background: var(--sj-glass-strong);
+}
+
+/* ── titlebar ────────────────────────────────────────────── */
+.sj-titlebar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 8px;
+	padding: 8px 10px;
+	border-bottom: 1px solid var(--sj-border);
+	border-radius: var(--sj-radius) var(--sj-radius) 0 0;
+	background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), transparent);
+	cursor: move;
+	font-size: 13px;
+	font-weight: 700;
+	letter-spacing: 0.02em;
+	color: var(--sj-text);
+	user-select: none;
+}
+.sj-titlebar .sj-win-controls {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+}
+
+/* window chrome buttons (replaces sys_base/sys_mini/sys_close .bmp) */
+.sj-winbtn {
+	width: 18px;
+	height: 18px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	border: 1px solid var(--sj-border);
+	border-radius: 6px;
+	background: rgba(var(--sj-overlay), 0.04);
+	color: var(--sj-muted);
+	font-size: 11px;
+	line-height: 1;
+	cursor: pointer;
+}
+.sj-winbtn:hover {
+	background: rgba(var(--sj-overlay), 0.1);
+	color: var(--sj-text);
+}
+.sj-winbtn.close:hover {
+	background: var(--sj-danger);
+	border-color: var(--sj-danger);
+	color: #0a0a10;
+}
+
+/* ── buttons ─────────────────────────────────────────────── */
+.sj-btn {
+	padding: 7px 16px;
+	border: 1px solid var(--sj-border);
+	border-radius: 999px;
+	background: rgba(var(--sj-overlay), 0.04);
+	color: var(--sj-text);
+	font-size: 13px;
+	font-weight: 600;
+	cursor: pointer;
+}
+.sj-btn:hover {
+	background: rgba(var(--sj-overlay), 0.1);
+	border-color: var(--sj-border-strong);
+}
+.sj-btn:disabled {
+	opacity: 0.4;
+	cursor: default;
+}
+.sj-btn.primary {
+	background: linear-gradient(110deg, var(--sj-accent), var(--sj-accent-2));
+	border: 0;
+	color: #06121c;
+}
+.sj-btn.icon {
+	width: 30px;
+	height: 30px;
+	padding: 0;
+	border-radius: var(--sj-radius-sm);
+}
+
+/* ── tabs ────────────────────────────────────────────────── */
+.sj-tab {
+	padding: 7px 14px;
+	border: 1px solid transparent;
+	border-radius: var(--sj-radius-sm) var(--sj-radius-sm) 0 0;
+	background: transparent;
+	color: var(--sj-muted);
+	font-size: 12px;
+	cursor: pointer;
+}
+.sj-tab.on {
+	color: var(--sj-text);
+	background: rgba(var(--sj-overlay), 0.06);
+	border-color: var(--sj-border);
+	border-bottom-color: transparent;
+}
+
+/* ── inputs ──────────────────────────────────────────────── */
+.sj-input {
+	padding: 8px 12px;
+	border: 1px solid var(--sj-border);
+	border-radius: var(--sj-radius-sm);
+	background: rgba(255, 255, 255, 0.65);
+	color: var(--sj-text);
+	font: inherit;
+	outline: none;
+}
+.sj-input:focus {
+	border-color: var(--sj-accent);
+}
+
+/* ── stat / progress bars (HP/SP/AP + generic gauges) ───── */
+.sj-bar {
+	height: 8px;
+	border-radius: 999px;
+	background: rgba(var(--sj-overlay), 0.08);
+	overflow: hidden;
+}
+.sj-bar > i {
+	display: block;
+	height: 100%;
+	width: 0;
+	border-radius: inherit;
+	transition: width 0.25s ease;
+}
+.sj-bar.hp > i {
+	background: linear-gradient(90deg, var(--sj-hp-a), var(--sj-hp-b));
+}
+.sj-bar.sp > i {
+	background: linear-gradient(90deg, var(--sj-sp-a), var(--sj-sp-b));
+}
+.sj-bar.ap > i {
+	background: linear-gradient(90deg, var(--sj-ap-a), var(--sj-ap-b));
+}
+
+/* ── icon slot (hotbar/inventory/skill grid cell) ───────── */
+.sj-slot {
+	border: 1px solid var(--sj-border);
+	border-radius: var(--sj-radius-sm);
+	background: rgba(var(--sj-overlay), 0.03);
+}
+.sj-slot:hover {
+	border-color: var(--sj-border-strong);
+	background: rgba(var(--sj-overlay), 0.07);
+}
+
+/* ── scrollbar (WebKit; Chrome is the only target runtime) ─ */
+.sj-scroll {
+	scrollbar-width: thin;
+	scrollbar-color: var(--sj-border-strong) transparent;
+}
+.sj-scroll::-webkit-scrollbar {
+	width: 8px;
+	height: 8px;
+}
+.sj-scroll::-webkit-scrollbar-track {
+	background: transparent;
+}
+.sj-scroll::-webkit-scrollbar-thumb {
+	background: var(--sj-border-strong);
+	border-radius: 999px;
+}
+.sj-scroll::-webkit-scrollbar-thumb:hover {
+	background: var(--sj-accent);
+}

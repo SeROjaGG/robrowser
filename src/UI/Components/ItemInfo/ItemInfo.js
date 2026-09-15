@@ -27,7 +27,11 @@ import SpriteRenderer from 'Renderer/SpriteRenderer.js';
 import Sprite from 'Loaders/Sprite.js';
 import Action from 'Loaders/Action.js';
 import htmlText from './ItemInfo.html?raw';
+import htmlTextClassic from './ItemInfo.classic.html?raw';
 import cssText from './ItemInfo.css?raw';
+import cssTextClassic from './ItemInfo.classic.css?raw';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 import Network from 'Network/NetworkManager.js';
 import PACKET from 'Network/PacketStructure.js';
 import Entity from 'Renderer/Entity/Entity.js';
@@ -37,9 +41,10 @@ import Inventory from 'UI/Components/Inventory/Inventory.js';
 /**
  * Create Component
  */
-const ItemInfo = new GUIComponent('ItemInfo', cssText);
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const ItemInfo = new GUIComponent('ItemInfo', isClassic ? cssTextClassic : themeText + cssText);
 
-ItemInfo.render = () => htmlText;
+ItemInfo.render = () => (isClassic ? htmlTextClassic : htmlText);
 
 /**
  * @let {Sprite,Action} objects

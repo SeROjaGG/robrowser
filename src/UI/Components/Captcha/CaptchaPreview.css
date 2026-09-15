@@ -7,8 +7,6 @@
 #CaptchaPreview {
 	width: 100%;
 	height: 100%;
-	background-color: #ffffff;
-	border-radius: 3px;
 }
 
 #CaptchaPreview .clear {
@@ -18,28 +16,18 @@
 #CaptchaPreview .titlebar {
 	width: 220px;
 	height: 17px;
-	background-color: white;
-	background-repeat: repeat-x;
-	border-radius: 3px 3px 0px 0px;
-}
-
-#CaptchaPreview .titlebar .base {
-	width: 11px;
-	height: 11px;
-	background-color: transparent;
-	background-repeat: no-repeat;
-	vertical-align: middle;
 }
 
 #CaptchaPreview .titlebar .text {
-	text-shadow: 1px 1px white;
+	text-shadow: none;
 	vertical-align: -2px;
 	white-space: nowrap;
 	display: inline-block;
-	width: 32px;
+	width: auto;
 	height: 13px;
 	font-size: 11px;
 	font-weight: bold;
+	color: var(--sj-text);
 }
 
 #CaptchaPreview .titlebar .left {
@@ -59,7 +47,7 @@
 #CaptchaPreview .preview_box {
 	width: 220px;
 	height: 90px;
-	background-color: transparent;
+	background-color: var(--sj-glass);
 	overflow: hidden;
 }
 

@@ -6,10 +6,15 @@ import GUIComponent from 'UI/GUIComponent.js';
 import KEYS from 'Controls/KeyEventHandler.js';
 import 'UI/Elements/Elements.js';
 import htmlText from './GuildCompanion.html?raw';
+import htmlTextClassic from './GuildCompanion.classic.html?raw';
 import cssText from './GuildCompanion.css?raw';
+import cssTextClassic from './GuildCompanion.classic.css?raw';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 
-const GuildCompanion = new GUIComponent('GuildCompanion', cssText);
-GuildCompanion.render = () => htmlText;
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const GuildCompanion = new GUIComponent('GuildCompanion', isClassic ? cssTextClassic : themeText + cssText);
+GuildCompanion.render = () => (isClassic ? htmlTextClassic : htmlText);
 let _mode = 'create';
 GuildCompanion.onRequestCreateGuild = function onRequestCreateGuild() {};
 GuildCompanion.onRequestBreakGuild = function onRequestBreakGuild() {};

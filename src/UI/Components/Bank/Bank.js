@@ -18,7 +18,11 @@ import Renderer from 'Renderer/Renderer.js';
 import UIManager from 'UI/UIManager.js';
 import GUIComponent from 'UI/GUIComponent.js';
 import htmlText from './Bank.html?raw';
+import htmlTextClassic from './Bank.classic.html?raw';
 import cssText from './Bank.css?raw';
+import cssTextClassic from './Bank.classic.css?raw';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 import ChatBox from 'UI/Components/ChatBox/ChatBox.js';
 import NpcBox from 'UI/Components/NpcBox/NpcBox.js';
 import NpcMenu from 'UI/Components/NpcMenu/NpcMenu.js';
@@ -26,12 +30,13 @@ import InputBox from 'UI/Components/InputBox/InputBox.js';
 /**
  * Create Component
  */
-const Bank = new GUIComponent('Bank', cssText);
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const Bank = new GUIComponent('Bank', isClassic ? cssTextClassic : themeText + cssText);
 
 /**
  * Render HTML
  */
-Bank.render = () => htmlText;
+Bank.render = () => (isClassic ? htmlTextClassic : htmlText);
 
 /**
  * Max Int

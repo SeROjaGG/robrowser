@@ -19,13 +19,18 @@ import ItemInfo from 'UI/Components/ItemInfo/ItemInfo.js';
 import Client from 'Core/Client.js';
 import KEYS from 'Controls/KeyEventHandler.js';
 import htmlText from './LaphineSys.html?raw';
+import htmlTextClassic from './LaphineSys.classic.html?raw';
 import cssText from './LaphineSys.css?raw';
+import cssTextClassic from './LaphineSys.classic.css?raw';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 import PACKET from 'Network/PacketStructure.js';
 
 /**
  * Create Component
  */
-const LaphineSys = new GUIComponent('LaphineSys', cssText);
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const LaphineSys = new GUIComponent('LaphineSys', isClassic ? cssTextClassic : themeText + cssText);
 
 /**
  * @var {object} LaphineUIState
@@ -52,7 +57,7 @@ function _root() {
 /**
  * Render HTML
  */
-LaphineSys.render = () => htmlText;
+LaphineSys.render = () => (isClassic ? htmlTextClassic : htmlText);
 
 /**
  * Once append to the DOM

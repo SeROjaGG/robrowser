@@ -15,7 +15,11 @@ import Mouse from 'Controls/MouseEventHandler.js';
 import UIManager from 'UI/UIManager.js';
 import GUIComponent from 'UI/GUIComponent.js';
 import htmlText from './SkillDescription.html?raw';
+import htmlTextClassic from './SkillDescription.classic.html?raw';
 import cssText from './SkillDescription.css?raw';
+import cssTextClassic from './SkillDescription.classic.css?raw';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 
 /**
  * Whitelist of allowed HTML tags in skill descriptions
@@ -60,9 +64,10 @@ function _formatROText(value) {
 /**
  * Create Component
  */
-const SkillDescription = new GUIComponent('SkillDescription', cssText);
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const SkillDescription = new GUIComponent('SkillDescription', isClassic ? cssTextClassic : themeText + cssText);
 
-SkillDescription.render = () => htmlText;
+SkillDescription.render = () => (isClassic ? htmlTextClassic : htmlText);
 
 /**
  * SkillDescription unique id

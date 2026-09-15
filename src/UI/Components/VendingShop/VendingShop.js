@@ -24,15 +24,20 @@ import ChatBox from 'UI/Components/ChatBox/ChatBox.js';
 import ItemInfo from 'UI/Components/ItemInfo/ItemInfo.js';
 import Vending from 'UI/Components/Vending/Vending.js';
 import htmlText from './VendingShop.html?raw';
+import htmlTextClassic from './VendingShop.classic.html?raw';
 import cssText from './VendingShop.css?raw';
+import cssTextClassic from './VendingShop.classic.css?raw';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 import VendingReport from 'UI/Components/VendingReport/VendingReport.js';
 
 /**
  * Create Component
  */
-const VendingShop = new GUIComponent('VendingShop', cssText);
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const VendingShop = new GUIComponent('VendingShop', isClassic ? cssTextClassic : themeText + cssText);
 
-VendingShop.render = () => htmlText;
+VendingShop.render = () => (isClassic ? htmlTextClassic : htmlText);
 
 /**
  * @var {enum} Store type

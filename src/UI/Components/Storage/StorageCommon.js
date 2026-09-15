@@ -22,6 +22,8 @@ import Mouse from 'Controls/MouseEventHandler.js';
 import KEYS from 'Controls/KeyEventHandler.js';
 import UIManager from 'UI/UIManager.js';
 import GUIComponent from 'UI/GUIComponent.js';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 import 'UI/Elements/Elements.js';
 import InputBox from 'UI/Components/InputBox/InputBox.js';
 import ItemInfo from 'UI/Components/ItemInfo/ItemInfo.js';
@@ -33,6 +35,8 @@ export function createStorage(config) {
 		name,
 		htmlText,
 		cssText,
+		htmlTextClassic,
+		cssTextClassic,
 		StorageFilter = null,
 		hasFilters = false,
 		hasSearch = false,
@@ -40,9 +44,10 @@ export function createStorage(config) {
 		asyncDragImage = false
 	} = config;
 
-	const Component = new GUIComponent(name, cssText);
+	const isClassic = GraphicsSettings.uiSkin === 'classic';
+	const Component = new GUIComponent(name, isClassic ? cssTextClassic : themeText + cssText);
 
-	Component.render = () => htmlText;
+	Component.render = () => (isClassic ? htmlTextClassic : htmlText);
 
 	Component.TAB = {
 		ITEM: 0,

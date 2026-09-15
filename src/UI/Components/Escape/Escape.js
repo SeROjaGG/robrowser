@@ -16,17 +16,22 @@ import SoundOption from 'UI/Components/SoundOption/SoundOption.js';
 import GraphicsOption from 'UI/Components/GraphicsOption/GraphicsOption.js';
 import ShortCutOption from 'UI/Components/ShortCutOption/ShortCutOption.js';
 import htmlText from './Escape.html?raw';
+import htmlTextClassic from './Escape.classic.html?raw';
 import cssText from './Escape.css?raw';
+import cssTextClassic from './Escape.classic.css?raw';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 
 /**
  * Create Escape window component
  */
-const Escape = new GUIComponent('Escape', cssText);
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const Escape = new GUIComponent('Escape', isClassic ? cssTextClassic : themeText + cssText);
 
 /**
  * Render HTML
  */
-Escape.render = () => htmlText;
+Escape.render = () => (isClassic ? htmlTextClassic : htmlText);
 
 /**
  * Initialize UI

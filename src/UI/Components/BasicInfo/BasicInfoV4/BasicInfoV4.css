@@ -50,12 +50,11 @@
 }
 #BasicInfoV4 .topbar .right {
 	position: absolute;
-	top: 3px;
-	right: 2px;
-	width: 11px;
-	height: 11px;
-	border: none;
-	background: none;
+	top: 4px;
+	right: 4px;
+	width: 16px;
+	height: 16px;
+	font-size: 10px;
 }
 
 /* LARGE */
@@ -96,12 +95,6 @@
 }
 #BasicInfoV4 .large .sp_bar {
 	top: 68px;
-}
-#BasicInfoV4 .large .hp_bar div,
-#BasicInfoV4 .large .sp_bar div {
-	width: 4px;
-	height: 9px;
-	float: left;
 }
 #BasicInfoV4 .large div.hp_bar_perc,
 #BasicInfoV4 .large div.sp_bar_perc {
@@ -171,7 +164,6 @@
 	display: grid;
 	grid-template-columns: auto auto auto auto auto;
 	justify-items: center;
-	background-position: left bottom;
 }
 #BasicInfoV4 .bt_menu {
 	position: absolute;
@@ -179,14 +171,18 @@
 	width: 219px;
 	height: 9px;
 }
-#BasicInfoV4 .buttons:hover {
-}
 #BasicInfoV4 .buttons button {
 	width: 32px;
 	height: 32px;
-	border: none;
 	margin: 6px;
-	background: transparent;
+	border: 1px solid var(--sj-border);
+	border-radius: var(--sj-radius-sm);
+	background: var(--sj-glass);
+	background-position: center;
+}
+#BasicInfoV4 .buttons button:hover {
+	border-color: var(--sj-border-strong);
+	background-color: rgba(255, 255, 255, 0.1);
 }
 
 /* REDUCED */

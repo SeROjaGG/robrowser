@@ -22,12 +22,17 @@ import UIManager from 'UI/UIManager.js';
 import GUIComponent from 'UI/GUIComponent.js';
 import 'UI/Elements/Elements.js';
 import htmlText from './Mail.html?raw';
+import htmlTextClassic from './Mail.classic.html?raw';
 import cssText from './Mail.css?raw';
+import cssTextClassic from './Mail.classic.css?raw';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 
 /**
  * Create Component
  */
-const Mail = new GUIComponent('Mail', cssText);
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const Mail = new GUIComponent('Mail', isClassic ? cssTextClassic : themeText + cssText);
 
 /**
  * Store Mail items
@@ -78,7 +83,7 @@ function _root() {
 /**
  * Render HTML
  */
-Mail.render = () => htmlText;
+Mail.render = () => (isClassic ? htmlTextClassic : htmlText);
 
 /**
  * Has input fields, protect key events

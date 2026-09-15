@@ -15,15 +15,20 @@ import UIManager from 'UI/UIManager.js';
 import GUIComponent from 'UI/GUIComponent.js';
 import 'UI/Elements/Elements.js';
 import htmlText from './NpcMenu.html?raw';
+import htmlTextClassic from './NpcMenu.classic.html?raw';
 import cssText from './NpcMenu.css?raw';
+import cssTextClassic from './NpcMenu.classic.css?raw';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 import InputBox from 'UI/Components/InputBox/InputBox.js';
 
 /**
  * Create NPC Menu component
  */
-const NpcMenu = new GUIComponent('NpcMenu', cssText);
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const NpcMenu = new GUIComponent('NpcMenu', isClassic ? cssTextClassic : themeText + cssText);
 
-NpcMenu.render = () => htmlText;
+NpcMenu.render = () => (isClassic ? htmlTextClassic : htmlText);
 
 /**
  * Freeze mouse — NPC menu blocks interaction

@@ -22,7 +22,11 @@ import UIManager from 'UI/UIManager.js';
 import GUIComponent from 'UI/GUIComponent.js';
 import ItemInfo from 'UI/Components/ItemInfo/ItemInfo.js';
 import htmlText from './SwitchEquip.html?raw';
+import htmlTextClassic from './SwitchEquip.classic.html?raw';
 import cssText from './SwitchEquip.css?raw';
+import cssTextClassic from './SwitchEquip.classic.css?raw';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 import Entity from 'Renderer/Entity/Entity.js';
 import Equipment from 'UI/Components/Equipment/Equipment.js';
 import Inventory from 'UI/Components/Inventory/Inventory.js';
@@ -30,9 +34,10 @@ import Inventory from 'UI/Components/Inventory/Inventory.js';
 /**
  * Create Component
  */
-const SwitchEquip = new GUIComponent('SwitchEquip', cssText);
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const SwitchEquip = new GUIComponent('SwitchEquip', isClassic ? cssTextClassic : themeText + cssText);
 
-SwitchEquip.render = () => htmlText;
+SwitchEquip.render = () => (isClassic ? htmlTextClassic : htmlText);
 
 /**
  * Escape HTML entities

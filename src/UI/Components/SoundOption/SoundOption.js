@@ -16,11 +16,16 @@ import UIManager from 'UI/UIManager.js';
 import GUIComponent from 'UI/GUIComponent.js';
 import 'UI/Elements/Elements.js';
 import htmlText from './SoundOption.html?raw';
+import htmlTextClassic from './SoundOption.classic.html?raw';
 import cssText from './SoundOption.css?raw';
+import cssTextClassic from './SoundOption.classic.css?raw';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 
-const SoundOption = new GUIComponent('SoundOption', cssText);
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const SoundOption = new GUIComponent('SoundOption', isClassic ? cssTextClassic : themeText + cssText);
 
-SoundOption.render = () => htmlText;
+SoundOption.render = () => (isClassic ? htmlTextClassic : htmlText);
 
 const _preferences = Preferences.get('SoundOption', { x: 300, y: 300 }, 1.0);
 

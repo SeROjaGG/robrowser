@@ -24,14 +24,19 @@ import UIManager from 'UI/UIManager.js';
 import GUIComponent from 'UI/GUIComponent.js';
 import 'UI/Elements/Elements.js';
 import htmlText from './FPS.html?raw';
+import htmlTextClassic from './FPS.classic.html?raw';
 import cssText from './FPS.css?raw';
+import cssTextClassic from './FPS.classic.css?raw';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 
 /**
  * Create Component
  */
-const FPS = new GUIComponent('FPS', cssText);
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const FPS = new GUIComponent('FPS', isClassic ? cssTextClassic : themeText + cssText);
 
-FPS.render = () => htmlText;
+FPS.render = () => (isClassic ? htmlTextClassic : htmlText);
 
 /** @type {number} */
 let _maxFPSRegistered = 0;

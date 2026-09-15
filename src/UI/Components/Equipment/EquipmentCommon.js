@@ -27,6 +27,7 @@ import Renderer from 'Renderer/Renderer.js';
 import Camera from 'Renderer/Camera.js';
 import SpriteRenderer from 'Renderer/SpriteRenderer.js';
 import UIVersionManager from 'UI/UIVersionManager.js';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
 import UIManager from 'UI/UIManager.js';
 import GUIComponent from 'UI/GUIComponent.js';
 import 'UI/Elements/Elements.js';
@@ -87,6 +88,8 @@ export function createEquipment({
 	name,
 	htmlText,
 	cssText,
+	htmlTextClassic,
+	cssTextClassic,
 	entityRender = true,
 	enchantGrade = false,
 	switchEquip = false,
@@ -95,9 +98,10 @@ export function createEquipment({
 	damageSkin = false,
 	statsDefault = true
 }) {
-	const Component = new GUIComponent(name, cssText);
+	const isClassic = GraphicsSettings.uiSkin === 'classic';
+	const Component = new GUIComponent(name, isClassic ? cssTextClassic : themeText + cssText);
 
-	Component.render = () => htmlText;
+	Component.render = () => (isClassic ? htmlTextClassic : htmlText);
 
 	const _preferences = Preferences.get(
 		name,

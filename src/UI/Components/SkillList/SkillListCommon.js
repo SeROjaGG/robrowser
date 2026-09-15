@@ -16,6 +16,8 @@ import 'UI/Elements/Elements.js';
 import Client from 'Core/Client.js';
 import DB from 'DB/DBManager.js';
 import GUIComponent from 'UI/GUIComponent.js';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 import Mouse from 'Controls/MouseEventHandler.js';
 import Preferences from 'Core/Preferences.js';
 import Renderer from 'Renderer/Renderer.js';
@@ -46,6 +48,8 @@ export function createSkillList({
 	name,
 	htmlText,
 	cssText,
+	htmlTextClassic,
+	cssTextClassic,
 	hasTabs = false,
 	showDescOnMiniHover = false,
 	guardMissingJob = false,
@@ -64,8 +68,9 @@ export function createSkillList({
 		skillInfo: false
 	}
 }) {
-	const Component = new GUIComponent(name, cssText);
-	Component.render = () => htmlText;
+	const isClassic = GraphicsSettings.uiSkin === 'classic';
+	const Component = new GUIComponent(name, isClassic ? cssTextClassic : themeText + cssText);
+	Component.render = () => (isClassic ? htmlTextClassic : htmlText);
 
 	const _dragFrom = dragFrom ?? name;
 	const _containerSelector = containerSelector ?? `#${name}`;

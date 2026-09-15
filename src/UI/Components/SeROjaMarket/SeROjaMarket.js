@@ -22,8 +22,9 @@ import GUIComponent from 'UI/GUIComponent.js';
 import { request } from '../SeROjaCommon/serojaBridge.js';
 import htmlText from './SeROjaMarket.html?raw';
 import cssText from '../SeROjaCommon/serojaShop.css?raw';
+import themeText from '../SeROjaCommon/glassTheme.css?raw';
 
-const SeROjaMarket = new GUIComponent('SeROjaMarket', cssText);
+const SeROjaMarket = new GUIComponent('SeROjaMarket', themeText + cssText);
 SeROjaMarket.render = () => htmlText;
 
 const _prefs = Preferences.get('SeROjaMarket', { x: 120, y: 90 }, 1.0);

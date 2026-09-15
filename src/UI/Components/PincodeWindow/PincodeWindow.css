@@ -14,14 +14,6 @@
 	clear: both;
 }
 
-#Pincodewindow .titlebar {
-	width: 540px;
-	height: 17px;
-	background-color: white;
-	background-repeat: repeat-x;
-	border-radius: 3px 3px 0px 0px;
-}
-
 #Pincodewindow .titlebar .base {
 	width: 11px;
 	height: 11px;
@@ -32,7 +24,7 @@
 }
 
 #Pincodewindow .titlebar .text {
-	text-shadow: 1px 1px white;
+	text-shadow: none;
 	vertical-align: -2px;
 	white-space: nowrap;
 	display: inline-block;
@@ -52,14 +44,13 @@
 }
 
 #Pincodewindow .panel {
-	background-color: white;
 	width: 540px;
 	height: 320px;
 }
 
 #Pincodewindow .panel .txtlabel {
 	position: absolute;
-	text-shadow: 1px 1px white;
+	text-shadow: none;
 	white-space: nowrap;
 	width: 32px;
 	height: 13px;
@@ -114,17 +105,17 @@
 #Pincodewindow .panel .btn {
 	width: 60px;
 	height: 60px;
-	border: 0;
 	position: absolute;
-	background: none;
+	font-size: 22px;
+	font-weight: 700;
 }
 
 #Pincodewindow .panel .btn2 {
 	width: 100px;
-	height: 20px;
-	border: 0;
+	height: 22px;
+	padding: 0;
+	font-size: 11px;
 	position: absolute;
-	background: none;
 }
 
 #Pincodewindow .panel .numReset {
@@ -133,8 +124,6 @@
 	height: 60px;
 	top: 257px;
 	left: 280px;
-	border: 0;
-	background: none;
 }
 
 #Pincodewindow .panel .btn.num1 {
@@ -220,7 +209,5 @@
 #Pincodewindow .footer {
 	width: 100%;
 	height: 27px;
-	background-repeat: repeat-x;
-	background-color: transparent;
 	position: relative;
 }

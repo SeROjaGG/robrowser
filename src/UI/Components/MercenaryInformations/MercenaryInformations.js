@@ -19,14 +19,19 @@ import SkillListMH from 'UI/Components/SkillListMH/SkillListMH.js';
 import AIDriver from 'Core/AIDriver.js';
 import 'UI/Elements/Elements.js';
 import htmlText from './MercenaryInformations.html?raw';
+import htmlTextClassic from './MercenaryInformations.classic.html?raw';
 import cssText from './MercenaryInformations.css?raw';
+import cssTextClassic from './MercenaryInformations.classic.css?raw';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 
 /**
  * Create Component
  */
-const MercenaryInformations = new GUIComponent('MercenaryInformations', cssText);
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const MercenaryInformations = new GUIComponent('MercenaryInformations', isClassic ? cssTextClassic : themeText + cssText);
 
-MercenaryInformations.render = () => htmlText;
+MercenaryInformations.render = () => (isClassic ? htmlTextClassic : htmlText);
 
 /**
  * @var {Preferences}
@@ -292,8 +297,7 @@ MercenaryInformations.setInformations = function setInformations(info) {
  */
 MercenaryInformations.setHpSpBar = function setHpSpBar(type, val, val2) {
 	const root = MercenaryInformations.getRoot();
-	const perc = Math.floor((val * 100) / val2);
-	const color = perc < 25 ? 'red' : 'blue';
+	const perc = Math.max(0, Math.min(100, Math.floor((val * 100) / val2)));
 
 	const valueEl = root.querySelector(`.${type}_bar_perc .${type}_value`);
 	if (valueEl) {
@@ -310,32 +314,42 @@ MercenaryInformations.setHpSpBar = function setHpSpBar(type, val, val2) {
 		summaryEl.textContent = `${val} / ${val2}`;
 	}
 
-	Client.loadFile(DB.INTERFACE_PATH + `basic_interface/gze${color}_left.bmp`, function (url) {
-		const el = root.querySelector(`.${type}_bar_left`);
-		if (el) {
-			el.style.backgroundImage = `url(${url})`;
-		}
-	});
+	if (isClassic) {
+		const color = perc < 25 ? 'red' : 'blue';
 
-	Client.loadFile(DB.INTERFACE_PATH + `basic_interface/gze${color}_mid.bmp`, function (url) {
-		const el = root.querySelector(`.${type}_bar_middle`);
-		if (el) {
-			Object.assign(el.style, {
-				backgroundImage: `url(${url})`,
-				width: `${Math.floor(Math.min(perc, 100) * 0.75)}px`
-			});
-		}
-	});
+		Client.loadFile(DB.INTERFACE_PATH + `basic_interface/gze${color}_left.bmp`, function (url) {
+			const el = root.querySelector(`.${type}_bar_left`);
+			if (el) {
+				el.style.backgroundImage = `url(${url})`;
+			}
+		});
 
-	Client.loadFile(DB.INTERFACE_PATH + `basic_interface/gze${color}_right.bmp`, function (url) {
-		const el = root.querySelector(`.${type}_bar_right`);
-		if (el) {
-			Object.assign(el.style, {
-				backgroundImage: `url(${url})`,
-				left: `${Math.floor(Math.min(perc, 100) * 1.27)}px`
-			});
+		Client.loadFile(DB.INTERFACE_PATH + `basic_interface/gze${color}_mid.bmp`, function (url) {
+			const el = root.querySelector(`.${type}_bar_middle`);
+			if (el) {
+				Object.assign(el.style, {
+					backgroundImage: `url(${url})`,
+					width: `${Math.floor(Math.min(perc, 100) * 0.75)}px`
+				});
+			}
+		});
+
+		Client.loadFile(DB.INTERFACE_PATH + `basic_interface/gze${color}_right.bmp`, function (url) {
+			const el = root.querySelector(`.${type}_bar_right`);
+			if (el) {
+				Object.assign(el.style, {
+					backgroundImage: `url(${url})`,
+					left: `${Math.floor(Math.min(perc, 100) * 1.27)}px`
+				});
+			}
+		});
+	} else {
+		const fill = root.querySelector(`.${type}_bar_fill`);
+		if (fill) {
+			fill.style.width = `${perc}%`;
+			fill.style.background = perc < 25 ? 'linear-gradient(90deg, var(--sj-danger), #ff2f2f)' : '';
 		}
-	});
+	}
 };
 
 /**

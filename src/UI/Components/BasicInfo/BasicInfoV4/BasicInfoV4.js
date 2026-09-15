@@ -10,12 +10,16 @@
 
 import htmlText from './BasicInfoV4.html?raw';
 import cssText from './BasicInfoV4.css?raw';
+import htmlTextClassic from './BasicInfoV4.classic.html?raw';
+import cssTextClassic from './BasicInfoV4.classic.css?raw';
 import { createBasicInfo } from '../BasicInfoCommon.js';
 
 export default createBasicInfo({
 	name: 'BasicInfoV4',
 	htmlText,
 	cssText,
+	htmlTextClassic,
+	cssTextClassic,
 	prefKey: 'BasicInfoV4',
 	reduceDefault: true,
 	innerId: '#BasicInfoV4',

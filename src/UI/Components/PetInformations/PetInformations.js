@@ -15,16 +15,21 @@ import Renderer from 'Renderer/Renderer.js';
 import UIManager from 'UI/UIManager.js';
 import GUIComponent from 'UI/GUIComponent.js';
 import htmlText from './PetInformations.html?raw';
+import htmlTextClassic from './PetInformations.classic.html?raw';
 import cssText from './PetInformations.css?raw';
+import cssTextClassic from './PetInformations.classic.css?raw';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 import KEYS from 'Controls/KeyEventHandler.js';
 import PACKETVER from 'Network/PacketVerManager.js';
 
 /**
  * Create Component
  */
-const PetInformations = new GUIComponent('PetInformations', cssText);
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const PetInformations = new GUIComponent('PetInformations', isClassic ? cssTextClassic : themeText + cssText);
 
-PetInformations.render = () => htmlText;
+PetInformations.render = () => (isClassic ? htmlTextClassic : htmlText);
 
 PetInformations.captureKeyEvents = true;
 

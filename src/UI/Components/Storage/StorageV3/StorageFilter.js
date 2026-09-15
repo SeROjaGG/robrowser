@@ -15,13 +15,19 @@ import GUIComponent from 'UI/GUIComponent.js';
 import 'UI/Elements/Elements.js';
 import ItemInfo from 'UI/Components/ItemInfo/ItemInfo.js';
 import htmlText from './StorageFilter.html?raw';
+import htmlTextClassic from './StorageFilter.classic.html?raw';
 import cssText from './StorageFilter.css?raw';
+import cssTextClassic from './StorageFilter.classic.css?raw';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
+
+const isClassic = GraphicsSettings.uiSkin === 'classic';
 
 function StorageFilter(tabId) {
 	const prefName = 'StorageFilter_' + tabId;
-	GUIComponent.call(this, prefName, cssText);
+	GUIComponent.call(this, prefName, isClassic ? cssTextClassic : themeText + cssText);
 
-	this.render = () => htmlText;
+	this.render = () => (isClassic ? htmlTextClassic : htmlText);
 
 	this.onRemove = function () {
 		const root = this.getRoot();

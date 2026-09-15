@@ -1,25 +1,25 @@
 /**
  * CharSelectSeROja.css — SeROja custom character-select (PLAN-009).
  *
- * SeROja's own visual language, mirroring the www design tokens by hand
- * (www/app/globals.css dark palette). NOT a copy of any reference server.
- * Injected into the component's shadow root by GUIComponent.
+ * Retinted onto the shared SeROjaCommon/glassTheme.css tokens (PLAN-022) —
+ * `--sj-*` vars come from the theme, concatenated ahead of this file at the
+ * GUIComponent call site. Only the selected-slot tint (`--cs-accent-tint`,
+ * not covered by the theme) stays local. Injected into the component's
+ * shadow root by GUIComponent.
  */
 
 :host,
 .cs {
-	--cs-bg: #0a0a10;
-	--cs-surface: rgba(20, 20, 32, 0.72);
-	--cs-surface-solid: #14141f;
-	--cs-border: rgba(205, 196, 255, 0.14);
-	--cs-text: #edecf5;
-	--cs-muted: #9a97b5;
-	--cs-brand: #7c5cff;
-	--cs-brand-2: #3de0d0;
-	--cs-accent: #211d3d;
-	--cs-danger: #ff6b6b;
-	--cs-radius: 14px;
-	--cs-blur: 18px;
+	--cs-accent-tint: rgba(79, 195, 247, 0.16);
+	/* PLAN-024 made the shared glassTheme.css tokens light (for the in-game
+	   HUD) — this screen keeps its own dark space-theme look (ADR-0013,
+	   never meant to track that), so pin the tokens it actually uses back
+	   to dark-appropriate values instead of inheriting the shared ones. */
+	--sj-text: #eaf2ff;
+	--sj-muted: #8fa3c4;
+	--sj-glass: rgba(18, 30, 54, 0.55);
+	--sj-border: rgba(148, 197, 255, 0.22);
+	--sj-danger: #ff5c5c;
 }
 
 .cs {
@@ -37,8 +37,8 @@
 	padding: 26px 30px 22px;
 	box-sizing: border-box;
 	font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-	color: var(--cs-text);
-	background: var(--cs-bg);
+	color: var(--sj-text);
+	background: var(--sj-bg);
 	user-select: none;
 }
 
@@ -59,8 +59,8 @@
 	inset: 0;
 	z-index: -1;
 	background:
-		radial-gradient(circle at 22% 18%, rgba(124, 92, 255, 0.28), transparent 55%),
-		radial-gradient(circle at 82% 80%, rgba(61, 224, 208, 0.22), transparent 55%),
+		radial-gradient(circle at 22% 18%, rgba(79, 195, 247, 0.28), transparent 55%),
+		radial-gradient(circle at 82% 80%, rgba(56, 189, 248, 0.22), transparent 55%),
 		linear-gradient(160deg, #0c0c16 0%, #05050a 60%, #0a0a12 100%);
 }
 
@@ -74,16 +74,16 @@
 .cs-back {
 	justify-self: start;
 	padding: 7px 14px;
-	border: 1px solid var(--cs-border);
+	border: 1px solid var(--sj-border);
 	border-radius: 999px;
-	background: var(--cs-surface);
-	backdrop-filter: blur(var(--cs-blur));
-	color: var(--cs-muted);
+	background: var(--sj-glass);
+	backdrop-filter: blur(var(--sj-blur));
+	color: var(--sj-muted);
 	font-size: 13px;
 	cursor: pointer;
 }
 .cs-back:hover {
-	color: var(--cs-text);
+	color: var(--sj-text);
 }
 .cs-brand {
 	justify-self: center;
@@ -92,22 +92,22 @@
 	letter-spacing: 0.02em;
 }
 .cs-brand .ro {
-	color: var(--cs-brand-2);
+	color: var(--sj-accent-2);
 }
 .cs-count {
 	justify-self: end;
 }
 .cs-count {
 	padding: 6px 14px;
-	border: 1px solid var(--cs-border);
+	border: 1px solid var(--sj-border);
 	border-radius: 999px;
-	background: var(--cs-surface);
-	backdrop-filter: blur(var(--cs-blur));
+	background: var(--sj-glass);
+	backdrop-filter: blur(var(--sj-blur));
 	font-size: 13px;
-	color: var(--cs-muted);
+	color: var(--sj-muted);
 }
 .cs-count .used {
-	color: var(--cs-text);
+	color: var(--sj-text);
 	font-weight: 700;
 }
 
@@ -119,10 +119,10 @@
 	flex-direction: column;
 	gap: 14px;
 	padding: 20px;
-	border: 1px solid var(--cs-border);
-	border-radius: var(--cs-radius);
-	background: var(--cs-surface);
-	backdrop-filter: blur(var(--cs-blur));
+	border: 1px solid var(--sj-border);
+	border-radius: var(--sj-radius);
+	background: var(--sj-glass);
+	backdrop-filter: blur(var(--sj-blur));
 	box-shadow: 0 18px 50px -20px rgba(0, 0, 0, 0.7);
 }
 .cs-stats[hidden] {
@@ -135,7 +135,7 @@
 .cs-sub {
 	margin-top: -8px;
 	font-size: 13px;
-	color: var(--cs-muted);
+	color: var(--sj-muted);
 }
 .cs-bars {
 	display: flex;
@@ -148,7 +148,7 @@
 	align-items: center;
 	gap: 8px;
 	font-size: 12px;
-	color: var(--cs-muted);
+	color: var(--sj-muted);
 }
 .bar {
 	height: 8px;
@@ -167,12 +167,12 @@
 	background: linear-gradient(90deg, #4ade80, #22c55e);
 }
 .bar.sp i {
-	background: linear-gradient(90deg, var(--cs-brand-2), var(--cs-brand));
+	background: linear-gradient(90deg, var(--sj-accent-2), var(--sj-accent));
 }
 .hpv,
 .spv {
 	font-variant-numeric: tabular-nums;
-	color: var(--cs-text);
+	color: var(--sj-text);
 }
 .cs-info {
 	display: flex;
@@ -194,7 +194,7 @@
 }
 .cs-info span,
 .cs-attr span {
-	color: var(--cs-muted);
+	color: var(--sj-muted);
 }
 .cs-info b,
 .cs-attr b {
@@ -215,17 +215,17 @@
 .tool {
 	border: 0;
 	background: none;
-	color: var(--cs-muted);
+	color: var(--sj-muted);
 	font-size: 12px;
 	cursor: pointer;
 	padding: 4px 2px;
 }
 .tool:hover {
-	color: var(--cs-text);
+	color: var(--sj-text);
 }
 .tool.delete:hover,
 .tool.finaldelete {
-	color: var(--cs-danger);
+	color: var(--sj-danger);
 }
 .tool[hidden] {
 	display: none;
@@ -264,10 +264,10 @@
 	gap: 6px;
 	width: 220px;
 	padding: 14px;
-	border: 1px solid rgba(124, 92, 255, 0.6);
-	border-radius: var(--cs-radius);
+	border: 1px solid rgba(79, 195, 247, 0.6);
+	border-radius: var(--sj-radius);
 	background: rgba(10, 10, 18, 0.5);
-	box-shadow: 0 0 0 1px rgba(124, 92, 255, 0.35), 0 24px 60px -24px rgba(124, 92, 255, 0.5);
+	box-shadow: 0 0 0 1px rgba(79, 195, 247, 0.35), 0 24px 60px -24px rgba(79, 195, 247, 0.5);
 	cursor: pointer;
 	overflow: hidden;
 }
@@ -287,25 +287,25 @@
 }
 .card .jb {
 	font-size: 12px;
-	color: var(--cs-muted);
+	color: var(--sj-muted);
 }
 .card.reserved {
 	filter: grayscale(0.7);
 }
 .card .timer {
 	font-size: 11px;
-	color: var(--cs-danger);
+	color: var(--sj-danger);
 	font-variant-numeric: tabular-nums;
 }
 .cs-nav {
 	flex: 0 0 auto;
 	width: 40px;
 	height: 40px;
-	border: 1px solid var(--cs-border);
+	border: 1px solid var(--sj-border);
 	border-radius: 999px;
-	background: var(--cs-surface);
-	backdrop-filter: blur(var(--cs-blur));
-	color: var(--cs-text);
+	background: var(--sj-glass);
+	backdrop-filter: blur(var(--sj-blur));
+	color: var(--sj-text);
 	font-size: 20px;
 	line-height: 1;
 	cursor: pointer;
@@ -338,13 +338,13 @@
 	cursor: pointer;
 }
 .cs-dots span.on {
-	background: var(--cs-brand-2);
+	background: var(--sj-accent-2);
 }
 
 /* empty state */
 .cs-carousel.empty .cs-cards::after {
 	content: 'No characters yet — create one on the right.';
-	color: var(--cs-muted);
+	color: var(--sj-muted);
 	font-size: 13px;
 }
 
@@ -360,17 +360,17 @@
 }
 .cs-new {
 	padding: 12px 14px;
-	border: 1px dashed var(--cs-border);
-	border-radius: var(--cs-radius);
+	border: 1px dashed var(--sj-border);
+	border-radius: var(--sj-radius);
 	background: none;
-	color: var(--cs-muted);
+	color: var(--sj-muted);
 	font-size: 13px;
 	text-align: left;
 	cursor: pointer;
 }
 .cs-new:hover {
-	color: var(--cs-text);
-	border-color: rgba(124, 92, 255, 0.5);
+	color: var(--sj-text);
+	border-color: rgba(79, 195, 247, 0.5);
 }
 .cs-new:disabled {
 	opacity: 0.4;
@@ -386,7 +386,7 @@
 	align-items: center;
 	gap: 12px;
 	padding: 8px 12px;
-	border: 1px solid var(--cs-border);
+	border: 1px solid var(--sj-border);
 	border-radius: 12px;
 	background: rgba(255, 255, 255, 0.02);
 	cursor: pointer;
@@ -396,8 +396,8 @@
 	background: rgba(255, 255, 255, 0.05);
 }
 .slot.on {
-	border-color: rgba(124, 92, 255, 0.6);
-	background: var(--cs-accent);
+	border-color: rgba(79, 195, 247, 0.6);
+	background: var(--cs-accent-tint);
 }
 .slot canvas.por {
 	width: 52px;
@@ -422,10 +422,10 @@
 }
 .slot .jb {
 	font-size: 11px;
-	color: var(--cs-muted);
+	color: var(--sj-muted);
 }
 .slot.reserved .nm {
-	color: var(--cs-danger);
+	color: var(--sj-danger);
 }
 
 /* ── action bar ──────────────────────────────────────────── */
@@ -446,17 +446,17 @@
 	cursor: pointer;
 }
 .btn.enter {
-	background: linear-gradient(110deg, var(--cs-brand), var(--cs-brand-2));
+	background: linear-gradient(110deg, var(--sj-accent), var(--sj-accent-2));
 	color: #0a0a10;
 }
 .btn.enter[hidden] {
 	display: none;
 }
 .btn.ghost {
-	background: var(--cs-surface);
-	border: 1px solid var(--cs-border);
-	color: var(--cs-text);
-	backdrop-filter: blur(var(--cs-blur));
+	background: var(--sj-glass);
+	border: 1px solid var(--sj-border);
+	color: var(--sj-text);
+	backdrop-filter: blur(var(--sj-blur));
 }
 .btn:disabled {
 	opacity: 0.4;

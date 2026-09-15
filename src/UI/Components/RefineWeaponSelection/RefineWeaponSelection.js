@@ -15,14 +15,19 @@ import UIManager from 'UI/UIManager.js';
 import GUIComponent from 'UI/GUIComponent.js';
 import 'UI/Elements/Elements.js';
 import htmlText from './RefineWeaponSelection.html?raw';
+import htmlTextClassic from './RefineWeaponSelection.classic.html?raw';
 import cssText from './RefineWeaponSelection.css?raw';
+import cssTextClassic from './RefineWeaponSelection.classic.css?raw';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 
 /**
  * Create RefineWeaponSelection namespace
  */
-const RefineWeaponSelection = new GUIComponent('RefineWeaponSelection', cssText);
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const RefineWeaponSelection = new GUIComponent('RefineWeaponSelection', isClassic ? cssTextClassic : themeText + cssText);
 
-RefineWeaponSelection.render = () => htmlText;
+RefineWeaponSelection.render = () => (isClassic ? htmlTextClassic : htmlText);
 
 /**
  * Sanitize HTML, allowing only whitelisted tags (font, i, b)

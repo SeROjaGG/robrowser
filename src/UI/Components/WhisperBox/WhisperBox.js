@@ -15,7 +15,11 @@ import ChatBox from 'UI/Components/ChatBox/ChatBox.js';
 import History from '../ChatBox/History.js';
 import Sound from 'Audio/SoundManager.js';
 import htmlText from './WhisperBox.html?raw';
+import htmlTextClassic from './WhisperBox.classic.html?raw';
 import cssText from './WhisperBox.css?raw';
+import cssTextClassic from './WhisperBox.classic.css?raw';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 import NpcBox from 'UI/Components/NpcBox/NpcBox.js';
 import NpcMenu from 'UI/Components/NpcMenu/NpcMenu.js';
 import InputBox from 'UI/Components/InputBox/InputBox.js';
@@ -23,9 +27,10 @@ import InputBox from 'UI/Components/InputBox/InputBox.js';
 /**
  * @var {GUIComponent} WhisperBox
  */
-const WhisperBox = new GUIComponent('WhisperBox', cssText);
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const WhisperBox = new GUIComponent('WhisperBox', isClassic ? cssTextClassic : themeText + cssText);
 
-WhisperBox.render = () => htmlText;
+WhisperBox.render = () => (isClassic ? htmlTextClassic : htmlText);
 
 /**
  * @var {Object} active whisper windows indexed by nickname

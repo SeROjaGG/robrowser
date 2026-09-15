@@ -21,7 +21,11 @@ import Configs from 'Core/Configs.js';
 import PACKETVER from 'Network/PacketVerManager.js';
 import 'UI/Elements/Elements.js';
 import htmlText from './HomunInformations.html?raw';
+import htmlTextClassic from './HomunInformations.classic.html?raw';
 import cssText from './HomunInformations.css?raw';
+import cssTextClassic from './HomunInformations.classic.css?raw';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 
 let autoFeedInterval;
 const autoFeedIntervalMs = 1000 * 60 * 1; // feed every 1 minutes when auto feed is enabled
@@ -30,9 +34,10 @@ const autoFeedPercent = 30;
 /**
  * Create Component
  */
-const HomunInformations = new GUIComponent('HomunInformations', cssText);
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const HomunInformations = new GUIComponent('HomunInformations', isClassic ? cssTextClassic : themeText + cssText);
 
-HomunInformations.render = () => htmlText;
+HomunInformations.render = () => (isClassic ? htmlTextClassic : htmlText);
 
 HomunInformations.captureKeyEvents = true;
 
@@ -394,8 +399,7 @@ HomunInformations.setInformations = function setInformations(info) {
  */
 HomunInformations.setHpSpBar = function setHpSpBar(type, val, val2) {
 	const root = HomunInformations.getRoot();
-	const perc = Math.floor((val * 100) / val2);
-	const color = perc < 25 ? 'red' : 'blue';
+	const perc = Math.max(0, Math.min(100, Math.floor((val * 100) / val2)));
 
 	const valueEl = root.querySelector(`.${type}_value`);
 	if (valueEl) {
@@ -412,38 +416,48 @@ HomunInformations.setHpSpBar = function setHpSpBar(type, val, val2) {
 		percEl.textContent = `${perc}%`;
 	}
 
-	if (perc <= 0) {
-		root.querySelectorAll(`.${type}_bar div`).forEach(el => {
-			el.style.backgroundImage = 'none';
+	if (isClassic) {
+		const color = perc < 25 ? 'red' : 'blue';
+
+		if (perc <= 0) {
+			root.querySelectorAll(`.${type}_bar div`).forEach(el => {
+				el.style.backgroundImage = 'none';
+			});
+		}
+
+		Client.loadFile(DB.INTERFACE_PATH + `basic_interface/gze${color}_left.bmp`, function (url) {
+			const el = root.querySelector(`.${type}_bar_left`);
+			if (el) {
+				el.style.backgroundImage = `url(${url})`;
+			}
 		});
+
+		Client.loadFile(DB.INTERFACE_PATH + `basic_interface/gze${color}_mid.bmp`, function (url) {
+			const el = root.querySelector(`.${type}_bar_middle`);
+			if (el) {
+				Object.assign(el.style, {
+					backgroundImage: `url(${url})`,
+					width: `${Math.floor(Math.min(perc, 100) * 0.75)}px`
+				});
+			}
+		});
+
+		Client.loadFile(DB.INTERFACE_PATH + `basic_interface/gze${color}_right.bmp`, function (url) {
+			const el = root.querySelector(`.${type}_bar_right`);
+			if (el) {
+				Object.assign(el.style, {
+					backgroundImage: `url(${url})`,
+					left: `${Math.floor(Math.min(perc, 100) * 1.27)}px`
+				});
+			}
+		});
+	} else {
+		const fill = root.querySelector(`.${type}_bar_fill`);
+		if (fill) {
+			fill.style.width = `${perc}%`;
+			fill.style.background = perc < 25 ? 'linear-gradient(90deg, var(--sj-danger), #ff2f2f)' : '';
+		}
 	}
-
-	Client.loadFile(DB.INTERFACE_PATH + `basic_interface/gze${color}_left.bmp`, function (url) {
-		const el = root.querySelector(`.${type}_bar_left`);
-		if (el) {
-			el.style.backgroundImage = `url(${url})`;
-		}
-	});
-
-	Client.loadFile(DB.INTERFACE_PATH + `basic_interface/gze${color}_mid.bmp`, function (url) {
-		const el = root.querySelector(`.${type}_bar_middle`);
-		if (el) {
-			Object.assign(el.style, {
-				backgroundImage: `url(${url})`,
-				width: `${Math.floor(Math.min(perc, 100) * 0.75)}px`
-			});
-		}
-	});
-
-	Client.loadFile(DB.INTERFACE_PATH + `basic_interface/gze${color}_right.bmp`, function (url) {
-		const el = root.querySelector(`.${type}_bar_right`);
-		if (el) {
-			Object.assign(el.style, {
-				backgroundImage: `url(${url})`,
-				left: `${Math.floor(Math.min(perc, 100) * 1.27)}px`
-			});
-		}
-	});
 
 	const summaryEl = root.querySelector(`.${type}2`);
 	if (summaryEl) {

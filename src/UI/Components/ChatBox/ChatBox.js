@@ -23,7 +23,11 @@ import GUIComponent from 'UI/GUIComponent.js';
 import 'UI/Elements/Elements.js';
 import ContextMenu from 'UI/Components/ContextMenu/ContextMenu.js';
 import htmlText from './ChatBox.html?raw';
+import htmlTextClassic from './ChatBox.classic.html?raw';
 import cssText from './ChatBox.css?raw';
+import cssTextClassic from './ChatBox.classic.css?raw';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 import Commands from 'Controls/ProcessCommand.js';
 import ChatBoxSettings from 'UI/Components/ChatBoxSettings/ChatBoxSettings.js';
 import Configs from 'Core/Configs.js';
@@ -89,7 +93,8 @@ const _preferences = Preferences.get(
 /**
  * Create Basic Info component
  */
-const ChatBox = new GUIComponent('ChatBox', cssText);
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const ChatBox = new GUIComponent('ChatBox', isClassic ? cssTextClassic : themeText + cssText);
 
 /**
  * Helper: query inside shadow root
@@ -101,7 +106,7 @@ function _root() {
 /**
  * Render HTML
  */
-ChatBox.render = () => htmlText;
+ChatBox.render = () => (isClassic ? htmlTextClassic : htmlText);
 
 /**
  * Has input fields, protect key events

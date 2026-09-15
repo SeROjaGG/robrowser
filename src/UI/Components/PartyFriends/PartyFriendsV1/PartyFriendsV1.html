@@ -1,12 +1,7 @@
-<div id="PartyFriends">
-	<div class="titlebar">
-		<ui-image src="basic_interface/titlebar_mid.bmp"></ui-image>
+<div id="PartyFriends" class="sj-panel">
+	<div class="titlebar sj-titlebar">
 		<div class="left">
-			<ui-button
-				class="base"
-				bg="basic_interface/sys_base_off.bmp"
-				hover="basic_interface/sys_base_on.bmp"
-			></ui-button>
+			<ui-button class="base"></ui-button>
 			<span class="party">
 				<span class="text"><ui-text msg="103">Party</ui-text></span> <span class="partyname"></span>
 			</span>
@@ -18,11 +13,7 @@
 			</span>
 		</div>
 		<div class="right">
-			<ui-button
-				class="base close"
-				bg="basic_interface/sys_close_off.bmp"
-				hover="basic_interface/sys_close_on.bmp"
-			></ui-button>
+			<ui-button class="base close sj-winbtn">×</ui-button>
 		</div>
 		<div class="clear"></div>
 	</div>
@@ -31,7 +22,6 @@
 		<div class="friend"></div>
 	</div>
 	<div class="navigation">
-		<ui-image src="basic_interface/mesbtn_mid.bmp"></ui-image>
 		<!-- Friend specific buttons -->
 		<ui-button
 			class="friend mail"
@@ -129,7 +119,6 @@
 		<div class="clear"></div>
 	</div>
 	<div class="footer">
-		<ui-image src="basic_interface/btnbar_mid.bmp"></ui-image>
 		<div class="friend">
 			<button class="switchtab on">
 				<ui-image src="radiobtn_on.bmp"></ui-image><ui-text msg="102">Friends</ui-text>

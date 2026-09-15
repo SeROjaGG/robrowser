@@ -39,6 +39,7 @@ import 'UI/Elements/Elements.js';
 import { makeCharEntity, drawCharEntity } from '../charSprite.js';
 import htmlText from './CharSelectSeROja.html?raw';
 import cssText from './CharSelectSeROja.css?raw';
+import themeText from '../../SeROjaCommon/glassTheme.css?raw';
 
 /** canvas intrinsic size + sprite anchor (px). Canvases are kept small (native
  * RO sprite scale) and enlarged with a CSS transform on .card/.slot. */
@@ -52,7 +53,7 @@ const PORTRAIT_W = 88;
 const PORTRAIT_H = 110;
 const PORTRAIT_ANCHOR = { x: 44, y: 106 };
 
-const Component = new GUIComponent('CharSelectSeROja', cssText);
+const Component = new GUIComponent('CharSelectSeROja', themeText + cssText);
 
 Component.render = () => htmlText;
 

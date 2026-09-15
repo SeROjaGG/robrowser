@@ -30,13 +30,18 @@ import Configs from 'Core/Configs.js';
 import PACKETVER from 'Network/PacketVerManager.js';
 import SkillWindow from 'UI/Components/SkillList/SkillList.js';
 import htmlText from './ShortCut.html?raw';
+import htmlTextClassic from './ShortCut.classic.html?raw';
 import cssText from './ShortCut.css?raw';
+import cssTextClassic from './ShortCut.classic.css?raw';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 
 /**
  * Create Component
  */
-const ShortCut = new GUIComponent('ShortCut', cssText);
-ShortCut.render = () => htmlText;
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const ShortCut = new GUIComponent('ShortCut', isClassic ? cssTextClassic : themeText + cssText);
+ShortCut.render = () => (isClassic ? htmlTextClassic : htmlText);
 
 /**
  * @var {Array} ShortCut list

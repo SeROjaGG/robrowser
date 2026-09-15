@@ -17,6 +17,8 @@ import Camera from 'Renderer/Camera.js';
 import SpriteRenderer from 'Renderer/SpriteRenderer.js';
 import UIManager from 'UI/UIManager.js';
 import GUIComponent from 'UI/GUIComponent.js';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 import ItemInfo from 'UI/Components/ItemInfo/ItemInfo.js';
 import Entity from 'Renderer/Entity/Entity.js';
 
@@ -43,8 +45,8 @@ function add3Dots(string, limit) {
  * Generate the general equipment table HTML
  */
 function generateGeneralTable() {
-	return `  
-		<table class="vieweqcontent" id="vieweqgeneral" data-background="basic_interface/equipwin_bg.bmp">  
+	return `
+		<table class="vieweqcontent" id="vieweqgeneral">
 			<tr>  
 				<td class="head_top col1"></td>  
 				<td rowspan="6">  
@@ -100,9 +102,9 @@ function generateCostumeTable(costumeRows, costumeTableBg) {
 		}
 	}
 
-	return `  
-		<table class="vieweqcontent" id="vieweqcostume" data-background="${costumeTableBg}">  
-			${rows}  
+	return `
+		<table class="vieweqcontent" id="vieweqcostume">
+			${rows}
 		</table>`;
 }
 
@@ -112,48 +114,36 @@ function generateCostumeTable(costumeRows, costumeTableBg) {
 function generateHTML(hasTabs, costumeRows, costumeTableBg) {
 	const tabsHTML = hasTabs
 		? `  
-	<div class="vieweqtab-manager" id="vieweqtabs">  
-		<div class="vieweqtab" id="vieweqgentab">  
-			<a href="#vieweqgeneral"><span data-text="3158">General</span></a>  
-		</div>  
-		<div class="vieweqtab" id="vieweqcostab">  
-			<a href="#vieweqcostume"><span data-text="3159">Costume</span></a>  
-		</div>  
+	<div class="vieweqtab-manager" id="vieweqtabs">
+		<div class="vieweqtab" id="vieweqgentab">
+			<a href="#vieweqgeneral" class="sj-tab"><span data-text="3158">General</span></a>
+		</div>
+		<div class="vieweqtab" id="vieweqcostab">
+			<a href="#vieweqcostume" class="sj-tab"><span data-text="3159">Costume</span></a>
+		</div>
 	</div>`
 		: '';
 
 	const costumeHTML = hasTabs ? generateCostumeTable(costumeRows, costumeTableBg) : '';
 
-	return `<div id="PlayerViewEquip" data-repload="basic_interface/item_invert.bmp">  
-	<div class="titlebar" data-background="basic_interface/titlebar_mid.bmp">  
-		<div class="left">  
-			<button  
-				class="base"  
-				data-background="basic_interface/sys_base_off.bmp"  
-				data-hover="basic_interface/sys_base_on.bmp"  
-			></button>  
-			<span class="PlayerName"></span>  
-		</div>  
-		<div class="right">  
-			<button  
-				class="base mini"  
-				data-background="basic_interface/sys_mini_off.bmp"  
-				data-hover="basic_interface/sys_mini_on.bmp"  
-			></button>  
-			<button  
-				class="base close"  
-				data-background="basic_interface/sys_close_off.bmp"  
-				data-hover="basic_interface/sys_close_on.bmp"  
-			></button>  
-		</div>  
-		<div class="clear"></div>  
-	</div>  
-	<div class="overlay"></div>  
-	${tabsHTML}  
-	<div class="panel">  
-		${generateGeneralTable()}  
-		${costumeHTML}  
-	</div>  
+	return `<div id="PlayerViewEquip" class="sj-panel">
+	<div class="titlebar sj-titlebar">
+		<div class="left">
+			<button class="base"></button>
+			<span class="PlayerName"></span>
+		</div>
+		<div class="right">
+			<button class="base mini sj-winbtn">–</button>
+			<button class="base close sj-winbtn">×</button>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div class="overlay"></div>
+	${tabsHTML}
+	<div class="panel">
+		${generateGeneralTable()}
+		${costumeHTML}
+	</div>
 </div>`;
 }
 
@@ -192,6 +182,126 @@ function getSelectorFromLocation(location) {
 }
 
 /**
+ * Classic-skin markup (recovered pre-PLAN-022, kept for the Classic/SeROja
+ * toggle — PLAN-023). Structurally identical to upstream, just renamed to
+ * avoid colliding with the SeROja generate* functions above.
+ */
+function generateGeneralTableClassic() {
+	return `  
+		<table class="vieweqcontent" id="vieweqgeneral" data-background="basic_interface/equipwin_bg.bmp">  
+			<tr>  
+				<td class="head_top col1"></td>  
+				<td rowspan="6">  
+					<div class="col2 ammo_container">  
+						<canvas width="55" height="125"></canvas>  
+					</div>  
+				</td>  
+				<td class="head_mid col3"></td>  
+			</tr>  
+			<tr>  
+				<td class="head_bottom col1"></td>  
+				<td class="armor col3"></td>  
+			</tr>  
+			<tr>  
+				<td class="weapon col1"></td>  
+				<td class="shield col3"></td>  
+			</tr>  
+			<tr>  
+				<td class="garment col1"></td>  
+				<td class="shoes col3"></td>  
+			</tr>  
+			<tr>  
+				<td class="accessory1 col1"></td>  
+				<td class="accessory2 col3"></td>  
+			</tr>  
+		</table>`;
+}
+
+/**
+ * Generate the costume equipment table HTML
+ */
+function generateCostumeTableClassic(costumeRows, costumeTableBg) {
+	let rows = '';
+	for (let i = 0; i < costumeRows.length; i++) {
+		const { left: col1, right: col3 } = costumeRows[i];
+		if (i === 0) {
+			rows += `  
+			<tr>  
+				<td class="${col1} col1"></td>  
+				<td rowspan="6">  
+					<div class="col2 ammo_container">  
+						<canvas width="55" height="125"></canvas>  
+					</div>  
+				</td>  
+				<td class="${col3} col3"></td>  
+			</tr>`;
+		} else {
+			rows += `  
+			<tr>  
+				<td class="${col1} col1"></td>  
+				<td class="${col3} col3"></td>  
+			</tr>`;
+		}
+	}
+
+	return `  
+		<table class="vieweqcontent" id="vieweqcostume" data-background="${costumeTableBg}">  
+			${rows}  
+		</table>`;
+}
+
+/**
+ * Generate the full component HTML
+ */
+function generateHTMLClassic(hasTabs, costumeRows, costumeTableBg) {
+	const tabsHTML = hasTabs
+		? `  
+	<div class="vieweqtab-manager" id="vieweqtabs">  
+		<div class="vieweqtab" id="vieweqgentab">  
+			<a href="#vieweqgeneral"><span data-text="3158">General</span></a>  
+		</div>  
+		<div class="vieweqtab" id="vieweqcostab">  
+			<a href="#vieweqcostume"><span data-text="3159">Costume</span></a>  
+		</div>  
+	</div>`
+		: '';
+
+	const costumeHTML = hasTabs ? generateCostumeTableClassic(costumeRows, costumeTableBg) : '';
+
+	return `<div id="PlayerViewEquip" data-repload="basic_interface/item_invert.bmp">  
+	<div class="titlebar" data-background="basic_interface/titlebar_mid.bmp">  
+		<div class="left">  
+			<button  
+				class="base"  
+				data-background="basic_interface/sys_base_off.bmp"  
+				data-hover="basic_interface/sys_base_on.bmp"  
+			></button>  
+			<span class="PlayerName"></span>  
+		</div>  
+		<div class="right">  
+			<button  
+				class="base mini"  
+				data-background="basic_interface/sys_mini_off.bmp"  
+				data-hover="basic_interface/sys_mini_on.bmp"  
+			></button>  
+			<button  
+				class="base close"  
+				data-background="basic_interface/sys_close_off.bmp"  
+				data-hover="basic_interface/sys_close_on.bmp"  
+			></button>  
+		</div>  
+		<div class="clear"></div>  
+	</div>  
+	<div class="overlay"></div>  
+	${tabsHTML}  
+	<div class="panel">  
+		${generateGeneralTableClassic()}  
+		${costumeHTML}  
+	</div>  
+</div>`;
+}
+
+/**
  * Factory function to create a PlayerViewEquip component
  *
  * @param {Object} config
@@ -201,10 +311,14 @@ function getSelectorFromLocation(location) {
  * @param {Array|null} config.costumeRows - [[col1Class, col3Class], ...] for costume table
  * @param {string|null} config.costumeTableBg - Costume table background image path
  */
-export function createPlayerViewEquip({ name, cssText, hasTabs, costumeRows, costumeTableBg }) {
-	const Component = new GUIComponent(name, cssText);
+export function createPlayerViewEquip({ name, cssText, cssTextClassic, hasTabs, costumeRows, costumeTableBg }) {
+	const isClassic = GraphicsSettings.uiSkin === 'classic';
+	const Component = new GUIComponent(name, isClassic ? cssTextClassic : themeText + cssText);
 
-	Component.render = () => generateHTML(hasTabs, costumeRows, costumeTableBg);
+	Component.render = () =>
+		isClassic
+			? generateHTMLClassic(hasTabs, costumeRows, costumeTableBg)
+			: generateHTML(hasTabs, costumeRows, costumeTableBg);
 
 	const _preferences = Preferences.get(name, { x: 480, y: 200 }, 1.0);
 

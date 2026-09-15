@@ -9,6 +9,8 @@
 	position: absolute;
 	width: 301px;
 	height: 132px;
+	border: 1px solid var(--sj-border-strong);
+	box-shadow: var(--sj-shadow), 0 0 30px rgba(79, 195, 247, 0.22);
 }
 #WinLogin .win_login {
 	width: 100%;

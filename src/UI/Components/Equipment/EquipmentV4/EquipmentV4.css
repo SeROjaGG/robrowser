@@ -12,20 +12,18 @@
 	clear: both;
 }
 
-#EquipmentV4 .titlebar {
-	width: 280px;
-	height: 17px;
-	background-color: white;
-	background-repeat: repeat-x;
-	border-radius: 3px 3px 0px 0px;
-}
 #EquipmentV4 .titlebar .base {
 	width: 11px;
 	height: 11px;
 	border: none;
 	background-color: transparent;
-	background-repeat: no-repeat;
 	vertical-align: middle;
+}
+#EquipmentV4 .titlebar .mini,
+#EquipmentV4 .titlebar .close {
+	width: 16px;
+	height: 16px;
+	font-size: 10px;
 }
 #EquipmentV4 .titlebar .text {
 	text-shadow: 1px 1px white;
@@ -54,7 +52,6 @@
 #EquipmentV4 .tab-manager {
 	position: relative;
 	width: inherit;
-	background-color: white;
 	height: 15px;
 	display: flex;
 }
@@ -62,22 +59,18 @@
 #EquipmentV4 .tab a {
 	width: 60px;
 	height: 100%;
-	color: #42454a;
-	border: 1px solid #c9c3ba;
-	border-bottom: none;
 	text-decoration: none;
 	display: inline-block;
 	vertical-align: bottom;
-	border-radius: 3px 3px 0 0;
 	text-align: center;
 }
 #EquipmentV4 .tab a.selected {
-	color: #000;
 	font-weight: bold;
-	border-bottom: 1px solid white;
 	position: relative;
 	z-index: 100;
-	background-color: white;
+	color: var(--sj-text);
+	background: rgba(255, 255, 255, 0.06);
+	border-color: var(--sj-border-strong);
 }
 #EquipmentV4 .tab a.selected:after {
 	content: '';
@@ -90,12 +83,8 @@
 }
 
 #EquipmentV4 .panel {
-	background-color: white;
-	border-top: 1px solid gray;
+	border-top: 1px solid var(--sj-border);
 	height: 150px;
-}
-#EquipmentV4 .equipmentV0 .panel {
-	background-color: inherit;
 }
 #EquipmentV4 table.content {
 	width: 280px;
@@ -115,8 +104,10 @@
 #EquipmentV4 .col3 {
 	width: 115px;
 	height: 24px;
-	background-color: transparent;
-	background-repeat: no-repeat;
+	box-sizing: border-box;
+	border: 1px solid var(--sj-border);
+	border-radius: var(--sj-radius-sm);
+	background-color: var(--sj-glass);
 }
 #EquipmentV4 .col1 {
 	background-position: 5% 50%;
@@ -134,9 +125,13 @@
 	z-index: 900;
 	height: 13px;
 	padding: 5px;
-	background: rgba(0, 0, 0, 0.7);
-	color: white;
-	text-shadow: 1px 1px black;
+	background: var(--sj-glass-strong);
+	backdrop-filter: blur(var(--sj-blur)) saturate(160%);
+	-webkit-backdrop-filter: blur(var(--sj-blur)) saturate(160%);
+	border: 1px solid var(--sj-border);
+	border-radius: var(--sj-radius-sm);
+	color: var(--sj-text);
+	text-shadow: none;
 }
 
 #EquipmentV4 .item button {
@@ -153,7 +148,8 @@
 	line-height: 12px;
 	word-break: break-all;
 	overflow: hidden;
-	text-shadow: 1px 1px white;
+	color: var(--sj-text);
+	text-shadow: none;
 }
 
 #EquipmentV4 .col3 .item button,
@@ -217,8 +213,7 @@
 
 #EquipmentV4 .footer {
 	height: 20px;
-	border-bottom: 1px solid #c0c0c0;
-	background-position: 0px -130px;
+	border-top: 1px solid var(--sj-border);
 	position: relative;
 	top: -3px;
 }
@@ -364,8 +359,8 @@
 	overflow-y: auto;
 	overflow-x: hidden;
 	padding: 8px 8px;
-	border: 1px solid #c0c0c0;
-	background-color: #f8f8f8;
+	border: 1px solid var(--sj-border);
+	box-sizing: border-box;
 }
 
 #EquipmentV4 .title-option {
@@ -374,15 +369,18 @@
 	cursor: pointer;
 	background-color: transparent;
 	border: 1px solid transparent;
+	border-radius: 4px;
+	color: var(--sj-text);
 	white-space: nowrap;
 	width: 100%;
 }
 
 #EquipmentV4 .title-option.selected {
-	background-color: #e0e0e0;
+	background-color: rgba(79, 195, 247, 0.16);
+	border-color: var(--sj-border-strong);
 	font-weight: bold;
 }
 
 #EquipmentV4 .title-option:hover {
-	background-color: #e0e0e0;
+	background-color: rgba(255, 255, 255, 0.08);
 }

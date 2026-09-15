@@ -18,15 +18,20 @@ import GUIComponent from 'UI/GUIComponent.js';
 import Session from 'Engine/SessionStorage.js';
 import MAPS from 'DB/Map/WorldMap.js';
 import htmlText from './WorldMap.html?raw';
+import htmlTextClassic from './WorldMap.classic.html?raw';
 import cssText from './WorldMap.css?raw';
+import cssTextClassic from './WorldMap.classic.css?raw';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 import Navigation from 'UI/Components/Navigation/Navigation.js';
 
 /**
  * Create Component
  */
-const WorldMap = new GUIComponent('WorldMap', cssText);
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const WorldMap = new GUIComponent('WorldMap', isClassic ? cssTextClassic : themeText + cssText);
 
-WorldMap.render = () => htmlText;
+WorldMap.render = () => (isClassic ? htmlTextClassic : htmlText);
 
 /**
  * @type {Preferences} window preferences

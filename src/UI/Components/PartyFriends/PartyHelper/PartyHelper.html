@@ -1,23 +1,14 @@
-<div id="PartyHelper">
-	<div class="titlebar">
-		<ui-image src="basic_interface/titlebar_mid.bmp"></ui-image>
+<div id="PartyHelper" class="sj-panel">
+	<div class="titlebar sj-titlebar">
 		<div class="left">
-			<ui-button
-				class="base"
-				bg="basic_interface/sys_base_off.bmp"
-				hover="basic_interface/sys_base_on.bmp"
-			></ui-button>
+			<ui-button class="base"></ui-button>
 			<span class="text setup"><ui-text msg="291">Party Setup</ui-text></span>
 			<span class="text friend-setup"><ui-text msg="355">Friend Setup</ui-text></span>
 			<span class="text create"><ui-text msg="2054">Create Party</ui-text></span>
 			<span class="text invite"><ui-text msg="2056">Create Party</ui-text></span>
 		</div>
 		<div class="right">
-			<ui-button
-				class="base close"
-				bg="basic_interface/sys_close_off.bmp"
-				hover="basic_interface/sys_close_on.bmp"
-			></ui-button>
+			<ui-button class="base close sj-winbtn">×</ui-button>
 		</div>
 		<div class="clear"></div>
 	</div>
@@ -77,13 +68,7 @@
 		</div>
 	</div>
 	<div class="footer">
-		<ui-image src="basic_interface/btnbar_mid2.bmp"></ui-image>
-		<ui-button
-			class="btn ok"
-			bg="basic_interface/btn_ok.bmp"
-			hover="basic_interface/btn_ok_a.bmp"
-			down="basic_interface/btn_ok_b.bmp"
-		></ui-button>
-		<ui-button class="btn cancel" bg="btn_cancel.bmp" hover="btn_cancel_a.bmp" down="btn_cancel_b.bmp"></ui-button>
+		<ui-button class="btn ok sj-btn primary">OK</ui-button>
+		<ui-button class="btn cancel sj-btn">Cancel</ui-button>
 	</div>
 </div>

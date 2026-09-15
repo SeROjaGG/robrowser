@@ -84,6 +84,14 @@ const defaultGraphicsSettings = {
 	occluderFadeRadius: 5.0,
 
 	/**
+	 * SeROja: UI Skin -- 'classic' (current windows, untouched) or 'seroja'
+	 * (new glass theme, built incrementally per-component). Each reskinned
+	 * component checks this and picks its own template; nothing here forces
+	 * a component to have a skin variant yet.
+	 */
+	uiSkin: 'classic',
+
+	/**
 	 * SeROja: "Extras" section on the Basic tab.
 	 */
 	floatingExpNumbers: true,

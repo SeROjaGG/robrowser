@@ -13,23 +13,21 @@
 	background-repeat: no-repeat;
 }
 
-#WinStats .titlebar {
-	width: 280px;
-	height: 17px;
-	background-color: white;
-	background-repeat: repeat-x;
-	border-radius: 3px 3px 0px 0px;
-}
 #WinStats .titlebar .base {
 	width: 11px;
 	height: 11px;
 	border: none;
 	background-color: transparent;
-	background-repeat: no-repeat;
 	vertical-align: middle;
 }
+#WinStats .titlebar .mini,
+#WinStats .titlebar .close {
+	width: 16px;
+	height: 16px;
+	font-size: 10px;
+}
 #WinStats .titlebar .text {
-	text-shadow: 1px 1px white;
+	text-shadow: none;
 	vertical-align: -2px;
 	white-space: nowrap;
 	/* chrome bug */
@@ -95,11 +93,9 @@
 #WinStats .up button {
 	display: block;
 	margin-top: 5px;
-	border: none;
-	width: 11px;
-	height: 11px;
-	background-color: transparent;
-	background-repeat: no-repeat;
+	width: 14px;
+	height: 14px;
+	font-size: 9px;
 }
 
 #WinStats .footer {
@@ -114,9 +110,9 @@
 	margin-top: 3px;
 }
 #WinStats .footer .view_traits {
-	width: 20px;
-	height: 20px;
-	border: none;
+	width: 16px;
+	height: 16px;
+	font-size: 9px;
 }
 
 #WinStats .trait_text {
@@ -133,10 +129,10 @@
 }
 
 #WinStats .traits_panel {
-	background-position: 0px -123px;
 	position: absolute;
 	height: 100px;
 	width: 280px;
+	border-top: 1px solid var(--sj-border);
 }
 #WinStats .trait {
 	position: absolute;
@@ -154,11 +150,9 @@
 #WinStats .t_up button {
 	display: block;
 	margin-top: 5px;
-	border: none;
-	width: 11px;
-	height: 11px;
-	background-color: transparent;
-	background-repeat: no-repeat;
+	width: 14px;
+	height: 14px;
+	font-size: 9px;
 }
 
 #WinStats .t_column1 {
@@ -204,8 +198,12 @@
 	position: absolute;
 	display: none;
 	z-index: 1;
-	background-color: rgba(0, 0, 0, 0.6);
-	color: white;
+	background-color: var(--sj-glass-strong);
+	backdrop-filter: blur(var(--sj-blur)) saturate(160%);
+	-webkit-backdrop-filter: blur(var(--sj-blur)) saturate(160%);
+	border: 1px solid var(--sj-border);
+	border-radius: var(--sj-radius-sm);
+	color: var(--sj-text);
 	padding: 5px;
 	white-space: nowrap;
 	font-size: 0.6rem;
@@ -243,8 +241,12 @@
 	position: absolute;
 	display: none;
 	z-index: 1;
-	background-color: rgba(0, 0, 0, 0.6);
-	color: white;
+	background-color: var(--sj-glass-strong);
+	backdrop-filter: blur(var(--sj-blur)) saturate(160%);
+	-webkit-backdrop-filter: blur(var(--sj-blur)) saturate(160%);
+	border: 1px solid var(--sj-border);
+	border-radius: var(--sj-radius-sm);
+	color: var(--sj-text);
 	padding: 5px;
 	white-space: nowrap;
 	font-size: 0.6rem;
@@ -282,8 +284,12 @@
 	position: absolute;
 	display: none;
 	z-index: 1;
-	background-color: rgba(0, 0, 0, 0.6);
-	color: white;
+	background-color: var(--sj-glass-strong);
+	backdrop-filter: blur(var(--sj-blur)) saturate(160%);
+	-webkit-backdrop-filter: blur(var(--sj-blur)) saturate(160%);
+	border: 1px solid var(--sj-border);
+	border-radius: var(--sj-radius-sm);
+	color: var(--sj-text);
 	padding: 5px;
 	white-space: nowrap;
 	font-size: 0.6rem;
@@ -319,8 +325,12 @@
 	position: absolute;
 	display: none;
 	z-index: 1;
-	background-color: rgba(0, 0, 0, 0.6);
-	color: white;
+	background-color: var(--sj-glass-strong);
+	backdrop-filter: blur(var(--sj-blur)) saturate(160%);
+	-webkit-backdrop-filter: blur(var(--sj-blur)) saturate(160%);
+	border: 1px solid var(--sj-border);
+	border-radius: var(--sj-radius-sm);
+	color: var(--sj-text);
 	padding: 5px;
 	white-space: nowrap;
 	font-size: 0.6rem;
@@ -358,8 +368,12 @@
 	position: absolute;
 	display: none;
 	z-index: 1;
-	background-color: rgba(0, 0, 0, 0.6);
-	color: white;
+	background-color: var(--sj-glass-strong);
+	backdrop-filter: blur(var(--sj-blur)) saturate(160%);
+	-webkit-backdrop-filter: blur(var(--sj-blur)) saturate(160%);
+	border: 1px solid var(--sj-border);
+	border-radius: var(--sj-radius-sm);
+	color: var(--sj-text);
 	padding: 5px;
 	white-space: nowrap;
 	font-size: 0.6rem;
@@ -397,8 +411,12 @@
 	position: absolute;
 	display: none;
 	z-index: 1;
-	background-color: rgba(0, 0, 0, 0.6);
-	color: white;
+	background-color: var(--sj-glass-strong);
+	backdrop-filter: blur(var(--sj-blur)) saturate(160%);
+	-webkit-backdrop-filter: blur(var(--sj-blur)) saturate(160%);
+	border: 1px solid var(--sj-border);
+	border-radius: var(--sj-radius-sm);
+	color: var(--sj-text);
 	padding: 5px;
 	white-space: nowrap;
 	font-size: 0.6rem;

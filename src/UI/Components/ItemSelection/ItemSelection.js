@@ -17,14 +17,19 @@ import GUIComponent from 'UI/GUIComponent.js';
 import Inventory from 'UI/Components/Inventory/Inventory.js';
 import 'UI/Elements/Elements.js';
 import htmlText from './ItemSelection.html?raw';
+import htmlTextClassic from './ItemSelection.classic.html?raw';
 import cssText from './ItemSelection.css?raw';
+import cssTextClassic from './ItemSelection.classic.css?raw';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 
 /**
  * Create ItemSelection namespace
  */
-const ItemSelection = new GUIComponent('ItemSelection', cssText);
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const ItemSelection = new GUIComponent('ItemSelection', isClassic ? cssTextClassic : themeText + cssText);
 
-ItemSelection.render = () => htmlText;
+ItemSelection.render = () => (isClassic ? htmlTextClassic : htmlText);
 
 /**
  * Sanitize HTML, allowing only whitelisted tags (font, i, b)

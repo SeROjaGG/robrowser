@@ -1,49 +1,37 @@
-<div id="InventoryV3">
-	<div class="titlebar" data-background="basic_interface/titlebar_mid.bmp">
+<div id="InventoryV3" class="sj-panel">
+	<div class="titlebar sj-titlebar">
 		<div class="left">
-			<button
-				class="base"
-				data-background="basic_interface/sys_base_off.bmp"
-				data-hover="basic_interface/sys_base_on.bmp"
-			></button>
+			<button class="base"></button>
 			<span class="text" data-text="106">Inventory</span>
 		</div>
 		<div class="right">
-			<button
-				class="base mini"
-				data-background="basic_interface/sys_mini_off.bmp"
-				data-hover="basic_interface/sys_mini_on.bmp"
-			></button>
-			<button
-				class="base close"
-				data-background="basic_interface/sys_close_off.bmp"
-				data-hover="basic_interface/sys_close_on.bmp"
-			></button>
+			<button class="base mini sj-winbtn">–</button>
+			<button class="base close sj-winbtn">×</button>
 		</div>
 		<div class="clear"></div>
 	</div>
 	<div class="overlay"></div>
 	<div class="panel">
 		<div class="middle">
-			<div class="tabs" data-background="basic_interface/btnbar_mid2.bmp">
-				<button class="item tab" data-tab="item" data-text="1465"></button>
-				<button class="equip tab" data-tab="equip" data-text="2050"></button>
-				<button class="etc tab" data-tab="etc" data-text="1471"></button>
-				<button class="fav tab" data-tab="fav" data-text="2051"></button>
+			<div class="tabs">
+				<button class="item tab sj-tab" data-tab="item" data-text="1465"></button>
+				<button class="equip tab sj-tab" data-tab="equip" data-text="2050"></button>
+				<button class="etc tab sj-tab" data-tab="etc" data-text="1471"></button>
+				<button class="fav tab sj-tab" data-tab="fav" data-text="2051"></button>
 			</div>
 			<div class="container">
 				<div class="scroll-host">
-					<div class="content" data-background="basic_interface/itemwin_mid.bmp"></div>
+					<div class="content"></div>
 				</div>
 				<div class="lockoverlay hidden"></div>
 
-				<div class="lockoverlaymsg hidden" data-background="inventory/popup_itemdeal_lock.bmp">
+				<div class="lockoverlaymsg hidden sj-panel strong">
 					<span class="msg" data-text="2951"></span>
-					<div class="lockoverlayclose" data-background="inventory/bt_close.bmp"></div>
+					<div class="lockoverlayclose sj-winbtn">×</div>
 				</div>
 			</div>
 		</div>
-		<div class="footer" data-background="basic_interface/btnbar_mid2.bmp">
+		<div class="footer">
 			<div class="expand">
 				<button
 					class="item_expansion"

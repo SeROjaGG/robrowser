@@ -5,35 +5,28 @@
 
 #SkillListV2 {
 	position: absolute;
-	border-radius: 5px;
-	background: white;
 	line-height: 18px;
 	letter-spacing: 0px;
-	border: 1px solid #c1c6c2;
 }
 #SkillListV2 .border {
-	border: 1px solid #c1c6c2;
 	margin: 1px;
-	border-radius: 5px;
 }
 
-#SkillListV2 .titlebar {
-	height: 18px;
-	background-color: white;
-	background-repeat: repeat-x;
-	background-position: 0 -1px;
-	border-radius: 3px 3px 0px 0px;
-}
 #SkillListV2 .titlebar .base {
 	width: 11px;
 	height: 11px;
 	border: none;
 	background-color: transparent;
-	background-repeat: no-repeat;
 	vertical-align: middle;
 }
+#SkillListV2 .titlebar .mini,
+#SkillListV2 .titlebar .close {
+	width: 16px;
+	height: 16px;
+	font-size: 10px;
+}
 #SkillListV2 .titlebar .text {
-	text-shadow: 1px 1px white;
+	text-shadow: none;
 	vertical-align: -2px;
 	white-space: nowrap;
 	/* chrome bug */
@@ -60,7 +53,7 @@
 #SkillListV2 .content {
 	position: relative;
 	padding: 5px;
-	border-top: 1px solid #c6c6c6;
+	border-top: 1px solid var(--sj-border);
 	width: 270px;
 	height: 200px;
 }
@@ -96,9 +89,10 @@
 	width: 18px;
 	position: relative;
 	margin: -3px 0;
-	border: 1px solid #c1c6c2;
-	background: #fff;
-	border-radius: 5px 0 0 5px;
+	border: 1px solid var(--sj-border);
+	background: var(--sj-glass);
+	color: var(--sj-muted);
+	border-radius: var(--sj-radius-sm) 0 0 var(--sj-radius-sm);
 	cursor: pointer;
 }
 #SkillListV2 .tab-content-mini {
@@ -172,18 +166,16 @@
 }
 
 #SkillListV2 .selected.disabled .selectable {
-	background-color: #b5b5b5;
+	background-color: rgba(255, 255, 255, 0.08);
 }
 #SkillListV2 .selected.passive .selectable {
-	background-color: #73d5ee;
+	background-color: rgba(79, 195, 247, 0.25);
 }
-/*#SkillListV2 .selected.active .selectable { background-color:#739cee;}*/
 
 #SkillListV2 .footer {
 	width: 100%;
 	height: 27px;
-	background-repeat: repeat-x;
-	background-color: transparent;
+	border-top: 1px solid var(--sj-border);
 	position: relative;
 }
 #SkillListV2 .footer .text {
@@ -193,15 +185,14 @@
 #SkillListV2 .footer .btn {
 	position: absolute;
 	top: 5px;
-	border: 0;
-	width: 42px;
-	height: 20px;
-	background-repeat: no-repeat;
-	background-color: transparent;
+	width: 56px;
+	height: 22px;
+	padding: 0;
+	font-size: 11px;
 	display: none;
 }
 #SkillListV2 .footer .apply {
-	right: 70px;
+	right: 84px;
 }
 #SkillListV2 .footer .reset {
 	right: 20px;
@@ -257,8 +248,8 @@
 #SkillListV2 .skillCol {
 	position: relative;
 	margin: 15px 17px;
-	border: 1px dashed #c0c0c0ff;
-	border-radius: 5px;
+	border: 1px dashed var(--sj-border);
+	border-radius: var(--sj-radius-sm);
 	width: 28px;
 	height: 28px;
 	text-align: center;
@@ -285,9 +276,10 @@
 	width: 18px;
 	position: relative;
 	margin: -3px 0;
-	border: 1px solid #c1c6c2;
-	background: #fff;
-	border-radius: 5px 0 0 5px;
+	border: 1px solid var(--sj-border);
+	background: var(--sj-glass);
+	color: var(--sj-muted);
+	border-radius: var(--sj-radius-sm) 0 0 var(--sj-radius-sm);
 	cursor: pointer;
 }
 #SkillListV2 .tab-content {

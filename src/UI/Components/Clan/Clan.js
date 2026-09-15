@@ -16,16 +16,21 @@ import 'UI/Elements/Elements.js';
 import GUIComponent from 'UI/GUIComponent.js';
 import UIManager from 'UI/UIManager.js';
 import htmlText from './Clan.html?raw';
+import htmlTextClassic from './Clan.classic.html?raw';
 import cssText from './Clan.css?raw';
+import cssTextClassic from './Clan.classic.css?raw';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 
-const Clan = new GUIComponent('Clan', cssText);
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const Clan = new GUIComponent('Clan', isClassic ? cssTextClassic : themeText + cssText);
 /**
  * @var {Preferences} structure
  */
 const _preferences = Preferences.get('Clan', { x: 150, y: 150 }, 1.0);
 
 // render() just returns the static HTML — no template literals needed
-Clan.render = () => htmlText;
+Clan.render = () => (isClassic ? htmlTextClassic : htmlText);
 
 Clan.init = function init() {
 	this.draggable('.titlebar');

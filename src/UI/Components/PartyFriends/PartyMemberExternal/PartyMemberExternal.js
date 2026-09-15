@@ -11,7 +11,11 @@ import UIManager from 'UI/UIManager.js';
 import GUIComponent from 'UI/GUIComponent.js';
 import 'UI/Elements/Elements.js';
 import htmlText from './PartyMemberExternal.html?raw';
+import htmlTextClassic from './PartyMemberExternal.classic.html?raw';
 import cssText from './PartyMemberExternal.css?raw';
+import cssTextClassic from './PartyMemberExternal.classic.css?raw';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 import ContextMenu from 'UI/Components/ContextMenu/ContextMenu.js';
 import SkillTargetSelection from 'UI/Components/SkillTargetSelection/SkillTargetSelection.js';
 import PartyFriendsV1 from 'UI/Components/PartyFriends/PartyFriendsV1/PartyFriendsV1.js';
@@ -25,7 +29,8 @@ import PartyFriends from 'UI/Components/PartyFriends/PartyFriends.js';
 /**
  * Create Component
  */
-const PartyMemberExternal = new GUIComponent('PartyMemberExternal', cssText);
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const PartyMemberExternal = new GUIComponent('PartyMemberExternal', isClassic ? cssTextClassic : themeText + cssText);
 
 /**
  * Helper: query inside shadow root
@@ -37,7 +42,7 @@ function _root(comp) {
 /**
  * Render HTML
  */
-PartyMemberExternal.render = () => htmlText;
+PartyMemberExternal.render = () => (isClassic ? htmlTextClassic : htmlText);
 
 /**
  * Initialize the component

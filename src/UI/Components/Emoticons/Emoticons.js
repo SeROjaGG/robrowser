@@ -18,18 +18,23 @@ import UIManager from 'UI/UIManager.js';
 import GUIComponent from 'UI/GUIComponent.js';
 import ChatBox from 'UI/Components/ChatBox/ChatBox.js';
 import htmlText from './Emoticons.html?raw';
+import htmlTextClassic from './Emoticons.classic.html?raw';
 import cssText from './Emoticons.css?raw';
+import cssTextClassic from './Emoticons.classic.css?raw';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 import ShortCuts from 'UI/Components/ShortCuts/ShortCuts.js';
 
 /**
  * Create Component
  */
-const Emoticons = new GUIComponent('Emoticons', cssText);
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const Emoticons = new GUIComponent('Emoticons', isClassic ? cssTextClassic : themeText + cssText);
 
 /**
  * Render HTML
  */
-Emoticons.render = () => htmlText;
+Emoticons.render = () => (isClassic ? htmlTextClassic : htmlText);
 
 /**
  * @var {number} page index

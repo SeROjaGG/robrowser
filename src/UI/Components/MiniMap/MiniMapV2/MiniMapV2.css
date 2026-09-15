@@ -3,34 +3,51 @@
 	right: 16px;
 }
 
+#MiniMapV2 {
+	padding: 8px;
+}
+#MiniMapV2 canvas {
+	display: block;
+	border-radius: var(--sj-radius-sm);
+}
 #MiniMapV2 .info_container {
 	display: flex;
+	align-items: center;
 	justify-content: space-between;
+	gap: 4px;
+	margin-top: 6px;
+}
+#MiniMapV2 .info_container ui-button {
+	border-radius: 6px;
+	background: var(--sj-glass);
+}
+#MiniMapV2 .info_container ui-button:hover {
+	background: rgba(255, 255, 255, 0.12);
 }
 #MiniMapV2 .info_container .object {
-	width: 12px;
-	height: 12px;
+	width: 16px;
+	height: 16px;
 }
 #MiniMapV2 .info_container .plus {
-	width: 12px;
-	height: 12px;
+	width: 16px;
+	height: 16px;
 }
 #MiniMapV2 .info_container .minus {
-	width: 12px;
-	height: 12px;
+	width: 16px;
+	height: 16px;
 }
 #MiniMapV2 .info_container .mini {
-	width: 12px;
-	height: 12px;
+	width: 16px;
+	height: 16px;
 }
 #MiniMapV2 .info_container .viewon {
-	width: 12px;
-	height: 12px;
+	width: 16px;
+	height: 16px;
 }
 #MiniMapV2 .info_container .coordinates {
-	color: #fff;
-	text-shadow: 1px 1px 1px #000;
-	left: 14px;
+	color: var(--sj-text);
+	text-shadow: none;
+	font-size: 11px;
 }
 
 #MiniMapV2 ui-button.cashshopIcon {

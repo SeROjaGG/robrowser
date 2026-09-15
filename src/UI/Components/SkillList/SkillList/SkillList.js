@@ -11,12 +11,16 @@
 
 import { createSkillList } from '../SkillListCommon.js';
 import htmlText from './SkillList.html?raw';
+import htmlTextClassic from './SkillList.classic.html?raw';
 import cssText from './SkillList.css?raw';
+import cssTextClassic from './SkillList.classic.css?raw';
 
 export default createSkillList({
 	name: 'SkillList',
 	htmlText: htmlText,
 	cssText: cssText,
+	htmlTextClassic,
+	cssTextClassic,
 	listOnly: true,
 	containerSelector: '.SkillList',
 	preferenceDefaults: {

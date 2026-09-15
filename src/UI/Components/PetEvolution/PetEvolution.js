@@ -18,14 +18,19 @@ import ChatBox from 'UI/Components/ChatBox/ChatBox.js';
 import Inventory from 'UI/Components/Inventory/Inventory.js';
 import ItemInfo from 'UI/Components/ItemInfo/ItemInfo.js';
 import htmlText from './PetEvolution.html?raw';
+import htmlTextClassic from './PetEvolution.classic.html?raw';
 import cssText from './PetEvolution.css?raw';
+import cssTextClassic from './PetEvolution.classic.css?raw';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 
 /**
  * Create Component
  */
-const PetEvolution = new GUIComponent('PetEvolution', cssText);
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const PetEvolution = new GUIComponent('PetEvolution', isClassic ? cssTextClassic : themeText + cssText);
 
-PetEvolution.render = () => htmlText;
+PetEvolution.render = () => (isClassic ? htmlTextClassic : htmlText);
 
 /**
  * Variables

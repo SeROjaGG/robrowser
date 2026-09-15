@@ -14,7 +14,11 @@ import UIManager from 'UI/UIManager.js';
 import GUIComponent from 'UI/GUIComponent.js';
 import Emoticons from 'UI/Components/Emoticons/Emoticons.js';
 import htmlText from './ShortCuts.html?raw';
+import htmlTextClassic from './ShortCuts.classic.html?raw';
 import cssText from './ShortCuts.css?raw';
+import cssTextClassic from './ShortCuts.classic.css?raw';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 import ChatBox from 'UI/Components/ChatBox/ChatBox.js';
 import Network from 'Network/NetworkManager.js';
 import PACKET from 'Network/PacketStructure.js';
@@ -24,8 +28,9 @@ import KEYS from 'Controls/KeyEventHandler.js';
 /**
  * Create Component
  */
-const ShortCuts = new GUIComponent('ShortCuts', cssText);
-ShortCuts.render = () => htmlText;
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const ShortCuts = new GUIComponent('ShortCuts', isClassic ? cssTextClassic : themeText + cssText);
+ShortCuts.render = () => (isClassic ? htmlTextClassic : htmlText);
 
 /**
  * @var {Preferences} structure

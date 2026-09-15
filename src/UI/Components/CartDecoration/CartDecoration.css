@@ -10,23 +10,20 @@
 	width: 255px;
 	height: 117px;
 }
-#cartdecoration .titlebar {
-	width: 100%;
-	height: 17px;
-	background-color: white;
-	background-repeat: repeat-x;
-	border-radius: 3px 3px 0px 0px;
-}
 #cartdecoration .titlebar .base {
 	width: 11px;
 	height: 11px;
 	border: none;
 	background-color: transparent;
-	background-repeat: no-repeat;
 	vertical-align: middle;
 }
+#cartdecoration .titlebar .close {
+	width: 16px;
+	height: 16px;
+	font-size: 10px;
+}
 #cartdecoration .titlebar .text {
-	text-shadow: 1px 1px white;
+	text-shadow: none;
 	vertical-align: -2px;
 	white-space: nowrap;
 	display: inline-block;
@@ -50,11 +47,15 @@
 	border: 0;
 	width: 255px;
 	height: 100px;
-	background-color: white;
 	overflow-y: auto;
 }
 #cartdecoration .cart {
 	float: left;
-	border: 0;
+	border: 1px solid transparent;
+	border-radius: var(--sj-radius-sm);
 	cursor: pointer;
+}
+#cartdecoration .cart:hover {
+	border-color: var(--sj-border-strong);
+	background-color: rgba(255, 255, 255, 0.06);
 }

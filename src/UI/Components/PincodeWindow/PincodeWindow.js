@@ -13,18 +13,23 @@ import Renderer from 'Renderer/Renderer.js';
 import UIManager from 'UI/UIManager.js';
 import GUIComponent from 'UI/GUIComponent.js';
 import htmlText from './PincodeWindow.html?raw';
+import htmlTextClassic from './PincodeWindow.classic.html?raw';
 import cssText from './PincodeWindow.css?raw';
+import cssTextClassic from './PincodeWindow.classic.css?raw';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 import 'UI/Elements/Elements.js';
 
 /**
  * Pincode Window namespace
  */
-const PincodeWindow = new GUIComponent('PincodeWindow', cssText);
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const PincodeWindow = new GUIComponent('PincodeWindow', isClassic ? cssTextClassic : themeText + cssText);
 
 /**
  * Render HTML
  */
-PincodeWindow.render = () => htmlText;
+PincodeWindow.render = () => (isClassic ? htmlTextClassic : htmlText);
 
 PincodeWindow.resetUI = function resetUI() {
 	PincodeWindow._resetstate = 0;

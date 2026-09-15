@@ -1,8 +1,8 @@
-<div id="SwitchEquip">
+<div id="SwitchEquip" class="sj-panel">
 	<div class="switchoverlay"></div>
 	<div class="panel">
 		<div class="titlebar" data-text="2986"></div>
-		<table class="swapcontent" id="swapgeneral" data-background="swap_equipment/equipwin_bg2_change.bmp">
+		<table class="swapcontent" id="swapgeneral">
 			<tr>
 				<td class="swap_head_top col1"></td>
 				<td rowspan="6">
@@ -30,7 +30,7 @@
 				<td class="swap_accessory2 col3"></td>
 			</tr>
 		</table>
-		<table class="swapcontent hide" id="swapcostume" data-background="swap_equipment/equipwin_special_change.bmp">
+		<table class="swapcontent hide" id="swapcostume">
 			<tr>
 				<td class="swap_costume_head_top col1"></td>
 				<td rowspan="6">
@@ -60,19 +60,7 @@
 		</table>
 	</div>
 	<div class="footer" id="equipment_footer">
-		<button
-			id="swap-button"
-			class="onswap"
-			data-text="3111"
-			data-background="swap_equipment/btn_change2_normal.bmp"
-			data-hover="swap_equipment/btn_change2_over.bmp"
-			data-press="swap_equipment/btn_change2_press.bmp"
-		></button>
-		<button
-			class="closeswap"
-			data-background="btn_cancel.bmp"
-			data-hover="btn_cancel_a.bmp"
-			data-press="btn_cancel_b.bmp"
-		></button>
+		<button id="swap-button" class="onswap sj-btn primary" data-text="3111"></button>
+		<button class="closeswap sj-btn">Cancel</button>
 	</div>
 </div>

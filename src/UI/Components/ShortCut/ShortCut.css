@@ -9,25 +9,26 @@
 	position: absolute;
 	width: 280px;
 	height: 100%;
-	background-repeat: repeat-y;
 }
 #ShortCut .close {
 	position: absolute;
-	top: 2px;
-	right: 2px;
-	border: none;
-	background-color: transparent;
-	width: 11px;
-	height: 11px;
+	top: 4px;
+	right: 4px;
+	width: 16px;
+	height: 16px;
+	font-size: 10px;
 }
 #ShortCut .resize {
 	position: absolute;
-	bottom: 1px;
-	right: 1px;
-	border: none;
-	background-color: transparent;
+	bottom: 2px;
+	right: 2px;
 	width: 13px;
 	height: 13px;
+	border: none;
+	border-right: 2px solid var(--sj-border);
+	border-bottom: 2px solid var(--sj-border);
+	background-color: transparent;
+	cursor: nwse-resize;
 }
 
 #ShortCut .row {
@@ -40,9 +41,6 @@
 	margin-top: 5px;
 	margin-left: 5px;
 	margin-bottom: 6px;
-}
-#ShortCut .row .container:hover {
-	background-color: #b5ffb5;
 }
 #ShortCut .row .index {
 	float: left;

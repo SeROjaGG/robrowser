@@ -1,27 +1,14 @@
-<div id="SkillListV2">
+<div id="SkillListV2" class="sj-panel">
 	<div class="border">
-		<div class="titlebar">
-			<ui-image src="basic_interface/btnbar_mid2.bmp"></ui-image>
+		<div class="titlebar sj-titlebar">
 			<div class="left">
-				<ui-button
-					class="base"
-					bg="basic_interface/sys_base_off.bmp"
-					hover="basic_interface/sys_base_on.bmp"
-				></ui-button>
+				<ui-button class="base"></ui-button>
 				<ui-text class="text" msgid="283">Skill Tree</ui-text>
 			</div>
 			<div class="right">
 				<input type="checkbox" class="view_skill_info" />view skill info
-				<ui-button
-					class="base mini"
-					bg="basic_interface/sys_mini_off.bmp"
-					hover="basic_interface/sys_mini_on.bmp"
-				></ui-button>
-				<ui-button
-					class="base close"
-					bg="basic_interface/sys_close_off.bmp"
-					hover="basic_interface/sys_close_on.bmp"
-				></ui-button>
+				<ui-button class="base mini sj-winbtn">–</ui-button>
+				<ui-button class="base close sj-winbtn">×</ui-button>
 			</div>
 			<div class="clear"></div>
 		</div>
@@ -389,21 +376,10 @@
 			</div>
 
 			<div class="footer">
-				<ui-image src="basic_interface/btnbar_mid2.bmp"></ui-image>
 				<div class="text">Skill Points: <span class="skpoints_count">0</span></div>
-				<ui-button
-					class="btn apply"
-					bg="btn_apply.bmp"
-					hover="btn_apply_a.bmp"
-					down="btn_apply_b.bmp"
-				></ui-button>
-				<ui-button
-					class="btn reset"
-					bg="btn_reset.bmp"
-					hover="btn_reset_a.bmp"
-					down="btn_reset_b.bmp"
-				></ui-button>
-				<ui-button class="extend" bg="btn_resize.bmp"></ui-button>
+				<ui-button class="btn apply sj-btn primary">Apply</ui-button>
+				<ui-button class="btn reset sj-btn">Reset</ui-button>
+				<ui-button class="extend"></ui-button>
 			</div>
 		</div>
 	</div>

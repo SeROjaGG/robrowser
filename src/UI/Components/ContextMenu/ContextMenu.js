@@ -11,11 +11,15 @@ import Mouse from 'Controls/MouseEventHandler.js';
 import UIManager from 'UI/UIManager.js';
 import GUIComponent from 'UI/GUIComponent.js';
 import cssText from './ContextMenu.css?raw';
+import cssTextClassic from './ContextMenu.classic.css?raw';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 
 /**
  * Create Component
  */
-const ContextMenu = new GUIComponent('ContextMenu', cssText);
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const ContextMenu = new GUIComponent('ContextMenu', isClassic ? cssTextClassic : themeText + cssText);
 
 /**
  * Render HTML

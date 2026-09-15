@@ -21,13 +21,17 @@ import UIManager from 'UI/UIManager.js';
 import GUIComponent from 'UI/GUIComponent.js';
 import Cursor from 'UI/CursorManager.js';
 import PartyFriends from 'UI/Components/PartyFriends/PartyFriends.js';
+import GraphicsSettings from 'Preferences/Graphics.js';
 import htmlText from './SkillTargetSelection.html?raw';
 import cssText from './SkillTargetSelection.css?raw';
+import cssTextClassic from './SkillTargetSelection.classic.css?raw';
+
+const isClassic = GraphicsSettings.uiSkin === 'classic';
 
 /**
  * Create component
  */
-const SkillTargetSelection = new GUIComponent('SkillTargetSelection', cssText);
+const SkillTargetSelection = new GUIComponent('SkillTargetSelection', isClassic ? cssTextClassic : cssText);
 
 SkillTargetSelection.render = () => htmlText;
 
@@ -248,7 +252,7 @@ function renderText(text, canvas) {
 
 	ctx.font = `${fontSize}px Arial`;
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
-	ctx.fillStyle = 'rgba(0,0,0,0.5)';
+	ctx.fillStyle = isClassic ? 'rgba(0,0,0,0.5)' : 'rgba(6,10,20,0.75)';
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
 
 	ctx.fillStyle = 'black';

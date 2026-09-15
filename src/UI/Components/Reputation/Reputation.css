@@ -9,27 +9,22 @@
 #Reputation {
 	width: 100%;
 	height: 100%;
-	background-color: white;
-	border-radius: 5px;
 }
 
-#Reputation .titlebar {
-	width: 100%;
-	height: 17px;
-	background-color: white;
-	background-repeat: repeat-x;
-	border-radius: 3px 3px 0px 0px;
-}
 #Reputation .titlebar .base {
 	width: 11px;
 	height: 11px;
 	border: none;
 	background-color: transparent;
-	background-repeat: no-repeat;
 	vertical-align: middle;
 }
+#Reputation .titlebar .close {
+	width: 16px;
+	height: 16px;
+	font-size: 10px;
+}
 #Reputation .titlebar .text {
-	text-shadow: 1px 1px white;
+	text-shadow: none;
 	vertical-align: -2px;
 	white-space: nowrap;
 	/* chrome bug */
@@ -76,7 +71,7 @@
 	width: 140px;
 	padding-right: 36px;
 	height: 18px;
-	background-color: #eeeeef;
+	box-sizing: border-box;
 }
 
 #Reputation .select-arrow {
@@ -85,10 +80,8 @@
 	right: 0px;
 	width: 18px;
 	height: 18px;
-	border: none;
+	font-size: 9px;
 	cursor: pointer;
-	background-color: transparent;
-	background-repeat: no-repeat;
 	pointer-events: none;
 }
 
@@ -103,26 +96,24 @@
 #Reputation .rep_group_searchbar {
 	height: 14px;
 	width: 196px;
-	border: 1px solid black;
-	background-color: #eeeeef;
+	box-sizing: border-box;
 }
 
 #Reputation .search {
 	height: 18px;
-	width: 33px;
-	border: none;
+	width: 20px;
+	font-size: 10px;
 	position: absolute;
 	top: 0px;
 	right: 0px;
-	background-repeat: no-repeat;
-	background-color: transparent;
 }
 
 #Reputation .rep_group_total_points_wrapper {
 	width: 245px;
-	border: 1px solid black;
+	border: 1px solid var(--sj-border);
+	border-radius: var(--sj-radius-sm);
 	margin-top: 5px;
-	background-color: #eeeeef;
+	background-color: var(--sj-glass);
 	align-items: center;
 	display: flex;
 }
@@ -208,28 +199,23 @@
 }
 
 #Reputation .paginator ui-button {
-	width: 7px;
-	height: 11px;
-	border: none;
-	background-repeat: no-repeat;
-	background-color: transparent;
+	width: 18px;
+	height: 18px;
+	font-size: 10px;
 }
 
 #Reputation .footer {
 	height: 28px;
-	background-color: white;
-	background-repeat: repeat-x;
-	border-radius: 0px 0px 3px 3px;
+	border-top: 1px solid var(--sj-border);
 	display: flex;
 	justify-content: flex-end;
 }
 
 #Reputation .big_btn_close {
-	height: 20px;
-	width: 42px;
-	border: none;
-	margin-top: 5px;
+	height: 22px;
+	width: 56px;
+	padding: 0;
+	font-size: 11px;
+	margin-top: 3px;
 	margin-right: 10px;
-	background-repeat: no-repeat;
-	background-color: transparent;
 }

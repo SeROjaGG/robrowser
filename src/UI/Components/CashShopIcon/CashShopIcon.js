@@ -16,11 +16,15 @@ import GUIComponent from 'UI/GUIComponent.js';
 import 'UI/Elements/Elements.js';
 import htmlText from './CashShopIcon.html?raw';
 import cssText from './CashShopIcon.css?raw';
+import cssTextClassic from './CashShopIcon.classic.css?raw';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 
 /**
  * Create Component
  */
-const CashShopIcon = new GUIComponent('CashShopIcon', cssText);
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const CashShopIcon = new GUIComponent('CashShopIcon', isClassic ? cssTextClassic : themeText + cssText);
 
 CashShopIcon.render = () => htmlText;
 

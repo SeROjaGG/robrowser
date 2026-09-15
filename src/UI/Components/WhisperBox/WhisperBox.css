@@ -9,44 +9,43 @@
 	position: absolute;
 	width: 280px;
 	height: 156px;
-	border: 1px solid white;
-	border-radius: 5px;
-	background: rgba(0, 0, 0, 0.5);
+	border: 1px solid var(--sj-border);
+	border-radius: var(--sj-radius);
+	background: var(--sj-glass);
+	backdrop-filter: blur(var(--sj-blur)) saturate(160%);
+	-webkit-backdrop-filter: blur(var(--sj-blur)) saturate(160%);
 	display: flex;
 	flex-direction: column;
 	overflow: hidden;
-	color: #ffffff;
+	color: var(--sj-text);
 	min-width: 150px;
 	min-height: 100px;
 }
 
 .whisper-header {
-	background: rgba(255, 255, 255, 0.2);
+	background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), transparent);
 	height: 18px;
 	padding: 0 5px;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	color: #ffffff;
+	color: var(--sj-text);
 	font-size: 11px;
 	font-weight: bold;
 	cursor: move;
 }
 
 .whisper-header .close {
-	width: 11px;
-	height: 11px;
-	border: none;
-	background-color: transparent;
-	background-repeat: no-repeat;
-	vertical-align: middle;
+	width: 16px;
+	height: 16px;
+	font-size: 10px;
 }
 
 .whisper-body {
 	flex: 1;
 	padding: 0 2px 2px 5px;
 	overflow: hidden;
-	border-bottom: 1px solid white;
+	border-bottom: 1px solid var(--sj-border);
 }
 
 .whisper-body .contentwrapper {
@@ -57,7 +56,7 @@
 	height: 100%;
 	overflow-y: auto;
 	font-size: 12px;
-	text-shadow: 1px 1px 0px #000;
+	text-shadow: none;
 	word-break: break-all;
 	line-height: 14px;
 }
@@ -85,7 +84,7 @@
 	white-space: nowrap;
 	overflow-x: hidden;
 	overflow-y: hidden;
-	color: #ffffff;
+	color: var(--sj-text);
 	font-size: 12px;
 	display: inline-block;
 }
@@ -99,11 +98,11 @@
 
 .whisper-footer .resizer {
 	position: absolute;
-	right: 0px;
-	bottom: 1px;
-	width: 13px;
-	height: 13px;
-	border: none;
-	background-repeat: no-repeat;
-	background-color: transparent;
+	right: 2px;
+	bottom: 2px;
+	width: 11px;
+	height: 11px;
+	border-right: 2px solid var(--sj-border);
+	border-bottom: 2px solid var(--sj-border);
+	cursor: nwse-resize;
 }

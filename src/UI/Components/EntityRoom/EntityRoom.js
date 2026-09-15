@@ -12,11 +12,15 @@ import UIManager from 'UI/UIManager.js';
 import GUIComponent from 'UI/GUIComponent.js';
 import htmlText from './EntityRoom.html?raw';
 import cssText from './EntityRoom.css?raw';
+import cssTextClassic from './EntityRoom.classic.css?raw';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 
 /**
  * Create component
  */
-const EntityRoom = new GUIComponent('EntityRoom', cssText);
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const EntityRoom = new GUIComponent('EntityRoom', isClassic ? cssTextClassic : themeText + cssText);
 
 /**
  * Render HTML

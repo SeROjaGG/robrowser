@@ -11,13 +11,6 @@
 	height: 330px;
 }
 
-#Emoticons .titlebar {
-	width: 100%;
-	height: 17px;
-	background-color: white;
-	background-repeat: repeat-x;
-	border-radius: 3px 3px 0px 0px;
-}
 #Emoticons .titlebar .base {
 	width: 11px;
 	height: 11px;
@@ -26,8 +19,13 @@
 	background-repeat: no-repeat;
 	vertical-align: middle;
 }
+#Emoticons .titlebar .close {
+	width: 16px;
+	height: 16px;
+	font-size: 10px;
+}
 #Emoticons .titlebar .text {
-	text-shadow: 1px 1px white;
+	text-shadow: none;
 	vertical-align: -2px;
 	white-space: nowrap;
 	/* chrome bug */
@@ -52,33 +50,31 @@
 
 #Emoticons .content {
 	height: 290px;
-	background-color: white;
 	padding-left: 10px;
 }
 #Emoticons .content canvas {
 	width: 40px;
 	height: 40px;
 	display: inline-block;
-	border-radius: 5px;
+	border-radius: var(--sj-radius-sm);
 	border: 1px solid transparent;
 	margin: 2px;
 }
 #Emoticons .content canvas:hover {
-	border: 1px solid #cfcfcf;
+	border: 1px solid var(--sj-border-strong);
 }
 
 #Emoticons .navigation {
 	text-align: center;
-	background-color: white;
-	border-radius: 0px 0px 3px 3px;
+	border-top: 1px solid var(--sj-border);
 }
 #Emoticons .navigation button {
 	border: none;
 	background: none;
-	color: #e6b59c;
+	color: var(--sj-accent-2);
 }
 #Emoticons .navigation button:hover {
-	color: #ff9c9c;
+	color: var(--sj-accent);
 }
 #Emoticons .navigation button.disabled {
 	visibility: hidden;

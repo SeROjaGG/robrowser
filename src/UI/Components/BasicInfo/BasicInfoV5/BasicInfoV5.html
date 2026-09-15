@@ -1,20 +1,7 @@
-<div
-	id="BasicInfoV5"
-	class="large"
-	data-background="basic_interface/w_basewin_bg2.bmp"
-	data-preload="basic_interface/gzered_left.bmp;basic_interface/gzered_mid.bmp;basic_interface/gzered_right.bmp;basic_interface/gzeblue_left.bmp;basic_interface/gzeblue_mid.bmp;basic_interface/gzeblue_right.bmp"
->
+<div id="BasicInfoV5" class="large sj-panel">
 	<div class="topbar">
-		<button
-			class="left"
-			data-background="basic_interface/sys_base_off.bmp"
-			data-hover="basic_interface/sys_base_on.bmp"
-		></button>
-		<button
-			class="right"
-			data-background="basic_interface/sys_mini_off.bmp"
-			data-hover="basic_interface/sys_mini_on.bmp"
-		></button>
+		<button class="left"></button>
+		<button class="right sj-winbtn">–</button>
 	</div>
 
 	<!-- LARGE INTERFACE -->
@@ -24,28 +11,22 @@
 		<div class="job"><span class="job_value"></span></div>
 
 		<div class="hp_title">HP</div>
-		<div class="hp_bar">
-			<div class="hp_bar_left"></div>
-			<div class="hp_bar_middle"></div>
-			<div class="hp_bar_right"></div>
+		<div class="hp_bar sj-bar hp">
+			<i class="hp_bar_fill"></i>
 			<div class="hp_bar_perc"><span class="hp_value"></span> / <span class="hp_max_value"></span></div>
 		</div>
 		<div class="hp_perc"></div>
 
 		<div class="sp_title">SP</div>
-		<div class="sp_bar">
-			<div class="sp_bar_left"></div>
-			<div class="sp_bar_middle"></div>
-			<div class="sp_bar_right"></div>
+		<div class="sp_bar sj-bar sp">
+			<i class="sp_bar_fill"></i>
 			<div class="sp_bar_perc"><span class="sp_value"></span> / <span class="sp_max_value"></span></div>
 		</div>
 		<div class="sp_perc"></div>
 
 		<div class="ap_title">AP</div>
-		<div class="ap_bar">
-			<div class="ap_bar_left"></div>
-			<div class="ap_bar_middle"></div>
-			<div class="ap_bar_right"></div>
+		<div class="ap_bar sj-bar ap">
+			<i class="ap_bar_fill"></i>
 			<div class="ap_bar_perc"><span class="ap_value"></span> / <span class="ap_max_value"></span></div>
 		</div>
 		<div class="ap_perc"></div>
@@ -106,7 +87,7 @@
 	></button>
 
 	<!-- BUTTONS -->
-	<div class="buttons" data-background="menu_icon/bg_menu.tga">
+	<div class="buttons">
 		<div
 			id="info"
 			class="event_add_cursor"

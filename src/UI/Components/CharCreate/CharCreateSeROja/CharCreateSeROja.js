@@ -28,6 +28,7 @@ import 'UI/Elements/Elements.js';
 import { makePreviewEntity, drawPreviewEntity } from '../../CharSelect/charSprite.js';
 import htmlText from './CharCreateSeROja.html?raw';
 import cssText from './CharCreateSeROja.css?raw';
+import themeText from '../../SeROjaCommon/glassTheme.css?raw';
 
 /** preview sprite anchor inside the cc-canvas (190x250) */
 const PREVIEW_ANCHOR = { x: 95, y: 236 };
@@ -39,7 +40,7 @@ const HAIR_MAX = 27;
 const COLOR_MIN = 0;
 const COLOR_MAX = 8;
 
-const Component = new GUIComponent('CharCreateSeROja', cssText);
+const Component = new GUIComponent('CharCreateSeROja', themeText + cssText);
 
 Component.render = () => htmlText;
 

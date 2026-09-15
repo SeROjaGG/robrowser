@@ -14,12 +14,17 @@ import Preferences from 'Core/Preferences.js';
 import Renderer from 'Renderer/Renderer.js';
 import 'UI/Elements/Elements.js';
 import htmlText from './CaptchaPreview.html?raw';
+import htmlTextClassic from './CaptchaPreview.classic.html?raw';
 import cssText from './CaptchaPreview.css?raw';
+import cssTextClassic from './CaptchaPreview.classic.css?raw';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 
 /**
  * Create Component
  */
-const CaptchaPreview = new GUIComponent('CaptchaPreview', cssText);
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const CaptchaPreview = new GUIComponent('CaptchaPreview', isClassic ? cssTextClassic : themeText + cssText);
 
 /**
  * Preferences
@@ -33,7 +38,7 @@ const _preferences = Preferences.get(
 	2.0
 );
 
-CaptchaPreview.render = () => htmlText;
+CaptchaPreview.render = () => (isClassic ? htmlTextClassic : htmlText);
 
 /**
  * Initialize GUI

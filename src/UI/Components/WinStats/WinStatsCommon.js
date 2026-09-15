@@ -13,6 +13,8 @@ import DB from 'DB/DBManager.js';
 import Client from 'Core/Client.js';
 import UIManager from 'UI/UIManager.js';
 import GUIComponent from 'UI/GUIComponent.js';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 import Session from 'Engine/SessionStorage.js';
 import Preferences from 'Core/Preferences.js';
 import Renderer from 'Renderer/Renderer.js';
@@ -25,9 +27,10 @@ import Renderer from 'Renderer/Renderer.js';
  * @param {string}  cssText   - raw CSS
  * @param {boolean} hasTraits - whether this version has trait stats
  */
-export function createWinStats({ name, htmlText, cssText, hasTraits }) {
-	const Component = new GUIComponent(name, cssText);
-	Component.render = () => htmlText;
+export function createWinStats({ name, htmlText, cssText, htmlTextClassic, cssTextClassic, hasTraits }) {
+	const isClassic = GraphicsSettings.uiSkin === 'classic';
+	const Component = new GUIComponent(name, isClassic ? cssTextClassic : themeText + cssText);
+	Component.render = () => (isClassic ? htmlTextClassic : htmlText);
 
 	const _preferences = Preferences.get('WinStats', { x: 0, y: 233, show: false, reduce: false }, 1.0);
 

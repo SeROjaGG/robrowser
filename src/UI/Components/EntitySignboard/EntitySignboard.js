@@ -14,11 +14,15 @@ import Client from 'Core/Client.js';
 import DB from 'DB/DBManager.js';
 import htmlText from './EntitySignboard.html?raw';
 import cssText from './EntitySignboard.css?raw';
+import cssTextClassic from './EntitySignboard.classic.css?raw';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 
 /**
  * Create component
  */
-const EntitySignboard = new GUIComponent('EntitySignboard', cssText);
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const EntitySignboard = new GUIComponent('EntitySignboard', isClassic ? cssTextClassic : themeText + cssText);
 
 EntitySignboard.render = () => htmlText;
 

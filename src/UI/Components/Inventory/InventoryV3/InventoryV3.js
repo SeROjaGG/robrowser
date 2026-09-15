@@ -11,13 +11,17 @@
  */
 
 import htmlText from './InventoryV3.html?raw';
+import htmlTextClassic from './InventoryV3.classic.html?raw';
 import cssText from './InventoryV3.css?raw';
+import cssTextClassic from './InventoryV3.classic.css?raw';
 import { createInventory } from '../InventoryCommon.js';
 
 export default createInventory({
 	name: 'InventoryV3',
 	htmlText,
 	cssText,
+	htmlTextClassic,
+	cssTextClassic,
 	defaultHeight: 194,
 	favoriteTab: true,
 	equipSwitch: true,

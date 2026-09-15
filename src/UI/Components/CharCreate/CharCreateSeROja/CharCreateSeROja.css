@@ -1,21 +1,20 @@
 /**
  * CharCreateSeROja.css — SeROja custom character-create (PLAN-009).
- * Shares the CharSelectSeROja token language (mirrored from www dark palette).
+ * Retinted onto the shared SeROjaCommon/glassTheme.css tokens (PLAN-022).
  */
 
 :host,
 .cc {
-	--cc-bg: #0a0a10;
-	--cc-surface: rgba(20, 20, 32, 0.72);
-	--cc-border: rgba(205, 196, 255, 0.14);
-	--cc-text: #edecf5;
-	--cc-muted: #9a97b5;
-	--cc-brand: #7c5cff;
-	--cc-brand-2: #3de0d0;
-	--cc-accent: #211d3d;
-	--cc-danger: #ff6b6b;
-	--cc-radius: 14px;
-	--cc-blur: 18px;
+	--cc-accent-tint: rgba(79, 195, 247, 0.16);
+	/* PLAN-024 made the shared glassTheme.css tokens light (for the in-game
+	   HUD) — this screen keeps its own dark space-theme look (ADR-0013,
+	   never meant to track that), so pin the tokens it actually uses back
+	   to dark-appropriate values instead of inheriting the shared ones. */
+	--sj-text: #eaf2ff;
+	--sj-muted: #8fa3c4;
+	--sj-glass: rgba(18, 30, 54, 0.55);
+	--sj-border: rgba(148, 197, 255, 0.22);
+	--sj-danger: #ff5c5c;
 }
 
 .cc {
@@ -32,8 +31,8 @@
 	padding: 26px 30px;
 	box-sizing: border-box;
 	font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-	color: var(--cc-text);
-	background: var(--cc-bg);
+	color: var(--sj-text);
+	background: var(--sj-bg);
 	user-select: none;
 }
 
@@ -42,8 +41,8 @@
 	inset: 0;
 	z-index: -1;
 	background:
-		radial-gradient(circle at 30% 20%, rgba(124, 92, 255, 0.26), transparent 55%),
-		radial-gradient(circle at 78% 82%, rgba(61, 224, 208, 0.2), transparent 55%),
+		radial-gradient(circle at 30% 20%, rgba(79, 195, 247, 0.26), transparent 55%),
+		radial-gradient(circle at 78% 82%, rgba(56, 189, 248, 0.2), transparent 55%),
 		linear-gradient(160deg, #0c0c16 0%, #05050a 60%, #0a0a12 100%);
 }
 
@@ -56,16 +55,16 @@
 .cc-back {
 	justify-self: start;
 	padding: 7px 14px;
-	border: 1px solid var(--cc-border);
+	border: 1px solid var(--sj-border);
 	border-radius: 999px;
-	background: var(--cc-surface);
-	backdrop-filter: blur(var(--cc-blur));
-	color: var(--cc-muted);
+	background: var(--sj-glass);
+	backdrop-filter: blur(var(--sj-blur));
+	color: var(--sj-muted);
 	font-size: 13px;
 	cursor: pointer;
 }
 .cc-back:hover {
-	color: var(--cc-text);
+	color: var(--sj-text);
 }
 .cc-brand {
 	justify-self: center;
@@ -74,17 +73,17 @@
 	letter-spacing: 0.02em;
 }
 .cc-brand .ro {
-	color: var(--cc-brand-2);
+	color: var(--sj-accent-2);
 }
 .cc-step {
 	justify-self: end;
 	padding: 6px 14px;
-	border: 1px solid var(--cc-border);
+	border: 1px solid var(--sj-border);
 	border-radius: 999px;
-	background: var(--cc-surface);
-	backdrop-filter: blur(var(--cc-blur));
+	background: var(--sj-glass);
+	backdrop-filter: blur(var(--sj-blur));
 	font-size: 13px;
-	color: var(--cc-muted);
+	color: var(--sj-muted);
 }
 
 /* ── stage / preview ─────────────────────────────────────── */
@@ -102,10 +101,10 @@
 	align-items: center;
 	gap: 6px;
 	padding: 14px 18px 16px;
-	border: 1px solid rgba(124, 92, 255, 0.5);
-	border-radius: var(--cc-radius);
+	border: 1px solid rgba(79, 195, 247, 0.5);
+	border-radius: var(--sj-radius);
 	background: rgba(10, 10, 18, 0.5);
-	box-shadow: 0 0 0 1px rgba(124, 92, 255, 0.3), 0 28px 70px -28px rgba(124, 92, 255, 0.5);
+	box-shadow: 0 0 0 1px rgba(79, 195, 247, 0.3), 0 28px 70px -28px rgba(79, 195, 247, 0.5);
 	overflow: hidden;
 }
 .cc-canvas {
@@ -122,16 +121,16 @@
 }
 .cc-card .jb {
 	font-size: 12px;
-	color: var(--cc-muted);
+	color: var(--sj-muted);
 }
 .cc-turn {
 	width: 40px;
 	height: 40px;
-	border: 1px solid var(--cc-border);
+	border: 1px solid var(--sj-border);
 	border-radius: 999px;
-	background: var(--cc-surface);
-	backdrop-filter: blur(var(--cc-blur));
-	color: var(--cc-text);
+	background: var(--sj-glass);
+	backdrop-filter: blur(var(--sj-blur));
+	color: var(--sj-text);
 	font-size: 20px;
 	line-height: 1;
 	cursor: pointer;
@@ -145,15 +144,15 @@
 	flex-direction: column;
 	gap: 16px;
 	padding: 22px;
-	border: 1px solid var(--cc-border);
-	border-radius: var(--cc-radius);
-	background: var(--cc-surface);
-	backdrop-filter: blur(var(--cc-blur));
+	border: 1px solid var(--sj-border);
+	border-radius: var(--sj-radius);
+	background: var(--sj-glass);
+	backdrop-filter: blur(var(--sj-blur));
 	box-shadow: 0 18px 50px -20px rgba(0, 0, 0, 0.7);
 }
 .cc-label {
 	font-size: 12px;
-	color: var(--cc-muted);
+	color: var(--sj-muted);
 }
 .cc-field {
 	display: flex;
@@ -162,20 +161,20 @@
 }
 .cc-name {
 	padding: 10px 12px;
-	border: 1px solid var(--cc-border);
+	border: 1px solid var(--sj-border);
 	border-radius: 10px;
 	background: rgba(0, 0, 0, 0.35);
-	color: var(--cc-text);
+	color: var(--sj-text);
 	font-size: 14px;
 	outline: none;
 }
 .cc-name:focus {
-	border-color: rgba(124, 92, 255, 0.7);
+	border-color: rgba(79, 195, 247, 0.7);
 }
 .cc-name-hint {
 	margin: 0;
 	font-size: 11px;
-	color: var(--cc-muted);
+	color: var(--sj-muted);
 }
 .cc-row {
 	display: flex;
@@ -188,21 +187,21 @@
 }
 .cc-seg {
 	display: inline-flex;
-	border: 1px solid var(--cc-border);
+	border: 1px solid var(--sj-border);
 	border-radius: 999px;
 	overflow: hidden;
 }
 .cc-seg button {
 	border: 0;
 	background: none;
-	color: var(--cc-muted);
+	color: var(--sj-muted);
 	font-size: 13px;
 	padding: 7px 16px;
 	cursor: pointer;
 }
 .cc-seg button.on {
-	background: var(--cc-accent);
-	color: var(--cc-text);
+	background: var(--cc-accent-tint);
+	color: var(--sj-text);
 }
 .cc-seg button:disabled {
 	opacity: 0.35;
@@ -216,10 +215,10 @@
 .cc-stepper button {
 	width: 30px;
 	height: 30px;
-	border: 1px solid var(--cc-border);
+	border: 1px solid var(--sj-border);
 	border-radius: 999px;
 	background: none;
-	color: var(--cc-text);
+	color: var(--sj-text);
 	font-size: 15px;
 	line-height: 1;
 	cursor: pointer;
@@ -244,13 +243,13 @@
 	cursor: pointer;
 }
 .btn.create {
-	background: linear-gradient(110deg, var(--cc-brand), var(--cc-brand-2));
+	background: linear-gradient(110deg, var(--sj-accent), var(--sj-accent-2));
 	color: #0a0a10;
 }
 .btn.ghost {
 	background: none;
-	border: 1px solid var(--cc-border);
-	color: var(--cc-text);
+	border: 1px solid var(--sj-border);
+	color: var(--sj-text);
 }
 .btn:disabled {
 	opacity: 0.4;
@@ -259,5 +258,5 @@
 .cc-hint {
 	min-height: 16px;
 	font-size: 12px;
-	color: var(--cc-danger);
+	color: var(--sj-danger);
 }

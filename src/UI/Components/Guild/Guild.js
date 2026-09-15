@@ -28,7 +28,11 @@ import GuildCompanion from 'UI/Components/GuildCompanion/GuildCompanion.js';
 import SkillTargetSelection from 'UI/Components/SkillTargetSelection/SkillTargetSelection.js';
 import SkillDescription from 'UI/Components/SkillDescription/SkillDescription.js';
 import htmlText from './Guild.html?raw';
+import htmlTextClassic from './Guild.classic.html?raw';
 import cssText from './Guild.css?raw';
+import cssTextClassic from './Guild.classic.css?raw';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 import WinStats from 'UI/Components/WinStats/WinStats.js';
 
 /**
@@ -47,8 +51,9 @@ const AccessTypeBit = {
 /**
  * Create Component
  */
-const Guild = new GUIComponent('Guild', cssText);
-Guild.render = () => htmlText;
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const Guild = new GUIComponent('Guild', isClassic ? cssTextClassic : themeText + cssText);
+Guild.render = () => (isClassic ? htmlTextClassic : htmlText);
 
 /**
  * View templates (stored as DOM nodes)

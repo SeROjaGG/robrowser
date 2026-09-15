@@ -15,14 +15,19 @@ import Renderer from 'Renderer/Renderer.js';
 import UIManager from 'UI/UIManager.js';
 import GUIComponent from 'UI/GUIComponent.js';
 import htmlText from './ItemObtain.html?raw';
+import htmlTextClassic from './ItemObtain.classic.html?raw';
 import cssText from './ItemObtain.css?raw';
+import cssTextClassic from './ItemObtain.classic.css?raw';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 
 /**
  * Create component
  */
-const ItemObtain = new GUIComponent('ItemObtain', cssText);
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const ItemObtain = new GUIComponent('ItemObtain', isClassic ? cssTextClassic : themeText + cssText);
 
-ItemObtain.render = () => htmlText;
+ItemObtain.render = () => (isClassic ? htmlTextClassic : htmlText);
 
 /**
  * Mouse can cross this UI

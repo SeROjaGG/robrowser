@@ -33,32 +33,34 @@
 
 #chatbox .header .tab div {
 	padding-top: 2px;
-	border-radius: 2px 2px 0px 0px;
-	background: rgba(0, 0, 0, 0.75);
-	border: 1px solid #959595;
-	border-bottom: 1px solid white;
+	border-radius: var(--sj-radius-sm) var(--sj-radius-sm) 0 0;
+	background: var(--sj-glass);
+	backdrop-filter: blur(var(--sj-blur)) saturate(160%);
+	-webkit-backdrop-filter: blur(var(--sj-blur)) saturate(160%);
+	border: 1px solid var(--sj-border);
+	border-bottom: none;
 }
 
 #chatbox .header .tab div.on {
-	background: rgba(0, 0, 0, 0.5);
-	border: 1px solid white;
-	border-bottom: none;
-	border-right: none;
+	background: var(--sj-glass-strong);
+	border-color: var(--sj-border-strong);
 	height: 18px;
 }
 
 #chatbox .header .options {
-	border-bottom: 1px solid white;
+	border-bottom: 1px solid var(--sj-border);
 	height: 18px;
 	margin-right: 4px;
 }
 
 /** Content **/
 #chatbox .body {
-	background: rgba(0, 0, 0, 0.5);
-	border-left: 1px solid white;
-	border-right: 1px solid white;
-	border-radius: 0px 3px 0px 0px;
+	background: var(--sj-glass);
+	backdrop-filter: blur(var(--sj-blur)) saturate(160%);
+	-webkit-backdrop-filter: blur(var(--sj-blur)) saturate(160%);
+	border: 1px solid var(--sj-border);
+	border-bottom: none;
+	border-radius: var(--sj-radius) var(--sj-radius) 0 0;
 	padding: 0px 5px 5px 5px;
 	margin-left: 3px;
 	margin-right: -2px;
@@ -96,10 +98,11 @@
 	width: 592px;
 	height: 25px;
 	position: relative;
-	border-left: 1px solid white;
-	border-right: 1px solid white;
-	border-top: 1px solid grey;
-	background-color: rgba(0, 0, 0, 0.5);
+	border: 1px solid var(--sj-border);
+	border-top: none;
+	background-color: var(--sj-glass);
+	backdrop-filter: blur(var(--sj-blur)) saturate(160%);
+	-webkit-backdrop-filter: blur(var(--sj-blur)) saturate(160%);
 	margin-left: 3px;
 	display: none;
 	max-width: 100%;
@@ -111,6 +114,8 @@
 	height: 25px;
 	position: relative;
 	max-width: 100%;
+	border-radius: var(--sj-radius-sm);
+	margin-left: 3px;
 }
 
 #chatbox .input.fix {
@@ -123,6 +128,7 @@
 	height: 18px;
 	background-color: transparent;
 	border: none;
+	color: var(--sj-text);
 }
 
 #chatbox .input .username {
@@ -175,17 +181,16 @@
 
 #chatbox .input .filter,
 #chatbox .input .size {
-	width: 11px;
-	height: 11px;
-	border: none;
+	width: 14px;
+	height: 14px;
 	position: absolute;
-	right: 13px;
-	top: 8px;
-	background-color: transparent;
+	right: 16px;
+	top: 6px;
+	font-size: 9px;
 }
 
 #chatbox .input .size {
-	right: 1px;
+	right: 2px;
 }
 
 #chatbox .battlemode .bmtoggle {
@@ -204,6 +209,10 @@
 	border: 0;
 	background-repeat: no-repeat;
 	background-color: transparent;
+	border-radius: 4px;
+}
+#chatbox .chat-function button:hover {
+	background-color: rgba(255, 255, 255, 0.1);
 }
 #chatbox .chat-function .chatmode {
 	width: 15px;

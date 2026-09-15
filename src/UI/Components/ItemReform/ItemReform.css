@@ -11,9 +11,6 @@
 	left: 0px;
 	height: 100%;
 	width: 100%;
-	background-repeat: no-repeat;
-	background-color: transparent;
-	border-radius: 10px;
 }
 #ItemReform .titlebar {
 	width: 100%;
@@ -28,7 +25,7 @@
 	vertical-align: middle;
 }
 #ItemReform .titlebar .item_text {
-	text-shadow: 1px 1px white;
+	text-shadow: none;
 	vertical-align: -2px;
 	white-space: nowrap;
 	/* chrome bug */
@@ -58,11 +55,14 @@
 	z-index: 900;
 	height: 15px;
 	line-height: 15px;
-	border-radius: 3px;
+	border-radius: var(--sj-radius-sm);
 	padding: 4px;
-	background: rgba(0, 0, 0, 0.7);
-	color: white;
-	text-shadow: 1px 1px black;
+	background: var(--sj-glass-strong);
+	backdrop-filter: blur(var(--sj-blur)) saturate(160%);
+	-webkit-backdrop-filter: blur(var(--sj-blur)) saturate(160%);
+	border: 1px solid var(--sj-border);
+	color: var(--sj-text);
+	text-shadow: none;
 }
 
 #ItemReform .panel {
@@ -239,11 +239,10 @@
 #ItemReform .cancel,
 #ItemReform .reform_enabled,
 #ItemReform .reform_disabled {
-	height: 20px;
+	height: 22px;
 	width: 56px;
-	background-repeat: no-repeat;
-	background-color: transparent;
-	border: 0;
+	padding: 0;
+	font-size: 11px;
 }
 
 #ItemReform .cancel {
@@ -257,13 +256,11 @@
 	position: absolute;
 	bottom: 4px;
 	right: 5px;
-	background-size: 56px 20px;
-	background-repeat: no-repeat;
 	text-align: center;
 	line-height: 20px;
 }
 
 #ItemReform .reform_disabled {
-	text-shadow: -1px -1px white;
-	color: gray;
+	text-shadow: none;
+	color: var(--sj-muted);
 }

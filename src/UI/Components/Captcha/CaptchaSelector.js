@@ -18,12 +18,17 @@ import DB from 'DB/DBManager.js';
 import MonsterTable from 'DB/Monsters/MonsterTable.js';
 import 'UI/Elements/Elements.js';
 import htmlText from './CaptchaSelector.html?raw';
+import htmlTextClassic from './CaptchaSelector.classic.html?raw';
 import cssText from './CaptchaSelector.css?raw';
+import cssTextClassic from './CaptchaSelector.classic.css?raw';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 
 /**
  * Create Component
  */
-const CaptchaSelector = new GUIComponent('CaptchaSelector', cssText);
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const CaptchaSelector = new GUIComponent('CaptchaSelector', isClassic ? cssTextClassic : themeText + cssText);
 
 /**
  * Preferences
@@ -57,7 +62,7 @@ let _range = 1;
  */
 let _active = false;
 
-CaptchaSelector.render = () => htmlText;
+CaptchaSelector.render = () => (isClassic ? htmlTextClassic : htmlText);
 
 CaptchaSelector.captureKeyEvents = true;
 
@@ -77,6 +82,7 @@ CaptchaSelector.init = function init() {
 	if (activeBtn) {
 		activeBtn.addEventListener('click', () => {
 			_active = !_active;
+			activeBtn.classList.toggle('on', _active);
 
 			if (_active) {
 				const checked = root.querySelector('input[name="target_type"]:checked');
@@ -193,10 +199,16 @@ CaptchaSelector.setPlayers = function setPlayers(players) {
 		li.dataset.aid = aid;
 		li.innerHTML = '';
 
-		const removeBtn = document.createElement('ui-button');
-		removeBtn.classList.add('base', 'remove');
-		removeBtn.setAttribute('bg', 'basic_interface/sys_close_off.bmp');
-		removeBtn.setAttribute('hover', 'basic_interface/sys_close_on.bmp');
+		const removeBtn = document.createElement('button');
+		if (isClassic) {
+			removeBtn.className = 'base remove';
+			removeBtn.dataset.background = 'basic_interface/sys_close_off.bmp';
+			removeBtn.dataset.hover = 'basic_interface/sys_close_on.bmp';
+			GUIComponent.processDataAttrs(removeBtn);
+		} else {
+			removeBtn.className = 'base remove sj-winbtn';
+			removeBtn.textContent = '×';
+		}
 		removeBtn.dataset.aid = aid;
 		removeBtn.addEventListener('click', () => {
 			_aidList = _aidList.filter(item => item !== aid);

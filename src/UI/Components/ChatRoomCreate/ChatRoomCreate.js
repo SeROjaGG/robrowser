@@ -14,7 +14,11 @@ import Preferences from 'Core/Preferences.js';
 import UIManager from 'UI/UIManager.js';
 import GUIComponent from 'UI/GUIComponent.js';
 import htmlText from './ChatRoomCreate.html?raw';
+import htmlTextClassic from './ChatRoomCreate.classic.html?raw';
 import cssText from './ChatRoomCreate.css?raw';
+import cssTextClassic from './ChatRoomCreate.classic.css?raw';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 import NpcBox from 'UI/Components/NpcBox/NpcBox.js';
 import NpcMenu from 'UI/Components/NpcMenu/NpcMenu.js';
 import InputBox from 'UI/Components/InputBox/InputBox.js';
@@ -22,12 +26,13 @@ import InputBox from 'UI/Components/InputBox/InputBox.js';
 /**
  * Create Component
  */
-const ChatRoomCreate = new GUIComponent('ChatRoomCreate', cssText);
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const ChatRoomCreate = new GUIComponent('ChatRoomCreate', isClassic ? cssTextClassic : themeText + cssText);
 
 /**
  * Render HTML
  */
-ChatRoomCreate.render = () => htmlText;
+ChatRoomCreate.render = () => (isClassic ? htmlTextClassic : htmlText);
 
 /**
  * @var {string} chat room title

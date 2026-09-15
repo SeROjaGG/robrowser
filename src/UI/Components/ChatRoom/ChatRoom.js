@@ -19,7 +19,11 @@ import GUIComponent from 'UI/GUIComponent.js';
 import ContextMenu from 'UI/Components/ContextMenu/ContextMenu.js';
 import ChatRoomCreate from 'UI/Components/ChatRoomCreate/ChatRoomCreate.js';
 import htmlText from './ChatRoom.html?raw';
+import htmlTextClassic from './ChatRoom.classic.html?raw';
 import cssText from './ChatRoom.css?raw';
+import cssTextClassic from './ChatRoom.classic.css?raw';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 import ProcessCommand from 'Controls/ProcessCommand.js';
 import DB from 'DB/DBManager.js';
 import EntityManager from 'Renderer/EntityManager.js';
@@ -32,12 +36,13 @@ import InputBox from 'UI/Components/InputBox/InputBox.js';
 /**
  * Create Component
  */
-const ChatRoom = new GUIComponent('ChatRoom', cssText);
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const ChatRoom = new GUIComponent('ChatRoom', isClassic ? cssTextClassic : themeText + cssText);
 
 /**
  * Render HTML
  */
-ChatRoom.render = () => htmlText;
+ChatRoom.render = () => (isClassic ? htmlTextClassic : htmlText);
 
 /**
  * @var {string} Chat Room title

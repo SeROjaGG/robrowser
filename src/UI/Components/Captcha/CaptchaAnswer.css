@@ -7,7 +7,6 @@
 #CaptchaAnswer {
 	width: 100%;
 	height: 100%;
-	background-color: rgba(255, 255, 255, 0.85);
 }
 
 #CaptchaAnswer .clear {
@@ -17,28 +16,18 @@
 #CaptchaAnswer .titlebar {
 	width: 340px;
 	height: 17px;
-	background-color: white;
-	background-repeat: repeat-x;
-	border-radius: 3px 3px 0px 0px;
-}
-
-#CaptchaAnswer .titlebar .base {
-	width: 11px;
-	height: 11px;
-	background-color: transparent;
-	background-repeat: no-repeat;
-	vertical-align: middle;
 }
 
 #CaptchaAnswer .titlebar .text {
-	text-shadow: 1px 1px white;
+	text-shadow: none;
 	vertical-align: -2px;
 	white-space: nowrap;
 	display: inline-block;
-	width: 32px;
+	width: auto;
 	height: 13px;
 	font-size: 11px;
 	font-weight: bold;
+	color: var(--sj-text);
 }
 
 #CaptchaAnswer .titlebar .left {
@@ -61,20 +50,18 @@
 }
 
 #CaptchaAnswer .btn {
-	width: 42px;
-	height: 20px;
-	background-repeat: no-repeat;
-	background-color: transparent;
-	border: 0;
+	width: 56px;
+	height: 22px;
 	margin-left: 5px;
 }
 
 #CaptchaAnswer .preview_box {
 	width: 220px;
 	height: 90px;
-	border: 1px solid #999;
+	border: 1px solid var(--sj-border);
+	border-radius: var(--sj-radius-sm);
 	margin: 0 auto 10px auto;
-	background-color: transparent;
+	background-color: var(--sj-glass);
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -89,7 +76,6 @@
 #CaptchaAnswer input[type='text'].answer_input {
 	width: 150px;
 	margin-right: 5px;
-	border: 1px solid #7f9db9;
 }
 
 #CaptchaAnswer .controls {
@@ -124,16 +110,14 @@
 
 #CaptchaAnswer .timer_bar_bg {
 	width: 260px;
-	height: 30px;
-	background-color: #ccc;
+	height: 16px;
 	margin: 5px auto;
-	border: 1px solid #999;
 }
 
 #CaptchaAnswer .timer_bar_fill {
 	width: 100%;
 	height: 100%;
-	background-color: #f00;
+	background: linear-gradient(90deg, var(--sj-danger), #ff2f2f);
 }
 
 #CaptchaAnswer .answer_field {
@@ -143,6 +127,7 @@
 
 #CaptchaAnswer .message {
 	margin-bottom: 10px;
+	color: var(--sj-text);
 }
 
 #CaptchaAnswer .message,
@@ -153,11 +138,11 @@
 }
 
 #CaptchaAnswer .retry_count {
-	color: rgb(130, 0, 0);
+	color: var(--sj-danger);
 }
 
 #CaptchaAnswer .timer_text {
-	color: rgb(0, 0, 130);
+	color: var(--sj-accent-2);
 }
 
 #CaptchaAnswer .error_text {
@@ -165,5 +150,5 @@
 	min-width: 15px;
 	min-height: 15px;
 	font-weight: normal;
-	color: red;
+	color: var(--sj-danger);
 }

@@ -25,7 +25,11 @@ import ItemInfo from 'UI/Components/ItemInfo/ItemInfo.js';
 import ItemCompare from 'UI/Components/ItemCompare/ItemCompare.js';
 import Session from 'Engine/SessionStorage.js';
 import htmlText from './CartItems.html?raw';
+import htmlTextClassic from './CartItems.classic.html?raw';
 import cssText from './CartItems.css?raw';
+import cssTextClassic from './CartItems.classic.css?raw';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 import Storage from 'UI/Components/Storage/Storage.js';
 import Inventory from 'UI/Components/Inventory/Inventory.js';
 import Equipment from 'UI/Components/Equipment/Equipment.js';
@@ -33,9 +37,10 @@ import Equipment from 'UI/Components/Equipment/Equipment.js';
 /**
  * Create Component
  */
-const CartItems = new GUIComponent('CartItems', cssText);
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const CartItems = new GUIComponent('CartItems', isClassic ? cssTextClassic : themeText + cssText);
 
-CartItems.render = () => htmlText;
+CartItems.render = () => (isClassic ? htmlTextClassic : htmlText);
 
 /**
  * Store inventory items

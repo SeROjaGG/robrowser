@@ -9,19 +9,11 @@
 	position: absolute;
 }
 
-#ShortCuts .titlebar {
-	width: 100%;
-	height: 17px;
-	background-color: white;
-	background-repeat: repeat-x;
-	border-radius: 3px 3px 0px 0px;
-}
 #ShortCuts .titlebar .base {
 	width: 11px;
 	height: 11px;
 	border: none;
 	background-color: transparent;
-	background-repeat: no-repeat;
 	vertical-align: middle;
 }
 #ShortCuts .titlebar .text {
@@ -49,12 +41,9 @@
 }
 
 #ShortCuts .tabs {
-	border-left: 1px solid #ccc;
+	border-left: 1px solid var(--sj-border);
 	width: 50px;
-	background-repeat: no-repeat;
-	background-color: white;
 	vertical-align: top;
-	background-position: -1px 0px;
 }
 #ShortCuts .tabs button {
 	width: 20px;
@@ -66,8 +55,7 @@
 
 #ShortCuts .container {
 	padding-left: 16px;
-	border-right: 1px solid #ccc;
-	background: white;
+	border-right: 1px solid var(--sj-border);
 }
 #ShortCuts .ff_bugfix {
 	position: relative;
@@ -80,7 +68,6 @@
 	position: absolute;
 	top: 0px;
 	right: 0px;
-	background-color: white;
 }
 #ShortCuts .content {
 	overflow: auto;
@@ -108,14 +95,9 @@
 }
 #ShortCuts .panel {
 	height: 230px;
-	background-color: white;
 }
 #ShortCuts .footer {
-	background-repeat: repeat-x;
-	background-color: transparent;
-	border-right: 1px solid #ccc;
-	border-left: 1px solid #ccc;
-	border-radius: 0px 0px 5px 5px;
+	border-top: 1px solid var(--sj-border);
 	position: absolute;
 	bottom: 4px;
 	width: 378px;
@@ -136,8 +118,10 @@
 }
 
 #ShortCuts .macro_ {
-	border: none;
-	background-color: #e7e7e7;
+	border: 1px solid var(--sj-border);
+	border-radius: var(--sj-radius-sm);
+	background-color: rgba(0, 0, 0, 0.3);
+	color: var(--sj-text);
 	width: 75%;
 	height: 15px;
 	margin-left: 5%;
@@ -146,5 +130,5 @@
 }
 
 #ShortCuts .input_macro_focus {
-	background-color: rgb(205, 224, 255) !important;
+	border-color: var(--sj-accent) !important;
 }

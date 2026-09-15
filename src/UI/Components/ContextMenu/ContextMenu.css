@@ -15,25 +15,28 @@
 
 #ContextMenu .menu {
 	position: absolute;
-	background-color: white;
-	border-radius: 5px;
+	background-color: var(--sj-glass-strong);
+	backdrop-filter: blur(var(--sj-blur)) saturate(160%);
+	-webkit-backdrop-filter: blur(var(--sj-blur)) saturate(160%);
+	border: 1px solid var(--sj-border);
+	border-radius: var(--sj-radius-sm);
 	padding: 2px;
 }
 
 #ContextMenu .menu hr {
-	background-color: #cecece;
+	background-color: var(--sj-border);
 	height: 1px;
 	border: none;
 	margin: 2px;
 }
 
 #ContextMenu .menu div {
-	color: black;
+	color: var(--sj-text);
 	white-space: nowrap;
 	padding: 1px;
 	height: 14px;
 }
 
 #ContextMenu .menu div:hover {
-	background-color: #739cef;
+	background-color: rgba(79, 195, 247, 0.2);
 }

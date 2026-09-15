@@ -9,29 +9,15 @@
 	position: absolute;
 	width: 430px;
 	height: 465px;
-	background: white;
-	border-radius: 3px;
-	border: solid 1px #aaa;
-	border-top: none;
 }
 #ShortCutOption .border {
-}
-#ShortCutOption .titlebar {
-	width: 100%;
-	height: 17px;
-	border-bottom: solid 1px #eee;
 }
 #ShortCutOption .titlebar .base {
 	width: 20px;
 	height: 100%;
 	border: none;
 	background-color: transparent;
-	background-repeat: no-repeat;
 	vertical-align: middle;
-	background-position: 8px 2px;
-}
-#ShortCutOption .titlebar .base.close {
-	color: #ccc;
 }
 #ShortCutOption .titlebar .text {
 	white-space: nowrap;
@@ -53,10 +39,10 @@
 #ShortCutOption .tabs {
 	position: relative;
 	top: 1px;
-	border-right: solid 1px #ccc;
 }
 #ShortCutOption .tabs button.selectedtab {
-	border-bottom: solid 1px transparent;
+	background-color: rgba(255, 255, 255, 0.1);
+	border-color: var(--sj-border-strong);
 }
 #ShortCutOption .tabs button {
 	width: 57px;
@@ -65,17 +51,15 @@
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
-	background-color: #fff;
-	border: solid 1px #bbb;
-	border-top-right-radius: 3px;
-	border-top-left-radius: 3px;
-}
-#ShortCutOption .tabs button:nth-child(1) {
-	border-right: none;
+	color: var(--sj-muted);
+	background-color: transparent;
+	border: solid 1px var(--sj-border);
+	border-top-right-radius: var(--sj-radius-sm);
+	border-top-left-radius: var(--sj-radius-sm);
 }
 #ShortCutOption .panel {
 	padding: 5px;
-	border-top: solid 1px #ccc;
+	border-top: solid 1px var(--sj-border);
 }
 #ShortCutOption .panel .content {
 	display: none;
@@ -86,13 +70,14 @@
 #ShortCutOption .content table {
 	width: 100%;
 	border-collapse: collapse;
-	color: #222;
+	color: var(--sj-text);
 }
 #ShortCutOption .content table tr {
 	height: 22px;
 }
 #ShortCutOption .content table td {
 	text-align: center;
+	border-color: var(--sj-border);
 }
 #ShortCutOption .content table td:nth-child(1),
 #ShortCutOption .content table td:nth-child(3) {
@@ -101,16 +86,16 @@
 #ShortCutOption .content table td:nth-child(2),
 #ShortCutOption .content table td:nth-child(4) {
 	width: 20%;
-	background-color: #eee;
+	background-color: rgba(255, 255, 255, 0.04);
 }
 #ShortCutOption .content table td.customize {
-	background-color: #ffffe0;
+	background-color: rgba(79, 195, 247, 0.14);
 }
 #ShortCutOption .content table td.changed {
-	background-color: #ffe4e1;
+	background-color: rgba(255, 138, 92, 0.22);
 }
 #ShortCutOption .content table td.selected {
-	background-color: #ffb6c1;
+	background-color: rgba(255, 92, 92, 0.35);
 }
 #ShortCutOption .resolution {
 	display: none;
@@ -118,21 +103,19 @@
 #ShortCutOption .panel .button {
 	position: absolute;
 	bottom: 3px;
-	width: 42px;
-	height: 20px;
-	margin-top: 3px;
-	border: none;
-	background-color: transparent;
-	background-repeat: no-repeat;
+	width: 56px;
+	height: 22px;
+	padding: 0;
+	font-size: 11px;
 }
 #ShortCutOption .panel .button.reset {
 	left: 3px;
 }
 #ShortCutOption .panel .button.ok {
-	right: 93px;
+	right: 123px;
 }
 #ShortCutOption .panel .button.cancel {
-	right: 48px;
+	right: 63px;
 }
 #ShortCutOption .panel .button.close {
 	right: 3px;

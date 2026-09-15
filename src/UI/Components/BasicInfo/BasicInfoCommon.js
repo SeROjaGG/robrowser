@@ -38,12 +38,18 @@ import SkillList from 'UI/Components/SkillList/SkillList.js';
 import Quest from 'UI/Components/Quest/Quest.js';
 import Achievement from 'UI/Components/Achievement/Achievement.js';
 import Reputation from 'UI/Components/Reputation/Reputation.js';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
+
+const isClassic = GraphicsSettings.uiSkin === 'classic';
 
 export function createBasicInfo(config) {
 	const {
 		name,
 		htmlText,
 		cssText,
+		htmlTextClassic,
+		cssTextClassic,
 		prefKey,
 		reduceDefault = true,
 		innerId,
@@ -62,7 +68,7 @@ export function createBasicInfo(config) {
 		hasApBar = false
 	} = config;
 
-	const Component = new GUIComponent(name, cssText);
+	const Component = new GUIComponent(name, isClassic ? cssTextClassic : themeText + cssText);
 
 	/**
 	 * Stored data
@@ -74,7 +80,7 @@ export function createBasicInfo(config) {
 	Component.weight = 0;
 	Component.weight_max = 1;
 
-	Component.render = () => htmlText;
+	Component.render = () => (isClassic ? htmlTextClassic : htmlText);
 
 	/**
 	 * @let {Preferences} structure
@@ -395,7 +401,7 @@ export function createBasicInfo(config) {
 	 * @param {string} color bar color prefix
 	 */
 	function updateBar(root, type, val1, val2, color) {
-		const perc = Math.floor((val1 * 100) / val2);
+		const perc = Math.max(0, Math.min(100, Math.floor((val1 * 100) / val2)));
 
 		root.querySelectorAll(`.${type}_value`).forEach(el => {
 			el.textContent = val1;
@@ -407,35 +413,47 @@ export function createBasicInfo(config) {
 			el.textContent = `${perc}%`;
 		});
 
-		if (perc <= 0) {
-			root.querySelectorAll(`.${type}_bar div`).forEach(el => {
-				el.style.backgroundImage = 'none';
+		if (isClassic) {
+			if (perc <= 0) {
+				root.querySelectorAll(`.${type}_bar div`).forEach(el => {
+					el.style.backgroundImage = 'none';
+				});
+				return;
+			}
+
+			Client.loadFile(`${DB.INTERFACE_PATH}basic_interface/gze${color}_left.bmp`, url => {
+				const el = root.querySelector(`.${type}_bar_left`);
+				if (el) {
+					el.style.backgroundImage = `url(${url})`;
+				}
+			});
+
+			Client.loadFile(`${DB.INTERFACE_PATH}basic_interface/gze${color}_mid.bmp`, url => {
+				const el = root.querySelector(`.${type}_bar_middle`);
+				if (el) {
+					el.style.backgroundImage = `url(${url})`;
+					el.style.width = `${Math.floor(Math.min(perc, 100) * barScale)}px`;
+				}
+			});
+
+			Client.loadFile(`${DB.INTERFACE_PATH}basic_interface/gze${color}_right.bmp`, url => {
+				const el = root.querySelector(`.${type}_bar_right`);
+				if (el) {
+					el.style.backgroundImage = `url(${url})`;
+					el.style.left = `${Math.floor(Math.min(perc, 100) * barScale)}px`;
+				}
 			});
 			return;
 		}
 
-		Client.loadFile(`${DB.INTERFACE_PATH}basic_interface/gze${color}_left.bmp`, url => {
-			const el = root.querySelector(`.${type}_bar_left`);
-			if (el) {
-				el.style.backgroundImage = `url(${url})`;
-			}
-		});
-
-		Client.loadFile(`${DB.INTERFACE_PATH}basic_interface/gze${color}_mid.bmp`, url => {
-			const el = root.querySelector(`.${type}_bar_middle`);
-			if (el) {
-				el.style.backgroundImage = `url(${url})`;
-				el.style.width = `${Math.floor(Math.min(perc, 100) * barScale)}px`;
-			}
-		});
-
-		Client.loadFile(`${DB.INTERFACE_PATH}basic_interface/gze${color}_right.bmp`, url => {
-			const el = root.querySelector(`.${type}_bar_right`);
-			if (el) {
-				el.style.backgroundImage = `url(${url})`;
-				el.style.left = `${Math.floor(Math.min(perc, 100) * barScale)}px`;
-			}
-		});
+		const fill = root.querySelector(`.${type}_bar_fill`);
+		if (fill) {
+			fill.style.width = `${perc}%`;
+			// `color === 'red'` is the low-HP/low-SP / full-AP warning state (see call
+			// sites below) — flip the gradient instead of swapping a BMP slice.
+			fill.style.background =
+				color === 'red' ? 'linear-gradient(90deg, var(--sj-danger), #ff2f2f)' : '';
+		}
 	}
 
 	/**

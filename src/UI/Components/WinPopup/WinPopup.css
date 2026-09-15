@@ -38,11 +38,10 @@
 }
 
 #win_popup .btn {
-	border: 0;
-	width: 42px;
-	height: 20px;
+	width: 56px;
+	height: 22px;
+	padding: 0;
+	font-size: 11px;
 	bottom: 4px;
 	margin-left: 3px;
-	background-repeat: no-repeat;
-	background-color: transparent;
 }

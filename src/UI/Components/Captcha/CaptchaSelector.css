@@ -8,7 +8,6 @@
 #CaptchaSelector {
 	width: 100%;
 	height: 100%;
-	background-color: #ffffff;
 	font-size: 12px;
 }
 
@@ -19,28 +18,18 @@
 #CaptchaSelector .titlebar {
 	width: 210px;
 	height: 17px;
-	background-color: white;
-	background-repeat: repeat-x;
-	border-radius: 3px 3px 0px 0px;
-}
-
-#CaptchaSelector .base {
-	width: 11px;
-	height: 11px;
-	background-color: transparent;
-	background-repeat: no-repeat;
-	vertical-align: middle;
 }
 
 #CaptchaSelector .titlebar .text {
-	text-shadow: 1px 1px white;
+	text-shadow: none;
 	vertical-align: -2px;
 	white-space: nowrap;
 	display: inline-block;
-	width: 32px;
+	width: auto;
 	height: 13px;
 	font-size: 11px;
 	font-weight: bold;
+	color: var(--sj-text);
 }
 
 #CaptchaSelector .titlebar .left {
@@ -66,6 +55,7 @@
 	height: 22px;
 	display: flex;
 	align-items: center;
+	color: var(--sj-text);
 }
 
 #CaptchaSelector .player_list {
@@ -80,7 +70,9 @@
 	width: 190px;
 	height: 24px;
 	margin: 2px 0;
-	background-color: #e5e5e5;
+	background-color: var(--sj-glass);
+	border: 1px solid var(--sj-border);
+	border-radius: var(--sj-radius-sm);
 	display: flex;
 	align-items: center;
 	gap: 5px;
@@ -94,31 +86,23 @@
 }
 
 #CaptchaSelector .range_val {
-	appearance: none;
-	width: 20px;
-	border: 1px solid;
-	margin-left: 3px;
-}
-
-#CaptchaSelector .range_val::-webkit-inner-spin-button,
-#CaptchaSelector .range_val::-webkit-outer-spin-button {
-	-webkit-appearance: none;
-	margin: 0;
-	border: 1px solid;
+	width: 24px;
 	margin-left: 3px;
 }
 
 #CaptchaSelector .btn_active,
 #CaptchaSelector .footer .btn {
-	width: 42px;
-	height: 20px;
-	background-repeat: no-repeat;
-	background-color: transparent;
-	border: 0;
+	width: 56px;
+	height: 22px;
 }
 
 #CaptchaSelector .btn_active {
 	margin-left: 15px;
+}
+
+#CaptchaSelector .btn_active.on {
+	background: linear-gradient(135deg, var(--sj-accent), var(--sj-accent-2));
+	color: #06121c;
 }
 
 #CaptchaSelector .footer .btn {
@@ -131,20 +115,16 @@
 	left: 0;
 	width: 200px;
 	height: 35px;
-	background-color: #ffffff;
-	border-radius: 3px;
+	padding: 4px 6px;
 	display: none;
+	color: var(--sj-text);
 }
 
 #CaptchaSelector li a {
 	text-decoration: underline;
-	color: black;
+	color: var(--sj-accent-2);
 }
 
 #CaptchaSelector .player_list li .remove {
-	width: 11px;
-	height: 11px;
-	background-color: transparent;
-	background-repeat: no-repeat;
-	vertical-align: middle;
+	flex-shrink: 0;
 }

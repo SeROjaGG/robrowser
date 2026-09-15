@@ -11,7 +11,7 @@
 	width: 100%;
 	height: 100%;
 
-	color: #2d3a55;
+	color: var(--sj-text);
 	box-sizing: border-box;
 	--enchant-scroll-up: none;
 	--enchant-scroll-down: none;
@@ -229,7 +229,7 @@
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	color: #2d3a55;
+	color: var(--sj-text);
 }
 
 #Enchant .main_panel {
@@ -246,8 +246,10 @@
 	top: 0;
 	width: 470px;
 	height: 377px;
-	background-repeat: no-repeat;
-	background-size: contain;
+	border: 1px solid var(--sj-border);
+	border-radius: var(--sj-radius);
+	background: var(--sj-glass);
+	box-sizing: border-box;
 	pointer-events: none;
 }
 
@@ -271,11 +273,11 @@
 	padding: 0;
 	cursor: pointer;
 	font-weight: bold;
-	color: #aeaeae;
+	color: var(--sj-muted);
 }
 
 #Enchant .action_tabs .tab.active {
-	color: #375d9d;
+	color: var(--sj-accent);
 }
 
 #Enchant .action_tabs .tab[data-action='reset'] {
@@ -460,7 +462,7 @@
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	color: #2d3a55;
+	color: var(--sj-text);
 }
 
 #Enchant .enchant_entry .entry_sub {
@@ -511,7 +513,7 @@
 	right: 6px;
 	bottom: 6px;
 
-	color: #2d3a55;
+	color: var(--sj-text);
 	text-shadow: 1px 1px 0 #ffffff;
 }
 
@@ -540,7 +542,7 @@
 	text-align: right;
 
 	font-weight: bold;
-	color: #2d3a55;
+	color: var(--sj-text);
 }
 
 #Enchant .action_btn {
@@ -549,10 +551,11 @@
 	top: 26px;
 	width: 140px;
 	height: 40px;
-	border: none;
-	background-color: transparent;
-	background-repeat: no-repeat;
-	background-size: contain;
+	border: 0;
+	border-radius: var(--sj-radius-sm);
+	background: linear-gradient(110deg, var(--sj-accent), var(--sj-accent-2));
+	color: #06121c;
+	font-weight: 700;
 	cursor: pointer;
 }
 

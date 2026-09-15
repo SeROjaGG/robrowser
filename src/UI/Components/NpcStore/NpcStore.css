@@ -14,11 +14,7 @@
 }
 #NpcStore .titlebar {
 	width: 100%;
-	height: 17px;
-	background-color: white;
-	background-repeat: repeat-x;
-	border-radius: 3px 3px 0px 0px;
-	text-shadow: 1px 1px white;
+	text-shadow: none;
 	font-size: 11px;
 	font-weight: bold;
 }
@@ -31,21 +27,24 @@
 #NpcStore .footer {
 	width: 100%;
 	height: 27px;
-	background-repeat: repeat-x;
-	background-color: transparent;
 	position: relative;
-	border-radius: 0px 0px 3px 3px;
+	border-top: 1px solid var(--sj-border);
 }
 #NpcStore .resize {
 	position: absolute;
-	right: 1px;
-	bottom: 1px;
-	width: 13px;
-	height: 13px;
+	right: 2px;
+	bottom: 2px;
+	width: 11px;
+	height: 11px;
+	border-right: 2px solid var(--sj-border);
+	border-bottom: 2px solid var(--sj-border);
+	cursor: nwse-resize;
 }
 #NpcStore .btn {
-	width: 42px;
-	height: 20px;
+	width: 56px;
+	height: 22px;
+	padding: 0;
+	font-size: 11px;
 	margin: 0;
 }
 #NpcStore .selectall {
@@ -65,9 +64,6 @@
 
 #NpcStore .container {
 	padding-left: 16px;
-	border-right: 1px solid #ccc;
-	background: white;
-	background-repeat: repeat-y;
 	padding-right: 2px;
 	padding-top: 5px;
 	padding-bottom: 5px;
@@ -78,9 +74,6 @@
 	width: 100%;
 	height: 100%;
 	min-height: 65px;
-	background-color: transparent;
-	background-repeat: repeat-y;
-	background-attachment: local;
 }
 #NpcStore .content.contentAvailable {
 	background-repeat: repeat;
@@ -185,12 +178,12 @@
 #NpcStore .btn.sell {
 	position: absolute;
 	top: 4px;
-	right: 62px;
+	right: 77px;
 }
 #NpcStore .btn.ok {
 	position: absolute;
 	top: 4px;
-	right: 20px;
+	right: 15px;
 }
 #NpcStore .btn.cancel {
 	position: absolute;
@@ -203,9 +196,13 @@
 	display: none;
 	top: -17px;
 	left: 0px;
-	background-color: rgba(0, 0, 0, 0.6);
-	text-shadow: 1px 1px black;
-	color: white;
+	background-color: var(--sj-glass-strong);
+	backdrop-filter: blur(var(--sj-blur)) saturate(160%);
+	-webkit-backdrop-filter: blur(var(--sj-blur)) saturate(160%);
+	border: 1px solid var(--sj-border);
+	border-radius: var(--sj-radius-sm);
+	text-shadow: none;
+	color: var(--sj-text);
 	padding: 5px;
 	white-space: nowrap;
 	font-size: 0.6rem;
@@ -240,9 +237,13 @@
 	display: none;
 	top: -17px;
 	left: 0px;
-	background-color: rgba(0, 0, 0, 0.6);
-	text-shadow: 1px 1px black;
-	color: white;
+	background-color: var(--sj-glass-strong);
+	backdrop-filter: blur(var(--sj-blur)) saturate(160%);
+	-webkit-backdrop-filter: blur(var(--sj-blur)) saturate(160%);
+	border: 1px solid var(--sj-border);
+	border-radius: var(--sj-radius-sm);
+	text-shadow: none;
+	color: var(--sj-text);
 	padding: 5px;
 	white-space: nowrap;
 	font-size: 0.6rem;
@@ -308,9 +309,13 @@
 	opacity: 0;
 	top: -17px;
 	left: 0px;
-	background-color: rgba(0, 0, 0, 0.6);
-	text-shadow: 1px 1px black;
-	color: white;
+	background-color: var(--sj-glass-strong);
+	backdrop-filter: blur(var(--sj-blur)) saturate(160%);
+	-webkit-backdrop-filter: blur(var(--sj-blur)) saturate(160%);
+	border: 1px solid var(--sj-border);
+	border-radius: var(--sj-radius-sm);
+	text-shadow: none;
+	color: var(--sj-text);
 	padding: 5px;
 	white-space: nowrap;
 	font-size: 0.6rem;

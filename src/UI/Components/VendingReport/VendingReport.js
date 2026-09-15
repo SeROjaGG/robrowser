@@ -17,12 +17,17 @@ import ItemInfo from 'UI/Components/ItemInfo/ItemInfo.js';
 import VendingShop from 'UI/Components/VendingShop/VendingShop.js';
 import 'UI/Elements/Elements.js';
 import htmlText from './VendingReport.html?raw';
+import htmlTextClassic from './VendingReport.classic.html?raw';
 import cssText from './VendingReport.css?raw';
+import cssTextClassic from './VendingReport.classic.css?raw';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 
 /**
  * Create Component
  */
-const VendingReport = new GUIComponent('VendingReport', cssText);
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const VendingReport = new GUIComponent('VendingReport', isClassic ? cssTextClassic : themeText + cssText);
 
 /**
  * Store bought items
@@ -65,7 +70,7 @@ function _root() {
 /**
  * Render HTML
  */
-VendingReport.render = () => htmlText;
+VendingReport.render = () => (isClassic ? htmlTextClassic : htmlText);
 
 /**
  * Initialize UI

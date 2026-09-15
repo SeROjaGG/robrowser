@@ -14,17 +14,22 @@ import Mouse from 'Controls/MouseEventHandler.js';
 import UIManager from 'UI/UIManager.js';
 import GUIComponent from 'UI/GUIComponent.js';
 import htmlText from './ChatBoxSettings.html?raw';
+import htmlTextClassic from './ChatBoxSettings.classic.html?raw';
 import cssText from './ChatBoxSettings.css?raw';
+import cssTextClassic from './ChatBoxSettings.classic.css?raw';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 
 /**
  * Create Component
  */
-const ChatBoxSettings = new GUIComponent('ChatBoxSettings', cssText);
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const ChatBoxSettings = new GUIComponent('ChatBoxSettings', isClassic ? cssTextClassic : themeText + cssText);
 
 /**
  * Render HTML
  */
-ChatBoxSettings.render = () => htmlText;
+ChatBoxSettings.render = () => (isClassic ? htmlTextClassic : htmlText);
 
 /**
  * @var {boolean} is ChatBoxSettings open ? (Temporary fix)

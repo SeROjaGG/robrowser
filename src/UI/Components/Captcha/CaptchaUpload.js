@@ -15,12 +15,17 @@ import Preferences from 'Core/Preferences.js';
 import Renderer from 'Renderer/Renderer.js';
 import 'UI/Elements/Elements.js';
 import htmlText from './CaptchaUpload.html?raw';
+import htmlTextClassic from './CaptchaUpload.classic.html?raw';
 import cssText from './CaptchaUpload.css?raw';
+import cssTextClassic from './CaptchaUpload.classic.css?raw';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 
 /**
  * Create Component
  */
-const CaptchaUpload = new GUIComponent('CaptchaUpload', cssText);
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const CaptchaUpload = new GUIComponent('CaptchaUpload', isClassic ? cssTextClassic : themeText + cssText);
 
 /**
  * Preferences
@@ -34,7 +39,7 @@ const _preferences = Preferences.get(
 	2.0
 );
 
-CaptchaUpload.render = () => htmlText;
+CaptchaUpload.render = () => (isClassic ? htmlTextClassic : htmlText);
 
 CaptchaUpload.captureKeyEvents = true;
 

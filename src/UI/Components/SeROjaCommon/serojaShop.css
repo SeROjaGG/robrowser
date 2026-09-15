@@ -1,5 +1,8 @@
 /* PLAN-018 Phase D / D3c-D4c — shared chrome for SeROjaMarket + SeROjaMall.
-   Self-contained (no GRF BMPs), dark, matches the SeROja char screens. */
+   Retinted onto the shared SeROjaCommon/glassTheme.css tokens (PLAN-022) —
+   `--sj-*` vars come from the theme, concatenated ahead of this file at the
+   GUIComponent call site. Class names (`.exs*`) are unchanged — the JS in
+   SeROjaMarket.js / SeROjaMall.js builds rows against them. */
 
 :host {
 	position: fixed;
@@ -7,8 +10,8 @@
 	top: 90px;
 	width: 460px;
 	z-index: 50;
-	font-family: Arial, Helvetica, sans-serif;
-	color: #d7dae0;
+	font-family: var(--sj-font);
+	color: var(--sj-text);
 	-webkit-user-select: none;
 	user-select: none;
 }
@@ -17,10 +20,12 @@
 	display: flex;
 	flex-direction: column;
 	max-height: 70vh;
-	background: #12141a;
-	border: 1px solid #2b2f3a;
-	border-radius: 6px;
-	box-shadow: 0 12px 40px rgba(0, 0, 0, 0.55);
+	background: var(--sj-glass-strong);
+	backdrop-filter: blur(var(--sj-blur)) saturate(160%);
+	-webkit-backdrop-filter: blur(var(--sj-blur)) saturate(160%);
+	border: 1px solid var(--sj-border);
+	border-radius: var(--sj-radius);
+	box-shadow: var(--sj-shadow);
 	overflow: hidden;
 }
 
@@ -29,8 +34,8 @@
 	align-items: center;
 	justify-content: space-between;
 	padding: 8px 10px;
-	background: #171a22;
-	border-bottom: 1px solid #2b2f3a;
+	background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), transparent);
+	border-bottom: 1px solid var(--sj-border);
 	cursor: move;
 }
 .exs-bar .ttl {
@@ -39,7 +44,7 @@
 	font-size: 13px;
 }
 .exs-bar .ttl b {
-	color: #5b8def;
+	color: var(--sj-accent);
 }
 .exs-bar .x {
 	cursor: pointer;
@@ -47,36 +52,37 @@
 	height: 18px;
 	line-height: 16px;
 	text-align: center;
-	border: 1px solid #333846;
-	border-radius: 4px;
-	color: #aab;
+	border: 1px solid var(--sj-border);
+	border-radius: 6px;
+	color: var(--sj-muted);
 }
 .exs-bar .x:hover {
-	background: #262b36;
-	color: #fff;
+	background: var(--sj-danger);
+	border-color: var(--sj-danger);
+	color: #0a0a10;
 }
 
 .exs-tabs {
 	display: flex;
 	gap: 2px;
 	padding: 6px 8px 0;
-	background: #171a22;
+	background: transparent;
 }
 .exs-tabs button {
 	flex: 1;
 	padding: 6px 4px;
 	font-size: 12px;
-	color: #9aa1ad;
-	background: #12141a;
-	border: 1px solid #2b2f3a;
+	color: var(--sj-muted);
+	background: transparent;
+	border: 1px solid transparent;
 	border-bottom: none;
-	border-radius: 4px 4px 0 0;
+	border-radius: var(--sj-radius-sm) var(--sj-radius-sm) 0 0;
 	cursor: pointer;
 }
 .exs-tabs button.on {
-	color: #fff;
-	background: #1d2029;
-	border-color: #3a4152;
+	color: var(--sj-text);
+	background: rgba(255, 255, 255, 0.06);
+	border-color: var(--sj-border);
 }
 
 .exs-filters {
@@ -84,16 +90,16 @@
 	gap: 6px;
 	align-items: center;
 	padding: 8px 10px;
-	background: #1d2029;
-	border-bottom: 1px solid #2b2f3a;
+	background: rgba(255, 255, 255, 0.03);
+	border-bottom: 1px solid var(--sj-border);
 	font-size: 12px;
 }
 .exs-filters select,
 .exs-filters input {
-	background: #0e1015;
-	color: #d7dae0;
-	border: 1px solid #333846;
-	border-radius: 4px;
+	background: rgba(0, 0, 0, 0.3);
+	color: var(--sj-text);
+	border: 1px solid var(--sj-border);
+	border-radius: var(--sj-radius-sm);
 	padding: 3px 6px;
 	font: inherit;
 }
@@ -108,13 +114,22 @@
 	overflow-y: auto;
 	padding: 4px 0;
 	min-height: 90px;
+	scrollbar-width: thin;
+	scrollbar-color: var(--sj-border-strong) transparent;
+}
+.exs-list::-webkit-scrollbar {
+	width: 8px;
+}
+.exs-list::-webkit-scrollbar-thumb {
+	background: var(--sj-border-strong);
+	border-radius: 999px;
 }
 .exs-row {
 	display: flex;
 	align-items: center;
 	gap: 8px;
 	padding: 7px 10px;
-	border-bottom: 1px solid #1c1f27;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.04);
 	font-size: 12px;
 }
 .exs-row .nm {
@@ -125,34 +140,37 @@
 	white-space: nowrap;
 }
 .exs-row .sub {
-	color: #8b93a1;
+	color: var(--sj-muted);
 }
 .exs-row .price {
 	color: #ffd479;
 	white-space: nowrap;
 }
 .exs-row .tag {
-	color: #8b93a1;
+	color: var(--sj-muted);
 	font-size: 11px;
 }
 .exs-row button {
 	padding: 4px 10px;
 	font-size: 12px;
-	color: #fff;
-	background: #2f6fed;
+	color: #06121c;
+	background: linear-gradient(110deg, var(--sj-accent), var(--sj-accent-2));
 	border: none;
-	border-radius: 4px;
+	border-radius: var(--sj-radius-sm);
 	cursor: pointer;
 	white-space: nowrap;
 }
 .exs-row button:hover {
-	background: #3f7dfb;
+	filter: brightness(1.1);
 }
 .exs-row button.confirm {
-	background: #c0392b;
+	background: var(--sj-danger);
+	color: #fff;
 }
 .exs-row button[disabled] {
-	background: #333846;
+	background: rgba(255, 255, 255, 0.08);
+	color: var(--sj-muted);
+	filter: none;
 	cursor: default;
 }
 
@@ -161,16 +179,16 @@
 	align-items: center;
 	justify-content: space-between;
 	padding: 8px 10px;
-	background: #171a22;
-	border-top: 1px solid #2b2f3a;
+	background: transparent;
+	border-top: 1px solid var(--sj-border);
 	font-size: 12px;
 }
 .exs-foot .pg button {
 	padding: 3px 10px;
-	color: #d7dae0;
-	background: #12141a;
-	border: 1px solid #333846;
-	border-radius: 4px;
+	color: var(--sj-text);
+	background: rgba(255, 255, 255, 0.04);
+	border: 1px solid var(--sj-border);
+	border-radius: var(--sj-radius-sm);
 	cursor: pointer;
 }
 .exs-foot .pg button[disabled] {
@@ -178,7 +196,7 @@
 	cursor: default;
 }
 .exs-foot .st {
-	color: #8b93a1;
+	color: var(--sj-muted);
 	flex: 1;
 	text-align: right;
 	overflow: hidden;
@@ -186,15 +204,15 @@
 	white-space: nowrap;
 }
 .exs-foot .st.err {
-	color: #ff7a7a;
+	color: var(--sj-danger);
 }
 .exs-foot .st.ok {
-	color: #7ed492;
+	color: var(--sj-success);
 }
 
 .exs-empty {
 	padding: 24px 10px;
 	text-align: center;
-	color: #6b7280;
+	color: var(--sj-muted);
 	font-size: 12px;
 }

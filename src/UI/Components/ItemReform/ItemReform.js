@@ -23,18 +23,23 @@ import NpcBox from 'UI/Components/NpcBox/NpcBox.js';
 import Client from 'Core/Client.js';
 import KEYS from 'Controls/KeyEventHandler.js';
 import htmlText from './ItemReform.html?raw';
+import htmlTextClassic from './ItemReform.classic.html?raw';
 import cssText from './ItemReform.css?raw';
+import cssTextClassic from './ItemReform.classic.css?raw';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 import PACKET from 'Network/PacketStructure.js';
 
 /**
  * Create Component
  */
-const ItemReform = new GUIComponent('ItemReform', cssText);
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const ItemReform = new GUIComponent('ItemReform', isClassic ? cssTextClassic : themeText + cssText);
 
 /**
  * Render HTML
  */
-ItemReform.render = () => htmlText;
+ItemReform.render = () => (isClassic ? htmlTextClassic : htmlText);
 
 /**
  * Use capture phase for keydown so Escape is handled before EscapeWindow

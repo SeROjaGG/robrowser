@@ -10,6 +10,9 @@ import UIManager from 'UI/UIManager.js';
 import GUIComponent from 'UI/GUIComponent.js';
 import htmlText from './PCGoldTimer.html?raw';
 import cssText from './PCGoldTimer.css?raw';
+import cssTextClassic from './PCGoldTimer.classic.css?raw';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 import PACKET from 'Network/PacketStructure.js';
 import Network from 'Network/NetworkManager.js';
 import Client from 'Core/Client.js';
@@ -29,7 +32,8 @@ const _data = {
 /**
  * Create Component
  */
-const PCGoldTimer = new GUIComponent('PCGoldTimer', cssText);
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const PCGoldTimer = new GUIComponent('PCGoldTimer', isClassic ? cssTextClassic : themeText + cssText);
 
 PCGoldTimer.render = () => htmlText;
 

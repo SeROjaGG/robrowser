@@ -33,6 +33,8 @@ import Mouse from 'Controls/MouseEventHandler.js';
 import KEYS from 'Controls/KeyEventHandler.js';
 import UIManager from 'UI/UIManager.js';
 import GUIComponent from 'UI/GUIComponent.js';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 import 'UI/Elements/Elements.js';
 import PACKETVER from 'Network/PacketVerManager.js';
 import PartyHelper from './PartyHelper/PartyHelper.js';
@@ -45,12 +47,13 @@ import WhisperBox from 'UI/Components/WhisperBox/WhisperBox.js';
 import SkillTargetSelection from 'UI/Components/SkillTargetSelection/SkillTargetSelection.js';
 
 export function createPartyFriends(config) {
-	const { name: componentName, htmlText, cssText, renewalParty = false } = config;
+	const { name: componentName, htmlText, cssText, htmlTextClassic, cssTextClassic, renewalParty = false } = config;
 
 	/**
 	 * Create Component
 	 */
-	const Component = new GUIComponent(componentName, cssText);
+	const isClassic = GraphicsSettings.uiSkin === 'classic';
+	const Component = new GUIComponent(componentName, isClassic ? cssTextClassic : themeText + cssText);
 
 	/**
 	 * @var {number} index of selection
@@ -140,7 +143,7 @@ export function createPartyFriends(config) {
 	/**
 	 * Render HTML
 	 */
-	Component.render = () => htmlText;
+	Component.render = () => (isClassic ? htmlTextClassic : htmlText);
 
 	/**
 	 * Initialize the component (event listener, etc.)

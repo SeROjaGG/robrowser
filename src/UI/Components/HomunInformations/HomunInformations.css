@@ -9,17 +9,8 @@
 	position: absolute;
 	width: 280px;
 	height: 190px;
-	background-color: white;
-	border-radius: 5px;
 }
 
-#HomunInformations .content {
-	width: 100%;
-	height: 17px;
-	background-color: white;
-	background-repeat: repeat-x;
-	border-radius: 3px 3px 0px 0px;
-}
 #HomunInformations .content .base {
 	width: 11px;
 	height: 11px;
@@ -28,8 +19,13 @@
 	background-repeat: no-repeat;
 	vertical-align: middle;
 }
+#HomunInformations .content .close {
+	width: 16px;
+	height: 16px;
+	font-size: 10px;
+}
 #HomunInformations .content .text {
-	text-shadow: 1px 1px white;
+	text-shadow: none;
 	vertical-align: -2px;
 	white-space: nowrap;
 	/* chrome bug */
@@ -53,7 +49,6 @@
 }
 
 #HomunInformations .content {
-	background-repeat: no-repeat;
 	position: relative;
 	width: 100%;
 	height: 100%;
@@ -68,47 +63,42 @@
 	position: absolute;
 	top: 25px;
 	left: 140px;
-	border: none;
-	background-color: #eee;
 	margin: 0px;
 	width: 85px;
-	color: black;
+	box-sizing: border-box;
 }
 
 #HomunInformations .modify {
 	position: absolute;
 	top: 22px;
 	right: 5px;
-	border: 0;
-	width: 42px;
-	height: 20px;
-	background-repeat: no-repeat;
-	background-color: transparent;
+	width: 56px;
+	height: 22px;
+	padding: 0;
+	font-size: 11px;
 }
 #HomunInformations .skill {
 	position: absolute;
 	top: 45px;
 	right: 5px;
-	border: 0;
-	width: 42px;
-	height: 20px;
-	background-repeat: no-repeat;
-	background-color: transparent;
+	width: 56px;
+	height: 22px;
+	padding: 0;
+	font-size: 11px;
 }
 #HomunInformations .del {
 	position: absolute;
 	top: 45px;
-	right: 50px;
-	border: 0;
-	width: 42px;
-	height: 20px;
-	background-repeat: no-repeat;
-	background-color: transparent;
+	right: 66px;
+	width: 56px;
+	height: 22px;
+	padding: 0;
+	font-size: 11px;
 }
 
 #HomunInformations .name.disabled {
-	color: black;
-	text-shadow: 1px 1px 0px #00ff00;
+	color: var(--sj-text);
+	text-shadow: none;
 	background-color: transparent;
 }
 #HomunInformations .modify.disabled {
@@ -188,12 +178,7 @@
 	position: absolute;
 	top: 73px;
 	left: 118px;
-	height: 8px;
-}
-#HomunInformations .hp_bar div {
-	width: 4px;
-	height: 8px;
-	float: left;
+	width: 90px;
 }
 #HomunInformations div.hp_bar_perc {
 	text-align: center;
@@ -222,12 +207,7 @@
 	position: absolute;
 	top: 88px;
 	left: 118px;
-	height: 8px;
-}
-#HomunInformations .sp_bar div {
-	width: 4px;
-	height: 8px;
-	float: left;
+	width: 90px;
 }
 #HomunInformations div.sp_bar_perc {
 	text-align: center;
@@ -292,11 +272,10 @@
 	position: absolute;
 	top: 155px;
 	right: 5px;
-	border: 0;
 	width: 65px;
-	height: 20px;
-	background-repeat: no-repeat;
-	background-color: transparent;
+	height: 22px;
+	padding: 0;
+	font-size: 11px;
 }
 #HomunInformations .feeding {
 	position: absolute;

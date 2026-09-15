@@ -1,44 +1,34 @@
 <div id="GuildCompanion">
-	<div class="win companion">
-		<div class="titlebar">
-			<ui-image src="basic_interface/titlebar_mid.bmp"></ui-image>
+	<div class="win companion sj-panel">
+		<div class="titlebar sj-titlebar">
 			<span class="title">Guild Companion</span>
 			<div class="right">
-				<ui-button
-					class="base btn_x"
-					bg="basic_interface/sys_close_off.bmp"
-					hover="basic_interface/sys_close_on.bmp"
-				></ui-button>
+				<ui-button class="base btn_x sj-winbtn">×</ui-button>
 			</div>
 			<div class="clear"></div>
 		</div>
 		<div class="body">
 			<div class="msg">Join a guild or start your own!</div>
 			<div class="btns">
-				<button class="btn btn_create" type="button">create guild</button>
-				<button class="btn btn_close" type="button">OK</button>
+				<button class="btn btn_create sj-btn" type="button">create guild</button>
+				<button class="btn btn_close sj-btn primary" type="button">OK</button>
 			</div>
 		</div>
 	</div>
-	<div class="win namebox">
-		<div class="titlebar">
-			<ui-image src="basic_interface/titlebar_mid.bmp"></ui-image>
+	<div class="win namebox sj-panel">
+		<div class="titlebar sj-titlebar">
 			<span class="title name_title">Create Guild</span>
 			<div class="right">
-				<ui-button
-					class="base btn_x2"
-					bg="basic_interface/sys_close_off.bmp"
-					hover="basic_interface/sys_close_on.bmp"
-				></ui-button>
+				<ui-button class="base btn_x2 sj-winbtn">×</ui-button>
 			</div>
 			<div class="clear"></div>
 		</div>
 		<div class="body">
 			<div class="label name_label">Guild Name</div>
-			<input type="text" class="guildname" maxlength="23" />
+			<input type="text" class="guildname sj-input" maxlength="23" />
 			<div class="btns">
-				<button class="btn btn_ok" type="button">OK</button>
-				<button class="btn btn_cancel" type="button">cancel</button>
+				<button class="btn btn_ok sj-btn primary" type="button">OK</button>
+				<button class="btn btn_cancel sj-btn" type="button">cancel</button>
 			</div>
 		</div>
 	</div>

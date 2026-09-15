@@ -19,17 +19,22 @@ import Inventory from 'UI/Components/Inventory/Inventory.js';
 import ChatBox from 'UI/Components/ChatBox/ChatBox.js';
 import { InventoryItemTransferPriority } from 'UI/Components/Inventory/InventoryItemTransfer.js';
 import htmlText from './Trade.html?raw';
+import htmlTextClassic from './Trade.classic.html?raw';
 import cssText from './Trade.css?raw';
+import cssTextClassic from './Trade.classic.css?raw';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 
 /**
  * Create Component
  */
-const Trade = new GUIComponent('Trade', cssText);
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const Trade = new GUIComponent('Trade', isClassic ? cssTextClassic : themeText + cssText);
 
 /**
  * HTML returned by render()
  */
-Trade.render = () => htmlText;
+Trade.render = () => (isClassic ? htmlTextClassic : htmlText);
 
 /**
  * @var {Object} queue, item waiting from server an answer

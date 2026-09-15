@@ -23,14 +23,19 @@ import InputBox from 'UI/Components/InputBox/InputBox.js';
 import CartItems from 'UI/Components/CartItems/CartItems.js';
 import VendingModelMessage from 'UI/Components/Vending/VendingModelMessage/VendingModelMessage.js';
 import htmlText from './Vending.html?raw';
+import htmlTextClassic from './Vending.classic.html?raw';
 import cssText from './Vending.css?raw';
+import cssTextClassic from './Vending.classic.css?raw';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 import Renderer from 'Renderer/Renderer.js';
 import Inventory from 'UI/Components/Inventory/Inventory.js';
 import BasicInfo from 'UI/Components/BasicInfo/BasicInfo.js';
 
-const Vending = new GUIComponent('Vending', cssText);
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const Vending = new GUIComponent('Vending', isClassic ? cssTextClassic : themeText + cssText);
 
-Vending.render = () => htmlText;
+Vending.render = () => (isClassic ? htmlTextClassic : htmlText);
 
 Vending.isOpen = false;
 Vending.Type = {

@@ -22,7 +22,11 @@ import ChatRoom from 'UI/Components/ChatRoom/ChatRoom.js';
 import Client from 'Core/Client.js';
 import DB from 'DB/DBManager.js';
 import htmlText from './ChangeCart.html?raw';
+import htmlTextClassic from './ChangeCart.classic.html?raw';
 import cssText from './ChangeCart.css?raw';
+import cssTextClassic from './ChangeCart.classic.css?raw';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 
 // Config
 const CART_LIMIT = 13;
@@ -30,12 +34,13 @@ const CART_LIMIT = 13;
 /**
  * Create Component
  */
-const ChangeCart = new GUIComponent('ChangeCart', cssText);
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const ChangeCart = new GUIComponent('ChangeCart', isClassic ? cssTextClassic : themeText + cssText);
 
 /**
  * Render HTML
  */
-ChangeCart.render = () => htmlText;
+ChangeCart.render = () => (isClassic ? htmlTextClassic : htmlText);
 
 /**
  * @var {object} data info

@@ -18,6 +18,8 @@ import KEYS from 'Controls/KeyEventHandler.js';
 import UIManager from 'UI/UIManager.js';
 import GUIComponent from 'UI/GUIComponent.js';
 import 'UI/Elements/Elements.js';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 
 /**
  * Create MiniMap component
@@ -35,6 +37,8 @@ export function createMiniMap({
 	name,
 	htmlText,
 	cssText,
+	htmlTextClassic,
+	cssTextClassic,
 	worldMap = null,
 	townInfoToggle = false,
 	coordinates = false,
@@ -43,7 +47,8 @@ export function createMiniMap({
 	/**
 	 * Create MiniMap component
 	 */
-	const MiniMap = new GUIComponent(name, cssText);
+	const isClassic = GraphicsSettings.uiSkin === 'classic';
+	const MiniMap = new GUIComponent(name, isClassic ? cssTextClassic : themeText + cssText);
 
 	/**
 	 * Mouse cant cross this UI
@@ -55,7 +60,7 @@ export function createMiniMap({
 	 */
 	MiniMap.needFocus = false;
 
-	MiniMap.render = () => htmlText;
+	MiniMap.render = () => (isClassic ? htmlTextClassic : htmlText);
 
 	/**
 	 * @var {Preferences}

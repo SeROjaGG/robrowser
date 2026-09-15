@@ -23,9 +23,10 @@ import NpcBox from 'UI/Components/NpcBox/NpcBox.js';
 import InputBox from 'UI/Components/InputBox/InputBox.js';
 import NpcMenu from 'UI/Components/NpcMenu/NpcMenu.js';
 import WinPopup from 'UI/Components/WinPopup/WinPopup.js';
+import GUIComponent from 'UI/GUIComponent.js';
+import GraphicsSettings from 'Preferences/Graphics.js';
 import MiniMap from 'UI/Components/MiniMap/MiniMap.js';
 import ChatBox from 'UI/Components/ChatBox/ChatBox.js';
-import GUIComponent from 'UI/GUIComponent.js';
 
 /**
  * NPC write a message
@@ -158,6 +159,8 @@ function onInputAppear(pkt) {
 	InputBox.setType(type, true);
 }
 
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+
 /**
  * On Shop selection (buy/sell)
  * @param {object} pkt - PACKET.ZC.SELECT_DEALTYPE
@@ -180,12 +183,17 @@ function onDealSelection(pkt) {
 
 		const createBtn = (name, onClick) => {
 			const btn = document.createElement('button');
-			btn.className = 'btn';
-			btn.dataset.background = 'btn_' + name + '.bmp';
-			btn.dataset.hover = 'btn_' + name + '_a.bmp';
-			btn.dataset.down = 'btn_' + name + '_b.bmp';
+			if (isClassic) {
+				btn.className = 'btn';
+				btn.dataset.background = 'btn_' + name + '.bmp';
+				btn.dataset.hover = 'btn_' + name + '_a.bmp';
+				btn.dataset.down = 'btn_' + name + '_b.bmp';
+				GUIComponent.processDataAttrs(btn);
+			} else {
+				btn.className = 'btn sj-btn';
+				btn.textContent = name.charAt(0).toUpperCase() + name.slice(1);
+			}
 			btn.addEventListener('click', onClick, { once: true });
-			GUIComponent.processDataAttrs(btn);
 			return btn;
 		};
 

@@ -14,13 +14,18 @@ import 'UI/Elements/Elements.js';
 import KEYS from 'Controls/KeyEventHandler.js';
 import PACKETVER from 'Network/PacketVerManager.js';
 import htmlText from './PartyHelper.html?raw';
+import htmlTextClassic from './PartyHelper.classic.html?raw';
 import cssText from './PartyHelper.css?raw';
+import cssTextClassic from './PartyHelper.classic.css?raw';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 import WhisperBox from 'UI/Components/WhisperBox/WhisperBox.js';
 
 /**
  * Create Component
  */
-const PartyHelper = new GUIComponent('PartyHelper', cssText);
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const PartyHelper = new GUIComponent('PartyHelper', isClassic ? cssTextClassic : themeText + cssText);
 
 /**
  * Window type constants
@@ -47,7 +52,7 @@ function _root() {
 /**
  * Render HTML
  */
-PartyHelper.render = () => htmlText;
+PartyHelper.render = () => (isClassic ? htmlTextClassic : htmlText);
 
 /**
  * Has input fields — protect keyboard events

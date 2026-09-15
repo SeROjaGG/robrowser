@@ -896,7 +896,11 @@ function onExitSuccess() {
 	MapRenderer.free();
 	SoundManager.stop();
 	BGM.stop();
-	import('Engine/GameEngine.js').then(m => m.default.reload());
+	// SeROja: real auth lives in `www` (one-shot autoLogin token, already spent) —
+	// the in-game WinLogin form GameEngine.reload() used to drop into is a dead
+	// end here, so send the player back to /account instead (same as
+	// CharSelectSeROja's "Leave" button).
+	window.location.assign('/account');
 }
 
 /**

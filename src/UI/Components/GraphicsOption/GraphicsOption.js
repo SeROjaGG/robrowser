@@ -18,6 +18,7 @@ import UIManager from 'UI/UIManager.js';
 import GUIComponent from 'UI/GUIComponent.js';
 import htmlText from './GraphicsOption.html?raw';
 import cssText from './GraphicsOption.css?raw';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
 
 import MemoryManager from 'Core/MemoryManager.js';
 import ChatBox from 'UI/Components/ChatBox/ChatBox.js';
@@ -25,8 +26,15 @@ import DonorBadge from 'UI/Components/SeROjaCommon/DonorBadge.js';
 
 /**
  * Create Component
+ *
+ * PLAN-023: GraphicsOption always renders in the SeROja skin, regardless of
+ * `GraphicsSettings.uiSkin` — it's the one window that must stay reachable
+ * and consistent no matter which skin is active, since it's the only place
+ * housing the Classic/SeROja switch itself. The recovered `.classic.html`
+ * predates that dropdown entirely (never committed), so branching this
+ * component would strand Classic-mode players with no way back.
  */
-const GraphicsOption = new GUIComponent('GraphicsOption', cssText);
+const GraphicsOption = new GUIComponent('GraphicsOption', themeText + cssText);
 
 /**
  * @var {Preferences} Graphics
@@ -84,6 +92,7 @@ GraphicsOption.init = function init() {
 	};
 
 	bindChange('.details', onUpdateQualityDetails);
+	bindChange('.ui-skin', onChangeUiSkin);
 	bindChange('.cursor-option', onToggleGameCursor);
 	bindChange('.screensize', onUpdateScreenSize);
 	bindChange('.fpslimit', onUpdateFPSLimit);
@@ -137,6 +146,7 @@ GraphicsOption.onAppend = function onAppend() {
 	const root = this.getRoot();
 
 	root.querySelector('.details').value = GraphicsSettings.quality;
+	root.querySelector('.ui-skin').value = GraphicsSettings.uiSkin;
 	root.querySelector('.screensize').value = GraphicsSettings.screensize;
 	root.querySelector('.cursor-option').checked = GraphicsSettings.cursor;
 	root.querySelector('.fpslimit').value = GraphicsSettings.fpslimit;
@@ -190,6 +200,16 @@ GraphicsOption.onRemove = function onRemove() {
 /**
  * Modify game details to perform faster
  */
+// SeROja: UI Skin selector (PLAN-023). Every reskinned component picks its
+// classic/seroja markup once at module load, so the switch needs a reload to
+// actually take effect.
+function onChangeUiSkin() {
+	GraphicsSettings.uiSkin = this.value;
+	GraphicsSettings.save();
+	window.onbeforeunload = null; // drop roBrowser's "exit?" guard (App/Online.js) — this reload is intentional
+	window.location.reload();
+}
+
 function onUpdateQualityDetails() {
 	GraphicsSettings.quality = parseInt(this.value, 10);
 	GraphicsSettings.save();

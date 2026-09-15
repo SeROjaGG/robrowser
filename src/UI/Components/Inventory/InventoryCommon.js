@@ -37,6 +37,8 @@ import Equipment from 'UI/Components/Equipment/Equipment.js';
 import Storage from 'UI/Components/Storage/Storage.js';
 import SwitchEquip from 'UI/Components/SwitchEquip/SwitchEquip.js';
 import UIVersionManager from 'UI/UIVersionManager.js';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 import Configs from 'Core/Configs.js';
 import PACKETVER from 'Network/PacketVerManager.js';
 import BasicInfo from 'UI/Components/BasicInfo/BasicInfo.js';
@@ -84,6 +86,8 @@ export function createInventory(config) {
 		name,
 		htmlText,
 		cssText,
+		htmlTextClassic,
+		cssTextClassic,
 		defaultHeight,
 		resizableHeight = false,
 		tabSprite = false,
@@ -97,8 +101,9 @@ export function createInventory(config) {
 		tabDropPreventDefault = false
 	} = config;
 
-	const Component = new GUIComponent(name, cssText);
-	Component.render = () => htmlText;
+	const isClassic = GraphicsSettings.uiSkin === 'classic';
+	const Component = new GUIComponent(name, isClassic ? cssTextClassic : themeText + cssText);
+	Component.render = () => (isClassic ? htmlTextClassic : htmlText);
 
 	Component.TAB = {
 		USABLE: 0,

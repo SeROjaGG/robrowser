@@ -16,19 +16,24 @@ import UIManager from 'UI/UIManager.js';
 import GUIComponent from 'UI/GUIComponent.js';
 import 'UI/Elements/Elements.js';
 import htmlText from './ItemPreview.html?raw';
+import htmlTextClassic from './ItemPreview.classic.html?raw';
 import cssText from './ItemPreview.css?raw';
+import cssTextClassic from './ItemPreview.classic.css?raw';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 import ItemInfo from 'UI/Components/ItemInfo/ItemInfo.js';
 import Entity from 'Renderer/Entity/Entity.js';
 
 /**
  * Create Component
  */
-const ItemPreview = new GUIComponent('ItemPreview', cssText);
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const ItemPreview = new GUIComponent('ItemPreview', isClassic ? cssTextClassic : themeText + cssText);
 
 /**
  * Render HTML
  */
-ItemPreview.render = () => htmlText;
+ItemPreview.render = () => (isClassic ? htmlTextClassic : htmlText);
 
 /**
  * @var {CanvasRenderingContext2D}

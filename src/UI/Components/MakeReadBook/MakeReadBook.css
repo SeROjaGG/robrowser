@@ -10,15 +10,8 @@
 	width: 555px;
 }
 
-#MakeReadBook .titlebar {
-	width: 100%;
-	height: 17px;
-	background-color: white;
-	background-repeat: repeat-x;
-	border-radius: 3px 3px 0px 0px;
-}
 #MakeReadBook .titlebar .text {
-	text-shadow: 1px 1px white;
+	text-shadow: none;
 	vertical-align: -2px;
 	white-space: nowrap;
 	display: inline-block;
@@ -98,9 +91,9 @@
 	white-space: nowrap;
 	z-index: 900;
 	height: 13px;
-	background: rgba(0, 0, 0, 0.5);
-	color: white;
-	text-shadow: black 1px 1px;
+	background: var(--sj-glass-strong);
+	color: var(--sj-text);
+	text-shadow: none;
 	top: 8px;
 	left: 11px;
 	text-align: center;
@@ -113,9 +106,9 @@
 	white-space: nowrap;
 	z-index: 900;
 	height: 13px;
-	background: rgba(0, 0, 0, 0.5);
-	color: white;
-	text-shadow: black 1px 1px;
+	background: var(--sj-glass-strong);
+	color: var(--sj-text);
+	text-shadow: none;
 	top: 6px;
 	right: 12px;
 	text-align: center;
@@ -128,9 +121,9 @@
 	white-space: nowrap;
 	z-index: 900;
 	height: 13px;
-	background: rgba(0, 0, 0, 0.5);
-	color: white;
-	text-shadow: black 1px 1px;
+	background: var(--sj-glass-strong);
+	color: var(--sj-text);
+	text-shadow: none;
 	top: 6px;
 	right: -10px;
 	text-align: center;

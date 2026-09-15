@@ -20,11 +20,15 @@ import ScreenEffectManager from 'Renderer/ScreenEffectManager.js';
 import Session from 'Engine/SessionStorage.js';
 import htmlText from './StatusIcons.html?raw';
 import cssText from './StatusIcons.css?raw';
+import cssTextClassic from './StatusIcons.classic.css?raw';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 
 /**
  * Create component
  */
-const StatusIcons = new GUIComponent('StatusIcons', cssText);
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const StatusIcons = new GUIComponent('StatusIcons', isClassic ? cssTextClassic : themeText + cssText);
 
 StatusIcons.render = () => htmlText;
 

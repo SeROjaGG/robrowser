@@ -23,11 +23,16 @@ import ChatBox from 'UI/Components/ChatBox/ChatBox.js';
 import Inventory from 'UI/Components/Inventory/Inventory.js';
 import KEYS from 'Controls/KeyEventHandler.js';
 import htmlText from './Enchant.html?raw';
+import htmlTextClassic from './Enchant.classic.html?raw';
 import cssText from './Enchant.css?raw';
+import cssTextClassic from './Enchant.classic.css?raw';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 
-const Enchant = new GUIComponent('Enchant', cssText);
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const Enchant = new GUIComponent('Enchant', isClassic ? cssTextClassic : themeText + cssText);
 
-Enchant.render = () => htmlText;
+Enchant.render = () => (isClassic ? htmlTextClassic : htmlText);
 
 Enchant.captureKeyEvents = true;
 

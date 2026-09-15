@@ -4,10 +4,6 @@
 
 #PartyFriends .titlebar {
 	width: 100%;
-	height: 17px;
-	background-color: white;
-	background-repeat: repeat-x;
-	border-radius: 3px 3px 0px 0px;
 }
 
 #PartyFriends .titlebar .base {
@@ -21,7 +17,7 @@
 
 #PartyFriends .titlebar .party,
 #PartyFriends .titlebar .friend {
-	text-shadow: 1px 1px white;
+	text-shadow: none;
 	vertical-align: -2px;
 	white-space: nowrap;
 	/* chrome bug */
@@ -47,7 +43,6 @@
 #PartyFriends .content {
 	height: 120px;
 	width: 240px;
-	background-color: white;
 	overflow-x: hidden;
 	overflow-y: auto;
 }
@@ -65,12 +60,12 @@
 }
 
 #PartyFriends .content .friend .node .name {
-	color: #102550;
+	color: var(--sj-text);
 	white-space: nowrap;
 }
 
 #PartyFriends .content .friend .node .selection {
-	background-color: #739cef;
+	background-color: rgba(79, 195, 247, 0.25);
 }
 
 #PartyFriends .content .party,
@@ -80,14 +75,14 @@
 
 #PartyFriends .content .party .node {
 	white-space: nowrap;
-	color: #007b7b;
+	color: var(--sj-accent-2);
 	position: relative;
 	height: 30px;
 }
 
 #PartyFriends .content .party .node.leader {
 	font-weight: bold;
-	color: #08317b;
+	color: var(--sj-accent);
 }
 
 #PartyFriends .content .party .node.online .life,
@@ -112,7 +107,7 @@
 	position: absolute;
 	top: 19px;
 	left: 86px;
-	color: black;
+	color: var(--sj-text);
 	font-weight: normal;
 	font-size: 10px;
 }
@@ -125,14 +120,15 @@
 	height: 38px;
 	padding: 3px 5px;
 	position: relative;
-	background: #ffffff;
+	background: rgba(255, 255, 255, 0.03);
 	display: flex;
 	align-items: center;
 	box-sizing: border-box;
+	border-bottom: 1px solid var(--sj-border);
 }
 
 #PartyFriends .content .party.info-v2 .node.detached {
-	background: #deefff;
+	background: rgba(79, 195, 247, 0.1);
 }
 
 #PartyFriends .content .party.info-v2 .node .row1,
@@ -160,8 +156,8 @@
 	height: 24px;
 	min-width: 24px;
 	margin-right: 8px;
-	background: #f8f8f8;
-	border: 1px solid #ccc;
+	background: var(--sj-glass);
+	border: 1px solid var(--sj-border);
 	display: flex;
 	/* Centering children */
 	justify-content: center;
@@ -210,7 +206,7 @@
 }
 
 #PartyFriends .content .party.info-v2 .node:hover {
-	background: #739cef;
+	background: rgba(79, 195, 247, 0.14);
 }
 
 #PartyFriends .content .party.info-v2 .node .info-container {
@@ -236,7 +232,7 @@
 
 #PartyFriends .content .party.info-v2 .node .level {
 	font-size: 11px;
-	color: #e37522;
+	color: var(--sj-hp-a);
 	font-weight: bold;
 	margin-right: 5px;
 	white-space: nowrap;
@@ -244,7 +240,7 @@
 
 #PartyFriends .content .party.info-v2 .node .name {
 	font-weight: normal;
-	color: #333;
+	color: var(--sj-text);
 	margin-right: 5px;
 	white-space: nowrap;
 	overflow: hidden;
@@ -254,7 +250,7 @@
 
 #PartyFriends .content .party.info-v2 .node .map {
 	font-size: 10px;
-	color: #777;
+	color: var(--sj-muted);
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -266,8 +262,8 @@
 	width: 75px;
 	height: 5px;
 	/* Thinner */
-	background: #333;
-	border: 1px solid #111;
+	background: rgba(255, 255, 255, 0.08);
+	border: 1px solid var(--sj-border);
 	overflow: hidden;
 	margin-right: 5px;
 	position: relative !important;
@@ -283,7 +279,7 @@
 
 #PartyFriends .content .party.info-v2 .node .hp {
 	font-size: 10px;
-	color: #666;
+	color: var(--sj-muted);
 	display: inline-block !important;
 	vertical-align: middle;
 	margin-right: 5px;
@@ -314,7 +310,7 @@
 }
 
 #PartyFriends .footer .member-count-container .footer-label {
-	color: #333;
+	color: var(--sj-muted);
 	font-size: 10px;
 	white-space: nowrap;
 	margin-right: 10px;
@@ -348,14 +344,14 @@
 }
 
 #PartyFriends .content .node .selection {
-	background-color: #739cef;
+	background-color: rgba(79, 195, 247, 0.25);
 }
 
 #PartyFriends .navigation {
 	width: 100%;
 	height: 20px;
-	background-repeat: repeat-x;
-	background-color: transparent;
+	border-top: 1px solid var(--sj-border);
+	border-bottom: 1px solid var(--sj-border);
 }
 
 #PartyFriends .navigation button,
@@ -377,9 +373,13 @@
 	z-index: 900;
 	height: 13px;
 	padding: 5px;
-	background: rgba(0, 0, 0, 0.7);
-	color: white;
-	text-shadow: 1px 1px black;
+	background: var(--sj-glass-strong);
+	backdrop-filter: blur(var(--sj-blur)) saturate(160%);
+	-webkit-backdrop-filter: blur(var(--sj-blur)) saturate(160%);
+	border: 1px solid var(--sj-border);
+	border-radius: var(--sj-radius-sm);
+	color: var(--sj-text);
+	text-shadow: none;
 }
 
 #PartyFriends .navigation button:hover .overlay,
@@ -388,11 +388,8 @@
 }
 
 #PartyFriends .footer {
-	border-radius: 0px 0px 3px 3px;
 	width: 100%;
 	height: 21px;
-	background-repeat: repeat-x;
-	background-color: transparent;
 	position: relative;
 }
 

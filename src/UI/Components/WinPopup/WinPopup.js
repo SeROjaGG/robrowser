@@ -13,14 +13,19 @@ import UIManager from 'UI/UIManager.js';
 import GUIComponent from 'UI/GUIComponent.js';
 import 'UI/Elements/Elements.js';
 import htmlText from './WinPopup.html?raw';
+import htmlTextClassic from './WinPopup.classic.html?raw';
 import cssText from './WinPopup.css?raw';
+import cssTextClassic from './WinPopup.classic.css?raw';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 
 /**
  * Create Component
  */
-const WinPopup = new GUIComponent('WinPopup', cssText);
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const WinPopup = new GUIComponent('WinPopup', isClassic ? cssTextClassic : themeText + cssText);
 
-WinPopup.render = () => htmlText;
+WinPopup.render = () => (isClassic ? htmlTextClassic : htmlText);
 
 /**
  * Initialize popup

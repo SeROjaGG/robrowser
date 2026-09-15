@@ -16,14 +16,19 @@ import UIManager from 'UI/UIManager.js';
 import GUIComponent from 'UI/GUIComponent.js';
 import 'UI/Elements/Elements.js';
 import htmlText from './MakeArrowSelection.html?raw';
+import htmlTextClassic from './MakeArrowSelection.classic.html?raw';
 import cssText from './MakeArrowSelection.css?raw';
+import cssTextClassic from './MakeArrowSelection.classic.css?raw';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 
 /**
  * Create MakeArrowSelection namespace
  */
-const MakeArrowSelection = new GUIComponent('MakeArrowSelection', cssText);
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const MakeArrowSelection = new GUIComponent('MakeArrowSelection', isClassic ? cssTextClassic : themeText + cssText);
 
-MakeArrowSelection.render = () => htmlText;
+MakeArrowSelection.render = () => (isClassic ? htmlTextClassic : htmlText);
 
 /**
  * Sanitize HTML, allowing only whitelisted tags (font, i, b)

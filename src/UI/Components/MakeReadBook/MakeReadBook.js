@@ -17,7 +17,11 @@ import UIManager from 'UI/UIManager.js';
 import GUIComponent from 'UI/GUIComponent.js';
 import 'UI/Elements/Elements.js';
 import htmlText from './MakeReadBook.html?raw';
+import htmlTextClassic from './MakeReadBook.classic.html?raw';
 import cssText from './MakeReadBook.css?raw';
+import cssTextClassic from './MakeReadBook.classic.css?raw';
+import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 import Sprite from 'Loaders/Sprite.js';
 import Client from 'Core/Client.js';
 import TextEncoding from 'Utils/CodepageManager.js';
@@ -29,9 +33,10 @@ const sleepNow = delay => new Promise(resolve => setTimeout(resolve, delay));
 /**
  * Create Component
  */
-const MakeReadBook = new GUIComponent('MakeReadBook', cssText);
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const MakeReadBook = new GUIComponent('MakeReadBook', isClassic ? cssTextClassic : themeText + cssText);
 
-MakeReadBook.render = () => htmlText;
+MakeReadBook.render = () => (isClassic ? htmlTextClassic : htmlText);
 
 /**
  * @var {Preferences} structure
