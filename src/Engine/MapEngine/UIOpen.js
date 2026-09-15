@@ -45,10 +45,19 @@ function onUIOpen(pkt) {
 			if (Configs.get('enableCheckAttendance') && PACKETVER.value >= 20180307) {
 				CheckAttendance.prepare();
 				CheckAttendance.setData(pkt.data);
-				CheckAttendance.cleanUI();
-				CheckAttendance.append();
-				CheckAttendance.ui.show();
-				CheckAttendance.focus();
+				// SeROja: this packet arrives right after the map-server handshake,
+				// well before ground/sprite textures finish streaming in (there's no
+				// "map fully loaded" event to hook here -- the black screen is just
+				// unrendered WebGL, not a tracked loading component). Hold the popup
+				// a few seconds so it doesn't render on top of that black screen.
+				// ponytail: fixed delay, not event-driven -- revisit if a real
+				// "world ready" signal ever gets added to MapEngine.
+				setTimeout(() => {
+					CheckAttendance.cleanUI();
+					CheckAttendance.append();
+					CheckAttendance.ui.show();
+					CheckAttendance.focus();
+				}, 3000);
 			}
 			break;
 		case 8:

@@ -233,8 +233,11 @@ export function createEquipment({
 		this._host.addEventListener('dragleave', onDragLeave);
 		this._host.addEventListener('drop', onDrop);
 
-		const content = root.querySelector('.content');
-		if (content) {
+		// SeROja: one <table class="content"> per tab (General/Costume/Title/Damage),
+		// not one shared container -- querySelector() only grabbed the first (General),
+		// so double-click-to-unequip silently did nothing on the Costume tab. Bind to
+		// all of them.
+		root.querySelectorAll('.content').forEach(content => {
 			content.addEventListener('contextmenu', e => {
 				e.preventDefault();
 				const item = e.target.closest('.item');
@@ -252,7 +255,7 @@ export function createEquipment({
 				const btn = e.target.closest('button');
 				if (btn) onEquipmentOut();
 			});
-		}
+		});
 
 		this.draggable('.titlebar');
 
