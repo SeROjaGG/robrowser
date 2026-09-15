@@ -93,6 +93,7 @@ import JoystickUI from 'UI/Components/JoystickUI/JoystickUI.js';
 import CashShopIcon from 'UI/Components/CashShopIcon/CashShopIcon.js';
 import SeROjaMallIcon from 'UI/Components/SeROjaMallIcon/SeROjaMallIcon.js';
 import SeROjaMarketIcon from 'UI/Components/SeROjaMarketIcon/SeROjaMarketIcon.js';
+import DonorBadge from 'UI/Components/SeROjaCommon/DonorBadge.js';
 import Achievement from 'UI/Components/Achievement/Achievement.js';
 
 import MainEngine from './MapEngine/Main.js';
@@ -771,6 +772,12 @@ function onMapChange(pkt) {
 
 		if (Configs.get('enableCheckAttendance') && PACKETVER.value >= 20180307) {
 			CheckAttendance.append();
+		}
+
+		try {
+			DonorBadge.refresh();
+		} catch (e) {
+			console.error('[SeROja] DonorBadge.refresh() failed:', e);
 		}
 
 		// Reload plugins

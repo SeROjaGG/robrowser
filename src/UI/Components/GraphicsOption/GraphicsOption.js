@@ -21,6 +21,7 @@ import cssText from './GraphicsOption.css?raw';
 
 import MemoryManager from 'Core/MemoryManager.js';
 import ChatBox from 'UI/Components/ChatBox/ChatBox.js';
+import DonorBadge from 'UI/Components/SeROjaCommon/DonorBadge.js';
 
 /**
  * Create Component
@@ -89,6 +90,13 @@ GraphicsOption.init = function init() {
 	bindChange('.fps', onToggleFPSDisplay);
 	bindChange('.pixel-perfect', onTogglePixelPerfect);
 
+	// SeROja: Extras
+	bindChange('.floating-exp', onToggleFloatingExp);
+	bindChange('.always-show-hp', onToggleAlwaysShowHp);
+	bindChange('.sight-range', onToggleSightRange);
+	bindChange('.attack-range', onToggleAttackRange);
+	bindChange('.donor-badge', onToggleDonorBadge);
+
 	// Post-Processing
 	bindChange('.bloom', onToggleBloom);
 	bindChange('.bloom-intensity', onUpdateBloomIntensity);
@@ -134,6 +142,13 @@ GraphicsOption.onAppend = function onAppend() {
 	root.querySelector('.fpslimit').value = GraphicsSettings.fpslimit;
 	root.querySelector('.fps').checked = FPS._host ? FPS._host.style.display !== 'none' : false;
 	root.querySelector('.pixel-perfect').checked = GraphicsSettings.pixelPerfectSprites;
+
+	// SeROja: Extras
+	root.querySelector('.floating-exp').checked = GraphicsSettings.floatingExpNumbers;
+	root.querySelector('.always-show-hp').checked = GraphicsSettings.alwaysShowMonsterHp;
+	root.querySelector('.sight-range').checked = GraphicsSettings.showSightRange;
+	root.querySelector('.attack-range').checked = GraphicsSettings.showAttackRange;
+	root.querySelector('.donor-badge').checked = GraphicsSettings.showDonorBadge;
 
 	// Post-Processing
 	root.querySelector('.bloom').checked = GraphicsSettings.bloom;
@@ -218,6 +233,33 @@ function onUpdateFPSLimit() {
  */
 function onToggleFPSDisplay() {
 	FPS.toggle(!!this.checked);
+}
+
+// SeROja: Extras -- plain preference toggles, no side effects beyond save()
+function onToggleFloatingExp() {
+	GraphicsSettings.floatingExpNumbers = !!this.checked;
+	GraphicsSettings.save();
+}
+
+function onToggleAlwaysShowHp() {
+	GraphicsSettings.alwaysShowMonsterHp = !!this.checked;
+	GraphicsSettings.save();
+}
+
+function onToggleSightRange() {
+	GraphicsSettings.showSightRange = !!this.checked;
+	GraphicsSettings.save();
+}
+
+function onToggleAttackRange() {
+	GraphicsSettings.showAttackRange = !!this.checked;
+	GraphicsSettings.save();
+}
+
+function onToggleDonorBadge() {
+	GraphicsSettings.showDonorBadge = !!this.checked;
+	GraphicsSettings.save();
+	DonorBadge.refresh();
 }
 
 function onTogglePixelPerfect() {

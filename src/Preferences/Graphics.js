@@ -81,7 +81,16 @@ const defaultGraphicsSettings = {
 	 */
 	occluderFade: 'off',
 	occluderFadeOpacity: 0.25,
-	occluderFadeRadius: 5.0
+	occluderFadeRadius: 5.0,
+
+	/**
+	 * SeROja: "Extras" section on the Basic tab.
+	 */
+	floatingExpNumbers: true,
+	alwaysShowMonsterHp: true,
+	showSightRange: true,
+	showAttackRange: true,
+	showDonorBadge: false
 };
 
 /**

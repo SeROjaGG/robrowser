@@ -35,6 +35,7 @@ import EntityManager from 'Renderer/EntityManager.js';
 import Entity from 'Renderer/Entity/Entity.js';
 import EffectManager from 'Renderer/EffectManager.js';
 import Damage from 'Renderer/Effects/Damage.js';
+import GraphicsSettings from 'Preferences/Graphics.js';
 import MagicTarget from 'Renderer/Effects/MagicTarget.js';
 import LockOnTarget from 'Renderer/Effects/LockOnTarget.js';
 import MagicRing from 'Renderer/Effects/MagicRing.js';
@@ -2630,6 +2631,11 @@ function onBladeStopPacket(pkt) {
  */
 
 function onNotifyExp(pkt) {
+	// SeROja: floating EXP numbers over the player, same renderer as damage/heal.
+	if (GraphicsSettings.floatingExpNumbers && pkt.amount > 0) {
+		Damage.add(pkt.amount, Session.Entity, Renderer.tick, null, Damage.TYPE.HEAL | Damage.TYPE.EXP);
+	}
+
 	switch (pkt.expType) {
 		case 0:
 			if (pkt.varID === 1) {

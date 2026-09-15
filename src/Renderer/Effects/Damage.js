@@ -345,7 +345,12 @@ class Damage {
 		obj.startTick = tick;
 		obj.entity = entity;
 
-		if (obj.type & Damage.TYPE.SP) {
+		if (obj.type & Damage.TYPE.EXP) {
+			// gold (SeROja: floating EXP numbers reuse HEAL's motion, own color)
+			obj.color[0] = 1.0;
+			obj.color[1] = 0.82;
+			obj.color[2] = 0.1;
+		} else if (obj.type & Damage.TYPE.SP) {
 			// blue
 			obj.color[0] = 0.13;
 			obj.color[1] = 0.19;
@@ -694,7 +699,8 @@ Damage.TYPE = {
 	CRIT: 1 << 7,
 	LUCKY: 1 << 8,
 	ENDURE: 1 << 9,
-	COMBO_B: 1 << 10
+	COMBO_B: 1 << 10,
+	EXP: 1 << 11
 };
 
 /**

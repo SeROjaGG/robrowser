@@ -31,6 +31,7 @@ import Water from 'Renderer/Map/Water.js';
 import Session from 'Engine/SessionStorage.js';
 import DB from 'DB/DBManager.js';
 import GraphicsSettings from 'Preferences/Graphics.js';
+import renderRangeRings from 'Renderer/Entity/EntityRangeRings.js';
 import GR2ModelRenderer from 'Renderer/GR2/GR2ModelRenderer.js';
 
 /**
@@ -164,8 +165,20 @@ const renderGUI = (function renderGUIClosure() {
 		entity.depth = _vector[3];
 
 		// Display UI
-		if (entity.life.display) {
+		// SeROja: with the server now sending HP for every monster on spawn (not just
+		// damaged ones), gate on the "always on" pref for mobs specifically -- unchecked,
+		// hide bars still at full HP so undamaged monsters look like stock behavior.
+		// Players/homun/mercenary life bars are untouched either way.
+		const hideFullHpMob =
+			entity.objecttype === entity.constructor.TYPE_MOB &&
+			!GraphicsSettings.alwaysShowMonsterHp &&
+			entity.life.hp_max >= 0 &&
+			entity.life.hp >= entity.life.hp_max;
+		if (entity.life.display && !hideFullHpMob) {
 			entity.life.render(_matrix);
+		}
+		if (entity === Session.Entity) {
+			renderRangeRings(_matrix, entity.attack_range);
 		}
 		if (entity.emblem.display) {
 			entity.emblem.render(_matrix);
