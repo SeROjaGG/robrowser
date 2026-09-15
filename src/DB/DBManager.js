@@ -384,6 +384,58 @@ class DB {
 		if (PACKETVER.value >= 20230302) {
 			loadCSV('data/simplemsg/msg_emotion.csv', MsgEmotionCSV, 0, 2, onLoad());
 		}
+		// Skill descriptions (SeROja): kept outside loadLua on purpose. skillid.lub +
+		// skilldescript.lub are ~1.3 MB combined (English via the ROenglishRE overlay,
+		// ADR-0015) -- nothing like the 22 MB itemInfo.lub that made loadLua a hazard
+		// for CharEngine's 60s DB-load poll. Right-click on a skill needs this table
+		// populated or DB.getSkillDescription() always returns the '...' placeholder.
+		{
+			const onSkillEnd = onLoad();
+			loadLuaValue(DB.LUA_PATH + 'skillinfoz/skillid.lub', 'SKID', json => {
+				if (json && typeof json === 'object') {
+					// Validate and merge entries into SKID
+					for (const k in json) {
+						if (Object.prototype.hasOwnProperty.call(json, k)) {
+							const value = json[k];
+							if (typeof value === 'number' && value > 0) {
+								SKID[k] = value;
+							}
+						}
+					}
+				}
+				// Load description - skillid.lub is re-executed harmlessly (Lua just repopulates globals)
+				loadLuaTable(
+					[DB.LUA_PATH + 'skillinfoz/skillid.lub', DB.LUA_PATH + 'skillinfoz/skilldescript.lub'],
+					'SKILL_DESCRIPT',
+					_json => {
+						SkillDescription = _json;
+					},
+					() => {
+						// Calls after skillids and descs been populated
+						loadSkillInfoList(DB.LUA_PATH + 'skillinfoz/skillinfolist.lub', null, () => {
+							loadSkillTreeView(DB.LUA_PATH + 'skillinfoz/skilltreeview.lub', null, () => {
+								// Load ez2streffect, PACKETVER unknown when the while has been added, tied to default PACKETVER of rathena for 4th job
+								if (PACKETVER.value >= 20211103) {
+									const bsonOnLoad = onLoad();
+									loadBSONFile('data/contentdata/effectdata/ez2streffect.bson', Ez2streffect, () => {
+										Promise.all([
+											import('DB/Effects/EffectTable.js'),
+											import('DB/Skills/SkillEffect.js')
+										]).then(([EffectTable, SkillEffect]) => {
+											mergeEz2Effects(EffectTable.default, SkillEffect.default);
+											bsonOnLoad();
+										});
+									});
+								}
+								// Skill Lua finished
+								onSkillEnd();
+							});
+						});
+					}
+				);
+			});
+		}
+
 		// TODO: load these load files by PACKETVER
 		if (Configs.get('loadLua')) {
 			// Item
@@ -463,52 +515,6 @@ class DB {
 			if (PACKETVER.value >= 20170208) {
 				loadTitleTable(DB.LUA_PATH + 'datainfo/titletable.lub', null, onLoad());
 			}
-
-			// Skill - load skillid.lub to populate SKID, then load description
-			const onSkillEnd = onLoad();
-			loadLuaValue(DB.LUA_PATH + 'skillinfoz/skillid.lub', 'SKID', json => {
-				if (json && typeof json === 'object') {
-					// Validate and merge entries into SKID
-					for (const k in json) {
-						if (Object.prototype.hasOwnProperty.call(json, k)) {
-							const value = json[k];
-							if (typeof value === 'number' && value > 0) {
-								SKID[k] = value;
-							}
-						}
-					}
-				}
-				// Load description - skillid.lub is re-executed harmlessly (Lua just repopulates globals)
-				loadLuaTable(
-					[DB.LUA_PATH + 'skillinfoz/skillid.lub', DB.LUA_PATH + 'skillinfoz/skilldescript.lub'],
-					'SKILL_DESCRIPT',
-					_json => {
-						SkillDescription = _json;
-					},
-					() => {
-						// Calls after skillids and descs been populated
-						loadSkillInfoList(DB.LUA_PATH + 'skillinfoz/skillinfolist.lub', null, () => {
-							loadSkillTreeView(DB.LUA_PATH + 'skillinfoz/skilltreeview.lub', null, () => {
-								// Load ez2streffect, PACKETVER unknown when the while has been added, tied to default PACKETVER of rathena for 4th job
-								if (PACKETVER.value >= 20211103) {
-									const bsonOnLoad = onLoad();
-									loadBSONFile('data/contentdata/effectdata/ez2streffect.bson', Ez2streffect, () => {
-										Promise.all([
-											import('DB/Effects/EffectTable.js'),
-											import('DB/Skills/SkillEffect.js')
-										]).then(([EffectTable, SkillEffect]) => {
-											mergeEz2Effects(EffectTable.default, SkillEffect.default);
-											bsonOnLoad();
-										});
-									});
-								}
-								// Skill Lua finished
-								onSkillEnd();
-							});
-						});
-					}
-				);
-			});
 
 			// Status
 			loadStateIconInfo(DB.LUA_PATH + 'stateicon/', null, onLoad());
