@@ -30,6 +30,3 @@ Config.local.js
 
 # seroja: rathena is a symlink to ../rathena (see .claude/kbase/architecture/rathena.md)
 /rathena
-
-# seroja: RemoteClient-PHP is vendored with its own .git (see .claude/kbase/architecture/robrowser.md)
-/roBrowserLegacy-RemoteClient-PHP/

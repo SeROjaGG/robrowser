@@ -22,8 +22,8 @@ existing files in it (e.g. `rathena/DropYourRemoteClientHereDontOverride.txt`).
 
 ### 2. Drop your Remote Client
 
-Copy your remote client assets into the `roBrowserLegacy-RemoteClient-PHP/`
-folder (see `roBrowserLegacy-RemoteClient-PHP/DropYourRemoteClientHere.txt`).
+Copy your remote client assets into the sibling `../roclient/`
+folder (see `../roclient/DropYourRemoteClientHere.txt`).
 
 ### 3. Change Target build PACKETVER in docker-compose.AIO
 

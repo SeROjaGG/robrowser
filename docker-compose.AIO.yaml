@@ -243,7 +243,7 @@ services:
     # --- REMOTE CLIENT PHP ---
     remote-client-php:
         build:
-            context: ./roBrowserLegacy-RemoteClient-PHP
+            context: ../roclient
             dockerfile: docker/apache/Dockerfile
         container_name: remote-client-php
         depends_on:
@@ -261,4 +261,4 @@ services:
         # RemoteClient's own docker-compose.yml. resources/ (data.grf + DATA.INI) rides
         # along as a subdir. PLAN-006.
         volumes:
-            - './roBrowserLegacy-RemoteClient-PHP:/var/www/html'
+            - '../roclient:/var/www/html'
