@@ -377,8 +377,16 @@ class MapEngine {
 				CashShop.prepare();
 			}
 
-			SeROjaMallIcon.prepare();
-			SeROjaMarketIcon.prepare();
+			try {
+				SeROjaMallIcon.prepare();
+			} catch (e) {
+				console.error('[SeROja] SeROjaMallIcon.prepare() failed:', e);
+			}
+			try {
+				SeROjaMarketIcon.prepare();
+			} catch (e) {
+				console.error('[SeROja] SeROjaMarketIcon.prepare() failed:', e);
+			}
 
 			if (Configs.get('enableBank')) {
 				Bank.prepare();
@@ -750,8 +758,16 @@ function onMapChange(pkt) {
 			CashShopIcon.append();
 		}
 
-		SeROjaMallIcon.append();
-		SeROjaMarketIcon.append();
+		try {
+			SeROjaMallIcon.append();
+		} catch (e) {
+			console.error('[SeROja] SeROjaMallIcon.append() failed:', e);
+		}
+		try {
+			SeROjaMarketIcon.append();
+		} catch (e) {
+			console.error('[SeROja] SeROjaMarketIcon.append() failed:', e);
+		}
 
 		if (Configs.get('enableCheckAttendance') && PACKETVER.value >= 20180307) {
 			CheckAttendance.append();

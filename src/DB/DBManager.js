@@ -436,6 +436,45 @@ class DB {
 			});
 		}
 
+		// Achievements (SeROja): kept outside loadLua on purpose, same reasoning as the
+		// skill descriptions above -- achievements.lub is ~150 KB plain Lua source,
+		// nothing like the 22 MB itemInfo.lub that made loadLua a hazard. Without this
+		// the Achievement window opens but every category stays empty since
+		// DB.getAchievementTable() never gets populated. Loads the ROenglishRE
+		// SystemEN/achievements.lub (English translation, same overlay used for items/
+		// skills/interface, ADR-0015) instead of the stock Korean System/
+		// achievement_list.lub -- same table name (achievement_tbl), same shape, just
+		// readable text instead of mojibake.
+		if (Configs.get('enableAchievements') && PACKETVER.value >= 20150513) {
+			loadLuaValue(
+				'SystemEN/achievements.lub',
+				'achievement_tbl',
+				function (json) {
+					if (json) {
+						Object.assign(AchievementTable, json);
+					}
+				},
+				onLoad()
+			);
+		}
+
+		// Title tables (SeROja): kept outside loadLua on purpose -- titletable.lub is
+		// ~1.8 KB plain Lua source, not a huge compile like itemInfo.lub. Without this
+		// the Equip window's Title tab only ever shows "Remove Title", never any
+		// unlocked title, since DB.getAllTitles() never gets populated.
+		if (PACKETVER.value >= 20170208) {
+			loadTitleTable(DB.LUA_PATH + 'datainfo/titletable.lub', null, onLoad());
+		}
+
+		// CheckAttendance (SeROja): kept outside loadLua on purpose -- CheckAttendance.lub
+		// is ~1.2 KB. Without this, CheckAttendanceTable.Config stays the default empty
+		// object (truthy but StartDate undefined), so CheckAttendance.updateUI()'s
+		// regex.exec(undefined) returns null and the next null[2] throws -- an uncaught
+		// exception that blanks the whole attendance window on open.
+		if (Configs.get('enableCheckAttendance') && PACKETVER.value >= 20180307) {
+			loadAttendanceFile('System/CheckAttendance.lub', null, onLoad());
+		}
+
 		// TODO: load these load files by PACKETVER
 		if (Configs.get('loadLua')) {
 			// Item
@@ -510,11 +549,6 @@ class DB {
 
 			// Weapon tables
 			loadWeaponTable(DB.LUA_PATH + 'datainfo/weapontable.lub', null, onLoad());
-
-			// Title tables
-			if (PACKETVER.value >= 20170208) {
-				loadTitleTable(DB.LUA_PATH + 'datainfo/titletable.lub', null, onLoad());
-			}
 
 			// Status
 			loadStateIconInfo(DB.LUA_PATH + 'stateicon/', null, onLoad());
@@ -621,11 +655,6 @@ class DB {
 				loadSignBoardData('SystemEN/Sign_Data.lub', null, onSignBoardEnd);
 			});
 
-			// CheckAttendance
-			if (Configs.get('enableCheckAttendance') && PACKETVER.value >= 20180307) {
-				loadAttendanceFile('System/CheckAttendance.lub', null, onLoad());
-			}
-
 			// Quest
 			const onQuestEnd = onLoad();
 			tryLoadLuaAliases(loadQuestInfo, getSystemAliases('System/OngoingQuestInfoList.lub'), null, () => {
@@ -634,20 +663,6 @@ class DB {
 			});
 
 			// TODO: System/RecommendedQuests.lub
-
-			// Achievements
-			if (Configs.get('enableAchievements') && PACKETVER.value >= 20150513) {
-				loadLuaValue(
-					'System/achievement_list.lub',
-					'achievement_tbl',
-					function (json) {
-						if (json) {
-							Object.assign(AchievementTable, json);
-						}
-					},
-					onLoad()
-				);
-			}
 
 			// Cash Shop Banner - implemented early 2018
 			if (Configs.get('enableCashShop') && PACKETVER.value >= 20180000) {
