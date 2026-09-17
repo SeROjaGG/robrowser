@@ -1,0 +1,212 @@
+/* Classic-skin chrome for SeROjaMarket + SeROjaMall — same `.exs*` markup as
+   serojaShop.css (the JS in SeROjaMarket.js / SeROjaMall.js is skin-agnostic),
+   just re-painted with plain classic colors instead of the glass tokens. */
+
+:host {
+	position: fixed;
+	left: 120px;
+	top: 90px;
+	width: 460px;
+	z-index: 50;
+	color: #4a2f1c;
+	-webkit-user-select: none;
+	user-select: none;
+}
+
+.exs {
+	display: flex;
+	flex-direction: column;
+	max-height: 70vh;
+	background: #f3ead9;
+	border: 1px solid #a0522d;
+	border-radius: 3px;
+	box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.35);
+	overflow: hidden;
+}
+
+.exs-bar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 8px 10px;
+	background: #e8d9b8;
+	border-bottom: 1px solid #a0522d;
+	cursor: move;
+}
+.exs-bar .ttl {
+	font-weight: 700;
+	letter-spacing: 0.3px;
+	font-size: 13px;
+	color: #4a2f1c;
+}
+.exs-bar .ttl b {
+	color: #6b4423;
+}
+.exs-bar .x {
+	cursor: pointer;
+	width: 18px;
+	height: 18px;
+	line-height: 16px;
+	text-align: center;
+	border: 1px solid #a0522d;
+	border-radius: 3px;
+	color: #6b4423;
+	background: #f3ead9;
+}
+.exs-bar .x:hover {
+	background: #a0522d;
+	border-color: #a0522d;
+	color: #fff;
+}
+
+.exs-tabs {
+	display: flex;
+	gap: 2px;
+	padding: 6px 8px 0;
+	background: transparent;
+}
+.exs-tabs button {
+	flex: 1;
+	padding: 6px 4px;
+	font-size: 12px;
+	color: #8a6b45;
+	background: #ece0c8;
+	border: 1px solid #d8c3a0;
+	border-bottom: none;
+	border-radius: 3px 3px 0 0;
+	cursor: pointer;
+}
+.exs-tabs button.on {
+	color: #4a2f1c;
+	font-weight: bold;
+	background: #f3ead9;
+	border-color: #a0522d;
+}
+
+.exs-filters {
+	display: flex;
+	gap: 6px;
+	align-items: center;
+	padding: 8px 10px;
+	background: #ece0c8;
+	border-bottom: 1px solid #a0522d;
+	font-size: 12px;
+}
+.exs-filters select,
+.exs-filters input {
+	background: #fffdf8;
+	color: #4a2f1c;
+	border: 1px solid #a0522d;
+	border-radius: 2px;
+	padding: 3px 6px;
+	font: inherit;
+}
+.exs-filters input.qty {
+	width: 48px;
+}
+.exs-filters .grow {
+	flex: 1;
+}
+
+.exs-list {
+	overflow-y: auto;
+	padding: 4px 0;
+	min-height: 90px;
+	background: #faf6ee;
+}
+.exs-row {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding: 7px 10px;
+	border-bottom: 1px solid #e5d7bc;
+	font-size: 12px;
+}
+.exs-row .nm {
+	flex: 1;
+	min-width: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	color: #4a2f1c;
+}
+.exs-row .sub {
+	color: #8a6b45;
+}
+.exs-row .price {
+	color: #b8862f;
+	white-space: nowrap;
+	font-weight: bold;
+}
+.exs-row .tag {
+	color: #8a6b45;
+	font-size: 11px;
+}
+.exs-row button {
+	padding: 4px 10px;
+	font-size: 12px;
+	color: #fff;
+	background: #7a9b57;
+	border: 1px solid #5a7a3a;
+	border-radius: 2px;
+	cursor: pointer;
+	white-space: nowrap;
+}
+.exs-row button:hover {
+	filter: brightness(1.1);
+}
+.exs-row button.confirm {
+	background: #a0522d;
+	border-color: #6b3419;
+	color: #fff;
+}
+.exs-row button[disabled] {
+	background: #d8c3a0;
+	border-color: #c9a06a;
+	color: #8a6b45;
+	filter: none;
+	cursor: default;
+}
+
+.exs-foot {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 8px 10px;
+	background: #ece0c8;
+	border-top: 1px solid #a0522d;
+	font-size: 12px;
+}
+.exs-foot .pg button {
+	padding: 3px 10px;
+	color: #4a2f1c;
+	background: #fffdf8;
+	border: 1px solid #a0522d;
+	border-radius: 2px;
+	cursor: pointer;
+}
+.exs-foot .pg button[disabled] {
+	opacity: 0.4;
+	cursor: default;
+}
+.exs-foot .st {
+	color: #8a6b45;
+	flex: 1;
+	text-align: right;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.exs-foot .st.err {
+	color: #a03030;
+}
+.exs-foot .st.ok {
+	color: #4a7a30;
+}
+
+.exs-empty {
+	padding: 24px 10px;
+	text-align: center;
+	color: #8a6b45;
+	font-size: 12px;
+}

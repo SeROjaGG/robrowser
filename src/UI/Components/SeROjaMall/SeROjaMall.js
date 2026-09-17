@@ -16,11 +16,14 @@ import Session from 'Engine/SessionStorage.js';
 import UIManager from 'UI/UIManager.js';
 import GUIComponent from 'UI/GUIComponent.js';
 import { request } from '../SeROjaCommon/serojaBridge.js';
+import GraphicsSettings from 'Preferences/Graphics.js';
 import htmlText from './SeROjaMall.html?raw';
 import cssText from '../SeROjaCommon/serojaShop.css?raw';
+import cssTextClassic from '../SeROjaCommon/serojaShop.classic.css?raw';
 import themeText from '../SeROjaCommon/glassTheme.css?raw';
 
-const SeROjaMall = new GUIComponent('SeROjaMall', themeText + cssText);
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const SeROjaMall = new GUIComponent('SeROjaMall', isClassic ? cssTextClassic : themeText + cssText);
 SeROjaMall.render = () => htmlText;
 
 const _prefs = Preferences.get('SeROjaMall', { x: 160, y: 110 }, 1.0);

@@ -11,13 +11,16 @@ import Quest from './Quest/Quest.js';
 import QuestV1 from './QuestV1/QuestV1.js';
 import UIVersionManager from 'UI/UIVersionManager.js';
 import KEYS from 'Controls/KeyEventHandler.js';
+import GraphicsSettings from 'Preferences/Graphics.js';
 
 const publicName = 'Quest';
+// Classic skin: always use QuestV1 (its own doc comment calls it out as the
+// classic-layout/basic_interface version) regardless of packet version,
+// instead of Quest's renewal-layout/renew_questui canvas rendering.
+const isClassic = GraphicsSettings.uiSkin === 'classic';
 const versionInfo = {
 	default: QuestV1,
-	common: {
-		20180307: Quest
-	},
+	common: isClassic ? {} : { 20180307: Quest },
 	re: {},
 	prere: {}
 };

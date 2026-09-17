@@ -16,16 +16,20 @@ import GUIComponent from 'UI/GUIComponent.js';
 import Network from 'Network/NetworkManager.js';
 import PACKET from 'Network/PacketStructure.js';
 import htmlText from './CheckAttendance.html?raw';
+import htmlTextClassic from './CheckAttendance.classic.html?raw';
 import cssText from './CheckAttendance.css?raw';
+import cssTextClassic from './CheckAttendance.classic.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 import ChatBox from 'UI/Components/ChatBox/ChatBox.js';
 import 'UI/Elements/Elements.js';
 
 /**
  * Create Component
  */
-const CheckAttendance = new GUIComponent('CheckAttendance', cssText);
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const CheckAttendance = new GUIComponent('CheckAttendance', isClassic ? cssTextClassic : cssText);
 
-CheckAttendance.render = () => htmlText;
+CheckAttendance.render = () => (isClassic ? htmlTextClassic : htmlText);
 
 /**
  * @var {object} _checkAttendanceData
@@ -67,6 +71,14 @@ CheckAttendance.init = function init() {
 	root.querySelector('.close-container-btn').addEventListener('click', () => {
 		CheckAttendance._host.style.display = 'none';
 	});
+
+	const titlebarClose = root.querySelector('.titlebar .close');
+	if (titlebarClose) {
+		titlebarClose.addEventListener('mousedown', event => event.stopImmediatePropagation());
+		titlebarClose.addEventListener('click', () => {
+			CheckAttendance._host.style.display = 'none';
+		});
+	}
 
 	this.draggable(root.querySelector('.titlebar'));
 };

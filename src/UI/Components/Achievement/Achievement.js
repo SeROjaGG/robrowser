@@ -20,7 +20,10 @@ import Client from 'Core/Client.js';
 import ItemInfo from 'UI/Components/ItemInfo/ItemInfo.js';
 
 import htmlText from './Achievement.html?raw';
+import htmlTextClassic from './Achievement.classic.html?raw';
 import cssText from './Achievement.css?raw';
+import cssTextClassic from './Achievement.classic.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 
 const _preferences = Preferences.get(
 	'Achievement',
@@ -31,15 +34,17 @@ const _preferences = Preferences.get(
 	1.0
 );
 
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+
 let MAJOR_CATEGORIES = [];
 
 class AchievementComponent extends GUIComponent {
 	constructor() {
-		super('Achievement', cssText);
+		super('Achievement', isClassic ? cssTextClassic : cssText);
 	}
 
 	render() {
-		return htmlText;
+		return isClassic ? htmlTextClassic : htmlText;
 	}
 
 	init() {

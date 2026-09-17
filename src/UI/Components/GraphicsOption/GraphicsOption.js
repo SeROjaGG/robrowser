@@ -17,7 +17,9 @@ import Renderer from 'Renderer/Renderer.js';
 import UIManager from 'UI/UIManager.js';
 import GUIComponent from 'UI/GUIComponent.js';
 import htmlText from './GraphicsOption.html?raw';
+import htmlTextClassic from './GraphicsOption.classic.html?raw';
 import cssText from './GraphicsOption.css?raw';
+import cssTextClassic from './GraphicsOption.classic.css?raw';
 import themeText from 'UI/Components/SeROjaCommon/glassTheme.css?raw';
 
 import MemoryManager from 'Core/MemoryManager.js';
@@ -27,14 +29,13 @@ import DonorBadge from 'UI/Components/SeROjaCommon/DonorBadge.js';
 /**
  * Create Component
  *
- * PLAN-023: GraphicsOption always renders in the SeROja skin, regardless of
- * `GraphicsSettings.uiSkin` — it's the one window that must stay reachable
- * and consistent no matter which skin is active, since it's the only place
- * housing the Classic/SeROja switch itself. The recovered `.classic.html`
- * predates that dropdown entirely (never committed), so branching this
- * component would strand Classic-mode players with no way back.
+ * `.classic.html` carries the same `.ui-skin` dropdown as the SeROja markup
+ * (PLAN-023's original recovery predated that control, which would have
+ * stranded Classic-mode players with no way back to SeROja — see git history
+ * on this file before adding a third variant).
  */
-const GraphicsOption = new GUIComponent('GraphicsOption', themeText + cssText);
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const GraphicsOption = new GUIComponent('GraphicsOption', isClassic ? cssTextClassic : themeText + cssText);
 
 /**
  * @var {Preferences} Graphics
@@ -51,7 +52,7 @@ const _preferences = Preferences.get(
 /**
  * Render HTML
  */
-GraphicsOption.render = () => htmlText;
+GraphicsOption.render = () => (isClassic ? htmlTextClassic : htmlText);
 
 /**
  * Initialize UI

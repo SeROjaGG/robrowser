@@ -20,11 +20,14 @@ import Renderer from 'Renderer/Renderer.js';
 import UIManager from 'UI/UIManager.js';
 import GUIComponent from 'UI/GUIComponent.js';
 import { request } from '../SeROjaCommon/serojaBridge.js';
+import GraphicsSettings from 'Preferences/Graphics.js';
 import htmlText from './SeROjaMarket.html?raw';
 import cssText from '../SeROjaCommon/serojaShop.css?raw';
+import cssTextClassic from '../SeROjaCommon/serojaShop.classic.css?raw';
 import themeText from '../SeROjaCommon/glassTheme.css?raw';
 
-const SeROjaMarket = new GUIComponent('SeROjaMarket', themeText + cssText);
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const SeROjaMarket = new GUIComponent('SeROjaMarket', isClassic ? cssTextClassic : themeText + cssText);
 SeROjaMarket.render = () => htmlText;
 
 const _prefs = Preferences.get('SeROjaMarket', { x: 120, y: 90 }, 1.0);
