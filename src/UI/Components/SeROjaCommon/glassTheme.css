@@ -81,6 +81,15 @@
 	gap: 6px;
 }
 
+/* Templates carried a float-layout `.clear` div forward when they moved to
+   this flex titlebar. As a third flex child it steals the end slot from
+   `justify-content: space-between`, stranding the actual right-side content
+   (window buttons) in the middle. Drop it from flow instead of touching
+   every template. */
+.sj-titlebar > .clear {
+	display: none;
+}
+
 /* window chrome buttons (replaces sys_base/sys_mini/sys_close .bmp) */
 .sj-winbtn {
 	width: 18px;

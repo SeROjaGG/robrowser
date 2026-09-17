@@ -21,6 +21,11 @@
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: contain;
+	transform: scale(1);
+	transition: transform 0.15s ease;
+}
+#CashShopIcon .cashshop-icon:hover {
+	transform: scale(1.15);
 }
 
 #CashShopIcon .icon-label {
