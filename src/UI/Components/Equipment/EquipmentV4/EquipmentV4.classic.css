@@ -60,6 +60,7 @@
 }
 
 #EquipmentV4 .tab a {
+	box-sizing: border-box;
 	width: 70px;
 	height: 100%;
 	color: #42454a;
@@ -130,6 +131,49 @@
 #EquipmentV4 .col3 {
 	background-position: 95% 50%;
 	min-width: 110px;
+}
+
+/* Empty-slot placeholder labels — :empty only matches while the cell's
+   innerHTML is still '' (see EquipmentCommon.js equip()/unEquip()), so this
+   disappears the instant a real item fills the cell. No JS change needed. */
+#EquipmentV4 .col1:empty,
+#EquipmentV4 .col3:empty {
+	background-color: #f2f2f2;
+	border-radius: 10px;
+}
+#EquipmentV4 .col1:empty::before,
+#EquipmentV4 .col3:empty::before {
+	color: #999;
+	font-size: 9px;
+	font-style: italic;
+}
+#EquipmentV4 .head_top:empty::before {
+	content: 'Head';
+}
+#EquipmentV4 .head_mid:empty::before {
+	content: 'Face';
+}
+#EquipmentV4 .head_bottom:empty::before {
+	content: 'Head Low';
+}
+#EquipmentV4 .armor:empty::before {
+	content: 'Body';
+}
+#EquipmentV4 .weapon:empty::before {
+	content: 'Weapon';
+}
+#EquipmentV4 .shield:empty::before {
+	content: 'Shield';
+}
+#EquipmentV4 .garment:empty::before {
+	content: 'Garment';
+}
+#EquipmentV4 .shoes:empty::before {
+	content: 'Shoes';
+}
+#EquipmentV4 .accessory1:empty::before,
+#EquipmentV4 .accessory2:empty::before {
+	content: 'Accessory';
 }
 
 #EquipmentV4 .overlay {
