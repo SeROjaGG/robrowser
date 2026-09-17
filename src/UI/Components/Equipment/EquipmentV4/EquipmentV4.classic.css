@@ -60,7 +60,7 @@
 }
 
 #EquipmentV4 .tab a {
-	width: 60px;
+	width: 70px;
 	height: 100%;
 	color: #42454a;
 	border: 1px solid #c9c3ba;
@@ -70,6 +70,11 @@
 	vertical-align: bottom;
 	border-radius: 3px 3px 0 0;
 	text-align: center;
+	font-size: 9px;
+	line-height: 15px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 #EquipmentV4 .tab a.selected {
 	color: #000;
