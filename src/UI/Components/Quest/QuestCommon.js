@@ -176,12 +176,7 @@ export function createQuest(config) {
 
 			const root = Quest.getRoot();
 
-			Client.loadFile(`${DB.INTERFACE_PATH}basic_interface/tab_que_01.bmp`, data => {
-				const el = root.querySelector('.quest-menu');
-				if (el) {
-					el.style.backgroundImage = `url(${data})`;
-				}
-			});
+			root.querySelector('#active').classList.add('active');
 
 			root.querySelector('#active-quest-list').style.display = '';
 			root.querySelector('#inactive-quest-list').style.display = 'none';
@@ -619,31 +614,22 @@ export function createQuest(config) {
 				}
 			});
 		} else {
-			let background_image = '';
 			root.querySelector('#active-quest-list').style.display = 'none';
 			root.querySelector('#inactive-quest-list').style.display = 'none';
 			root.querySelector('#all-quest-list').style.display = 'none';
+			root.querySelectorAll('.quest-menu-item').forEach(item => item.classList.remove('active'));
+			menuItem.classList.add('active');
 
 			switch (_active_menu) {
 				case 'inactive':
-					background_image = 'tab_que_02';
 					root.querySelector('#inactive-quest-list').style.display = '';
 					break;
 				case 'all':
-					background_image = 'tab_que_03';
 					root.querySelector('#all-quest-list').style.display = '';
 					break;
 				default:
-					background_image = 'tab_que_01';
 					root.querySelector('#active-quest-list').style.display = '';
 			}
-
-			Client.loadFile(`${DB.INTERFACE_PATH}basic_interface/${background_image}.bmp`, data => {
-				const el = root.querySelector('.quest-menu');
-				if (el) {
-					el.style.backgroundImage = `url(${data})`;
-				}
-			});
 		}
 
 		questHelper.clearQuestDesc();

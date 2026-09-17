@@ -230,16 +230,45 @@
 }
 
 #CheckAttendance .panel .bottom-panel .close-container .close-container-btn {
-	width: 146px;
-	height: 30px;
-	border: 0;
+	width: 100px;
+	height: 26px;
 	font-weight: bold;
-	background-repeat: no-repeat;
-	background-color: transparent;
+	color: #4a2f1c;
+	background: #fffdf8;
+	border: 1px solid #a0522d;
+	border-radius: 3px;
 	position: absolute;
-	top: 35%;
-	left: 35%;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 	display: inline-block;
 	text-align: center;
-	line-height: 30px;
+	line-height: 24px;
+	cursor: pointer;
+}
+#CheckAttendance .panel .bottom-panel .close-container .close-container-btn:hover {
+	background: #f3ead9;
+}
+
+/* Flat classic day-completion mark and claimable highlight — no bitmap slot art */
+#CheckAttendance .panel .left-panel .days-list .attendance-item.claimable {
+	outline: 2px solid #b8862f;
+	outline-offset: -1px;
+	background: rgba(184, 134, 47, 0.1);
+}
+
+#CheckAttendance .panel .left-panel .days-list .attendance-item .item .day-check::after {
+	content: '\2713';
+	position: absolute;
+	top: 2px;
+	right: 2px;
+	width: 16px;
+	height: 16px;
+	line-height: 16px;
+	text-align: center;
+	background: #4a7a30;
+	color: #fff;
+	border-radius: 50%;
+	font-size: 11px;
+	font-weight: bold;
 }

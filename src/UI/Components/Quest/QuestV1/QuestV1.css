@@ -15,8 +15,9 @@
 
 /** Header **/
 #QuestV1 .titlebar .header {
-	width: 250px;
+	width: 350px;
 	height: 17px;
+	position: relative;
 }
 #QuestV1 .titlebar .header .corner {
 	position: absolute;
@@ -43,6 +44,7 @@
 	top: 2px;
 	left: 16px;
 	font-size: 13px;
+	font-weight: bold;
 }
 #QuestV1 .titlebar .header .btn-left {
 	position: absolute;
@@ -50,6 +52,8 @@
 	left: 4px;
 	width: 11px;
 	height: 11px;
+	border: none;
+	background: transparent;
 }
 #QuestV1 .titlebar .header .btn-right {
 	position: absolute;
@@ -57,112 +61,133 @@
 	right: 2px;
 	width: 11px;
 	height: 11px;
+	border: none;
+	background: transparent;
 }
 
 /** Content **/
 #QuestV1 .titlebar .content {
 	width: 350px;
 	height: 204px;
-	background-color: white;
+	background-color: #fff;
 }
 
-/** Select Buttons **/
+/** Left tabs (flat, text-labeled — no bitmap) **/
 #QuestV1 .titlebar .quest-left-panel {
 	float: left;
-	width: 20px;
+	width: 30px;
 	height: 204px;
+	background: #f2f2f2;
+	border-right: 1px solid #ccc;
 }
 #QuestV1 .titlebar .content .quest-left-panel .quest-menu {
-	height: 94px;
 	list-style: none;
 	margin: 0px;
 	padding: 0px;
 }
 #QuestV1 .titlebar .content .quest-left-panel .quest-menu .quest-menu-item {
-	height: 31px;
-	width: 30px;
+	height: 68px;
+	width: 100%;
+	writing-mode: vertical-rl;
+	text-align: center;
+	color: #555;
+	font-size: 11px;
+	border-bottom: 1px solid #ddd;
+	cursor: pointer;
+	padding-top: 6px;
+	box-sizing: border-box;
+}
+#QuestV1 .titlebar .content .quest-left-panel .quest-menu .quest-menu-item.active {
+	background: #fff;
+	color: #0b57a4;
+	font-weight: bold;
+	border-right: 2px solid #0b57a4;
+	margin-right: -1px;
 }
 
 /** QuestV1 List **/
 #QuestV1 .titlebar .content .quest-right-panel {
 	float: left;
-	width: 330px;
+	width: 319px;
 	height: 204px;
 	display: block;
 	overflow: auto;
 }
 #QuestV1 .titlebar .content .quest-right-panel .quest-list {
 	list-style: none;
-	margin: 10px;
+	margin: 0px;
 	padding: 0px;
 }
+#QuestV1 .titlebar .content .quest-right-panel .quest-list.hide {
+	display: none;
+}
 #QuestV1 .titlebar .content .quest-right-panel .quest-list .quest-item {
-	float: left;
-	list-style: none;
-	height: 42px;
+	display: flex;
+	align-items: center;
 	width: 100%;
-	margin-top: 2px;
+	height: 42px;
+	border-bottom: 1px solid #eee;
+	cursor: pointer;
+}
+#QuestV1 .titlebar .content .quest-right-panel .quest-list .quest-item:hover {
+	background: #f5f9ff;
 }
 #QuestV1 .titlebar .content .quest-right-panel .quest-list .quest-item .quest-item-icon {
-	float: left;
-	min-height: 100%;
-	min-width: 15%;
+	flex: 0 0 40px;
+	height: 100%;
 	position: relative;
 }
 #QuestV1 .titlebar .content .quest-right-panel .quest-list .quest-item .quest-item-icon .quest-item-icon-image {
 	position: absolute;
 	width: 24px;
 	height: 24px;
-	top: 6px;
-	left: 5px;
+	top: 9px;
+	left: 8px;
+	background-size: contain;
+	background-repeat: no-repeat;
 }
 #QuestV1 .titlebar .content .quest-right-panel .quest-list .quest-item .quest-item-title {
-	float: left;
-	min-height: 100%;
-	min-width: 85%;
+	flex: 1;
+	min-width: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+#QuestV1 .titlebar .content .quest-right-panel .quest-list .quest-item .quest-item-title .quest-item-title-text {
+	color: #0b57a4;
+	font-weight: bold;
+	font-size: 12px;
 }
 
 /** Footer **/
 #QuestV1 .titlebar .footer {
 	width: 350px;
 	height: 29px;
-}
-#QuestV1 .titlebar .footer .corner {
-	position: absolute;
-	width: 21px;
-	height: 29px;
-}
-#QuestV1 .titlebar .footer .corner.left {
-	bottom: 0px;
-	left: 0px;
-}
-#QuestV1 .titlebar .footer .corner.right {
-	bottom: 0px;
-	right: 0px;
-}
-#QuestV1 .titlebar .footer .center {
-	position: absolute;
-	bottom: 0px;
-	left: 21px;
-	width: 326px;
-	height: 29px;
+	background: #f2f2f2;
+	border-top: 1px solid #ccc;
+	position: relative;
+	box-sizing: border-box;
 }
 
-/** Buttons **/
+/** Buttons — plain flat, no bitmap **/
 #QuestV1 .titlebar .footer .btns {
 	position: absolute;
-	bottom: 4px;
-	width: 100%;
+	top: 4px;
+	right: 4px;
 	height: 20px;
 }
 #QuestV1 .titlebar .footer .btn {
-	position: absolute;
-	width: 42px;
+	width: 50px;
 	height: 20px;
+	margin-left: 4px;
+	font-size: 11px;
+	color: #333;
+	background: #fff;
+	border: 1px solid #999;
+	border-radius: 2px;
+	cursor: pointer;
 }
-#QuestV1 .titlebar .footer .close {
-	right: 50px;
-}
-#QuestV1 .titlebar .footer .view {
-	right: 4px;
+#QuestV1 .titlebar .footer .btn:hover {
+	background: #eef4ff;
+	border-color: #0b57a4;
 }

@@ -188,19 +188,30 @@ CheckAttendance.updateUI = function updateUI() {
 		for (let i = 0; i < 20; i++) {
 			const item = DB.getItemInfo(_CheckAttendanceInfo.Rewards[i].item_id);
 			const day = i + 1;
-			const background =
-				!already_requested && day == current_day
-					? `data-background="check_attendance/bt_slot_a.bmp" data-down="check_attendance/bt_slot_press.bmp"`
-					: '';
+			const isClaimable = !already_requested && day == current_day;
 			const checked = day <= attendance_count ? 'checked' : 'checked-hidden';
 			const slot_off = already_requested ? attendance_count - 1 : attendance_count;
 			const slot_complete_string = day > slot_off ? 'bt_slot_complete' : 'bt_slot_off';
+
+			const background = isClassic
+				? `class="attendance-item${isClaimable ? ' claimable' : ''}"`
+				: (() => {
+						const bg = isClaimable
+							? `data-background="check_attendance/bt_slot_a.bmp" data-down="check_attendance/bt_slot_press.bmp"`
+							: '';
+						return `class="attendance-item" ${bg}`;
+					})();
+
+			const checkMarkup = isClassic
+				? `<div class="${checked} day-check"></div>`
+				: `<div class="${checked}" data-background="check_attendance/${slot_complete_string}.png"></div>`;
+
 			const item_slot =
-				`<li id="attendance_day_${i}" class="attendance-item" ${background}>` +
+				`<li id="attendance_day_${i}" ${background}>` +
 				`<div class="item" data-background="${DB.INTERFACE_PATH}item/${item.identifiedResourceName}.bmp">` +
 				`<span class="item-quantity">${_CheckAttendanceInfo.Rewards[i].quantity}</span>` +
 				`<span class="name">${item.identifiedDisplayName}</span>` +
-				`<div class="${checked}" data-background="check_attendance/${slot_complete_string}.png"></div>` +
+				checkMarkup +
 				'</div>' +
 				`<div class="day">${day} Day</div>` +
 				'</li>';
@@ -264,13 +275,15 @@ function onClickAttendance(e) {
 	const id = el.id;
 	const checkedHidden = root.querySelector(`#${id} .checked-hidden`);
 	if (checkedHidden) {
-		checkedHidden.className = 'checked';
+		checkedHidden.className = isClassic ? 'checked day-check' : 'checked';
 	}
-	const completedDiv = document.createElement('div');
-	completedDiv.className = 'completed';
-	completedDiv.dataset.background = 'check_attendance/bt_slot_complete.png';
-	el.appendChild(completedDiv);
-	GUIComponent.processDataAttrs(completedDiv);
+	if (!isClassic) {
+		const completedDiv = document.createElement('div');
+		completedDiv.className = 'completed';
+		completedDiv.dataset.background = 'check_attendance/bt_slot_complete.png';
+		el.appendChild(completedDiv);
+		GUIComponent.processDataAttrs(completedDiv);
+	}
 
 	const current_day = parseInt(_checkAttendanceData / 10) + 1;
 	const total_days_string = `${current_day} Day attendance success`;

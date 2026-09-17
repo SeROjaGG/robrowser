@@ -9,7 +9,7 @@
 	flex-direction: column;
 	width: 723px;
 	height: 540px;
-	background: transparent;
+	background-color: #0c1a2e;
 	border-radius: 3px;
 	font-weight: bold;
 }
@@ -294,11 +294,13 @@
 	flex-direction: column;
 	width: 185px;
 	height: 100%;
+	background-color: #0c1a2e;
 }
 
 #CashShop .panel-cart .panel-cart-header {
 	width: 100%;
 	height: 56px;
+	background-color: #0c1a2e;
 }
 
 #CashShop .panel-cart .panel-cart-header-title {
@@ -345,6 +347,7 @@
 #CashShop .panel-cart .panel-cart-footer {
 	width: 100%;
 	height: 107px;
+	background-color: #0c1a2e;
 }
 
 #CashShop .overlay {
