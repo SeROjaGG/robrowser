@@ -10,7 +10,7 @@
 /** @typedef {import('Renderer/Entity/Player.js').default} Player */
 /** @typedef {import('Renderer/Entity/Entity.js').default} Entity */
 
-export default {
+const Session = {
 	isTouchDevice: false,
 	isRenewal: false,
 	TouchTargeting: false,
@@ -112,3 +112,11 @@ export default {
 		list: {}
 	}
 };
+
+// ponytail: temporary debug expose to diagnose a live job-name display bug,
+// remove once resolved.
+if (typeof window !== 'undefined') {
+	window.__debugSession = Session;
+}
+
+export default Session;
