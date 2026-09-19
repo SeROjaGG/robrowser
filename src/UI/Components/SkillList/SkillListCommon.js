@@ -1243,6 +1243,7 @@ export function createSkillList({
 	Component.onIncreaseSkill = function onIncreaseSkill() {};
 	Component.onUpdateSkill = function onUpdateSkill() {};
 	Component.getSkillById = getSkillById;
+	Component.getSkillList = () => _list;
 
 	return UIManager.addComponent(Component);
 }

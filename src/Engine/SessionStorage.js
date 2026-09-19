@@ -16,6 +16,7 @@ export default {
 	TouchTargeting: false,
 	AutoTargeting: false,
 	autoAttackEnabled: false,
+	autoSkillEnabled: false,
 
 	FreezeUI: false,
 

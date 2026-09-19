@@ -94,6 +94,7 @@ import CashShopIcon from 'UI/Components/CashShopIcon/CashShopIcon.js';
 import SeROjaMallIcon from 'UI/Components/SeROjaMallIcon/SeROjaMallIcon.js';
 import SeROjaMarketIcon from 'UI/Components/SeROjaMarketIcon/SeROjaMarketIcon.js';
 import AutoAttackIcon from 'UI/Components/AutoAttackIcon/AutoAttackIcon.js';
+import AutoSkillIcon from 'UI/Components/AutoSkillIcon/AutoSkillIcon.js';
 import DonorBadge from 'UI/Components/SeROjaCommon/DonorBadge.js';
 import Achievement from 'UI/Components/Achievement/Achievement.js';
 
@@ -394,6 +395,11 @@ class MapEngine {
 					AutoAttackIcon.prepare();
 				} catch (e) {
 					console.error('[SeROja] AutoAttackIcon.prepare() failed:', e);
+				}
+				try {
+					AutoSkillIcon.prepare();
+				} catch (e) {
+					console.error('[SeROja] AutoSkillIcon.prepare() failed:', e);
 				}
 			}
 
@@ -782,6 +788,11 @@ function onMapChange(pkt) {
 				AutoAttackIcon.append();
 			} catch (e) {
 				console.error('[SeROja] AutoAttackIcon.append() failed:', e);
+			}
+			try {
+				AutoSkillIcon.append();
+			} catch (e) {
+				console.error('[SeROja] AutoSkillIcon.append() failed:', e);
 			}
 		}
 
