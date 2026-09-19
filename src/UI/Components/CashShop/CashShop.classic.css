@@ -9,11 +9,8 @@
 	flex-direction: column;
 	width: 723px;
 	height: 540px;
-	background-color: #eef1f8 !important;
-	background-image: none !important;
 	border-radius: 3px;
 	font-weight: bold;
-	color: #22345c;
 }
 
 #CashShop .titlebar {
@@ -139,38 +136,11 @@
 	flex-direction: row;
 }
 
-#CashShop .panel-content .panel-menu button.tab {
-	position: relative;
+#CashShop .panel-content .panel-menu button {
 	width: 56px;
 	height: 31px;
-	border: 1px solid #c3cee6;
-	border-bottom: none;
-	border-radius: 4px 4px 0 0;
-	background-color: #dde5f5 !important;
-	background-image: none !important;
-	color: #5b6b8c;
-	font-size: 8px;
-	font-weight: bold;
-	line-height: 1.1;
-	white-space: normal;
-	padding: 2px;
-}
-
-#CashShop .panel-content .panel-menu button.tab::after {
-	content: attr(data-title);
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	position: absolute;
-	inset: 0;
-	padding: 2px;
-	text-align: center;
-}
-
-#CashShop .panel-content .panel-menu button.tab.active {
-	background-color: #ffffff !important;
-	color: #2f4f9c;
-	border-color: #8fa4d6;
+	border: none;
+	background-color: transparent;
 }
 
 #CashShop .panel-content .panel-items {
@@ -186,31 +156,22 @@
 	display: flex;
 	flex-direction: column;
 	width: 172px;
-	min-height: 126px;
+	height: 126px;
 	margin-left: 4px;
 	margin-top: 2px;
-	background-color: #ffffff !important;
-	background-image: none !important;
-	border: 1px solid #c9d3e6;
-	border-radius: 6px;
-	box-shadow: 0 1px 3px rgba(20, 30, 60, 0.12);
-	overflow: hidden;
-	padding-bottom: 8px;
-	box-sizing: border-box;
 }
 
-#CashShop .panel-content .panel-items .top-con {
+#CashShop .panel-content .panel-items .top-con,
+#CashShop .panel-content .panel-items .lower-con {
 	width: 100%;
 }
 
 #CashShop .panel-content .panel-items .lower-con {
-	width: 100%;
-	display: flex;
-	flex-direction: row;
-	align-items: flex-start;
-	gap: 6px;
-	padding: 0 6px;
-	box-sizing: border-box;
+	/* clearfix: item-left-img/item-right-desc below are floated with no
+	   clearfix in the stock markup, so lower-con collapses to 0 height and
+	   the price/purchase-button paint past the card's bottom edge instead
+	   of inside it */
+	overflow: hidden;
 }
 
 #CashShop .panel-content .panel-items .top-con {
@@ -230,63 +191,34 @@
 }
 
 #CashShop .panel-content .panel-items .item-left-img {
-	width: 70px;
-	height: 88px;
-	flex: 0 0 auto;
-	background-size: contain;
-	background-position: center;
-	background-repeat: no-repeat;
+	width: 75px;
+	height: 98px;
+	background-size: cover;
 }
 
 #CashShop .panel-content .panel-items .item-right-desc {
-	display: flex;
-	flex-direction: column;
-	align-items: stretch;
-	gap: 6px;
-	flex: 1 1 auto;
-	padding-top: 4px;
-	min-width: 0;
+	float: right;
+	margin-right: 8px;
+	margin-top: 17px;
 }
 
 #CashShop .panel-content .panel-items .item-right-desc .item-desc-price {
 	color: #ffffff;
-	background-color: #4c7ba6;
-	border-radius: 9px;
-	display: flex;
-	align-items: center;
-	padding: 1px 8px;
-	box-sizing: border-box;
-}
-
-#CashShop .panel-content .panel-items .item-right-desc .item-desc-price::before {
-	content: 'C';
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	width: 13px;
-	height: 13px;
-	margin-right: 5px;
-	border-radius: 50%;
-	background: #f0c419;
-	color: #7a5c00;
-	font-size: 8px;
-	font-weight: bold;
 }
 
 #CashShop .panel-content .panel-items .item .item-left-img {
 	margin-left: 4px;
+	float: left;
 }
 
 #CashShop .panel-content .panel-items .item .lower-con .purchase-btn-container {
-	padding-top: 0;
+	padding-top: 20px;
 }
 
 #CashShop .panel-content .panel-items .item .lower-con .purchase-btn-container .add-to-cart {
 	width: 81px;
 	height: 24px;
-	border: 1px solid #b7c2da;
-	border-radius: 4px;
-	background-color: #ffffff;
+	border: none;
 }
 
 #CashShop .panel-content .panel-items .item .lower-con .purchase-btn-container .purchase-btn {
@@ -296,15 +228,15 @@
 }
 
 #CashShop #panel-items .item-desc-price {
-	width: 100%;
+	width: 81px;
 	height: 17px;
-	margin-top: 0;
+	margin-top: 7px;
 	text-align: right;
 }
 
 #CashShop .item-desc-price span {
 	line-height: 18px;
-	flex: 1;
+	margin-right: 5px;
 	text-align: right;
 	font-size: 10px;
 }
@@ -320,7 +252,6 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	color: #22345c;
 }
 
 #CashShop .panel-content .panel-pagination button {
@@ -338,7 +269,6 @@
 	height: 14px;
 	text-align: center;
 	margin-top: 7px;
-	color: #22345c;
 }
 
 #CashShop .panel-content .panel-footer {
@@ -351,14 +281,11 @@
 }
 
 #CashShop .panel-content .panel-footer .cashshop-search {
-	border: 1px solid #c9d3e6;
-	border-right: none;
+	border: none;
 	border-radius: 5px 0px 0px 5px;
 	width: 296px;
 	line-height: 14px;
 	margin-left: 2px;
-	background-color: #ffffff;
-	color: #22345c;
 }
 
 #CashShop .panel-content .panel-footer .cashshop-search-btn {
@@ -374,19 +301,16 @@
 	flex-direction: column;
 	width: 185px;
 	height: 100%;
-	background-color: #dfe4ee;
 }
 
 #CashShop .panel-cart .panel-cart-header {
 	width: 100%;
 	height: 56px;
-	background-color: #dfe4ee;
 }
 
 #CashShop .panel-cart .panel-cart-header-title {
 	padding-left: 65px;
 	color: #22345c;
-	text-shadow: none;
 	height: 24px;
 	padding-top: 5px;
 }
@@ -422,14 +346,11 @@
 	width: 100%;
 	height: 360px;
 	background-size: cover;
-	background-color: #eef1f8 !important;
-	background-image: none !important;
 }
 
 #CashShop .panel-cart .panel-cart-footer {
 	width: 100%;
 	height: 107px;
-	background-color: #dfe4ee;
 }
 
 #CashShop .overlay {
@@ -472,9 +393,6 @@
 	margin-bottom: 4px;
 	border-radius: 4px;
 	position: relative;
-	background-color: #ffffff !important;
-	background-image: none !important;
-	border: 1px solid #d7dee8;
 }
 
 #CashShop .inner-item-dt {
@@ -501,7 +419,6 @@
 	margin-top: 5px;
 	margin-left: 10px;
 	font-size: 8px;
-	color: #22345c;
 }
 
 #CashShop .container-cart-footer {
@@ -532,7 +449,6 @@
 	margin-top: 4px;
 	float: left;
 	text-align: center;
-	color: #22345c;
 }
 
 #CashShop #cart-list .item-counter {
@@ -644,10 +560,8 @@
 #CashShop .panel-cart .panel-cart-footer .cart-footer-action .total-price {
 	width: 100%;
 	color: #fff;
-	background-color: #4c7ba6;
 	height: 18px;
 	margin-top: 4px;
-	border-radius: 4px;
 	font-weight: bold;
 	line-height: 25px;
 	text-align: center;
@@ -664,5 +578,4 @@
 
 #CashShop .item-desc-top {
 	height: 20px;
-	color: #22345c;
 }

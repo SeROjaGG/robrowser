@@ -31,6 +31,60 @@ const isClassic = GraphicsSettings.uiSkin === 'classic';
 const CashShop = new GUIComponent('CashShop', isClassic ? cssTextClassic : cssText);
 
 /**
+ * SeROja: the dark 'seroja' skin's chrome (window/cart backgrounds, tabs,
+ * pagination arrows, buy/charge/search buttons) lives in cashshop/seroja/,
+ * a sibling of the stock 'classic' art it was reskinned from — restored
+ * from git history after an earlier pass overwrote the originals in place
+ * instead of branching into its own asset folder. Item cards, the cart's
+ * own line-item background and the delete/ad icons were never reskinned
+ * and stay shared between both skins.
+ */
+const SEROJA_ONLY_ASSETS = [
+	'bt_arrowL2_off',
+	'bt_arrowL2_on',
+	'bt_arrowL_off',
+	'bt_arrowL_on',
+	'bt_arrowR2_off',
+	'bt_arrowR2_on',
+	'bt_arrowR_off',
+	'bt_arrowR_on',
+	'btn_buy_normal',
+	'btn_charge_normal',
+	'btn_searchbar_normal',
+	'img_shop_bg',
+	'img_shop_cart_bg',
+	'img_shop_tap0_off',
+	'img_shop_tap0_on',
+	'img_shop_tap1_off',
+	'img_shop_tap1_on',
+	'img_shop_tap2_off',
+	'img_shop_tap2_on',
+	'img_shop_tap3_off',
+	'img_shop_tap3_on',
+	'img_shop_tap4_off',
+	'img_shop_tap4_on',
+	'img_shop_tap5_off',
+	'img_shop_tap5_on',
+	'img_shop_tap6_off',
+	'img_shop_tap6_on',
+	'img_shop_tap7_off',
+	'img_shop_tap7_on',
+	'img_shop_tap8_off',
+	'img_shop_tap8_on'
+];
+
+function toSkinPath(path) {
+	if (isClassic) return path;
+	return path.replace(/^cashshop\/([\w.-]+)\.(bmp|png)$/, (match, base, ext) => {
+		return SEROJA_ONLY_ASSETS.includes(base) ? `cashshop/seroja/${base}.${ext}` : match;
+	});
+}
+
+const preparedHtml = isClassic
+	? htmlText
+	: htmlText.replace(/cashshop\/[\w.-]+\.bmp/g, match => toSkinPath(match));
+
+/**
  * Store cash shop items
  */
 CashShop.list = [];
@@ -137,7 +191,7 @@ function _processContent(container) {
 /**
  * Render HTML
  */
-CashShop.render = () => htmlText;
+CashShop.render = () => preparedHtml;
 
 CashShop.init = function init() {
 	const root = _root();
@@ -631,19 +685,19 @@ CashShop.initPagination = function initPagination(items) {
 	const goPrev = root.querySelector('.panel-pagination .go-prev');
 	const goFirst = root.querySelector('.panel-pagination .go-first');
 
-	Client.loadFile(DB.INTERFACE_PATH + 'cashshop/bt_arrowR_' + arrowsR + '.bmp', function (data) {
+	Client.loadFile(DB.INTERFACE_PATH + toSkinPath('cashshop/bt_arrowR_' + arrowsR + '.bmp'), function (data) {
 		if (goNext) goNext.style.backgroundImage = `url(${data})`;
 	});
 
-	Client.loadFile(DB.INTERFACE_PATH + 'cashshop/bt_arrowR2_' + arrowsR + '.bmp', function (data) {
+	Client.loadFile(DB.INTERFACE_PATH + toSkinPath('cashshop/bt_arrowR2_' + arrowsR + '.bmp'), function (data) {
 		if (goLast) goLast.style.backgroundImage = `url(${data})`;
 	});
 
-	Client.loadFile(DB.INTERFACE_PATH + 'cashshop/bt_arrowL_' + arrowsL + '.bmp', function (data) {
+	Client.loadFile(DB.INTERFACE_PATH + toSkinPath('cashshop/bt_arrowL_' + arrowsL + '.bmp'), function (data) {
 		if (goPrev) goPrev.style.backgroundImage = `url(${data})`;
 	});
 
-	Client.loadFile(DB.INTERFACE_PATH + 'cashshop/bt_arrowL2_' + arrowsL + '.bmp', function (data) {
+	Client.loadFile(DB.INTERFACE_PATH + toSkinPath('cashshop/bt_arrowL2_' + arrowsL + '.bmp'), function (data) {
 		if (goFirst) goFirst.style.backgroundImage = `url(${data})`;
 	});
 };
@@ -708,19 +762,19 @@ function onClickPagination(target) {
 	const goPrev = root.querySelector('.panel-pagination .go-prev');
 	const goFirst = root.querySelector('.panel-pagination .go-first');
 
-	Client.loadFile(DB.INTERFACE_PATH + 'cashshop/bt_arrowR_' + arrowsR + '.bmp', function (data) {
+	Client.loadFile(DB.INTERFACE_PATH + toSkinPath('cashshop/bt_arrowR_' + arrowsR + '.bmp'), function (data) {
 		if (goNext) goNext.style.backgroundImage = `url(${data})`;
 	});
 
-	Client.loadFile(DB.INTERFACE_PATH + 'cashshop/bt_arrowR2_' + arrowsR + '.bmp', function (data) {
+	Client.loadFile(DB.INTERFACE_PATH + toSkinPath('cashshop/bt_arrowR2_' + arrowsR + '.bmp'), function (data) {
 		if (goLast) goLast.style.backgroundImage = `url(${data})`;
 	});
 
-	Client.loadFile(DB.INTERFACE_PATH + 'cashshop/bt_arrowL_' + arrowsL + '.bmp', function (data) {
+	Client.loadFile(DB.INTERFACE_PATH + toSkinPath('cashshop/bt_arrowL_' + arrowsL + '.bmp'), function (data) {
 		if (goPrev) goPrev.style.backgroundImage = `url(${data})`;
 	});
 
-	Client.loadFile(DB.INTERFACE_PATH + 'cashshop/bt_arrowL2_' + arrowsL + '.bmp', function (data) {
+	Client.loadFile(DB.INTERFACE_PATH + toSkinPath('cashshop/bt_arrowL2_' + arrowsL + '.bmp'), function (data) {
 		if (goFirst) goFirst.style.backgroundImage = `url(${data})`;
 	});
 
