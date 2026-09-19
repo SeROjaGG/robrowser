@@ -9,6 +9,7 @@
 	flex-direction: column;
 	width: 723px;
 	height: 540px;
+	background-color: #ffffff;
 	border-radius: 3px;
 	font-weight: bold;
 }
@@ -310,7 +311,7 @@
 
 #CashShop .panel-cart .panel-cart-header-title {
 	padding-left: 65px;
-	color: #22345c;
+	color: #ffffff;
 	height: 24px;
 	padding-top: 5px;
 }
@@ -324,7 +325,7 @@
 
 #CashShop .panel-cart .panel-cart-charging-view .view-cash-point {
 	width: 70px;
-	color: #22345c;
+	color: #ffffff;
 	font-weight: bold;
 	text-align: end;
 }
