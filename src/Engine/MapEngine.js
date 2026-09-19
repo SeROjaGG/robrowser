@@ -389,10 +389,12 @@ class MapEngine {
 			} catch (e) {
 				console.error('[SeROja] SeROjaMarketIcon.prepare() failed:', e);
 			}
-			try {
-				AutoAttackIcon.prepare();
-			} catch (e) {
-				console.error('[SeROja] AutoAttackIcon.prepare() failed:', e);
+			if (Session.UserLevel > 0) {
+				try {
+					AutoAttackIcon.prepare();
+				} catch (e) {
+					console.error('[SeROja] AutoAttackIcon.prepare() failed:', e);
+				}
 			}
 
 			if (Configs.get('enableBank')) {
@@ -775,10 +777,12 @@ function onMapChange(pkt) {
 		} catch (e) {
 			console.error('[SeROja] SeROjaMarketIcon.append() failed:', e);
 		}
-		try {
-			AutoAttackIcon.append();
-		} catch (e) {
-			console.error('[SeROja] AutoAttackIcon.append() failed:', e);
+		if (Session.UserLevel > 0) {
+			try {
+				AutoAttackIcon.append();
+			} catch (e) {
+				console.error('[SeROja] AutoAttackIcon.append() failed:', e);
+			}
 		}
 
 		if (Configs.get('enableCheckAttendance') && PACKETVER.value >= 20180307) {
