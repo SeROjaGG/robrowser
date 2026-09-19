@@ -218199,7 +218199,7 @@ var init_CardIllustration_classic = __esmMin((() => {
 }));
 //#endregion
 //#region src/UI/Components/CardIllustration/CardIllustration.js
-var isClassic$76, CardIllustration, CardIllustration_default;
+var isClassic$77, CardIllustration, CardIllustration_default;
 var init_CardIllustration = __esmMin((() => {
 	init_DBManager();
 	init_Client();
@@ -218211,12 +218211,12 @@ var init_CardIllustration = __esmMin((() => {
 	init_CardIllustration_classic();
 	init_glassTheme();
 	init_Graphics();
-	isClassic$76 = GraphicsSettings.uiSkin === "classic";
-	CardIllustration = new GUIComponent("CardIllustration", isClassic$76 ? CardIllustration_classic_default : glassTheme_default + CardIllustration_default$1);
+	isClassic$77 = GraphicsSettings.uiSkin === "classic";
+	CardIllustration = new GUIComponent("CardIllustration", isClassic$77 ? CardIllustration_classic_default : glassTheme_default + CardIllustration_default$1);
 	/**
 	* Render HTML
 	*/
-	CardIllustration.render = () => isClassic$76 ? CardIllustration_classic_default$1 : CardIllustration_default$2;
+	CardIllustration.render = () => isClassic$77 ? CardIllustration_classic_default$1 : CardIllustration_default$2;
 	/**
 	* Initialize events
 	*/
@@ -219497,7 +219497,7 @@ var init_ContextMenu_classic = __esmMin((() => {
 }));
 //#endregion
 //#region src/UI/Components/ContextMenu/ContextMenu.js
-var isClassic$75, ContextMenu, ContextMenu_default;
+var isClassic$76, ContextMenu, ContextMenu_default;
 var init_ContextMenu = __esmMin((() => {
 	init_Renderer();
 	init_MouseEventHandler();
@@ -219507,8 +219507,8 @@ var init_ContextMenu = __esmMin((() => {
 	init_ContextMenu_classic();
 	init_glassTheme();
 	init_Graphics();
-	isClassic$75 = GraphicsSettings.uiSkin === "classic";
-	ContextMenu = new GUIComponent("ContextMenu", isClassic$75 ? ContextMenu_classic_default : glassTheme_default + ContextMenu_default$1);
+	isClassic$76 = GraphicsSettings.uiSkin === "classic";
+	ContextMenu = new GUIComponent("ContextMenu", isClassic$76 ? ContextMenu_classic_default : glassTheme_default + ContextMenu_default$1);
 	/**
 	* Render HTML
 	*/
@@ -219683,7 +219683,7 @@ function resize$5(height) {
 	_preferences$42.height = height;
 	_preferences$42.save();
 }
-var isClassic$74, ChatBoxSettings, _preferences$42, ChatBoxSettings_default;
+var isClassic$75, ChatBoxSettings, _preferences$42, ChatBoxSettings_default;
 var init_ChatBoxSettings = __esmMin((() => {
 	init_DBManager();
 	init_Preferences$1();
@@ -219698,12 +219698,12 @@ var init_ChatBoxSettings = __esmMin((() => {
 	init_ChatBoxSettings_classic();
 	init_glassTheme();
 	init_Graphics();
-	isClassic$74 = GraphicsSettings.uiSkin === "classic";
-	ChatBoxSettings = new GUIComponent("ChatBoxSettings", isClassic$74 ? ChatBoxSettings_classic_default : glassTheme_default + ChatBoxSettings_default$1);
+	isClassic$75 = GraphicsSettings.uiSkin === "classic";
+	ChatBoxSettings = new GUIComponent("ChatBoxSettings", isClassic$75 ? ChatBoxSettings_classic_default : glassTheme_default + ChatBoxSettings_default$1);
 	/**
 	* Render HTML
 	*/
-	ChatBoxSettings.render = () => isClassic$74 ? ChatBoxSettings_classic_default$1 : ChatBoxSettings_default$2;
+	ChatBoxSettings.render = () => isClassic$75 ? ChatBoxSettings_classic_default$1 : ChatBoxSettings_default$2;
 	/**
 	* @var {boolean} is ChatBoxSettings open ? (Temporary fix)
 	*/
@@ -220024,7 +220024,7 @@ function makeResizableDiv() {
 		window.addEventListener("mouseup", stopResize);
 	});
 }
-var MAX_MSG, MAX_LENGTH, MAGIC_NUMBER, _historyMessage, _historyNickName, _heightIndex, _messageBuffer, _rafScheduled, _preferences$41, isClassic$73, ChatBox, ChatBox_default;
+var MAX_MSG, MAX_LENGTH, MAGIC_NUMBER, _historyMessage, _historyNickName, _heightIndex, _messageBuffer, _rafScheduled, _preferences$41, isClassic$74, ChatBox, ChatBox_default;
 var init_ChatBox = __esmMin((() => {
 	init_DBManager();
 	init_Renderer();
@@ -220071,12 +220071,12 @@ var init_ChatBox = __esmMin((() => {
 		tabOption: [],
 		activeTab: 0
 	}, 1);
-	isClassic$73 = GraphicsSettings.uiSkin === "classic";
-	ChatBox = new GUIComponent("ChatBox", isClassic$73 ? ChatBox_classic_default : glassTheme_default + ChatBox_default$1);
+	isClassic$74 = GraphicsSettings.uiSkin === "classic";
+	ChatBox = new GUIComponent("ChatBox", isClassic$74 ? ChatBox_classic_default : glassTheme_default + ChatBox_default$1);
 	/**
 	* Render HTML
 	*/
-	ChatBox.render = () => isClassic$73 ? ChatBox_classic_default$1 : ChatBox_default$2;
+	ChatBox.render = () => isClassic$74 ? ChatBox_classic_default$1 : ChatBox_default$2;
 	/**
 	* Has input fields, protect key events
 	*/
@@ -221044,7 +221044,7 @@ function adjustButtons$1() {
 	const prevBtn = root.querySelector(".previous_btn");
 	if (prevBtn) prevBtn.disabled = _BOOK_INFORMATION["pagesize"] <= 1 || _BOOK_INFORMATION["page"] == 0;
 }
-var sleepNow, isClassic$72, MakeReadBook, _BOOK_INFORMATION, _preferences$40, MakeReadBook_default;
+var sleepNow, isClassic$73, MakeReadBook, _BOOK_INFORMATION, _preferences$40, MakeReadBook_default;
 var init_MakeReadBook = __esmMin((() => {
 	init_DBManager();
 	init_Preferences$1();
@@ -221064,9 +221064,9 @@ var init_MakeReadBook = __esmMin((() => {
 	init_Announce();
 	init_ChatBox();
 	sleepNow = (delay) => new Promise((resolve) => setTimeout(resolve, delay));
-	isClassic$72 = GraphicsSettings.uiSkin === "classic";
-	MakeReadBook = new GUIComponent("MakeReadBook", isClassic$72 ? MakeReadBook_classic_default : glassTheme_default + MakeReadBook_default$1);
-	MakeReadBook.render = () => isClassic$72 ? MakeReadBook_classic_default$1 : MakeReadBook_default$2;
+	isClassic$73 = GraphicsSettings.uiSkin === "classic";
+	MakeReadBook = new GUIComponent("MakeReadBook", isClassic$73 ? MakeReadBook_classic_default : glassTheme_default + MakeReadBook_default$1);
+	MakeReadBook.render = () => isClassic$73 ? MakeReadBook_classic_default$1 : MakeReadBook_default$2;
 	_BOOK_INFORMATION = Preferences.get("_BOOK_INFORMATION", {
 		itid: 0,
 		title: "",
@@ -221484,7 +221484,7 @@ function validateFieldsExist$1(event) {
 	if (!event.querySelector("button")) event.insertAdjacentHTML("beforeend", "<button class=\"view\" data-background=\"btn_view.bmp\" data-down=\"btn_view_a.bmp\" data-hover=\"btn_view_b.bmp\"></button>");
 	return true;
 }
-var _sprite$4, _action$4, _ctx$4, _type$7, _start$2, isClassic$71, ItemCompare, rendering$3, ItemCompare_default;
+var _sprite$4, _action$4, _ctx$4, _type$7, _start$2, isClassic$72, ItemCompare, rendering$3, ItemCompare_default;
 var init_ItemCompare = __esmMin((() => {
 	init_DBManager();
 	init_ItemType();
@@ -221509,9 +221509,9 @@ var init_ItemCompare = __esmMin((() => {
 	init_Entity$1();
 	_type$7 = 0;
 	_start$2 = 0;
-	isClassic$71 = GraphicsSettings.uiSkin === "classic";
-	ItemCompare = new GUIComponent("ItemCompare", isClassic$71 ? ItemCompare_classic_default : glassTheme_default + ItemCompare_default$1);
-	ItemCompare.render = () => isClassic$71 ? ItemCompare_classic_default$1 : ItemCompare_default$2;
+	isClassic$72 = GraphicsSettings.uiSkin === "classic";
+	ItemCompare = new GUIComponent("ItemCompare", isClassic$72 ? ItemCompare_classic_default : glassTheme_default + ItemCompare_default$1);
+	ItemCompare.render = () => isClassic$72 ? ItemCompare_classic_default$1 : ItemCompare_default$2;
 	/**
 	* @let {number} ItemCompare unique id
 	*/
@@ -221716,7 +221716,7 @@ function applyPreviewItem(entity) {
 	if (_previewLocation & EquipmentLocation_default.COSTUME_HEAD_TOP) entity.accessory2 = _previewSpriteId;
 	if (_previewLocation & EquipmentLocation_default.COSTUME_ROBE) entity.robe = _previewSpriteId;
 }
-var isClassic$70, ItemPreview, _ctx$3, _direction, _previewLocation, _previewSpriteId, _rendering, _remove, renderPreview, ItemPreview_default;
+var isClassic$71, ItemPreview, _ctx$3, _direction, _previewLocation, _previewSpriteId, _rendering, _remove, renderPreview, ItemPreview_default;
 var init_ItemPreview = __esmMin((() => {
 	init_DBManager();
 	init_EquipmentLocation();
@@ -221735,12 +221735,12 @@ var init_ItemPreview = __esmMin((() => {
 	init_Graphics();
 	init_ItemInfo();
 	init_Entity$1();
-	isClassic$70 = GraphicsSettings.uiSkin === "classic";
-	ItemPreview = new GUIComponent("ItemPreview", isClassic$70 ? ItemPreview_classic_default : glassTheme_default + ItemPreview_default$1);
+	isClassic$71 = GraphicsSettings.uiSkin === "classic";
+	ItemPreview = new GUIComponent("ItemPreview", isClassic$71 ? ItemPreview_classic_default : glassTheme_default + ItemPreview_default$1);
 	/**
 	* Render HTML
 	*/
-	ItemPreview.render = () => isClassic$70 ? ItemPreview_classic_default$1 : ItemPreview_default$2;
+	ItemPreview.render = () => isClassic$71 ? ItemPreview_classic_default$1 : ItemPreview_default$2;
 	_direction = 0;
 	_previewLocation = 0;
 	_previewSpriteId = 0;
@@ -222013,7 +222013,7 @@ function validate$1() {
 		InputBox.onSubmitRequest(text);
 	}
 }
-var isClassic$69, InputBox, InputBox_default;
+var isClassic$70, InputBox, InputBox_default;
 var init_InputBox = __esmMin((() => {
 	init_Renderer();
 	init_KeyEventHandler();
@@ -222027,9 +222027,9 @@ var init_InputBox = __esmMin((() => {
 	init_InputBox_classic();
 	init_glassTheme();
 	init_Graphics();
-	isClassic$69 = GraphicsSettings.uiSkin === "classic";
-	InputBox = new GUIComponent("InputBox", isClassic$69 ? InputBox_classic_default : glassTheme_default + InputBox_default$1);
-	InputBox.render = () => isClassic$69 ? InputBox_classic_default$1 : InputBox_default$2;
+	isClassic$70 = GraphicsSettings.uiSkin === "classic";
+	InputBox = new GUIComponent("InputBox", isClassic$70 ? InputBox_classic_default : glassTheme_default + InputBox_default$1);
+	InputBox.render = () => isClassic$70 ? InputBox_classic_default$1 : InputBox_default$2;
 	/**
 	* Freeze mouse — modal dialog
 	*/
@@ -222385,7 +222385,7 @@ function sendEquipSwitchRequest() {
 	const pkt = new PACKET.CZ.REQ_FULLSWITCH();
 	Network.sendPacket(pkt);
 }
-var isClassic$68, SwitchEquip, _swapctx, swaprender, SwitchEquip_default;
+var isClassic$69, SwitchEquip, _swapctx, swaprender, SwitchEquip_default;
 var init_SwitchEquip = __esmMin((() => {
 	init_DBManager();
 	init_EquipmentLocation();
@@ -222409,9 +222409,9 @@ var init_SwitchEquip = __esmMin((() => {
 	init_Entity$1();
 	init_Equipment();
 	init_Inventory();
-	isClassic$68 = GraphicsSettings.uiSkin === "classic";
-	SwitchEquip = new GUIComponent("SwitchEquip", isClassic$68 ? SwitchEquip_classic_default : glassTheme_default + SwitchEquip_default$1);
-	SwitchEquip.render = () => isClassic$68 ? SwitchEquip_classic_default$1 : SwitchEquip_default$2;
+	isClassic$69 = GraphicsSettings.uiSkin === "classic";
+	SwitchEquip = new GUIComponent("SwitchEquip", isClassic$69 ? SwitchEquip_classic_default : glassTheme_default + SwitchEquip_default$1);
+	SwitchEquip.render = () => isClassic$69 ? SwitchEquip_classic_default$1 : SwitchEquip_default$2;
 	/**
 	* @var {Array} switchequipment list
 	*/
@@ -224618,7 +224618,7 @@ function stopPropagation$11(event) {
 function onClose$7() {
 	WorldMap._host.style.display = "none";
 }
-var isClassic$67, WorldMap, _preferences$39, _partyMembersByMap, _hoveredSection, C_TITLEBARHEIGHT, C_BASEWIDTH, C_BASEHEIGHT, C_ASPECTX, C_ASPECTY, WorldMap_default;
+var isClassic$68, WorldMap, _preferences$39, _partyMembersByMap, _hoveredSection, C_TITLEBARHEIGHT, C_BASEWIDTH, C_BASEHEIGHT, C_ASPECTX, C_ASPECTY, WorldMap_default;
 var init_WorldMap = __esmMin((() => {
 	init_DBManager();
 	init_Client();
@@ -224638,9 +224638,9 @@ var init_WorldMap = __esmMin((() => {
 	init_glassTheme();
 	init_Graphics();
 	init_Navigation();
-	isClassic$67 = GraphicsSettings.uiSkin === "classic";
-	WorldMap = new GUIComponent("WorldMap", isClassic$67 ? WorldMap_classic_default : glassTheme_default + WorldMap_default$1);
-	WorldMap.render = () => isClassic$67 ? WorldMap_classic_default$1 : WorldMap_default$2;
+	isClassic$68 = GraphicsSettings.uiSkin === "classic";
+	WorldMap = new GUIComponent("WorldMap", isClassic$68 ? WorldMap_classic_default : glassTheme_default + WorldMap_default$1);
+	WorldMap.render = () => isClassic$68 ? WorldMap_classic_default$1 : WorldMap_default$2;
 	_preferences$39 = Preferences.get("WorldMap", {
 		x: 0,
 		y: 0,
@@ -224951,7 +224951,7 @@ function selectIndex(div) {
 	div.classList.add("selected");
 	_index$1 = parseInt(div.dataset.index, 10);
 }
-var isClassic$66, NpcMenu, _index$1, _ownerID, NpcMenu_default;
+var isClassic$67, NpcMenu, _index$1, _ownerID, NpcMenu_default;
 var init_NpcMenu = __esmMin((() => {
 	init_KeyEventHandler();
 	init_DBManager();
@@ -224966,9 +224966,9 @@ var init_NpcMenu = __esmMin((() => {
 	init_glassTheme();
 	init_Graphics();
 	init_InputBox();
-	isClassic$66 = GraphicsSettings.uiSkin === "classic";
-	NpcMenu = new GUIComponent("NpcMenu", isClassic$66 ? NpcMenu_classic_default : glassTheme_default + NpcMenu_default$1);
-	NpcMenu.render = () => isClassic$66 ? NpcMenu_classic_default$1 : NpcMenu_default$2;
+	isClassic$67 = GraphicsSettings.uiSkin === "classic";
+	NpcMenu = new GUIComponent("NpcMenu", isClassic$67 ? NpcMenu_classic_default : glassTheme_default + NpcMenu_default$1);
+	NpcMenu.render = () => isClassic$67 ? NpcMenu_classic_default$1 : NpcMenu_default$2;
 	/**
 	* Freeze mouse — NPC menu blocks interaction
 	*/
@@ -225352,7 +225352,7 @@ function initResizable(instance) {
 		window.addEventListener("mouseup", stopResize);
 	});
 }
-var isClassic$65, WhisperBox, _preferences$38;
+var isClassic$66, WhisperBox, _preferences$38;
 var init_WhisperBox = __esmMin((() => {
 	init_DBManager();
 	init_UIManager();
@@ -225374,9 +225374,9 @@ var init_WhisperBox = __esmMin((() => {
 	init_NpcMenu();
 	init_InputBox();
 	init_preload_helper();
-	isClassic$65 = GraphicsSettings.uiSkin === "classic";
-	WhisperBox = new GUIComponent("WhisperBox", isClassic$65 ? WhisperBox_classic_default : glassTheme_default + WhisperBox_default);
-	WhisperBox.render = () => isClassic$65 ? WhisperBox_classic_default$1 : WhisperBox_default$1;
+	isClassic$66 = GraphicsSettings.uiSkin === "classic";
+	WhisperBox = new GUIComponent("WhisperBox", isClassic$66 ? WhisperBox_classic_default : glassTheme_default + WhisperBox_default);
+	WhisperBox.render = () => isClassic$66 ? WhisperBox_classic_default$1 : WhisperBox_default$1;
 	/**
 	* @var {Object} active whisper windows indexed by nickname
 	*/
@@ -225603,7 +225603,7 @@ function onValidate$1() {
 		}
 	}
 }
-var isClassic$64, PartyHelper, _type$6, PartyHelper_default;
+var isClassic$65, PartyHelper, _type$6, PartyHelper_default;
 var init_PartyHelper = __esmMin((() => {
 	init_UIManager();
 	init_GUIComponent();
@@ -225617,8 +225617,8 @@ var init_PartyHelper = __esmMin((() => {
 	init_glassTheme();
 	init_Graphics();
 	init_WhisperBox();
-	isClassic$64 = GraphicsSettings.uiSkin === "classic";
-	PartyHelper = new GUIComponent("PartyHelper", isClassic$64 ? PartyHelper_classic_default : glassTheme_default + PartyHelper_default$1);
+	isClassic$65 = GraphicsSettings.uiSkin === "classic";
+	PartyHelper = new GUIComponent("PartyHelper", isClassic$65 ? PartyHelper_classic_default : glassTheme_default + PartyHelper_default$1);
 	/**
 	* Window type constants
 	*/
@@ -225632,7 +225632,7 @@ var init_PartyHelper = __esmMin((() => {
 	/**
 	* Render HTML
 	*/
-	PartyHelper.render = () => isClassic$64 ? PartyHelper_classic_default$1 : PartyHelper_default$2;
+	PartyHelper.render = () => isClassic$65 ? PartyHelper_classic_default$1 : PartyHelper_default$2;
 	/**
 	* Has input fields — protect keyboard events
 	*/
@@ -225993,7 +225993,7 @@ function renderText(text, canvas) {
 	canvas.height = 23;
 	ctx.font = `${fontSize}px Arial`;
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
-	ctx.fillStyle = isClassic$63 ? "rgba(0,0,0,0.5)" : "rgba(6,10,20,0.75)";
+	ctx.fillStyle = isClassic$64 ? "rgba(0,0,0,0.5)" : "rgba(6,10,20,0.75)";
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
 	ctx.fillStyle = "black";
 	ctx.fillText(text, 8, 17);
@@ -226076,7 +226076,7 @@ function intersectEntity(entity) {
 	if (_flag & SkillTargetSelection.TYPE.ENEMY && entity === SessionStorage_default.Entity) return;
 	SkillTargetSelection.onUseSkillToId(_skill.SKID, _skill.useLevel ? _skill.useLevel : _skill.level, entity.GID);
 }
-var isClassic$63, SkillTargetSelection, _flag, _skill, _skillName, _description, _skillLevel, _skillLevelPosition, SkillTargetSelection_default;
+var isClassic$64, SkillTargetSelection, _flag, _skill, _skillName, _description, _skillLevel, _skillLevelPosition, SkillTargetSelection_default;
 var init_SkillTargetSelection = __esmMin((() => {
 	init_DBManager();
 	init_SkillInfo();
@@ -226095,8 +226095,8 @@ var init_SkillTargetSelection = __esmMin((() => {
 	init_SkillTargetSelection$2();
 	init_SkillTargetSelection$1();
 	init_SkillTargetSelection_classic();
-	isClassic$63 = GraphicsSettings.uiSkin === "classic";
-	SkillTargetSelection = new GUIComponent("SkillTargetSelection", isClassic$63 ? SkillTargetSelection_classic_default : SkillTargetSelection_default$1);
+	isClassic$64 = GraphicsSettings.uiSkin === "classic";
+	SkillTargetSelection = new GUIComponent("SkillTargetSelection", isClassic$64 ? SkillTargetSelection_classic_default : SkillTargetSelection_default$1);
 	SkillTargetSelection.render = () => SkillTargetSelection_default$2;
 	/**
 	* Mouse can cross this UI
@@ -226426,7 +226426,7 @@ function onClickReplyMail(e) {
 	const sender = e.currentTarget.getAttribute("sender");
 	Rodex.requestOpenWriteRodex(sender);
 }
-var isClassic$62, Rodex, _preferences$37, Rodex_default;
+var isClassic$63, Rodex, _preferences$37, Rodex_default;
 var init_Rodex$1 = __esmMin((() => {
 	init_DBManager();
 	init_Client();
@@ -226442,8 +226442,8 @@ var init_Rodex$1 = __esmMin((() => {
 	init_Rodex_classic();
 	init_glassTheme();
 	init_Graphics();
-	isClassic$62 = GraphicsSettings.uiSkin === "classic";
-	Rodex = new GUIComponent("Rodex", isClassic$62 ? Rodex_classic_default : glassTheme_default + Rodex_default$1);
+	isClassic$63 = GraphicsSettings.uiSkin === "classic";
+	Rodex = new GUIComponent("Rodex", isClassic$63 ? Rodex_classic_default : glassTheme_default + Rodex_default$1);
 	/**
 	* Store Rodex items
 	*/
@@ -226483,7 +226483,7 @@ var init_Rodex$1 = __esmMin((() => {
 	/**
 	* Render HTML
 	*/
-	Rodex.render = () => isClassic$62 ? Rodex_classic_default$1 : Rodex_default$2;
+	Rodex.render = () => isClassic$63 ? Rodex_classic_default$1 : Rodex_default$2;
 	/**
 	* Apply preferences once append to body
 	*/
@@ -226701,7 +226701,7 @@ function updateCanvasLife(root, hp, maxhp) {
 		if (hpText) hpText.textContent = "";
 	}
 }
-var isClassic$61, PartyMemberExternal, PartyMemberExternal_default;
+var isClassic$62, PartyMemberExternal, PartyMemberExternal_default;
 var init_PartyMemberExternal = __esmMin((() => {
 	init_Client();
 	init_DBManager();
@@ -226723,12 +226723,12 @@ var init_PartyMemberExternal = __esmMin((() => {
 	init_SessionStorage();
 	init_WhisperBox();
 	init_PartyFriends();
-	isClassic$61 = GraphicsSettings.uiSkin === "classic";
-	PartyMemberExternal = new GUIComponent("PartyMemberExternal", isClassic$61 ? PartyMemberExternal_classic_default : glassTheme_default + PartyMemberExternal_default$1);
+	isClassic$62 = GraphicsSettings.uiSkin === "classic";
+	PartyMemberExternal = new GUIComponent("PartyMemberExternal", isClassic$62 ? PartyMemberExternal_classic_default : glassTheme_default + PartyMemberExternal_default$1);
 	/**
 	* Render HTML
 	*/
-	PartyMemberExternal.render = () => isClassic$61 ? PartyMemberExternal_classic_default$1 : PartyMemberExternal_default$2;
+	PartyMemberExternal.render = () => isClassic$62 ? PartyMemberExternal_classic_default$1 : PartyMemberExternal_default$2;
 	/**
 	* Initialize the component
 	*/
@@ -227306,7 +227306,7 @@ function onDropText$1(event) {
 function sleep(time) {
 	return new Promise((resolve) => setTimeout(resolve, time));
 }
-var isClassic$60, Mail, _preferences$36, Mail_default;
+var isClassic$61, Mail, _preferences$36, Mail_default;
 var init_Mail$1 = __esmMin((() => {
 	init_DBManager();
 	init_ItemType();
@@ -227328,8 +227328,8 @@ var init_Mail$1 = __esmMin((() => {
 	init_Mail_classic();
 	init_glassTheme();
 	init_Graphics();
-	isClassic$60 = GraphicsSettings.uiSkin === "classic";
-	Mail = new GUIComponent("Mail", isClassic$60 ? Mail_classic_default : glassTheme_default + Mail_default$1);
+	isClassic$61 = GraphicsSettings.uiSkin === "classic";
+	Mail = new GUIComponent("Mail", isClassic$61 ? Mail_classic_default : glassTheme_default + Mail_default$1);
 	/**
 	* Store Mail items
 	*/
@@ -227358,7 +227358,7 @@ var init_Mail$1 = __esmMin((() => {
 	/**
 	* Render HTML
 	*/
-	Mail.render = () => isClassic$60 ? Mail_classic_default$1 : Mail_default$2;
+	Mail.render = () => isClassic$61 ? Mail_classic_default$1 : Mail_default$2;
 	/**
 	* Has input fields, protect key events
 	*/
@@ -229169,7 +229169,7 @@ function center() {
 	host.style.left = `${Math.max(0, Math.round((w - rect.width) / 2))}px`;
 	host.style.top = `${Math.max(0, Math.round((h - rect.height) / 2))}px`;
 }
-var isClassic$59, GuildCompanion, _mode, GuildCompanion_default;
+var isClassic$60, GuildCompanion, _mode, GuildCompanion_default;
 var init_GuildCompanion = __esmMin((() => {
 	init_Renderer();
 	init_SessionStorage();
@@ -229184,9 +229184,9 @@ var init_GuildCompanion = __esmMin((() => {
 	init_GuildCompanion_classic();
 	init_glassTheme();
 	init_Graphics();
-	isClassic$59 = GraphicsSettings.uiSkin === "classic";
-	GuildCompanion = new GUIComponent("GuildCompanion", isClassic$59 ? GuildCompanion_classic_default : glassTheme_default + GuildCompanion_default$1);
-	GuildCompanion.render = () => isClassic$59 ? GuildCompanion_classic_default$1 : GuildCompanion_default$2;
+	isClassic$60 = GraphicsSettings.uiSkin === "classic";
+	GuildCompanion = new GUIComponent("GuildCompanion", isClassic$60 ? GuildCompanion_classic_default : glassTheme_default + GuildCompanion_default$1);
+	GuildCompanion.render = () => isClassic$60 ? GuildCompanion_classic_default$1 : GuildCompanion_default$2;
 	_mode = "create";
 	GuildCompanion.onRequestCreateGuild = function onRequestCreateGuild() {};
 	GuildCompanion.onRequestBreakGuild = function onRequestBreakGuild() {};
@@ -229313,7 +229313,7 @@ function _formatROText(value) {
 	txt = txt.replace(/\n/g, "<br/>");
 	return txt;
 }
-var _allowedTags, isClassic$58, SkillDescription$1, SkillDescription_default;
+var _allowedTags, isClassic$59, SkillDescription$1, SkillDescription_default;
 var init_SkillDescription = __esmMin((() => {
 	init_DBManager();
 	init_Renderer();
@@ -229332,9 +229332,9 @@ var init_SkillDescription = __esmMin((() => {
 		"i",
 		"b"
 	]);
-	isClassic$58 = GraphicsSettings.uiSkin === "classic";
-	SkillDescription$1 = new GUIComponent("SkillDescription", isClassic$58 ? SkillDescription_classic_default : glassTheme_default + SkillDescription_default$1);
-	SkillDescription$1.render = () => isClassic$58 ? SkillDescription_classic_default$1 : SkillDescription_default$2;
+	isClassic$59 = GraphicsSettings.uiSkin === "classic";
+	SkillDescription$1 = new GUIComponent("SkillDescription", isClassic$59 ? SkillDescription_classic_default : glassTheme_default + SkillDescription_default$1);
+	SkillDescription$1.render = () => isClassic$59 ? SkillDescription_classic_default$1 : SkillDescription_default$2;
 	/**
 	* SkillDescription unique id
 	*/
@@ -230022,7 +230022,7 @@ function updateDisbandButton(root, activeTab) {
 		});
 	}
 }
-var AccessTypeBit, isClassic$57, Guild, _memberViewTemplate, _positionViewTemplate, _expelViewTemplate, _positions, _members, _skills, _btnIncSkillTemplate, _skpoints, _btnLevelUp, lArrow, rArrow, _totalExp, _guildAccess, _checkbox_off, _checkbox_on, renderMemberFaces, Guild_default;
+var AccessTypeBit, isClassic$58, Guild, _memberViewTemplate, _positionViewTemplate, _expelViewTemplate, _positions, _members, _skills, _btnIncSkillTemplate, _skpoints, _btnLevelUp, lArrow, rArrow, _totalExp, _guildAccess, _checkbox_off, _checkbox_on, renderMemberFaces, Guild_default;
 var init_Guild$1 = __esmMin((() => {
 	init_DBManager();
 	init_SkillInfo();
@@ -230059,9 +230059,9 @@ var init_Guild$1 = __esmMin((() => {
 		5: 64,
 		6: 128
 	};
-	isClassic$57 = GraphicsSettings.uiSkin === "classic";
-	Guild = new GUIComponent("Guild", isClassic$57 ? Guild_classic_default : glassTheme_default + Guild_default$1);
-	Guild.render = () => isClassic$57 ? Guild_classic_default$1 : Guild_default$2;
+	isClassic$58 = GraphicsSettings.uiSkin === "classic";
+	Guild = new GUIComponent("Guild", isClassic$58 ? Guild_classic_default : glassTheme_default + Guild_default$1);
+	Guild.render = () => isClassic$58 ? Guild_classic_default$1 : Guild_default$2;
 	_positions = [];
 	_members = [];
 	_skills = [];
@@ -230831,7 +230831,7 @@ function reqCloseBank() {
 	pkt.AID = SessionStorage_default.AID;
 	Network.sendPacket(pkt);
 }
-var isClassic$56, Bank, maxInt, _preferences$35, Bank_default;
+var isClassic$57, Bank, maxInt, _preferences$35, Bank_default;
 var init_Bank$1 = __esmMin((() => {
 	init_DBManager();
 	init_NetworkManager();
@@ -230852,12 +230852,12 @@ var init_Bank$1 = __esmMin((() => {
 	init_NpcBox();
 	init_NpcMenu();
 	init_InputBox();
-	isClassic$56 = GraphicsSettings.uiSkin === "classic";
-	Bank = new GUIComponent("Bank", isClassic$56 ? Bank_classic_default : glassTheme_default + Bank_default$1);
+	isClassic$57 = GraphicsSettings.uiSkin === "classic";
+	Bank = new GUIComponent("Bank", isClassic$57 ? Bank_classic_default : glassTheme_default + Bank_default$1);
 	/**
 	* Render HTML
 	*/
-	Bank.render = () => isClassic$56 ? Bank_classic_default$1 : Bank_default$2;
+	Bank.render = () => isClassic$57 ? Bank_classic_default$1 : Bank_default$2;
 	maxInt = 2147483647;
 	_preferences$35 = Preferences.get("Bank", {
 		x: 230,
@@ -231071,7 +231071,7 @@ function onToggleBGM() {
 	if (Audio_default.BGM.play) BGM.play(BGM.filename);
 	else BGM.stop();
 }
-var isClassic$55, SoundOption, _preferences$34, SoundOption_default;
+var isClassic$56, SoundOption, _preferences$34, SoundOption_default;
 var init_SoundOption = __esmMin((() => {
 	init_Preferences$1();
 	init_Audio();
@@ -231086,9 +231086,9 @@ var init_SoundOption = __esmMin((() => {
 	init_SoundOption_classic();
 	init_glassTheme();
 	init_Graphics();
-	isClassic$55 = GraphicsSettings.uiSkin === "classic";
-	SoundOption = new GUIComponent("SoundOption", isClassic$55 ? SoundOption_classic_default : glassTheme_default + SoundOption_default$1);
-	SoundOption.render = () => isClassic$55 ? SoundOption_classic_default$1 : SoundOption_default$2;
+	isClassic$56 = GraphicsSettings.uiSkin === "classic";
+	SoundOption = new GUIComponent("SoundOption", isClassic$56 ? SoundOption_classic_default : glassTheme_default + SoundOption_default$1);
+	SoundOption.render = () => isClassic$56 ? SoundOption_classic_default$1 : SoundOption_default$2;
 	_preferences$34 = Preferences.get("SoundOption", {
 		x: 300,
 		y: 300
@@ -231159,7 +231159,7 @@ var init_FPS_classic = __esmMin((() => {
 }));
 //#endregion
 //#region src/UI/Components/FPS/FPS.js
-var isClassic$54, FPS, _maxFPSRegistered, _tickFn, _preferences$33, FPS_default;
+var isClassic$55, FPS, _maxFPSRegistered, _tickFn, _preferences$33, FPS_default;
 var init_FPS = __esmMin((() => {
 	init_Preferences$1();
 	init_Renderer();
@@ -231172,9 +231172,9 @@ var init_FPS = __esmMin((() => {
 	init_FPS_classic();
 	init_glassTheme();
 	init_Graphics();
-	isClassic$54 = GraphicsSettings.uiSkin === "classic";
-	FPS = new GUIComponent("FPS", isClassic$54 ? FPS_classic_default : glassTheme_default + FPS_default$1);
-	FPS.render = () => isClassic$54 ? FPS_classic_default$1 : FPS_default$2;
+	isClassic$55 = GraphicsSettings.uiSkin === "classic";
+	FPS = new GUIComponent("FPS", isClassic$55 ? FPS_classic_default : glassTheme_default + FPS_default$1);
+	FPS.render = () => isClassic$55 ? FPS_classic_default$1 : FPS_default$2;
 	_maxFPSRegistered = 0;
 	_tickFn = null;
 	_preferences$33 = Preferences.get("FPS", {
@@ -231693,7 +231693,7 @@ function onResetToDefaults() {
 	GraphicsSettings.save();
 	GraphicsOption.onAppend();
 }
-var isClassic$53, GraphicsOption, _preferences$32, GraphicsOption_default;
+var isClassic$54, GraphicsOption, _preferences$32, GraphicsOption_default;
 var init_GraphicsOption = __esmMin((() => {
 	init_FPS();
 	init_Configs();
@@ -231711,8 +231711,8 @@ var init_GraphicsOption = __esmMin((() => {
 	init_MemoryManager();
 	init_ChatBox();
 	init_DonorBadge();
-	isClassic$53 = GraphicsSettings.uiSkin === "classic";
-	GraphicsOption = new GUIComponent("GraphicsOption", isClassic$53 ? GraphicsOption_classic_default : glassTheme_default + GraphicsOption_default$1);
+	isClassic$54 = GraphicsSettings.uiSkin === "classic";
+	GraphicsOption = new GUIComponent("GraphicsOption", isClassic$54 ? GraphicsOption_classic_default : glassTheme_default + GraphicsOption_default$1);
 	_preferences$32 = Preferences.get("GraphicsOption", {
 		x: 300,
 		y: 300
@@ -231720,7 +231720,7 @@ var init_GraphicsOption = __esmMin((() => {
 	/**
 	* Render HTML
 	*/
-	GraphicsOption.render = () => isClassic$53 ? GraphicsOption_classic_default$1 : GraphicsOption_default$2;
+	GraphicsOption.render = () => isClassic$54 ? GraphicsOption_classic_default$1 : GraphicsOption_default$2;
 	/**
 	* Initialize UI
 	*/
@@ -232030,7 +232030,7 @@ function onUpdateDisableVirtualMouse() {
 	Controls_default.joyDisableVirtualMouse = !!this.checked;
 	Controls_default.save();
 }
-var isClassic$52, ShortCutOption, ShortCuts$1, ShortCutsTemp, _preferences$31, ShortCutOption_default;
+var isClassic$53, ShortCutOption, ShortCuts$1, ShortCutsTemp, _preferences$31, ShortCutOption_default;
 var init_ShortCutOption = __esmMin((() => {
 	init_KeyEventHandler();
 	init_Preferences$1();
@@ -232046,8 +232046,8 @@ var init_ShortCutOption = __esmMin((() => {
 	init_glassTheme();
 	init_Graphics();
 	init_Controls();
-	isClassic$52 = GraphicsSettings.uiSkin === "classic";
-	ShortCutOption = new GUIComponent("ShortCutOption", isClassic$52 ? ShortCutOption_classic_default : glassTheme_default + ShortCutOption_default$1);
+	isClassic$53 = GraphicsSettings.uiSkin === "classic";
+	ShortCutOption = new GUIComponent("ShortCutOption", isClassic$53 ? ShortCutOption_classic_default : glassTheme_default + ShortCutOption_default$1);
 	ShortCuts$1 = ShortCutControls_default.ShortCuts;
 	ShortCutsTemp = {};
 	ShortCutOption.isCapturing = false;
@@ -232058,7 +232058,7 @@ var init_ShortCutOption = __esmMin((() => {
 	/**
 	* Render HTML
 	*/
-	ShortCutOption.render = () => isClassic$52 ? ShortCutOption_classic_default$1 : ShortCutOption_default$2;
+	ShortCutOption.render = () => isClassic$53 ? ShortCutOption_classic_default$1 : ShortCutOption_default$2;
 	/**
 	* Initialize UI
 	*/
@@ -232266,7 +232266,7 @@ function onToggleShortcutUI() {
 	if (!ShortCutOption_default._host || !ShortCutOption_default._host.parentNode) ShortCutOption_default.append();
 	else ShortCutOption_default.remove();
 }
-var isClassic$51, Escape, Escape_default;
+var isClassic$52, Escape, Escape_default;
 var init_Escape = __esmMin((() => {
 	init_KeyEventHandler();
 	init_Renderer();
@@ -232281,12 +232281,12 @@ var init_Escape = __esmMin((() => {
 	init_Escape_classic();
 	init_glassTheme();
 	init_Graphics();
-	isClassic$51 = GraphicsSettings.uiSkin === "classic";
-	Escape = new GUIComponent("Escape", isClassic$51 ? Escape_classic_default : glassTheme_default + Escape_default$1);
+	isClassic$52 = GraphicsSettings.uiSkin === "classic";
+	Escape = new GUIComponent("Escape", isClassic$52 ? Escape_classic_default : glassTheme_default + Escape_default$1);
 	/**
 	* Render HTML
 	*/
-	Escape.render = () => isClassic$51 ? Escape_classic_default$1 : Escape_default$2;
+	Escape.render = () => isClassic$52 ? Escape_classic_default$1 : Escape_default$2;
 	/**
 	* Initialize UI
 	*/
@@ -232440,8 +232440,8 @@ function onClickAttendance(e) {
 	const el = e.currentTarget;
 	const id = el.id;
 	const checkedHidden = root.querySelector(`#${id} .checked-hidden`);
-	if (checkedHidden) checkedHidden.className = isClassic$50 ? "checked day-check" : "checked";
-	if (!isClassic$50) {
+	if (checkedHidden) checkedHidden.className = isClassic$51 ? "checked day-check" : "checked";
+	if (!isClassic$51) {
 		const completedDiv = document.createElement("div");
 		completedDiv.className = "completed";
 		completedDiv.dataset.background = "check_attendance/bt_slot_complete.png";
@@ -232454,7 +232454,7 @@ function onClickAttendance(e) {
 	const _pkt = new PACKET.CZ.REQ_CHECK_ATTENDANCE();
 	Network.sendPacket(_pkt);
 }
-var isClassic$50, CheckAttendance, _checkAttendanceData, _CheckAttendanceInfo, _preferences$30, CheckAttendance_default;
+var isClassic$51, CheckAttendance, _checkAttendanceData, _CheckAttendanceInfo, _preferences$30, CheckAttendance_default;
 var init_CheckAttendance = __esmMin((() => {
 	init_DBManager();
 	init_Preferences$1();
@@ -232470,9 +232470,9 @@ var init_CheckAttendance = __esmMin((() => {
 	init_Graphics();
 	init_ChatBox();
 	init_Elements();
-	isClassic$50 = GraphicsSettings.uiSkin === "classic";
-	CheckAttendance = new GUIComponent("CheckAttendance", isClassic$50 ? CheckAttendance_classic_default : CheckAttendance_default$1);
-	CheckAttendance.render = () => isClassic$50 ? CheckAttendance_classic_default$1 : CheckAttendance_default$2;
+	isClassic$51 = GraphicsSettings.uiSkin === "classic";
+	CheckAttendance = new GUIComponent("CheckAttendance", isClassic$51 ? CheckAttendance_classic_default : CheckAttendance_default$1);
+	CheckAttendance.render = () => isClassic$51 ? CheckAttendance_classic_default$1 : CheckAttendance_default$2;
 	_preferences$30 = Preferences.get("CheckAttendance", {
 		x: 200,
 		y: 200
@@ -232579,10 +232579,10 @@ var init_CheckAttendance = __esmMin((() => {
 				const isClaimable = !already_requested && day == current_day;
 				const checked = day <= attendance_count ? "checked" : "checked-hidden";
 				const slot_complete_string = day > (already_requested ? attendance_count - 1 : attendance_count) ? "bt_slot_complete" : "bt_slot_off";
-				const background = isClassic$50 ? `class="attendance-item${isClaimable ? " claimable" : ""}"` : (() => {
+				const background = isClassic$51 ? `class="attendance-item${isClaimable ? " claimable" : ""}"` : (() => {
 					return `class="attendance-item" ${isClaimable ? `data-background="check_attendance/bt_slot_a.bmp" data-down="check_attendance/bt_slot_press.bmp"` : ""}`;
 				})();
-				const checkMarkup = isClassic$50 ? `<div class="${checked} day-check"></div>` : `<div class="${checked}" data-background="check_attendance/${slot_complete_string}.png"></div>`;
+				const checkMarkup = isClassic$51 ? `<div class="${checked} day-check"></div>` : `<div class="${checked}" data-background="check_attendance/${slot_complete_string}.png"></div>`;
 				const item_slot = `<li id="attendance_day_${i}" ${background}><div class="item" data-background="${DB.INTERFACE_PATH}item/${item.identifiedResourceName}.bmp"><span class="item-quantity">${_CheckAttendanceInfo.Rewards[i].quantity}</span><span class="name">${item.identifiedDisplayName}</span>` + checkMarkup + `</div><div class="day">${day} Day</div></li>`;
 				if (daysList) daysList.insertAdjacentHTML("beforeend", item_slot);
 				if (!already_requested && day == current_day) {
@@ -234910,7 +234910,7 @@ var init_QuestV1 = __esmMin((() => {
 }));
 //#endregion
 //#region src/UI/Components/Quest/Quest.js
-var publicName$8, isClassic$49, versionInfo$8, Controller$3, _selectUIVersion$4;
+var publicName$8, isClassic$50, versionInfo$8, Controller$3, _selectUIVersion$4;
 var init_Quest$1 = __esmMin((() => {
 	init_Quest$2();
 	init_QuestV1();
@@ -234918,10 +234918,10 @@ var init_Quest$1 = __esmMin((() => {
 	init_KeyEventHandler();
 	init_Graphics();
 	publicName$8 = "Quest";
-	isClassic$49 = GraphicsSettings.uiSkin === "classic";
+	isClassic$50 = GraphicsSettings.uiSkin === "classic";
 	versionInfo$8 = {
 		default: QuestV1_default,
-		common: isClassic$49 ? {} : { 20180307: Quest_default },
+		common: isClassic$50 ? {} : { 20180307: Quest_default },
 		re: {},
 		prere: {}
 	};
@@ -234963,7 +234963,7 @@ var init_Achievement_classic = __esmMin((() => {
 }));
 //#endregion
 //#region src/UI/Components/Achievement/Achievement.js
-var _preferences$28, isClassic$48, MAJOR_CATEGORIES, AchievementComponent, Achievement, Achievement_default;
+var _preferences$28, isClassic$49, MAJOR_CATEGORIES, AchievementComponent, Achievement, Achievement_default;
 var init_Achievement$1 = __esmMin((() => {
 	init_GUIComponent();
 	init_UIManager();
@@ -234984,14 +234984,14 @@ var init_Achievement$1 = __esmMin((() => {
 		x: 100,
 		y: 100
 	}, 1);
-	isClassic$48 = GraphicsSettings.uiSkin === "classic";
+	isClassic$49 = GraphicsSettings.uiSkin === "classic";
 	MAJOR_CATEGORIES = [];
 	AchievementComponent = class extends GUIComponent {
 		constructor() {
-			super("Achievement", isClassic$48 ? Achievement_classic_default : Achievement_default$1);
+			super("Achievement", isClassic$49 ? Achievement_classic_default : Achievement_default$1);
 		}
 		render() {
-			return isClassic$48 ? Achievement_classic_default$1 : Achievement_default$2;
+			return isClassic$49 ? Achievement_classic_default$1 : Achievement_default$2;
 		}
 		init() {
 			const root = this.getRoot();
@@ -235904,7 +235904,7 @@ function clearHighlights() {
 		el.dataset.highlight = "false";
 	});
 }
-var isClassic$47, Reputation, _preferences$27, bg, bg_highlight, indicator_empty, indicator_blue, indicator_red, Reputation_default;
+var isClassic$48, Reputation, _preferences$27, bg, bg_highlight, indicator_empty, indicator_blue, indicator_red, Reputation_default;
 var init_Reputation = __esmMin((() => {
 	init_DBManager();
 	init_NetworkManager();
@@ -235920,8 +235920,8 @@ var init_Reputation = __esmMin((() => {
 	init_Reputation_classic();
 	init_glassTheme();
 	init_Graphics();
-	isClassic$47 = GraphicsSettings.uiSkin === "classic";
-	Reputation = new GUIComponent("Reputation", isClassic$47 ? Reputation_classic_default : glassTheme_default + Reputation_default$1);
+	isClassic$48 = GraphicsSettings.uiSkin === "classic";
+	Reputation = new GUIComponent("Reputation", isClassic$48 ? Reputation_classic_default : glassTheme_default + Reputation_default$1);
 	_preferences$27 = Preferences.get("Reputation", {
 		x: 400,
 		y: 200,
@@ -235953,7 +235953,7 @@ var init_Reputation = __esmMin((() => {
 	/**
 	* Render HTML
 	*/
-	Reputation.render = () => isClassic$47 ? Reputation_classic_default$1 : Reputation_default$2;
+	Reputation.render = () => isClassic$48 ? Reputation_classic_default$1 : Reputation_default$2;
 	/**
 	* Input protection for search field
 	*/
@@ -236051,7 +236051,7 @@ var init_Reputation = __esmMin((() => {
 //#region src/UI/Components/BasicInfo/BasicInfoCommon.js
 function createBasicInfo(config) {
 	const { name, htmlText, cssText, htmlTextClassic, cssTextClassic, prefKey, reduceDefault = true, innerId, topbarItemSelector = ".topbar button", topbarDblClick = false, toggleButtonsEvent = "mousedown", buttonsSelector = ".buttons button", buttonsEvent = "mousedown", buttonKeyBy = "class", infoOpensWinStats = true, partyViaGetUI = false, hasToolbarToggle = false, miniLayout = false, hideIds = [], barScale = 1.27, hasApBar = false } = config;
-	const Component = new GUIComponent(name, isClassic$46 ? cssTextClassic : glassTheme_default + cssText);
+	const Component = new GUIComponent(name, isClassic$47 ? cssTextClassic : glassTheme_default + cssText);
 	/**
 	* Stored data
 	*/
@@ -236061,7 +236061,7 @@ function createBasicInfo(config) {
 	Component.job_exp_next = -1;
 	Component.weight = 0;
 	Component.weight_max = 1;
-	Component.render = () => isClassic$46 ? htmlTextClassic : htmlText;
+	Component.render = () => isClassic$47 ? htmlTextClassic : htmlText;
 	/**
 	* @let {Preferences} structure
 	*/
@@ -236314,7 +236314,7 @@ function createBasicInfo(config) {
 		root.querySelectorAll(`.${type}_perc`).forEach((el) => {
 			el.textContent = `${perc}%`;
 		});
-		if (isClassic$46) {
+		if (isClassic$47) {
 			if (perc <= 0) {
 				root.querySelectorAll(`.${type}_bar div`).forEach((el) => {
 					el.style.backgroundImage = "none";
@@ -236426,7 +236426,7 @@ function createBasicInfo(config) {
 	*/
 	return UIManager.addComponent(Component);
 }
-var isClassic$46;
+var isClassic$47;
 var init_BasicInfoCommon = __esmMin((() => {
 	init_DBManager();
 	init_Configs();
@@ -236456,7 +236456,7 @@ var init_BasicInfoCommon = __esmMin((() => {
 	init_Reputation();
 	init_glassTheme();
 	init_Graphics();
-	isClassic$46 = GraphicsSettings.uiSkin === "classic";
+	isClassic$47 = GraphicsSettings.uiSkin === "classic";
 }));
 //#endregion
 //#region src/UI/Components/BasicInfo/BasicInfoV1/BasicInfoV1.js
@@ -237488,7 +237488,7 @@ function onBroadcastRefineResult(pkt) {
 		Announce_default.set(message, "#FFB563");
 	}
 }
-var isClassic$45, Refine, BSB_ITID, refiningMaterials, blacksmithBlessing, refine_item_index, refine_item_mat, refine_fee, refine_bsb, refine_result, refine_result_div, refine_can_cont, refine_no_mats, refine_no_zeny, refine_no_bsb, refine_item_broken, refine_new_mats, refine_ongoing, refine_current_chance, refine_current_zeny, initialsuccess, currentLoopHandle, itemMessageMapping, images$1, Refine_default;
+var isClassic$46, Refine, BSB_ITID, refiningMaterials, blacksmithBlessing, refine_item_index, refine_item_mat, refine_fee, refine_bsb, refine_result, refine_result_div, refine_can_cont, refine_no_mats, refine_no_zeny, refine_no_bsb, refine_item_broken, refine_new_mats, refine_ongoing, refine_current_chance, refine_current_zeny, initialsuccess, currentLoopHandle, itemMessageMapping, images$1, Refine_default;
 var init_Refine = __esmMin((() => {
 	init_DBManager();
 	init_Configs();
@@ -237512,8 +237512,8 @@ var init_Refine = __esmMin((() => {
 	init_Refine_classic();
 	init_glassTheme();
 	init_Graphics();
-	isClassic$45 = GraphicsSettings.uiSkin === "classic";
-	Refine = new GUIComponent("Refine", isClassic$45 ? Refine_classic_default : glassTheme_default + Refine_default$1);
+	isClassic$46 = GraphicsSettings.uiSkin === "classic";
+	Refine = new GUIComponent("Refine", isClassic$46 ? Refine_classic_default : glassTheme_default + Refine_default$1);
 	BSB_ITID = 6635;
 	refiningMaterials = [];
 	blacksmithBlessing = 0;
@@ -237650,7 +237650,7 @@ var init_Refine = __esmMin((() => {
 	/**
 	* Render HTML
 	*/
-	Refine.render = () => isClassic$45 ? Refine_classic_default$1 : Refine_default$2;
+	Refine.render = () => isClassic$46 ? Refine_classic_default$1 : Refine_default$2;
 	/**
 	* Initialize UI
 	*/
@@ -240055,7 +240055,7 @@ function onRequestClose() {
 	}
 	Enchant.remove();
 }
-var isClassic$44, Enchant, EnchantState, EnchantAssets, DEFAULT_INTRO_DURATION_MS, EnchantEffectState, EnchantEffectDurations, EnchantEffectGroups, ENCHANT_OVERLAY_COLOR, EnchantEffectFog, _effectStyleNode, Enchant_default;
+var isClassic$45, Enchant, EnchantState, EnchantAssets, DEFAULT_INTRO_DURATION_MS, EnchantEffectState, EnchantEffectDurations, EnchantEffectGroups, ENCHANT_OVERLAY_COLOR, EnchantEffectFog, _effectStyleNode, Enchant_default;
 var init_Enchant = __esmMin((() => {
 	init_DBManager();
 	init_Client();
@@ -240081,9 +240081,9 @@ var init_Enchant = __esmMin((() => {
 	init_Enchant_classic();
 	init_glassTheme();
 	init_Graphics();
-	isClassic$44 = GraphicsSettings.uiSkin === "classic";
-	Enchant = new GUIComponent("Enchant", isClassic$44 ? Enchant_classic_default : glassTheme_default + Enchant_default$1);
-	Enchant.render = () => isClassic$44 ? Enchant_classic_default$1 : Enchant_default$2;
+	isClassic$45 = GraphicsSettings.uiSkin === "classic";
+	Enchant = new GUIComponent("Enchant", isClassic$45 ? Enchant_classic_default : glassTheme_default + Enchant_default$1);
+	Enchant.render = () => isClassic$45 ? Enchant_classic_default$1 : Enchant_default$2;
 	Enchant.captureKeyEvents = true;
 	EnchantState = {
 		groupId: 0,
@@ -242595,8 +242595,8 @@ var init_StorageFilter_classic = __esmMin((() => {
 //#region src/UI/Components/Storage/StorageV3/StorageFilter.js
 function StorageFilter(tabId) {
 	const prefName = "StorageFilter_" + tabId;
-	GUIComponent.call(this, prefName, isClassic$43 ? StorageFilter_classic_default : glassTheme_default + StorageFilter_default);
-	this.render = () => isClassic$43 ? StorageFilter_classic_default$1 : StorageFilter_default$1;
+	GUIComponent.call(this, prefName, isClassic$44 ? StorageFilter_classic_default : glassTheme_default + StorageFilter_default);
+	this.render = () => isClassic$44 ? StorageFilter_classic_default$1 : StorageFilter_default$1;
 	this.onRemove = function() {
 		const root = this.getRoot();
 		const content = root.querySelector(".content");
@@ -242618,7 +242618,7 @@ function StorageFilter(tabId) {
 	}, 1);
 	this.onCloseCallback = null;
 }
-var isClassic$43;
+var isClassic$44;
 var init_StorageFilter = __esmMin((() => {
 	init_DBManager();
 	init_Client();
@@ -242634,7 +242634,7 @@ var init_StorageFilter = __esmMin((() => {
 	init_StorageFilter_classic();
 	init_glassTheme();
 	init_Graphics();
-	isClassic$43 = GraphicsSettings.uiSkin === "classic";
+	isClassic$44 = GraphicsSettings.uiSkin === "classic";
 	StorageFilter.prototype = Object.create(GUIComponent.prototype);
 	StorageFilter.prototype.constructor = StorageFilter;
 	StorageFilter.prototype.init = function init() {
@@ -243144,7 +243144,7 @@ function onItemUsed$1(event) {
 	event.stopImmediatePropagation();
 	event.preventDefault();
 }
-var isClassic$42, CartItems, _realSize$1, _preferences$26, CartItems_default;
+var isClassic$43, CartItems, _realSize$1, _preferences$26, CartItems_default;
 var init_CartItems = __esmMin((() => {
 	init_DBManager();
 	init_ItemType();
@@ -243169,9 +243169,9 @@ var init_CartItems = __esmMin((() => {
 	init_Storage$1();
 	init_Inventory();
 	init_Equipment();
-	isClassic$42 = GraphicsSettings.uiSkin === "classic";
-	CartItems = new GUIComponent("CartItems", isClassic$42 ? CartItems_classic_default : glassTheme_default + CartItems_default$1);
-	CartItems.render = () => isClassic$42 ? CartItems_classic_default$1 : CartItems_default$2;
+	isClassic$43 = GraphicsSettings.uiSkin === "classic";
+	CartItems = new GUIComponent("CartItems", isClassic$43 ? CartItems_classic_default : glassTheme_default + CartItems_default$1);
+	CartItems.render = () => isClassic$43 ? CartItems_classic_default$1 : CartItems_default$2;
 	/**
 	* Store inventory items
 	*/
@@ -244688,7 +244688,7 @@ function buildMoveInfoTooltip(moveInfo) {
 	for (const entry of MOVE_INFO_MESSAGES) if (moveInfo[entry.key] === true) lines.push(DB.getMessage(entry.msgId));
 	return lines.map((l) => `<div>${l}</div>`).join("");
 }
-var isClassic$41, ItemInfo, _sprite$3, _action$3, _ctx$1, _type$5, _start$1, MOVE_INFO_MESSAGES, rendering$2, ItemInfo_default;
+var isClassic$42, ItemInfo, _sprite$3, _action$3, _ctx$1, _type$5, _start$1, MOVE_INFO_MESSAGES, rendering$2, ItemInfo_default;
 var init_ItemInfo = __esmMin((() => {
 	init_DBManager();
 	init_ItemType();
@@ -244719,9 +244719,9 @@ var init_ItemInfo = __esmMin((() => {
 	init_Entity$1();
 	init_Equipment();
 	init_Inventory();
-	isClassic$41 = GraphicsSettings.uiSkin === "classic";
-	ItemInfo = new GUIComponent("ItemInfo", isClassic$41 ? ItemInfo_classic_default : glassTheme_default + ItemInfo_default$1);
-	ItemInfo.render = () => isClassic$41 ? ItemInfo_classic_default$1 : ItemInfo_default$2;
+	isClassic$42 = GraphicsSettings.uiSkin === "classic";
+	ItemInfo = new GUIComponent("ItemInfo", isClassic$42 ? ItemInfo_classic_default : glassTheme_default + ItemInfo_default$1);
+	ItemInfo.render = () => isClassic$42 ? ItemInfo_classic_default$1 : ItemInfo_default$2;
 	_type$5 = 0;
 	_start$1 = 0;
 	/**
@@ -245027,7 +245027,7 @@ function processText(text) {
 function _isVisible$1(el) {
 	return !!el && getComputedStyle(el).display !== "none";
 }
-var isClassic$40, NpcBox, _needCleanUp, NpcBox_default;
+var isClassic$41, NpcBox, _needCleanUp, NpcBox_default;
 var init_NpcBox = __esmMin((() => {
 	init_KeyEventHandler();
 	init_Renderer();
@@ -245044,9 +245044,9 @@ var init_NpcBox = __esmMin((() => {
 	init_Graphics();
 	init_NpcMenu();
 	init_InputBox();
-	isClassic$40 = GraphicsSettings.uiSkin === "classic";
-	NpcBox = new GUIComponent("NpcBox", isClassic$40 ? NpcBox_classic_default : glassTheme_default + NpcBox_default$1);
-	NpcBox.render = () => isClassic$40 ? NpcBox_classic_default$1 : NpcBox_default$2;
+	isClassic$41 = GraphicsSettings.uiSkin === "classic";
+	NpcBox = new GUIComponent("NpcBox", isClassic$41 ? NpcBox_classic_default : glassTheme_default + NpcBox_default$1);
+	NpcBox.render = () => isClassic$41 ? NpcBox_classic_default$1 : NpcBox_default$2;
 	/**
 	* Freeze mouse — NPC dialog blocks interaction
 	*/
@@ -245236,7 +245236,7 @@ function parseChatSetup() {
 	this.requestRoom();
 	this.hide();
 }
-var isClassic$39, ChatRoomCreate, _preferences$25, ChatRoomCreate_default;
+var isClassic$40, ChatRoomCreate, _preferences$25, ChatRoomCreate_default;
 var init_ChatRoomCreate = __esmMin((() => {
 	init_DBManager();
 	init_KeyEventHandler();
@@ -245253,12 +245253,12 @@ var init_ChatRoomCreate = __esmMin((() => {
 	init_NpcBox();
 	init_NpcMenu();
 	init_InputBox();
-	isClassic$39 = GraphicsSettings.uiSkin === "classic";
-	ChatRoomCreate = new GUIComponent("ChatRoomCreate", isClassic$39 ? ChatRoomCreate_classic_default : glassTheme_default + ChatRoomCreate_default$1);
+	isClassic$40 = GraphicsSettings.uiSkin === "classic";
+	ChatRoomCreate = new GUIComponent("ChatRoomCreate", isClassic$40 ? ChatRoomCreate_classic_default : glassTheme_default + ChatRoomCreate_default$1);
 	/**
 	* Render HTML
 	*/
-	ChatRoomCreate.render = () => isClassic$39 ? ChatRoomCreate_classic_default$1 : ChatRoomCreate_default$2;
+	ChatRoomCreate.render = () => isClassic$40 ? ChatRoomCreate_classic_default$1 : ChatRoomCreate_default$2;
 	/**
 	* @var {string} chat room title
 	*/
@@ -245562,7 +245562,7 @@ function resize$2(width, height) {
 		if (inner) ChatRoom._host.style.height = inner.offsetHeight + "px";
 	}
 }
-var isClassic$38, ChatRoom, _gridWidth, _gridHeight, _preferences$24, ChatRoom_default;
+var isClassic$39, ChatRoom, _gridWidth, _gridHeight, _preferences$24, ChatRoom_default;
 var init_ChatRoom$1 = __esmMin((() => {
 	init_Preferences$1();
 	init_Renderer();
@@ -245588,12 +245588,12 @@ var init_ChatRoom$1 = __esmMin((() => {
 	init_NpcBox();
 	init_NpcMenu();
 	init_InputBox();
-	isClassic$38 = GraphicsSettings.uiSkin === "classic";
-	ChatRoom = new GUIComponent("ChatRoom", isClassic$38 ? ChatRoom_classic_default : glassTheme_default + ChatRoom_default$1);
+	isClassic$39 = GraphicsSettings.uiSkin === "classic";
+	ChatRoom = new GUIComponent("ChatRoom", isClassic$39 ? ChatRoom_classic_default : glassTheme_default + ChatRoom_default$1);
 	/**
 	* Render HTML
 	*/
-	ChatRoom.render = () => isClassic$38 ? ChatRoom_classic_default$1 : ChatRoom_default$2;
+	ChatRoom.render = () => isClassic$39 ? ChatRoom_classic_default$1 : ChatRoom_default$2;
 	/**
 	* @var {string} Chat Room title
 	*/
@@ -248253,7 +248253,7 @@ function homunToggleAutoFeed() {
 	if (PacketVerManager_default.value < 20170920) return;
 	HomunInformations.onConfigUpdate(3, _preferences$23.autoFeed ? 1 : 0);
 }
-var autoFeedInterval, autoFeedIntervalMs, autoFeedPercent, isClassic$37, HomunInformations, _preferences$23, HomunInformations_default;
+var autoFeedInterval, autoFeedIntervalMs, autoFeedPercent, isClassic$38, HomunInformations, _preferences$23, HomunInformations_default;
 var init_HomunInformations = __esmMin((() => {
 	init_DBManager();
 	init_Client();
@@ -248277,9 +248277,9 @@ var init_HomunInformations = __esmMin((() => {
 	init_Graphics();
 	autoFeedIntervalMs = 6e4;
 	autoFeedPercent = 30;
-	isClassic$37 = GraphicsSettings.uiSkin === "classic";
-	HomunInformations = new GUIComponent("HomunInformations", isClassic$37 ? HomunInformations_classic_default : glassTheme_default + HomunInformations_default$1);
-	HomunInformations.render = () => isClassic$37 ? HomunInformations_classic_default$1 : HomunInformations_default$2;
+	isClassic$38 = GraphicsSettings.uiSkin === "classic";
+	HomunInformations = new GUIComponent("HomunInformations", isClassic$38 ? HomunInformations_classic_default : glassTheme_default + HomunInformations_default$1);
+	HomunInformations.render = () => isClassic$38 ? HomunInformations_classic_default$1 : HomunInformations_default$2;
 	HomunInformations.captureKeyEvents = true;
 	_preferences$23 = Preferences.get("HomunInformations", {
 		x: 100,
@@ -248508,7 +248508,7 @@ var init_HomunInformations = __esmMin((() => {
 		if (maxValueEl) maxValueEl.textContent = val2;
 		const percEl = root.querySelector(`.${type}_perc`);
 		if (percEl) percEl.textContent = `${perc}%`;
-		if (isClassic$37) {
+		if (isClassic$38) {
 			const color = perc < 25 ? "red" : "blue";
 			if (perc <= 0) root.querySelectorAll(`.${type}_bar div`).forEach((el) => {
 				el.style.backgroundImage = "none";
@@ -248656,7 +248656,7 @@ var init_MercenaryInformations_classic = __esmMin((() => {
 }));
 //#endregion
 //#region src/UI/Components/MercenaryInformations/MercenaryInformations.js
-var isClassic$36, MercenaryInformations, _preferences$22, MercenaryInformations_default;
+var isClassic$37, MercenaryInformations, _preferences$22, MercenaryInformations_default;
 var init_MercenaryInformations = __esmMin((() => {
 	init_DBManager();
 	init_Client();
@@ -248676,9 +248676,9 @@ var init_MercenaryInformations = __esmMin((() => {
 	init_MercenaryInformations_classic();
 	init_glassTheme();
 	init_Graphics();
-	isClassic$36 = GraphicsSettings.uiSkin === "classic";
-	MercenaryInformations = new GUIComponent("MercenaryInformations", isClassic$36 ? MercenaryInformations_classic_default : glassTheme_default + MercenaryInformations_default$1);
-	MercenaryInformations.render = () => isClassic$36 ? MercenaryInformations_classic_default$1 : MercenaryInformations_default$2;
+	isClassic$37 = GraphicsSettings.uiSkin === "classic";
+	MercenaryInformations = new GUIComponent("MercenaryInformations", isClassic$37 ? MercenaryInformations_classic_default : glassTheme_default + MercenaryInformations_default$1);
+	MercenaryInformations.render = () => isClassic$37 ? MercenaryInformations_classic_default$1 : MercenaryInformations_default$2;
 	_preferences$22 = Preferences.get("MercenaryInformations", {
 		x: 100,
 		y: 100,
@@ -248865,7 +248865,7 @@ var init_MercenaryInformations = __esmMin((() => {
 		if (maxValueEl) maxValueEl.textContent = val2;
 		const summaryEl = root.querySelector(`.${type}2`);
 		if (summaryEl) summaryEl.textContent = `${val} / ${val2}`;
-		if (isClassic$36) {
+		if (isClassic$37) {
 			const color = perc < 25 ? "red" : "blue";
 			Client.loadFile(DB.INTERFACE_PATH + `basic_interface/gze${color}_left.bmp`, function(url) {
 				const el = root.querySelector(`.${type}_bar_left`);
@@ -248977,7 +248977,7 @@ var init_CaptchaUpload_classic = __esmMin((() => {
 }));
 //#endregion
 //#region src/UI/Components/Captcha/CaptchaUpload.js
-var isClassic$35, CaptchaUpload, _preferences$21, CaptchaUpload_default;
+var isClassic$36, CaptchaUpload, _preferences$21, CaptchaUpload_default;
 var init_CaptchaUpload = __esmMin((() => {
 	init_UIManager();
 	init_GUIComponent();
@@ -248991,13 +248991,13 @@ var init_CaptchaUpload = __esmMin((() => {
 	init_CaptchaUpload_classic();
 	init_glassTheme();
 	init_Graphics();
-	isClassic$35 = GraphicsSettings.uiSkin === "classic";
-	CaptchaUpload = new GUIComponent("CaptchaUpload", isClassic$35 ? CaptchaUpload_classic_default : glassTheme_default + CaptchaUpload_default$1);
+	isClassic$36 = GraphicsSettings.uiSkin === "classic";
+	CaptchaUpload = new GUIComponent("CaptchaUpload", isClassic$36 ? CaptchaUpload_classic_default : glassTheme_default + CaptchaUpload_default$1);
 	_preferences$21 = Preferences.get("CaptchaUpload", {
 		x: 230,
 		y: 295
 	}, 2);
-	CaptchaUpload.render = () => isClassic$35 ? CaptchaUpload_classic_default$1 : CaptchaUpload_default$2;
+	CaptchaUpload.render = () => isClassic$36 ? CaptchaUpload_classic_default$1 : CaptchaUpload_default$2;
 	CaptchaUpload.captureKeyEvents = true;
 	/**
 	* Initialize GUI
@@ -249123,7 +249123,7 @@ var init_CaptchaSelector_classic = __esmMin((() => {
 }));
 //#endregion
 //#region src/UI/Components/Captcha/CaptchaSelector.js
-var isClassic$34, CaptchaSelector, _preferences$20, _aidList, _aidInformation, _range, _active$2, CaptchaSelector_default;
+var isClassic$35, CaptchaSelector, _preferences$20, _aidList, _aidInformation, _range, _active$2, CaptchaSelector_default;
 var init_CaptchaSelector = __esmMin((() => {
 	init_UIManager();
 	init_GUIComponent();
@@ -249140,8 +249140,8 @@ var init_CaptchaSelector = __esmMin((() => {
 	init_CaptchaSelector_classic();
 	init_glassTheme();
 	init_Graphics();
-	isClassic$34 = GraphicsSettings.uiSkin === "classic";
-	CaptchaSelector = new GUIComponent("CaptchaSelector", isClassic$34 ? CaptchaSelector_classic_default : glassTheme_default + CaptchaSelector_default$1);
+	isClassic$35 = GraphicsSettings.uiSkin === "classic";
+	CaptchaSelector = new GUIComponent("CaptchaSelector", isClassic$35 ? CaptchaSelector_classic_default : glassTheme_default + CaptchaSelector_default$1);
 	_preferences$20 = Preferences.get("CaptchaSelector", {
 		x: 230,
 		y: 295
@@ -249150,7 +249150,7 @@ var init_CaptchaSelector = __esmMin((() => {
 	_aidInformation = [];
 	_range = 1;
 	_active$2 = false;
-	CaptchaSelector.render = () => isClassic$34 ? CaptchaSelector_classic_default$1 : CaptchaSelector_default$2;
+	CaptchaSelector.render = () => isClassic$35 ? CaptchaSelector_classic_default$1 : CaptchaSelector_default$2;
 	CaptchaSelector.captureKeyEvents = true;
 	/**
 	* Initialize GUI
@@ -249246,7 +249246,7 @@ var init_CaptchaSelector = __esmMin((() => {
 			li.dataset.aid = aid;
 			li.innerHTML = "";
 			const removeBtn = document.createElement("button");
-			if (isClassic$34) {
+			if (isClassic$35) {
 				removeBtn.className = "base remove";
 				removeBtn.dataset.background = "basic_interface/sys_close_off.bmp";
 				removeBtn.dataset.hover = "basic_interface/sys_close_on.bmp";
@@ -255566,7 +255566,7 @@ var init_EntitySignboard_classic = __esmMin((() => {
 }));
 //#endregion
 //#region src/UI/Components/EntitySignboard/EntitySignboard.js
-var isClassic$33, EntitySignboard, EntitySignboard_default;
+var isClassic$34, EntitySignboard, EntitySignboard_default;
 var init_EntitySignboard = __esmMin((() => {
 	init_UIManager();
 	init_GUIComponent();
@@ -255577,8 +255577,8 @@ var init_EntitySignboard = __esmMin((() => {
 	init_EntitySignboard_classic();
 	init_glassTheme();
 	init_Graphics();
-	isClassic$33 = GraphicsSettings.uiSkin === "classic";
-	EntitySignboard = new GUIComponent("EntitySignboard", isClassic$33 ? EntitySignboard_classic_default : glassTheme_default + EntitySignboard_default$1);
+	isClassic$34 = GraphicsSettings.uiSkin === "classic";
+	EntitySignboard = new GUIComponent("EntitySignboard", isClassic$34 ? EntitySignboard_classic_default : glassTheme_default + EntitySignboard_default$1);
 	EntitySignboard.render = () => EntitySignboard_default$2;
 	/**
 	* @var {boolean} do not focus this UI
@@ -257369,7 +257369,7 @@ function haveHotkeysChanged(currentData) {
 	if (!_lastServerHotkeys) return true;
 	return JSON.stringify(currentData) !== JSON.stringify(_lastServerHotkeys);
 }
-var isClassic$32, ShortCut, _list$2, _rowCount, _lastServerHotkeys, _activeAnimations, _preferences$19, ShortCut_default;
+var isClassic$33, ShortCut, _list$2, _rowCount, _lastServerHotkeys, _activeAnimations, _preferences$19, ShortCut_default;
 var init_ShortCut = __esmMin((() => {
 	init_DBManager();
 	init_ItemType();
@@ -257398,9 +257398,9 @@ var init_ShortCut = __esmMin((() => {
 	init_ShortCut_classic();
 	init_glassTheme();
 	init_Graphics();
-	isClassic$32 = GraphicsSettings.uiSkin === "classic";
-	ShortCut = new GUIComponent("ShortCut", isClassic$32 ? ShortCut_classic_default : glassTheme_default + ShortCut_default$1);
-	ShortCut.render = () => isClassic$32 ? ShortCut_classic_default$1 : ShortCut_default$2;
+	isClassic$33 = GraphicsSettings.uiSkin === "classic";
+	ShortCut = new GUIComponent("ShortCut", isClassic$33 ? ShortCut_classic_default : glassTheme_default + ShortCut_default$1);
+	ShortCut.render = () => isClassic$33 ? ShortCut_classic_default$1 : ShortCut_default$2;
 	_list$2 = [];
 	_rowCount = 0;
 	_lastServerHotkeys = null;
@@ -301648,7 +301648,7 @@ var init_PetInformations_classic = __esmMin((() => {
 }));
 //#endregion
 //#region src/UI/Components/PetInformations/PetInformations.js
-var isClassic$31, PetInformations, _preferences$18, petAutoFeeding, PetInformations_default;
+var isClassic$32, PetInformations, _preferences$18, petAutoFeeding, PetInformations_default;
 var init_PetInformations = __esmMin((() => {
 	init_DBManager();
 	init_Client();
@@ -301664,9 +301664,9 @@ var init_PetInformations = __esmMin((() => {
 	init_Graphics();
 	init_KeyEventHandler();
 	init_PacketVerManager();
-	isClassic$31 = GraphicsSettings.uiSkin === "classic";
-	PetInformations = new GUIComponent("PetInformations", isClassic$31 ? PetInformations_classic_default : glassTheme_default + PetInformations_default$1);
-	PetInformations.render = () => isClassic$31 ? PetInformations_classic_default$1 : PetInformations_default$2;
+	isClassic$32 = GraphicsSettings.uiSkin === "classic";
+	PetInformations = new GUIComponent("PetInformations", isClassic$32 ? PetInformations_classic_default : glassTheme_default + PetInformations_default$1);
+	PetInformations.render = () => isClassic$32 ? PetInformations_classic_default$1 : PetInformations_default$2;
 	PetInformations.captureKeyEvents = true;
 	_preferences$18 = Preferences.get("PetInformations", {
 		x: 100,
@@ -302070,7 +302070,7 @@ function onItemInfo$12(event, itemEl) {
 	event.stopImmediatePropagation();
 	event.preventDefault();
 }
-var isClassic$30, Trade, _tmpCount, _send, _recv, Trade_default;
+var isClassic$31, Trade, _tmpCount, _send, _recv, Trade_default;
 var init_Trade$1 = __esmMin((() => {
 	init_DBManager();
 	init_Client();
@@ -302090,12 +302090,12 @@ var init_Trade$1 = __esmMin((() => {
 	init_Trade_classic();
 	init_glassTheme();
 	init_Graphics();
-	isClassic$30 = GraphicsSettings.uiSkin === "classic";
-	Trade = new GUIComponent("Trade", isClassic$30 ? Trade_classic_default : glassTheme_default + Trade_default$1);
+	isClassic$31 = GraphicsSettings.uiSkin === "classic";
+	Trade = new GUIComponent("Trade", isClassic$31 ? Trade_classic_default : glassTheme_default + Trade_default$1);
 	/**
 	* HTML returned by render()
 	*/
-	Trade.render = () => isClassic$30 ? Trade_classic_default$1 : Trade_default$2;
+	Trade.render = () => isClassic$31 ? Trade_classic_default$1 : Trade_default$2;
 	_tmpCount = {};
 	_send = [];
 	_recv = [];
@@ -306183,7 +306183,7 @@ var init_EntityRoom_classic = __esmMin((() => {
 }));
 //#endregion
 //#region src/UI/Components/EntityRoom/EntityRoom.js
-var isClassic$29, EntityRoom, EntityRoom_default;
+var isClassic$30, EntityRoom, EntityRoom_default;
 var init_EntityRoom$1 = __esmMin((() => {
 	init_UIManager();
 	init_GUIComponent();
@@ -306192,8 +306192,8 @@ var init_EntityRoom$1 = __esmMin((() => {
 	init_EntityRoom_classic();
 	init_glassTheme();
 	init_Graphics();
-	isClassic$29 = GraphicsSettings.uiSkin === "classic";
-	EntityRoom = new GUIComponent("EntityRoom", isClassic$29 ? EntityRoom_classic_default : glassTheme_default + EntityRoom_default$1);
+	isClassic$30 = GraphicsSettings.uiSkin === "classic";
+	EntityRoom = new GUIComponent("EntityRoom", isClassic$30 ? EntityRoom_classic_default : glassTheme_default + EntityRoom_default$1);
 	/**
 	* Render HTML
 	*/
@@ -313356,7 +313356,7 @@ function onItemOut$9() {
 	const overlay = Vending.getRoot().querySelector(".overlay");
 	if (overlay) overlay.style.display = "none";
 }
-var isClassic$28, Vending, _preferences$16, _input$1, _output$1, _slots, _type$3, transferItem$1, Vending_default;
+var isClassic$29, Vending, _preferences$16, _input$1, _output$1, _slots, _type$3, transferItem$1, Vending_default;
 var init_Vending = __esmMin((() => {
 	init_DBManager();
 	init_NetworkManager();
@@ -313383,9 +313383,9 @@ var init_Vending = __esmMin((() => {
 	init_Renderer();
 	init_Inventory();
 	init_BasicInfo();
-	isClassic$28 = GraphicsSettings.uiSkin === "classic";
-	Vending = new GUIComponent("Vending", isClassic$28 ? Vending_classic_default : glassTheme_default + Vending_default$1);
-	Vending.render = () => isClassic$28 ? Vending_classic_default$1 : Vending_default$2;
+	isClassic$29 = GraphicsSettings.uiSkin === "classic";
+	Vending = new GUIComponent("Vending", isClassic$29 ? Vending_classic_default : glassTheme_default + Vending_default$1);
+	Vending.render = () => isClassic$29 ? Vending_classic_default$1 : Vending_default$2;
 	Vending.isOpen = false;
 	Vending.Type = {
 		VENDING_STORE: 0,
@@ -313833,7 +313833,7 @@ function onItemUsed(event, itemEl) {
 	event.stopImmediatePropagation();
 	event.preventDefault();
 }
-var isClassic$27, VendingShop, _realSize, _type$2, _preferences$15, VendingShop_default;
+var isClassic$28, VendingShop, _realSize, _type$2, _preferences$15, VendingShop_default;
 var init_VendingShop = __esmMin((() => {
 	init_DBManager();
 	init_NetworkManager();
@@ -313855,9 +313855,9 @@ var init_VendingShop = __esmMin((() => {
 	init_glassTheme();
 	init_Graphics();
 	init_VendingReport();
-	isClassic$27 = GraphicsSettings.uiSkin === "classic";
-	VendingShop = new GUIComponent("VendingShop", isClassic$27 ? VendingShop_classic_default : glassTheme_default + VendingShop_default$1);
-	VendingShop.render = () => isClassic$27 ? VendingShop_classic_default$1 : VendingShop_default$2;
+	isClassic$28 = GraphicsSettings.uiSkin === "classic";
+	VendingShop = new GUIComponent("VendingShop", isClassic$28 ? VendingShop_classic_default : glassTheme_default + VendingShop_default$1);
+	VendingShop.render = () => isClassic$28 ? VendingShop_classic_default$1 : VendingShop_default$2;
 	/**
 	* @var {enum} Store type
 	*/
@@ -314263,7 +314263,7 @@ function formatUnixDate(unixTimestamp) {
 	const d = /* @__PURE__ */ new Date(unixTimestamp * 1e3);
 	return String(d.getMonth() + 1).padStart(2, "0") + "/" + String(d.getDate()).padStart(2, "0") + " - " + String(d.getHours()).padStart(2, "0") + ":" + String(d.getMinutes()).padStart(2, "0") + ":" + String(d.getSeconds()).padStart(2, "0");
 }
-var isClassic$26, VendingReport, VendingReportTable, _preferences$14, VendingReport_default;
+var isClassic$27, VendingReport, VendingReportTable, _preferences$14, VendingReport_default;
 var init_VendingReport = __esmMin((() => {
 	init_DBManager();
 	init_Client();
@@ -314280,8 +314280,8 @@ var init_VendingReport = __esmMin((() => {
 	init_VendingReport_classic();
 	init_glassTheme();
 	init_Graphics();
-	isClassic$26 = GraphicsSettings.uiSkin === "classic";
-	VendingReport = new GUIComponent("VendingReport", isClassic$26 ? VendingReport_classic_default : glassTheme_default + VendingReport_default$1);
+	isClassic$27 = GraphicsSettings.uiSkin === "classic";
+	VendingReport = new GUIComponent("VendingReport", isClassic$27 ? VendingReport_classic_default : glassTheme_default + VendingReport_default$1);
 	VendingReportTable = {
 		list: [],
 		_nextIndex: 0
@@ -314303,7 +314303,7 @@ var init_VendingReport = __esmMin((() => {
 	/**
 	* Render HTML
 	*/
-	VendingReport.render = () => isClassic$26 ? VendingReport_classic_default$1 : VendingReport_default$2;
+	VendingReport.render = () => isClassic$27 ? VendingReport_classic_default$1 : VendingReport_default$2;
 	/**
 	* Initialize UI
 	*/
@@ -314560,7 +314560,7 @@ function render$6(tick) {
 		drawActionToCanvas$3(ctx, data.act, data.spr, 0, el.width / 2, el.height + 10);
 	});
 }
-var CART_LIMIT, isClassic$25, ChangeCart, _carts$1, _layerEntity$3, ChangeCart_default;
+var CART_LIMIT, isClassic$26, ChangeCart, _carts$1, _layerEntity$3, ChangeCart_default;
 var init_ChangeCart = __esmMin((() => {
 	init_NetworkManager();
 	init_PacketStructure();
@@ -314582,12 +314582,12 @@ var init_ChangeCart = __esmMin((() => {
 	init_glassTheme();
 	init_Graphics();
 	CART_LIMIT = 13;
-	isClassic$25 = GraphicsSettings.uiSkin === "classic";
-	ChangeCart = new GUIComponent("ChangeCart", isClassic$25 ? ChangeCart_classic_default : glassTheme_default + ChangeCart_default$1);
+	isClassic$26 = GraphicsSettings.uiSkin === "classic";
+	ChangeCart = new GUIComponent("ChangeCart", isClassic$26 ? ChangeCart_classic_default : glassTheme_default + ChangeCart_default$1);
 	/**
 	* Render HTML
 	*/
-	ChangeCart.render = () => isClassic$25 ? ChangeCart_classic_default$1 : ChangeCart_default$2;
+	ChangeCart.render = () => isClassic$26 ? ChangeCart_classic_default$1 : ChangeCart_default$2;
 	_carts$1 = {};
 	_layerEntity$3 = new Entity();
 	/**
@@ -314740,7 +314740,7 @@ function render$5() {
 		drawActionToCanvas$2(ctx, data.act, data.spr, 0, el.width / 2, el.height + 10);
 	});
 }
-var isClassic$24, CartDecoration, _carts, _layerEntity$2, _identity, CART_TYPES, CartDecoration_default;
+var isClassic$25, CartDecoration, _carts, _layerEntity$2, _identity, CART_TYPES, CartDecoration_default;
 var init_CartDecoration = __esmMin((() => {
 	init_NetworkManager();
 	init_PacketStructure();
@@ -314758,12 +314758,12 @@ var init_CartDecoration = __esmMin((() => {
 	init_CartDecoration_classic();
 	init_glassTheme();
 	init_Graphics();
-	isClassic$24 = GraphicsSettings.uiSkin === "classic";
-	CartDecoration = new GUIComponent("CartDecoration", isClassic$24 ? CartDecoration_classic_default : glassTheme_default + CartDecoration_default$1);
+	isClassic$25 = GraphicsSettings.uiSkin === "classic";
+	CartDecoration = new GUIComponent("CartDecoration", isClassic$25 ? CartDecoration_classic_default : glassTheme_default + CartDecoration_default$1);
 	/**
 	* Render HTML
 	*/
-	CartDecoration.render = () => isClassic$24 ? CartDecoration_classic_default$1 : CartDecoration_default$2;
+	CartDecoration.render = () => isClassic$25 ? CartDecoration_classic_default$1 : CartDecoration_default$2;
 	_carts = {};
 	_layerEntity$2 = new Entity();
 	_identity = 0;
@@ -314924,7 +314924,7 @@ function refreshList(contentEl) {
 		index++;
 	}
 }
-var isClassic$23, Emoticons, _page$2, EMOTICONS_PER_PAGE, TOTAL_PAGES, EMOTICONS_COUNT, _action$1, _sprite$1, _entity$2, _preferences$13, Emoticons_default;
+var isClassic$24, Emoticons, _page$2, EMOTICONS_PER_PAGE, TOTAL_PAGES, EMOTICONS_COUNT, _action$1, _sprite$1, _entity$2, _preferences$13, Emoticons_default;
 var init_Emoticons = __esmMin((() => {
 	init_Emotions();
 	init_Client();
@@ -314942,12 +314942,12 @@ var init_Emoticons = __esmMin((() => {
 	init_glassTheme();
 	init_Graphics();
 	init_ShortCuts();
-	isClassic$23 = GraphicsSettings.uiSkin === "classic";
-	Emoticons = new GUIComponent("Emoticons", isClassic$23 ? Emoticons_classic_default : glassTheme_default + Emoticons_default$1);
+	isClassic$24 = GraphicsSettings.uiSkin === "classic";
+	Emoticons = new GUIComponent("Emoticons", isClassic$24 ? Emoticons_classic_default : glassTheme_default + Emoticons_default$1);
 	/**
 	* Render HTML
 	*/
-	Emoticons.render = () => isClassic$23 ? Emoticons_classic_default$1 : Emoticons_default$2;
+	Emoticons.render = () => isClassic$24 ? Emoticons_classic_default$1 : Emoticons_default$2;
 	_page$2 = 0;
 	EMOTICONS_PER_PAGE = 30;
 	TOTAL_PAGES = 0;
@@ -315133,7 +315133,7 @@ function onDropText(event) {
 	if (data.type === "item") return;
 	event.currentTarget.value = data;
 }
-var isClassic$22, ShortCuts, _MACRO_INIT, _FLAG_INIT, _preferences$12, ShortCuts_default;
+var isClassic$23, ShortCuts, _MACRO_INIT, _FLAG_INIT, _preferences$12, ShortCuts_default;
 var init_ShortCuts = __esmMin((() => {
 	init_Preferences$1();
 	init_Renderer();
@@ -315152,9 +315152,9 @@ var init_ShortCuts = __esmMin((() => {
 	init_PacketStructure();
 	init_ProcessCommand();
 	init_KeyEventHandler();
-	isClassic$22 = GraphicsSettings.uiSkin === "classic";
-	ShortCuts = new GUIComponent("ShortCuts", isClassic$22 ? ShortCuts_classic_default : glassTheme_default + ShortCuts_default$1);
-	ShortCuts.render = () => isClassic$22 ? ShortCuts_classic_default$1 : ShortCuts_default$2;
+	isClassic$23 = GraphicsSettings.uiSkin === "classic";
+	ShortCuts = new GUIComponent("ShortCuts", isClassic$23 ? ShortCuts_classic_default : glassTheme_default + ShortCuts_default$1);
+	ShortCuts.render = () => isClassic$23 ? ShortCuts_classic_default$1 : ShortCuts_default$2;
 	_MACRO_INIT = Preferences.get("_MACRO_CMD", {
 		Num_1: "/hide",
 		Num_2: "/?",
@@ -315555,7 +315555,7 @@ function rendering$1(tick) {
 		for (let i = 0; i < count; ++i) renderStatus(_status[indexes[i]], tick);
 	}
 }
-var isClassic$21, StatusIcons, _status, _last_updated_time, _render_time, TKM_ICON_OVERRIDE, StatusIcons_default;
+var isClassic$22, StatusIcons, _status, _last_updated_time, _render_time, TKM_ICON_OVERRIDE, StatusIcons_default;
 var init_StatusIcons = __esmMin((() => {
 	init_StatusInfo();
 	init_StatusConst();
@@ -315572,8 +315572,8 @@ var init_StatusIcons = __esmMin((() => {
 	init_StatusIcons_classic();
 	init_glassTheme();
 	init_Graphics();
-	isClassic$21 = GraphicsSettings.uiSkin === "classic";
-	StatusIcons = new GUIComponent("StatusIcons", isClassic$21 ? StatusIcons_classic_default : glassTheme_default + StatusIcons_default$1);
+	isClassic$22 = GraphicsSettings.uiSkin === "classic";
+	StatusIcons = new GUIComponent("StatusIcons", isClassic$22 ? StatusIcons_classic_default : glassTheme_default + StatusIcons_default$1);
 	StatusIcons.render = () => StatusIcons_default$2;
 	/**
 	* Mouse can cross this UI
@@ -315657,6 +315657,12 @@ var init_CashShop$3 = __esmMin((() => {
 var CashShop_default$1;
 var init_CashShop$2 = __esmMin((() => {
 	CashShop_default$1 = ":host {\r\n	position: absolute;\r\n	width: 723px;\r\n	height: 540px;\r\n}\r\n\r\n#CashShop {\r\n	display: flex;\r\n	flex-direction: column;\r\n	width: 723px;\r\n	height: 540px;\r\n	background-color: #0c1a2e;\r\n	border-radius: 3px;\r\n	font-weight: bold;\r\n}\r\n\r\n#CashShop .titlebar {\r\n	width: 100%;\r\n	height: 17px;\r\n	background-color: white;\r\n	background-repeat: repeat-x;\r\n	border-radius: 3px 3px 0px 0px;\r\n}\r\n\r\n#CashShop .titlebar .base {\r\n	width: 11px;\r\n	height: 11px;\r\n	border: none;\r\n	background-color: transparent;\r\n	background-repeat: no-repeat;\r\n	vertical-align: middle;\r\n}\r\n\r\n#CashShop .titlebar .text {\r\n	text-shadow: 1px 1px white;\r\n	vertical-align: -2px;\r\n	white-space: nowrap;\r\n	/* chrome bug */\r\n	display: inline-block;\r\n	width: 32px;\r\n	height: 13px;\r\n	font-size: 11px;\r\n	font-weight: bold;\r\n}\r\n\r\n#CashShop .titlebar .left {\r\n	margin-left: 3px;\r\n	float: left;\r\n}\r\n\r\n#CashShop .titlebar .right {\r\n	float: right;\r\n	margin-right: 3px;\r\n}\r\n\r\n#CashShop .titlebar .clear {\r\n	clear: both;\r\n}\r\n\r\n#CashShop .panel {\r\n	display: flex;\r\n	flex-direction: row;\r\n	width: 100%;\r\n	height: 523px;\r\n	gap: 2px;\r\n}\r\n\r\n#CashShop .panel-content {\r\n	display: flex;\r\n	flex-direction: column;\r\n	width: 535px;\r\n	height: 100%;\r\n}\r\n\r\n#CashShop .panel-content .panel-banner {\r\n	width: 100%;\r\n	height: 55px;\r\n	position: relative;\r\n	overflow: hidden;\r\n}\r\n\r\n#CashShop .panel-content .panel-banner .banner-slides {\r\n	width: 100%;\r\n	height: 100%;\r\n	position: relative;\r\n}\r\n\r\n#CashShop .panel-content .panel-banner .banner-slides .banner-slide {\r\n	width: 100%;\r\n	height: 100%;\r\n	position: absolute;\r\n	top: 0;\r\n	left: 0;\r\n	background-size: cover;\r\n	background-position: center;\r\n	opacity: 0;\r\n	transition: opacity 0.5s ease-in-out;\r\n	cursor: pointer;\r\n}\r\n\r\n#CashShop .panel-content .panel-banner .banner-slides .banner-slide.active {\r\n	opacity: 1;\r\n	z-index: 1;\r\n}\r\n\r\n#CashShop .panel-content .panel-banner .banner-dots {\r\n	position: absolute;\r\n	bottom: 5px;\r\n	right: 20px;\r\n	display: flex;\r\n	gap: 5px;\r\n	z-index: 2;\r\n	list-style: none;\r\n	padding: 0;\r\n	margin: 0;\r\n}\r\n\r\n#CashShop .panel-content .panel-banner .banner-dots .banner-dot {\r\n	width: 8px;\r\n	height: 8px;\r\n}\r\n\r\n#CashShop .panel-content .panel-banner button {\r\n	width: 100%;\r\n	height: 100%;\r\n	border: none;\r\n	background-color: transparent;\r\n}\r\n\r\n#CashShop .panel-content .panel-menu {\r\n	width: 100%;\r\n	height: 31.5px;\r\n	display: flex;\r\n	justify-content: center;\r\n	align-items: end;\r\n	gap: 2px;\r\n	flex-direction: row;\r\n}\r\n\r\n#CashShop .panel-content .panel-menu button {\r\n	width: 56px;\r\n	height: 31px;\r\n	border: none;\r\n	background-color: transparent;\r\n}\r\n\r\n#CashShop .panel-content .panel-items {\r\n	display: flex;\r\n	flex-direction: row;\r\n	flex-wrap: wrap;\r\n	align-content: flex-start;\r\n	width: 100%;\r\n	height: 380px;\r\n}\r\n\r\n#CashShop .panel-content .panel-items .item {\r\n	display: flex;\r\n	flex-direction: column;\r\n	width: 172px;\r\n	height: 126px;\r\n	margin-left: 4px;\r\n	margin-top: 2px;\r\n}\r\n\r\n#CashShop .panel-content .panel-items .top-con,\r\n#CashShop .panel-content .panel-items .lower-con {\r\n	width: 100%;\r\n}\r\n\r\n#CashShop .panel-content .panel-items .top-con {\r\n	text-align: center;\r\n	padding-top: 5px;\r\n	font-weight: bold;\r\n	padding-bottom: 5px;\r\n	color: #3a4aa4;\r\n	font-size: 10px;\r\n}\r\n\r\n#CashShop .panel-content .panel-items .item .amount {\r\n	position: relative;\r\n	bottom: 9px;\r\n	right: 0px;\r\n	text-align: right;\r\n}\r\n\r\n#CashShop .panel-content .panel-items .item-left-img {\r\n	width: 75px;\r\n	height: 98px;\r\n	background-size: cover;\r\n}\r\n\r\n#CashShop .panel-content .panel-items .item-right-desc {\r\n	float: right;\r\n	margin-right: 8px;\r\n	margin-top: 17px;\r\n}\r\n\r\n#CashShop .panel-content .panel-items .item-right-desc .item-desc-price {\r\n	color: #ffffff;\r\n}\r\n\r\n#CashShop .panel-content .panel-items .item .item-left-img {\r\n	margin-left: 4px;\r\n	float: left;\r\n}\r\n\r\n#CashShop .panel-content .panel-items .item .lower-con .purchase-btn-container {\r\n	padding-top: 20px;\r\n}\r\n\r\n#CashShop .panel-content .panel-items .item .lower-con .purchase-btn-container .add-to-cart {\r\n	width: 81px;\r\n	height: 24px;\r\n	border: none;\r\n}\r\n\r\n#CashShop .panel-content .panel-items .item .lower-con .purchase-btn-container .purchase-btn {\r\n	width: 81px;\r\n	height: 24px;\r\n	border: none;\r\n}\r\n\r\n#CashShop #panel-items .item-desc-price {\r\n	width: 81px;\r\n	height: 17px;\r\n	margin-top: 7px;\r\n	text-align: right;\r\n}\r\n\r\n#CashShop .item-desc-price span {\r\n	line-height: 18px;\r\n	margin-right: 5px;\r\n	text-align: right;\r\n	font-size: 10px;\r\n}\r\n\r\n#CashShop .item-desc-price .icon-gold-coin {\r\n	margin-top: 2px;\r\n	margin-right: 3px;\r\n}\r\n\r\n#CashShop .panel-content .panel-pagination {\r\n	width: 100%;\r\n	height: 26px;\r\n	display: flex;\r\n	justify-content: center;\r\n	align-items: center;\r\n}\r\n\r\n#CashShop .panel-content .panel-pagination button {\r\n	width: 18px;\r\n	height: 14px;\r\n	background-position: center center;\r\n	background-repeat: no-repeat;\r\n	background-color: transparent;\r\n	border: 0;\r\n	margin-top: 5px;\r\n}\r\n\r\n#CashShop .panel-content .panel-pagination span {\r\n	width: 15px;\r\n	height: 14px;\r\n	text-align: center;\r\n	margin-top: 7px;\r\n}\r\n\r\n#CashShop .panel-content .panel-footer {\r\n	width: 100%;\r\n	height: 30px;\r\n	display: flex;\r\n	justify-content: center;\r\n	align-items: center;\r\n	flex-direction: row;\r\n}\r\n\r\n#CashShop .panel-content .panel-footer .cashshop-search {\r\n	border: none;\r\n	border-radius: 5px 0px 0px 5px;\r\n	width: 296px;\r\n	line-height: 14px;\r\n	margin-left: 2px;\r\n}\r\n\r\n#CashShop .panel-content .panel-footer .cashshop-search-btn {\r\n	border: 0px;\r\n	width: 54px;\r\n	height: 18px;\r\n	background-size: cover;\r\n	background-color: transparent;\r\n}\r\n\r\n#CashShop .panel-cart {\r\n	display: flex;\r\n	flex-direction: column;\r\n	width: 185px;\r\n	height: 100%;\r\n	background-color: #0c1a2e;\r\n}\r\n\r\n#CashShop .panel-cart .panel-cart-header {\r\n	width: 100%;\r\n	height: 56px;\r\n	background-color: #0c1a2e;\r\n}\r\n\r\n#CashShop .panel-cart .panel-cart-header-title {\r\n	padding-left: 65px;\r\n	color: white;\r\n	text-shadow: 2px 2px black;\r\n	height: 24px;\r\n	padding-top: 5px;\r\n}\r\n\r\n#CashShop .panel-cart .panel-cart-charging-view {\r\n	display: flex;\r\n	align-items: center;\r\n	justify-content: center;\r\n	gap: 30px;\r\n}\r\n\r\n#CashShop .panel-cart .panel-cart-charging-view .view-cash-point {\r\n	width: 70px;\r\n	color: #fff;\r\n	font-weight: bold;\r\n	text-align: end;\r\n}\r\n\r\n#CashShop .panel-cart .panel-cart-charging-view .panel-cart-cash-points {\r\n	width: 76px;\r\n	color: #fff;\r\n	font-weight: bold;\r\n	text-align: end;\r\n}\r\n\r\n#CashShop .panel-cart .panel-cart-charging-view .panel-cart-charge-btn {\r\n	width: 64px;\r\n	height: 20px;\r\n	border: none;\r\n}\r\n\r\n#CashShop .panel-cart .panel-cart-body {\r\n	width: 100%;\r\n	height: 360px;\r\n	background-size: cover;\r\n}\r\n\r\n#CashShop .panel-cart .panel-cart-footer {\r\n	width: 100%;\r\n	height: 107px;\r\n	background-color: #0c1a2e;\r\n}\r\n\r\n#CashShop .overlay {\r\n	position: absolute;\r\n	display: none;\r\n	white-space: nowrap;\r\n	z-index: 900;\r\n	height: 15px;\r\n	line-height: 15px;\r\n	border-radius: 3px;\r\n	padding: 4px;\r\n	background: rgba(0, 0, 0, 0.7);\r\n	color: white;\r\n	text-shadow: 1px 1px black;\r\n}\r\n\r\n#CashShop .overlay.grey {\r\n	color: #aaa;\r\n}\r\n\r\n#CashShop .view-cash-point-2 {\r\n	background: #ffffff;\r\n	border: 1px solid #4d4d4d;\r\n	border-radius: 0px 4px 4px 0px;\r\n\r\n	padding: 4px;\r\n}\r\n\r\n#CashShop ul.items {\r\n	list-style: none;\r\n	list-style-type: none;\r\n	padding: 0px;\r\n	margin-top: 5px;\r\n}\r\n\r\n#CashShop ul.items .item {\r\n	width: 172px;\r\n	height: 54px;\r\n	margin-left: 6px;\r\n	margin-bottom: 4px;\r\n	border-radius: 4px;\r\n	position: relative;\r\n}\r\n\r\n#CashShop ul.items .inner-item-dt {\r\n	width: 100%;\r\n	height: 100%;\r\n	float: left;\r\n}\r\n\r\n#CashShop .inner-item-dt .item-dt-img {\r\n	float: left;\r\n	width: 40px;\r\n	height: 50px;\r\n	background-size: contain;\r\n	background-repeat: no-repeat;\r\n}\r\n\r\n#CashShop .container-cart .container-cart-body {\r\n	height: 326px;\r\n}\r\n\r\n#CashShop .inner-item-dt .item-dt-desc {\r\n	float: left;\r\n	width: 115px;\r\n	margin-top: 5px;\r\n	margin-left: 10px;\r\n	font-size: 8px;\r\n}\r\n\r\n#CashShop .container-cart-footer {\r\n	width: 169px;\r\n	margin-left: 10px;\r\n	background: #cfdfef;\r\n	border-radius: 4px;\r\n	height: 108px;\r\n}\r\n\r\n#CashShop .container-cart-footer .item-desc-price {\r\n	width: 100%;\r\n	color: #fff;\r\n	height: 17px;\r\n	background: #4c7ba6;\r\n	margin-top: 4px;\r\n	border-radius: 4px 4px 0px 0px;\r\n	box-shadow: inset 1px 1px 3px #1c1c1c;\r\n	-webkit-box-shadow: inset 1px 1px 3px #1c1c1c;\r\n	-moz-box-shadow: inset 1px 1px 3px #1c1c1c;\r\n	font-weight: bold;\r\n	line-height: 20px;\r\n}\r\n\r\n#CashShop #cart-list .item-desc-price {\r\n	width: 50px;\r\n	height: 17px;\r\n	margin-top: 4px;\r\n	float: left;\r\n	text-align: center;\r\n}\r\n\r\n#CashShop #cart-list .item-counter {\r\n	width: 50px;\r\n	height: 17px;\r\n	float: left;\r\n	position: relative;\r\n	margin-top: 4px;\r\n}\r\n\r\n#CashShop #cart-list .item-counter .item-cnt,\r\n#CashShop #cart-list .item-counter .item-cnt-up,\r\n#CashShop #cart-list .item-counter .item-cnt-down {\r\n	position: absolute;\r\n	width: 7px;\r\n	height: 7px;\r\n}\r\n\r\n#CashShop #cart-list .item-counter .item-cnt-down {\r\n	bottom: 1px;\r\n	right: 1px;\r\n	width: 10px;\r\n	background-color: transparent;\r\n	border: 0px;\r\n}\r\n\r\n#CashShop #cart-list .item-counter .item-cnt-up {\r\n	top: 0px;\r\n	right: 1px;\r\n	width: 10px;\r\n	background-color: transparent;\r\n	border: 0px;\r\n}\r\n\r\n#CashShop #cart-list .item-counter .item-cnt {\r\n	top: 3px;\r\n	left: 12px;\r\n	color: #6e6d6d;\r\n}\r\n\r\n#CashShop .panel-cart .panel-cart-footer > table {\r\n	font-size: 9px;\r\n	padding: 0px 14px;\r\n	width: 100%;\r\n	border-spacing: 1px;\r\n}\r\n\r\n#CashShop #cart-list {\r\n	height: 350px;\r\n	overflow-y: auto;\r\n	overflow-x: hidden;\r\n	scrollbar-width: thin;\r\n}\r\n\r\n#CashShop #cart-list::-webkit-scrollbar {\r\n	width: 4px;\r\n}\r\n\r\n#CashShop #cart-list::-webkit-scrollbar-thumb {\r\n	background-color: rgba(0, 0, 0, 0.2);\r\n	border-radius: 4px;\r\n}\r\n\r\n#CashShop .panel-cart .panel-cart-footer .use-free-points {\r\n	border: none;\r\n	background: transparent;\r\n	-moz-appearance: textfield;\r\n	appearance: textfield;\r\n	text-align: right;\r\n	font-size: 9px;\r\n	max-width: 45px;\r\n}\r\n\r\n#CashShop .panel-cart .panel-cart-footer .use-free-points::-webkit-outer-spin-button,\r\n#CashShop .panel-cart .panel-cart-footer .use-free-points::-webkit-inner-spin-button {\r\n	-webkit-appearance: none;\r\n	margin: 0;\r\n}\r\n\r\n#CashShop .panel-cart .panel-cart-footer > table tr {\r\n	height: 15px;\r\n}\r\n\r\n#CashShop .panel-cart .panel-cart-footer > table tr td.txt {\r\n	width: 60%;\r\n	text-align: left;\r\n}\r\n\r\n#CashShop .panel-cart .panel-cart-footer > table tr td.value {\r\n	width: 40%;\r\n	text-align: right;\r\n}\r\n\r\n#CashShop .panel-cart .panel-cart-footer .cart-footer-action {\r\n	padding: 0px 10px;\r\n}\r\n\r\n#CashShop .panel-cart .panel-cart-footer .cart-footer-action button {\r\n	width: 154px;\r\n	height: 23px;\r\n	margin-left: 5px;\r\n	margin-top: 4px;\r\n	border: none;\r\n	background: transparent;\r\n}\r\n\r\n#CashShop .panel-cart .panel-cart-footer .cart-footer-action .total-price {\r\n	width: 100%;\r\n	color: #fff;\r\n	height: 18px;\r\n	margin-top: 4px;\r\n	font-weight: bold;\r\n	line-height: 25px;\r\n	text-align: center;\r\n}\r\n\r\n#CashShop #cart-list .items .item .delete-item {\r\n	position: absolute;\r\n	width: 7px;\r\n	height: 7px;\r\n	top: 3px;\r\n	right: 4px;\r\n	background-size: cover;\r\n}\r\n\r\n#CashShop .item-desc-top {\r\n	height: 20px;\r\n}\r\n";
+}));
+//#endregion
+//#region src/UI/Components/CashShop/CashShop.classic.css?raw
+var CashShop_classic_default;
+var init_CashShop_classic = __esmMin((() => {
+	CashShop_classic_default = ":host {\r\n	position: absolute;\r\n	width: 723px;\r\n	height: 540px;\r\n}\r\n\r\n#CashShop {\r\n	display: flex;\r\n	flex-direction: column;\r\n	width: 723px;\r\n	height: 540px;\r\n	background-color: #eef1f8;\r\n	border-radius: 3px;\r\n	font-weight: bold;\r\n	color: #22345c;\r\n}\r\n\r\n#CashShop .titlebar {\r\n	width: 100%;\r\n	height: 17px;\r\n	background-color: white;\r\n	background-repeat: repeat-x;\r\n	border-radius: 3px 3px 0px 0px;\r\n}\r\n\r\n#CashShop .titlebar .base {\r\n	width: 11px;\r\n	height: 11px;\r\n	border: none;\r\n	background-color: transparent;\r\n	background-repeat: no-repeat;\r\n	vertical-align: middle;\r\n}\r\n\r\n#CashShop .titlebar .text {\r\n	text-shadow: 1px 1px white;\r\n	vertical-align: -2px;\r\n	white-space: nowrap;\r\n	/* chrome bug */\r\n	display: inline-block;\r\n	width: 32px;\r\n	height: 13px;\r\n	font-size: 11px;\r\n	font-weight: bold;\r\n}\r\n\r\n#CashShop .titlebar .left {\r\n	margin-left: 3px;\r\n	float: left;\r\n}\r\n\r\n#CashShop .titlebar .right {\r\n	float: right;\r\n	margin-right: 3px;\r\n}\r\n\r\n#CashShop .titlebar .clear {\r\n	clear: both;\r\n}\r\n\r\n#CashShop .panel {\r\n	display: flex;\r\n	flex-direction: row;\r\n	width: 100%;\r\n	height: 523px;\r\n	gap: 2px;\r\n}\r\n\r\n#CashShop .panel-content {\r\n	display: flex;\r\n	flex-direction: column;\r\n	width: 535px;\r\n	height: 100%;\r\n}\r\n\r\n#CashShop .panel-content .panel-banner {\r\n	width: 100%;\r\n	height: 55px;\r\n	position: relative;\r\n	overflow: hidden;\r\n}\r\n\r\n#CashShop .panel-content .panel-banner .banner-slides {\r\n	width: 100%;\r\n	height: 100%;\r\n	position: relative;\r\n}\r\n\r\n#CashShop .panel-content .panel-banner .banner-slides .banner-slide {\r\n	width: 100%;\r\n	height: 100%;\r\n	position: absolute;\r\n	top: 0;\r\n	left: 0;\r\n	background-size: cover;\r\n	background-position: center;\r\n	opacity: 0;\r\n	transition: opacity 0.5s ease-in-out;\r\n	cursor: pointer;\r\n}\r\n\r\n#CashShop .panel-content .panel-banner .banner-slides .banner-slide.active {\r\n	opacity: 1;\r\n	z-index: 1;\r\n}\r\n\r\n#CashShop .panel-content .panel-banner .banner-dots {\r\n	position: absolute;\r\n	bottom: 5px;\r\n	right: 20px;\r\n	display: flex;\r\n	gap: 5px;\r\n	z-index: 2;\r\n	list-style: none;\r\n	padding: 0;\r\n	margin: 0;\r\n}\r\n\r\n#CashShop .panel-content .panel-banner .banner-dots .banner-dot {\r\n	width: 8px;\r\n	height: 8px;\r\n}\r\n\r\n#CashShop .panel-content .panel-banner button {\r\n	width: 100%;\r\n	height: 100%;\r\n	border: none;\r\n	background-color: transparent;\r\n}\r\n\r\n#CashShop .panel-content .panel-menu {\r\n	width: 100%;\r\n	height: 31.5px;\r\n	display: flex;\r\n	justify-content: center;\r\n	align-items: end;\r\n	gap: 2px;\r\n	flex-direction: row;\r\n}\r\n\r\n#CashShop .panel-content .panel-menu button.tab {\r\n	position: relative;\r\n	width: 56px;\r\n	height: 31px;\r\n	border: 1px solid #c3cee6;\r\n	border-bottom: none;\r\n	border-radius: 4px 4px 0 0;\r\n	background-color: #dde5f5 !important;\r\n	background-image: none !important;\r\n	color: #5b6b8c;\r\n	font-size: 8px;\r\n	font-weight: bold;\r\n	line-height: 1.1;\r\n	white-space: normal;\r\n	padding: 2px;\r\n}\r\n\r\n#CashShop .panel-content .panel-menu button.tab::after {\r\n	content: attr(data-title);\r\n	display: flex;\r\n	align-items: center;\r\n	justify-content: center;\r\n	position: absolute;\r\n	inset: 0;\r\n	padding: 2px;\r\n	text-align: center;\r\n}\r\n\r\n#CashShop .panel-content .panel-menu button.tab.active {\r\n	background-color: #ffffff !important;\r\n	color: #2f4f9c;\r\n	border-color: #8fa4d6;\r\n}\r\n\r\n#CashShop .panel-content .panel-items {\r\n	display: flex;\r\n	flex-direction: row;\r\n	flex-wrap: wrap;\r\n	align-content: flex-start;\r\n	width: 100%;\r\n	height: 380px;\r\n}\r\n\r\n#CashShop .panel-content .panel-items .item {\r\n	display: flex;\r\n	flex-direction: column;\r\n	width: 172px;\r\n	height: 126px;\r\n	margin-left: 4px;\r\n	margin-top: 2px;\r\n	background-color: #ffffff !important;\r\n	background-image: none !important;\r\n	border: 1px solid #c9d3e6;\r\n	border-radius: 6px;\r\n	box-shadow: 0 1px 3px rgba(20, 30, 60, 0.12);\r\n}\r\n\r\n#CashShop .panel-content .panel-items .top-con,\r\n#CashShop .panel-content .panel-items .lower-con {\r\n	width: 100%;\r\n}\r\n\r\n#CashShop .panel-content .panel-items .top-con {\r\n	text-align: center;\r\n	padding-top: 5px;\r\n	font-weight: bold;\r\n	padding-bottom: 5px;\r\n	color: #3a4aa4;\r\n	font-size: 10px;\r\n}\r\n\r\n#CashShop .panel-content .panel-items .item .amount {\r\n	position: relative;\r\n	bottom: 9px;\r\n	right: 0px;\r\n	text-align: right;\r\n}\r\n\r\n#CashShop .panel-content .panel-items .item-left-img {\r\n	width: 75px;\r\n	height: 98px;\r\n	background-size: cover;\r\n}\r\n\r\n#CashShop .panel-content .panel-items .item-right-desc {\r\n	float: right;\r\n	margin-right: 8px;\r\n	margin-top: 17px;\r\n}\r\n\r\n#CashShop .panel-content .panel-items .item-right-desc .item-desc-price {\r\n	color: #ffffff;\r\n	background-color: #4c7ba6;\r\n	border-radius: 9px;\r\n	display: inline-block;\r\n	padding: 1px 6px;\r\n}\r\n\r\n#CashShop .panel-content .panel-items .item .item-left-img {\r\n	margin-left: 4px;\r\n	float: left;\r\n}\r\n\r\n#CashShop .panel-content .panel-items .item .lower-con .purchase-btn-container {\r\n	padding-top: 20px;\r\n}\r\n\r\n#CashShop .panel-content .panel-items .item .lower-con .purchase-btn-container .add-to-cart {\r\n	width: 81px;\r\n	height: 24px;\r\n	border: none;\r\n}\r\n\r\n#CashShop .panel-content .panel-items .item .lower-con .purchase-btn-container .purchase-btn {\r\n	width: 81px;\r\n	height: 24px;\r\n	border: none;\r\n}\r\n\r\n#CashShop #panel-items .item-desc-price {\r\n	width: 81px;\r\n	height: 17px;\r\n	margin-top: 7px;\r\n	text-align: right;\r\n}\r\n\r\n#CashShop .item-desc-price span {\r\n	line-height: 18px;\r\n	margin-right: 5px;\r\n	text-align: right;\r\n	font-size: 10px;\r\n}\r\n\r\n#CashShop .item-desc-price .icon-gold-coin {\r\n	margin-top: 2px;\r\n	margin-right: 3px;\r\n}\r\n\r\n#CashShop .panel-content .panel-pagination {\r\n	width: 100%;\r\n	height: 26px;\r\n	display: flex;\r\n	justify-content: center;\r\n	align-items: center;\r\n	color: #22345c;\r\n}\r\n\r\n#CashShop .panel-content .panel-pagination button {\r\n	width: 18px;\r\n	height: 14px;\r\n	background-position: center center;\r\n	background-repeat: no-repeat;\r\n	background-color: transparent;\r\n	border: 0;\r\n	margin-top: 5px;\r\n}\r\n\r\n#CashShop .panel-content .panel-pagination span {\r\n	width: 15px;\r\n	height: 14px;\r\n	text-align: center;\r\n	margin-top: 7px;\r\n	color: #22345c;\r\n}\r\n\r\n#CashShop .panel-content .panel-footer {\r\n	width: 100%;\r\n	height: 30px;\r\n	display: flex;\r\n	justify-content: center;\r\n	align-items: center;\r\n	flex-direction: row;\r\n}\r\n\r\n#CashShop .panel-content .panel-footer .cashshop-search {\r\n	border: 1px solid #c9d3e6;\r\n	border-right: none;\r\n	border-radius: 5px 0px 0px 5px;\r\n	width: 296px;\r\n	line-height: 14px;\r\n	margin-left: 2px;\r\n	background-color: #ffffff;\r\n	color: #22345c;\r\n}\r\n\r\n#CashShop .panel-content .panel-footer .cashshop-search-btn {\r\n	border: 0px;\r\n	width: 54px;\r\n	height: 18px;\r\n	background-size: cover;\r\n	background-color: transparent;\r\n}\r\n\r\n#CashShop .panel-cart {\r\n	display: flex;\r\n	flex-direction: column;\r\n	width: 185px;\r\n	height: 100%;\r\n	background-color: #dfe4ee;\r\n}\r\n\r\n#CashShop .panel-cart .panel-cart-header {\r\n	width: 100%;\r\n	height: 56px;\r\n	background-color: #dfe4ee;\r\n}\r\n\r\n#CashShop .panel-cart .panel-cart-header-title {\r\n	padding-left: 65px;\r\n	color: #22345c;\r\n	text-shadow: none;\r\n	height: 24px;\r\n	padding-top: 5px;\r\n}\r\n\r\n#CashShop .panel-cart .panel-cart-charging-view {\r\n	display: flex;\r\n	align-items: center;\r\n	justify-content: center;\r\n	gap: 30px;\r\n}\r\n\r\n#CashShop .panel-cart .panel-cart-charging-view .view-cash-point {\r\n	width: 70px;\r\n	color: #22345c;\r\n	font-weight: bold;\r\n	text-align: end;\r\n}\r\n\r\n#CashShop .panel-cart .panel-cart-charging-view .panel-cart-cash-points {\r\n	width: 76px;\r\n	color: #22345c;\r\n	font-weight: bold;\r\n	text-align: end;\r\n}\r\n\r\n#CashShop .panel-cart .panel-cart-charging-view .panel-cart-charge-btn {\r\n	width: 64px;\r\n	height: 20px;\r\n	border: none;\r\n}\r\n\r\n#CashShop .panel-cart .panel-cart-body {\r\n	width: 100%;\r\n	height: 360px;\r\n	background-size: cover;\r\n	background-color: #eef1f8;\r\n}\r\n\r\n#CashShop .panel-cart .panel-cart-footer {\r\n	width: 100%;\r\n	height: 107px;\r\n	background-color: #dfe4ee;\r\n}\r\n\r\n#CashShop .overlay {\r\n	position: absolute;\r\n	display: none;\r\n	white-space: nowrap;\r\n	z-index: 900;\r\n	height: 15px;\r\n	line-height: 15px;\r\n	border-radius: 3px;\r\n	padding: 4px;\r\n	background: rgba(0, 0, 0, 0.7);\r\n	color: white;\r\n	text-shadow: 1px 1px black;\r\n}\r\n\r\n#CashShop .overlay.grey {\r\n	color: #aaa;\r\n}\r\n\r\n#CashShop .view-cash-point-2 {\r\n	background: #ffffff;\r\n	border: 1px solid #4d4d4d;\r\n	border-radius: 0px 4px 4px 0px;\r\n\r\n	padding: 4px;\r\n}\r\n\r\n#CashShop ul.items {\r\n	list-style: none;\r\n	list-style-type: none;\r\n	padding: 0px;\r\n	margin-top: 5px;\r\n}\r\n\r\n#CashShop ul.items .item {\r\n	width: 172px;\r\n	height: 54px;\r\n	margin-left: 6px;\r\n	margin-bottom: 4px;\r\n	border-radius: 4px;\r\n	position: relative;\r\n	background-color: #ffffff !important;\r\n	background-image: none !important;\r\n	border: 1px solid #d7dee8;\r\n}\r\n\r\n#CashShop .inner-item-dt {\r\n	width: 100%;\r\n	height: 100%;\r\n	float: left;\r\n}\r\n\r\n#CashShop .inner-item-dt .item-dt-img {\r\n	float: left;\r\n	width: 40px;\r\n	height: 50px;\r\n	background-size: contain;\r\n	background-repeat: no-repeat;\r\n}\r\n\r\n#CashShop .container-cart .container-cart-body {\r\n	height: 326px;\r\n}\r\n\r\n#CashShop .inner-item-dt .item-dt-desc {\r\n	float: left;\r\n	width: 115px;\r\n	margin-top: 5px;\r\n	margin-left: 10px;\r\n	font-size: 8px;\r\n	color: #22345c;\r\n}\r\n\r\n#CashShop .container-cart-footer {\r\n	width: 169px;\r\n	margin-left: 10px;\r\n	background: #cfdfef;\r\n	border-radius: 4px;\r\n	height: 108px;\r\n}\r\n\r\n#CashShop .container-cart-footer .item-desc-price {\r\n	width: 100%;\r\n	color: #fff;\r\n	height: 17px;\r\n	background: #4c7ba6;\r\n	margin-top: 4px;\r\n	border-radius: 4px 4px 0px 0px;\r\n	box-shadow: inset 1px 1px 3px #1c1c1c;\r\n	-webkit-box-shadow: inset 1px 1px 3px #1c1c1c;\r\n	-moz-box-shadow: inset 1px 1px 3px #1c1c1c;\r\n	font-weight: bold;\r\n	line-height: 20px;\r\n}\r\n\r\n#CashShop #cart-list .item-desc-price {\r\n	width: 50px;\r\n	height: 17px;\r\n	margin-top: 4px;\r\n	float: left;\r\n	text-align: center;\r\n	color: #22345c;\r\n}\r\n\r\n#CashShop #cart-list .item-counter {\r\n	width: 50px;\r\n	height: 17px;\r\n	float: left;\r\n	position: relative;\r\n	margin-top: 4px;\r\n}\r\n\r\n#CashShop #cart-list .item-counter .item-cnt,\r\n#CashShop #cart-list .item-counter .item-cnt-up,\r\n#CashShop #cart-list .item-counter .item-cnt-down {\r\n	position: absolute;\r\n	width: 7px;\r\n	height: 7px;\r\n}\r\n\r\n#CashShop #cart-list .item-counter .item-cnt-down {\r\n	bottom: 1px;\r\n	right: 1px;\r\n	width: 10px;\r\n	background-color: transparent;\r\n	border: 0px;\r\n}\r\n\r\n#CashShop #cart-list .item-counter .item-cnt-up {\r\n	top: 0px;\r\n	right: 1px;\r\n	width: 10px;\r\n	background-color: transparent;\r\n	border: 0px;\r\n}\r\n\r\n#CashShop #cart-list .item-counter .item-cnt {\r\n	top: 3px;\r\n	left: 12px;\r\n	color: #6e6d6d;\r\n}\r\n\r\n#CashShop .panel-cart .panel-cart-footer > table {\r\n	font-size: 9px;\r\n	padding: 0px 14px;\r\n	width: 100%;\r\n	border-spacing: 1px;\r\n	color: #22345c;\r\n}\r\n\r\n#CashShop #cart-list {\r\n	height: 350px;\r\n	overflow-y: auto;\r\n	overflow-x: hidden;\r\n	scrollbar-width: thin;\r\n}\r\n\r\n#CashShop #cart-list::-webkit-scrollbar {\r\n	width: 4px;\r\n}\r\n\r\n#CashShop #cart-list::-webkit-scrollbar-thumb {\r\n	background-color: rgba(0, 0, 0, 0.2);\r\n	border-radius: 4px;\r\n}\r\n\r\n#CashShop .panel-cart .panel-cart-footer .use-free-points {\r\n	border: none;\r\n	background: transparent;\r\n	-moz-appearance: textfield;\r\n	appearance: textfield;\r\n	text-align: right;\r\n	font-size: 9px;\r\n	max-width: 45px;\r\n	color: #22345c;\r\n}\r\n\r\n#CashShop .panel-cart .panel-cart-footer .use-free-points::-webkit-outer-spin-button,\r\n#CashShop .panel-cart .panel-cart-footer .use-free-points::-webkit-inner-spin-button {\r\n	-webkit-appearance: none;\r\n	margin: 0;\r\n}\r\n\r\n#CashShop .panel-cart .panel-cart-footer > table tr {\r\n	height: 15px;\r\n}\r\n\r\n#CashShop .panel-cart .panel-cart-footer > table tr td.txt {\r\n	width: 60%;\r\n	text-align: left;\r\n}\r\n\r\n#CashShop .panel-cart .panel-cart-footer > table tr td.value {\r\n	width: 40%;\r\n	text-align: right;\r\n}\r\n\r\n#CashShop .panel-cart .panel-cart-footer .cart-footer-action {\r\n	padding: 0px 10px;\r\n}\r\n\r\n#CashShop .panel-cart .panel-cart-footer .cart-footer-action button {\r\n	width: 154px;\r\n	height: 23px;\r\n	margin-left: 5px;\r\n	margin-top: 4px;\r\n	border: none;\r\n	background: transparent;\r\n}\r\n\r\n#CashShop .panel-cart .panel-cart-footer .cart-footer-action .total-price {\r\n	width: 100%;\r\n	color: #fff;\r\n	background-color: #4c7ba6;\r\n	height: 18px;\r\n	margin-top: 4px;\r\n	border-radius: 4px;\r\n	font-weight: bold;\r\n	line-height: 25px;\r\n	text-align: center;\r\n}\r\n\r\n#CashShop #cart-list .items .item .delete-item {\r\n	position: absolute;\r\n	width: 7px;\r\n	height: 7px;\r\n	top: 3px;\r\n	right: 4px;\r\n	background-size: cover;\r\n}\r\n\r\n#CashShop .item-desc-top {\r\n	height: 20px;\r\n	color: #22345c;\r\n}\r\n";
 }));
 //#endregion
 //#region src/UI/Components/CashShop/CashShop.js
@@ -316018,7 +316024,7 @@ function stopPropagation$6(event) {
 	event.preventDefault();
 	return false;
 }
-var CashShop, _preferences$11, CashShop_default;
+var isClassic$21, CashShop, _preferences$11, CashShop_default;
 var init_CashShop$1 = __esmMin((() => {
 	init_DBManager();
 	init_Client();
@@ -316036,7 +316042,10 @@ var init_CashShop$1 = __esmMin((() => {
 	init_Elements();
 	init_CashShop$3();
 	init_CashShop$2();
-	CashShop = new GUIComponent("CashShop", CashShop_default$1);
+	init_CashShop_classic();
+	init_Graphics();
+	isClassic$21 = GraphicsSettings.uiSkin === "classic";
+	CashShop = new GUIComponent("CashShop", isClassic$21 ? CashShop_classic_default : CashShop_default$1);
 	/**
 	* Store cash shop items
 	*/
