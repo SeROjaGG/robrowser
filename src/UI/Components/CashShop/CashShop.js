@@ -24,8 +24,11 @@ import GUIComponent from 'UI/GUIComponent.js';
 import 'UI/Elements/Elements.js';
 import htmlText from './CashShop.html?raw';
 import cssText from './CashShop.css?raw';
+import cssTextClassic from './CashShop.classic.css?raw';
+import GraphicsSettings from 'Preferences/Graphics.js';
 
-const CashShop = new GUIComponent('CashShop', cssText);
+const isClassic = GraphicsSettings.uiSkin === 'classic';
+const CashShop = new GUIComponent('CashShop', isClassic ? cssTextClassic : cssText);
 
 /**
  * Store cash shop items
