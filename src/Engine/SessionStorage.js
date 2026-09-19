@@ -17,6 +17,7 @@ export default {
 	AutoTargeting: false,
 	autoAttackEnabled: false,
 	autoSkillEnabled: false,
+	isGM: false,
 
 	FreezeUI: false,
 

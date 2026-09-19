@@ -31,6 +31,11 @@ const PREFIX = 'SEROJA\t';
 let _nonce = 1;
 const _pending = new Map(); // nonce -> { rows, resolve, reject, timer }
 
+// Reassignable, like SkillTargetSelection.onUseSkillToId elsewhere in this
+// tree — GM-only UI wires its own listener here rather than this bridge
+// importing specific UI components.
+export const hooks = { onGMFlag: () => {} };
+
 function finish(nonce, err) {
 	const req = _pending.get(nonce);
 	if (!req) {
@@ -56,6 +61,16 @@ export function consume(msg) {
 		return false;
 	}
 	const parts = msg.split('\t'); // ['SEROJA', nonce, kind, ...fields]
+
+	// Unsolicited push (nonce 0) from npc/custom/seroja/gm_flag.txt
+	// OnPCLoginEvent — the only client-side signal of GM status; there is no
+	// login/char packet field carrying group_id (see gm_flag.txt's header).
+	if (parts[1] === '0' && parts[2] === 'GM') {
+		Session.isGM = parts[3] === '1';
+		hooks.onGMFlag(Session.isGM);
+		return true;
+	}
+
 	const nonce = Number(parts[1]);
 	const req = _pending.get(nonce);
 	if (req) {
@@ -97,4 +112,4 @@ export function request(prefix, op, args) {
 	return promise;
 }
 
-export default { request, consume };
+export default { request, consume, hooks };

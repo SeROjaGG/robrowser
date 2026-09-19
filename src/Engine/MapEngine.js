@@ -95,6 +95,7 @@ import SeROjaMallIcon from 'UI/Components/SeROjaMallIcon/SeROjaMallIcon.js';
 import SeROjaMarketIcon from 'UI/Components/SeROjaMarketIcon/SeROjaMarketIcon.js';
 import AutoAttackIcon from 'UI/Components/AutoAttackIcon/AutoAttackIcon.js';
 import AutoSkillIcon from 'UI/Components/AutoSkillIcon/AutoSkillIcon.js';
+import serojaBridge from 'UI/Components/SeROjaCommon/serojaBridge.js';
 import DonorBadge from 'UI/Components/SeROjaCommon/DonorBadge.js';
 import Achievement from 'UI/Components/Achievement/Achievement.js';
 
@@ -390,17 +391,15 @@ class MapEngine {
 			} catch (e) {
 				console.error('[SeROja] SeROjaMarketIcon.prepare() failed:', e);
 			}
-			if (Session.UserLevel > 0) {
-				try {
-					AutoAttackIcon.prepare();
-				} catch (e) {
-					console.error('[SeROja] AutoAttackIcon.prepare() failed:', e);
-				}
-				try {
-					AutoSkillIcon.prepare();
-				} catch (e) {
-					console.error('[SeROja] AutoSkillIcon.prepare() failed:', e);
-				}
+			try {
+				AutoAttackIcon.prepare();
+			} catch (e) {
+				console.error('[SeROja] AutoAttackIcon.prepare() failed:', e);
+			}
+			try {
+				AutoSkillIcon.prepare();
+			} catch (e) {
+				console.error('[SeROja] AutoSkillIcon.prepare() failed:', e);
 			}
 
 			if (Configs.get('enableBank')) {
@@ -783,7 +782,13 @@ function onMapChange(pkt) {
 		} catch (e) {
 			console.error('[SeROja] SeROjaMarketIcon.append() failed:', e);
 		}
-		if (Session.UserLevel > 0) {
+		// GM-only: no login/char packet carries group_id to the client, so these
+		// only appear once npc/custom/seroja/gm_flag.txt's OnPCLoginEvent push
+		// confirms it server-side (see serojaBridge.js hooks.onGMFlag).
+		serojaBridge.hooks.onGMFlag = isGM => {
+			if (!isGM) {
+				return;
+			}
 			try {
 				AutoAttackIcon.append();
 			} catch (e) {
@@ -794,7 +799,7 @@ function onMapChange(pkt) {
 			} catch (e) {
 				console.error('[SeROja] AutoSkillIcon.append() failed:', e);
 			}
-		}
+		};
 
 		if (Configs.get('enableCheckAttendance') && PACKETVER.value >= 20180307) {
 			CheckAttendance.append();
