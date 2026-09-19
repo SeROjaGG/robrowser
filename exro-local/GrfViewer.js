@@ -333332,7 +333332,7 @@ function onMapChange(pkt) {
 		} catch (e) {
 			console.error("[SeROja] SeROjaMarketIcon.append() failed:", e);
 		}
-		try {
+		if (SessionStorage_default.UserLevel > 0) try {
 			AutoAttackIcon_default.append();
 		} catch (e) {
 			console.error("[SeROja] AutoAttackIcon.append() failed:", e);
@@ -334035,7 +334035,7 @@ var init_MapEngine = __esmMin((() => {
 				} catch (e) {
 					console.error("[SeROja] SeROjaMarketIcon.prepare() failed:", e);
 				}
-				try {
+				if (SessionStorage_default.UserLevel > 0) try {
 					AutoAttackIcon_default.prepare();
 				} catch (e) {
 					console.error("[SeROja] AutoAttackIcon.prepare() failed:", e);
