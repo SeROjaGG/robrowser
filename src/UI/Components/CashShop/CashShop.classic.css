@@ -9,7 +9,8 @@
 	flex-direction: column;
 	width: 723px;
 	height: 540px;
-	background-color: #eef1f8;
+	background-color: #eef1f8 !important;
+	background-image: none !important;
 	border-radius: 3px;
 	font-weight: bold;
 	color: #22345c;
@@ -185,7 +186,7 @@
 	display: flex;
 	flex-direction: column;
 	width: 172px;
-	height: 126px;
+	min-height: 126px;
 	margin-left: 4px;
 	margin-top: 2px;
 	background-color: #ffffff !important;
@@ -193,11 +194,23 @@
 	border: 1px solid #c9d3e6;
 	border-radius: 6px;
 	box-shadow: 0 1px 3px rgba(20, 30, 60, 0.12);
+	overflow: hidden;
+	padding-bottom: 8px;
+	box-sizing: border-box;
 }
 
-#CashShop .panel-content .panel-items .top-con,
+#CashShop .panel-content .panel-items .top-con {
+	width: 100%;
+}
+
 #CashShop .panel-content .panel-items .lower-con {
 	width: 100%;
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	gap: 6px;
+	padding: 0 6px;
+	box-sizing: border-box;
 }
 
 #CashShop .panel-content .panel-items .top-con {
@@ -217,38 +230,63 @@
 }
 
 #CashShop .panel-content .panel-items .item-left-img {
-	width: 75px;
-	height: 98px;
-	background-size: cover;
+	width: 70px;
+	height: 88px;
+	flex: 0 0 auto;
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
 }
 
 #CashShop .panel-content .panel-items .item-right-desc {
-	float: right;
-	margin-right: 8px;
-	margin-top: 17px;
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	gap: 6px;
+	flex: 1 1 auto;
+	padding-top: 4px;
+	min-width: 0;
 }
 
 #CashShop .panel-content .panel-items .item-right-desc .item-desc-price {
 	color: #ffffff;
 	background-color: #4c7ba6;
 	border-radius: 9px;
-	display: inline-block;
-	padding: 1px 6px;
+	display: flex;
+	align-items: center;
+	padding: 1px 8px;
+	box-sizing: border-box;
+}
+
+#CashShop .panel-content .panel-items .item-right-desc .item-desc-price::before {
+	content: 'C';
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 13px;
+	height: 13px;
+	margin-right: 5px;
+	border-radius: 50%;
+	background: #f0c419;
+	color: #7a5c00;
+	font-size: 8px;
+	font-weight: bold;
 }
 
 #CashShop .panel-content .panel-items .item .item-left-img {
 	margin-left: 4px;
-	float: left;
 }
 
 #CashShop .panel-content .panel-items .item .lower-con .purchase-btn-container {
-	padding-top: 20px;
+	padding-top: 0;
 }
 
 #CashShop .panel-content .panel-items .item .lower-con .purchase-btn-container .add-to-cart {
 	width: 81px;
 	height: 24px;
-	border: none;
+	border: 1px solid #b7c2da;
+	border-radius: 4px;
+	background-color: #ffffff;
 }
 
 #CashShop .panel-content .panel-items .item .lower-con .purchase-btn-container .purchase-btn {
@@ -258,15 +296,15 @@
 }
 
 #CashShop #panel-items .item-desc-price {
-	width: 81px;
+	width: 100%;
 	height: 17px;
-	margin-top: 7px;
+	margin-top: 0;
 	text-align: right;
 }
 
 #CashShop .item-desc-price span {
 	line-height: 18px;
-	margin-right: 5px;
+	flex: 1;
 	text-align: right;
 	font-size: 10px;
 }
@@ -384,7 +422,8 @@
 	width: 100%;
 	height: 360px;
 	background-size: cover;
-	background-color: #eef1f8;
+	background-color: #eef1f8 !important;
+	background-image: none !important;
 }
 
 #CashShop .panel-cart .panel-cart-footer {
