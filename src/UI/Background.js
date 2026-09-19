@@ -14,7 +14,6 @@
 import DB from 'DB/DBManager.js';
 import Client from 'Core/Client.js';
 import Configs from 'Core/Configs.js';
-import PACKETVER from 'Network/PacketVerManager.js';
 import { animateElement } from 'Utils/HtmlHelper.js';
 
 /**
@@ -202,29 +201,44 @@ class Background {
 	}
 
 	/**
-	 * Helper method to return the right login background filename(s) based on packet version.
+	 * Set a flat CSS background (SeROja look) instead of fetching a GRF image.
+	 * Used for game-loading transitions — matches the #ro-preloader gradient
+	 * shown before the client boots, so the loading screens read as one
+	 * consistent brand.
+	 *
+	 * @param {function} callback once applied (optional)
+	 */
+	static setColor(callback) {
+		const exist = !!_container.parentNode;
+		_progress = -1;
+
+		_container.innerHTML = '';
+		Object.assign(_container.style, {
+			backgroundImage: 'none',
+			background: 'radial-gradient(ellipse at center, rgba(20, 24, 40, 0.9), rgba(6, 8, 16, 1))'
+		});
+		render();
+
+		if (exist && callback) callback();
+
+		if (!exist) {
+			transition(() => {
+				document.body.appendChild(_container);
+				document.body.appendChild(_canvas);
+				if (callback) {
+					callback();
+				}
+			});
+		}
+	}
+
+	/**
+	 * Helper method to return the login background filename.
+	 * PACKETVER is locked to 20251001 for this project, so only the
+	 * current-client branch (t_login.jpg) is reachable.
 	 */
 	static getLoginBackgroundName() {
-		if (PACKETVER.value >= 20221207) {
-			return 't_login.jpg';
-		}
-		if (PACKETVER.value >= 20181114) {
-			return [
-				't_\xB9\xE8\xB0\xE61-1.bmp',
-				't_\xB9\xE8\xB0\xE61-2.bmp',
-				't_\xB9\xE8\xB0\xE61-3.bmp',
-				't_\xB9\xE8\xB0\xE61-4.bmp',
-				't_\xB9\xE8\xB0\xE62-1.bmp',
-				't_\xB9\xE8\xB0\xE62-2.bmp',
-				't_\xB9\xE8\xB0\xE62-3.bmp',
-				't_\xB9\xE8\xB0\xE62-4.bmp',
-				't_\xB9\xE8\xB0\xE63-1.bmp',
-				't_\xB9\xE8\xB0\xE63-2.bmp',
-				't_\xB9\xE8\xB0\xE63-3.bmp',
-				't_\xB9\xE8\xB0\xE63-4.bmp'
-			];
-		}
-		return 'bgi_temp.bmp';
+		return 't_login.jpg';
 	}
 
 	/**

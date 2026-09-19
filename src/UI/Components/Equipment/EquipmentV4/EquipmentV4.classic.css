@@ -175,6 +175,34 @@
 #EquipmentV4 .accessory2:empty::before {
 	content: 'Accessory';
 }
+#EquipmentV4 .costume_head_top:empty::before {
+	content: 'Head';
+}
+#EquipmentV4 .costume_head_mid:empty::before {
+	content: 'Face';
+}
+#EquipmentV4 .costume_head_bottom:empty::before {
+	content: 'Head Low';
+}
+#EquipmentV4 .shadow_armor:empty::before {
+	content: 'Body';
+}
+#EquipmentV4 .shadow_weapon:empty::before {
+	content: 'Weapon';
+}
+#EquipmentV4 .shadow_shield:empty::before {
+	content: 'Shield';
+}
+#EquipmentV4 .shadow_garment:empty::before {
+	content: 'Garment';
+}
+#EquipmentV4 .shadow_shoes:empty::before {
+	content: 'Shoes';
+}
+#EquipmentV4 .shadow_accessory1:empty::before,
+#EquipmentV4 .shadow_accessory2:empty::before {
+	content: 'Accessory';
+}
 
 #EquipmentV4 .overlay {
 	position: absolute;
@@ -231,6 +259,21 @@
 #EquipmentV4 .ammo_container {
 	position: relative;
 }
+/* Some mount sprites (e.g. Rune Knight's dragon) bake a glow effect into the
+   bottom of their own frames — it's part of the sprite art, not our shadow
+   layer, so hideShadow doesn't touch it. Mask the strip it lands in here.
+   ponytail: fixed-height crop tuned to this canvas size, not sprite-aware —
+   revisit if a mount's glow turns out taller than this. */
+#EquipmentV4 .ammo_container::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	height: 20px;
+	background: white;
+	pointer-events: none;
+}
 #EquipmentV4 .ammo {
 	position: absolute;
 	top: 30px;
@@ -267,7 +310,6 @@
 #EquipmentV4 .footer {
 	height: 20px;
 	border-bottom: 1px solid #c0c0c0;
-	background-position: 0px -130px;
 	position: relative;
 	top: -3px;
 }

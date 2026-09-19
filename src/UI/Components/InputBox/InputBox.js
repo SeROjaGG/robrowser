@@ -132,7 +132,7 @@ function validate() {
 	const input = root.querySelector('input');
 	let text = input ? input.value : '';
 
-	if (!InputBox.isPersistent || text.length) {
+	if (!InputBox.isPersistent || text.length || InputBox.allowEmpty) {
 		const innerRoot = root.querySelector('#inputbox');
 		if (innerRoot && innerRoot.classList.contains('number')) {
 			text = parseInt(text, 10) | 0;
@@ -152,6 +152,10 @@ function validate() {
  */
 InputBox.setType = function setType(type, isPersistent, defaultVal, itemId = null) {
 	this.isPersistent = !!isPersistent;
+	// Accounts created without a birthdate/email on file store "" server-side, and the
+	// server only matches a delete-confirm against that when the client also sends "" —
+	// so these two types must be able to submit blank, unlike every other persistent type.
+	this.allowEmpty = type === 'birthdate' || type === 'mail';
 	const root = InputBox.getRoot();
 	const innerRoot = root.querySelector('#inputbox');
 	const textEl = root.querySelector('.text');

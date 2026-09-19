@@ -187,8 +187,8 @@ function getSelectorFromLocation(location) {
  * avoid colliding with the SeROja generate* functions above.
  */
 function generateGeneralTableClassic() {
-	return `  
-		<table class="vieweqcontent" id="vieweqgeneral" data-background="basic_interface/equipwin_bg.bmp">  
+	return `
+		<table class="vieweqcontent" id="vieweqgeneral">
 			<tr>  
 				<td class="head_top col1"></td>  
 				<td rowspan="6">  
@@ -220,7 +220,7 @@ function generateGeneralTableClassic() {
 /**
  * Generate the costume equipment table HTML
  */
-function generateCostumeTableClassic(costumeRows, costumeTableBg) {
+function generateCostumeTableClassic(costumeRows) {
 	let rows = '';
 	for (let i = 0; i < costumeRows.length; i++) {
 		const { left: col1, right: col3 } = costumeRows[i];
@@ -245,7 +245,7 @@ function generateCostumeTableClassic(costumeRows, costumeTableBg) {
 	}
 
 	return `  
-		<table class="vieweqcontent" id="vieweqcostume" data-background="${costumeTableBg}">  
+		<table class="vieweqcontent" id="vieweqcostume">
 			${rows}  
 		</table>`;
 }
@@ -266,7 +266,7 @@ function generateHTMLClassic(hasTabs, costumeRows, costumeTableBg) {
 	</div>`
 		: '';
 
-	const costumeHTML = hasTabs ? generateCostumeTableClassic(costumeRows, costumeTableBg) : '';
+	const costumeHTML = hasTabs ? generateCostumeTableClassic(costumeRows) : '';
 
 	return `<div id="PlayerViewEquip" data-repload="basic_interface/item_invert.bmp">  
 	<div class="titlebar" data-background="basic_interface/titlebar_mid.bmp">  

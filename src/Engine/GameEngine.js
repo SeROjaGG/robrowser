@@ -89,7 +89,7 @@ function loadFiles(callback) {
 		UIManager.removeComponents();
 		Background.init();
 		Background.resize(Renderer.width, Renderer.height);
-		Background.setImage('bgi_temp.bmp', () => {
+		Background.setColor(() => {
 			DB.init();
 		});
 	});
@@ -173,7 +173,7 @@ class GameEngine {
 		// Setup background
 		Background.init();
 		Background.resize(Renderer.width, Renderer.height);
-		Background.setImage('bgi_temp.bmp', () => {
+		Background.setColor(() => {
 			onReload();
 		});
 		// Hooking WinList

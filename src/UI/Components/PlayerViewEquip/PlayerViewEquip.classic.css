@@ -179,6 +179,21 @@
 #PlayerViewEquip .ammo_container {
 	position: relative;
 }
+/* Some mount sprites (e.g. Rune Knight's dragon) bake a glow effect into the
+   bottom of their own frames — it's part of the sprite art, not our shadow
+   layer, so hideShadow doesn't touch it. Mask the strip it lands in here.
+   ponytail: fixed-height crop tuned to this canvas size, not sprite-aware —
+   revisit if a mount's glow turns out taller than this. */
+#PlayerViewEquip .ammo_container::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	height: 20px;
+	background: white;
+	pointer-events: none;
+}
 #PlayerViewEquip .ammo {
 	position: absolute;
 	top: 30px;
