@@ -78038,6 +78038,7 @@ var init_SessionStorage = __esmMin((() => {
 		AutoTargeting: false,
 		autoAttackEnabled: false,
 		autoSkillEnabled: false,
+		isGM: false,
 		FreezeUI: false,
 		AuthCode: 0,
 		AID: 0,
@@ -231169,6 +231170,11 @@ function finish(nonce, err) {
 function consume(msg) {
 	if (typeof msg !== "string" || msg.lastIndexOf(PREFIX, 0) !== 0) return false;
 	const parts = msg.split("	");
+	if (parts[1] === "0" && parts[2] === "GM") {
+		SessionStorage_default.isGM = parts[3] === "1";
+		hooks.onGMFlag(SessionStorage_default.isGM);
+		return true;
+	}
 	const nonce = Number(parts[1]);
 	const req = _pending$1.get(nonce);
 	if (req) {
@@ -231204,7 +231210,7 @@ function request(prefix, op, args) {
 	send(prefix, `${nonce} ${op}${args && args.length ? " " + args.join(" ") : ""}`);
 	return promise;
 }
-var TIMEOUT_MS, PREFIX, _nonce, _pending$1;
+var TIMEOUT_MS, PREFIX, _nonce, _pending$1, hooks, serojaBridge_default;
 var init_serojaBridge = __esmMin((() => {
 	init_NetworkManager();
 	init_PacketStructure();
@@ -231213,6 +231219,12 @@ var init_serojaBridge = __esmMin((() => {
 	PREFIX = "SEROJA	";
 	_nonce = 1;
 	_pending$1 = /* @__PURE__ */ new Map();
+	hooks = { onGMFlag: () => {} };
+	serojaBridge_default = {
+		request,
+		consume,
+		hooks
+	};
 }));
 //#endregion
 //#region src/UI/Components/SeROjaCommon/DonorBadge.js
@@ -334103,7 +334115,8 @@ function onMapChange(pkt) {
 		} catch (e) {
 			console.error("[SeROja] SeROjaMarketIcon.append() failed:", e);
 		}
-		if (SessionStorage_default.UserLevel > 0) {
+		serojaBridge_default.hooks.onGMFlag = (isGM) => {
+			if (!isGM) return;
 			try {
 				AutoAttackIcon_default.append();
 			} catch (e) {
@@ -334114,7 +334127,7 @@ function onMapChange(pkt) {
 			} catch (e) {
 				console.error("[SeROja] AutoSkillIcon.append() failed:", e);
 			}
-		}
+		};
 		if (Configs.get("enableCheckAttendance") && PacketVerManager_default.value >= 20180307) CheckAttendance_default.append();
 		try {
 			DonorBadge_default.refresh();
@@ -334602,6 +334615,7 @@ var init_MapEngine = __esmMin((() => {
 	init_SeROjaMarketIcon();
 	init_AutoAttackIcon();
 	init_AutoSkillIcon();
+	init_serojaBridge();
 	init_DonorBadge();
 	init_Achievement$1();
 	init_Main();
@@ -334814,17 +334828,15 @@ var init_MapEngine = __esmMin((() => {
 				} catch (e) {
 					console.error("[SeROja] SeROjaMarketIcon.prepare() failed:", e);
 				}
-				if (SessionStorage_default.UserLevel > 0) {
-					try {
-						AutoAttackIcon_default.prepare();
-					} catch (e) {
-						console.error("[SeROja] AutoAttackIcon.prepare() failed:", e);
-					}
-					try {
-						AutoSkillIcon_default.prepare();
-					} catch (e) {
-						console.error("[SeROja] AutoSkillIcon.prepare() failed:", e);
-					}
+				try {
+					AutoAttackIcon_default.prepare();
+				} catch (e) {
+					console.error("[SeROja] AutoAttackIcon.prepare() failed:", e);
+				}
+				try {
+					AutoSkillIcon_default.prepare();
+				} catch (e) {
+					console.error("[SeROja] AutoSkillIcon.prepare() failed:", e);
 				}
 				if (Configs.get("enableBank")) Bank_default.prepare();
 				if (PacketVerManager_default.value >= 20090617) {
