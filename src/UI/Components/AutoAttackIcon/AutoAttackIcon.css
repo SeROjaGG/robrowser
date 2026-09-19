@@ -1,0 +1,65 @@
+:host {
+	width: 43px;
+	height: 45px;
+	right: 319px;
+	top: 17px;
+	overflow: visible;
+}
+
+#AutoAttackIcon {
+	position: absolute;
+	width: 43px;
+	height: 45px;
+}
+
+#AutoAttackIcon .auto-attack-icon {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	border: 2px solid rgba(234, 242, 255, 0.4);
+	border-radius: 8px;
+	background-color: rgba(15, 23, 42, 0.65);
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transform: scale(1);
+	transition:
+		transform 0.15s ease,
+		border-color 0.15s ease,
+		box-shadow 0.15s ease;
+}
+#AutoAttackIcon .auto-attack-icon:hover {
+	transform: scale(1.15);
+}
+#AutoAttackIcon .auto-attack-icon.active {
+	border-color: #4ade80;
+	box-shadow: 0 0 8px rgba(74, 222, 128, 0.8);
+}
+
+#AutoAttackIcon .icon-glyph {
+	font-size: 20px;
+	pointer-events: none;
+}
+
+#AutoAttackIcon .icon-label {
+	position: absolute;
+	left: 50%;
+	top: calc(100% + 4px);
+	transform: translateX(-50%);
+	padding: 3px 8px;
+	border-radius: 4px;
+	background: rgba(15, 23, 42, 0.85);
+	color: #eaf2ff;
+	font-size: 11px;
+	font-weight: 600;
+	white-space: nowrap;
+	pointer-events: none;
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.12s ease;
+}
+#AutoAttackIcon .auto-attack-icon:hover .icon-label {
+	opacity: 1;
+	visibility: visible;
+}

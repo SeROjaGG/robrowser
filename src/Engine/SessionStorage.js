@@ -15,6 +15,7 @@ export default {
 	isRenewal: false,
 	TouchTargeting: false,
 	AutoTargeting: false,
+	autoAttackEnabled: false,
 
 	FreezeUI: false,
 

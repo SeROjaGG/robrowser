@@ -93,6 +93,7 @@ import JoystickUI from 'UI/Components/JoystickUI/JoystickUI.js';
 import CashShopIcon from 'UI/Components/CashShopIcon/CashShopIcon.js';
 import SeROjaMallIcon from 'UI/Components/SeROjaMallIcon/SeROjaMallIcon.js';
 import SeROjaMarketIcon from 'UI/Components/SeROjaMarketIcon/SeROjaMarketIcon.js';
+import AutoAttackIcon from 'UI/Components/AutoAttackIcon/AutoAttackIcon.js';
 import DonorBadge from 'UI/Components/SeROjaCommon/DonorBadge.js';
 import Achievement from 'UI/Components/Achievement/Achievement.js';
 
@@ -387,6 +388,11 @@ class MapEngine {
 				SeROjaMarketIcon.prepare();
 			} catch (e) {
 				console.error('[SeROja] SeROjaMarketIcon.prepare() failed:', e);
+			}
+			try {
+				AutoAttackIcon.prepare();
+			} catch (e) {
+				console.error('[SeROja] AutoAttackIcon.prepare() failed:', e);
 			}
 
 			if (Configs.get('enableBank')) {
@@ -768,6 +774,11 @@ function onMapChange(pkt) {
 			SeROjaMarketIcon.append();
 		} catch (e) {
 			console.error('[SeROja] SeROjaMarketIcon.append() failed:', e);
+		}
+		try {
+			AutoAttackIcon.append();
+		} catch (e) {
+			console.error('[SeROja] AutoAttackIcon.append() failed:', e);
 		}
 
 		if (Configs.get('enableCheckAttendance') && PACKETVER.value >= 20180307) {
