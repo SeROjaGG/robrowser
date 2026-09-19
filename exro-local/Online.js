@@ -78036,6 +78036,7 @@ var init_SessionStorage = __esmMin((() => {
 		isRenewal: false,
 		TouchTargeting: false,
 		AutoTargeting: false,
+		autoAttackEnabled: false,
 		FreezeUI: false,
 		AuthCode: 0,
 		AID: 0,
@@ -320000,7 +320001,7 @@ var init_CaptchaAnswer_classic = __esmMin((() => {
 }));
 //#endregion
 //#region src/UI/Components/Captcha/CaptchaAnswer.js
-var isClassic$14, CaptchaAnswer, _preferences$9, timer, CaptchaAnswer_default;
+var isClassic$14, CaptchaAnswer, _preferences$9, timer$1, CaptchaAnswer_default;
 var init_CaptchaAnswer = __esmMin((() => {
 	init_UIManager();
 	init_GUIComponent();
@@ -320020,7 +320021,7 @@ var init_CaptchaAnswer = __esmMin((() => {
 		x: 230,
 		y: 295
 	}, 2);
-	timer = null;
+	timer$1 = null;
 	CaptchaAnswer.render = () => isClassic$14 ? CaptchaAnswer_classic_default$1 : CaptchaAnswer_default$2;
 	CaptchaAnswer.captureKeyEvents = true;
 	/**
@@ -320071,11 +320072,11 @@ var init_CaptchaAnswer = __esmMin((() => {
 		const root = this.getRoot();
 		const retryEl = root.querySelector(".retry_count");
 		if (retryEl) retryEl.textContent = DB.getMessage(2886).replace("%d", retryCount);
-		if (timer) {
-			clearInterval(timer);
-			timer = null;
+		if (timer$1) {
+			clearInterval(timer$1);
+			timer$1 = null;
 		}
-		timer = setInterval(() => {
+		timer$1 = setInterval(() => {
 			timeout--;
 			const minutes = Math.floor(timeout / 60);
 			const seconds = timeout % 60;
@@ -320084,8 +320085,8 @@ var init_CaptchaAnswer = __esmMin((() => {
 			const timerBarFill = root.querySelector(".timer_bar_fill");
 			if (timerBarFill) timerBarFill.style.width = `${timeout / 60 * 100}%`;
 			if (timeout <= 0) {
-				clearInterval(timer);
-				timer = null;
+				clearInterval(timer$1);
+				timer$1 = null;
 			}
 		}, 1e3);
 	};
@@ -320114,9 +320115,9 @@ var init_CaptchaAnswer = __esmMin((() => {
 		if (timerText) timerText.textContent = "0";
 		const errorText = root.querySelector(".error_text");
 		if (errorText) errorText.textContent = "";
-		if (timer) {
-			clearInterval(timer);
-			timer = null;
+		if (timer$1) {
+			clearInterval(timer$1);
+			timer$1 = null;
 		}
 	};
 	/**
@@ -321513,6 +321514,62 @@ var init_SeROjaMarketIcon = __esmMin((() => {
 	SeROjaMarketIcon.needFocus = false;
 	SeROjaMarketIcon.mouseMode = GUIComponent.MouseMode.CROSS;
 	SeROjaMarketIcon_default = UIManager.addComponent(SeROjaMarketIcon);
+}));
+//#endregion
+//#region src/UI/Components/AutoAttackIcon/AutoAttackIcon.html?raw
+var AutoAttackIcon_default$2;
+var init_AutoAttackIcon$2 = __esmMin((() => {
+	AutoAttackIcon_default$2 = "<div id=\"AutoAttackIcon\">\r\n	<button class=\"auto-attack-icon\">\r\n		<span class=\"icon-glyph\">⚔</span>\r\n		<span class=\"icon-label\">Auto Attack</span>\r\n	</button>\r\n</div>\r\n";
+}));
+//#endregion
+//#region src/UI/Components/AutoAttackIcon/AutoAttackIcon.css?raw
+var AutoAttackIcon_default$1;
+var init_AutoAttackIcon$1 = __esmMin((() => {
+	AutoAttackIcon_default$1 = ":host {\r\n	width: 43px;\r\n	height: 45px;\r\n	right: 319px;\r\n	top: 17px;\r\n	overflow: visible;\r\n}\r\n\r\n#AutoAttackIcon {\r\n	position: absolute;\r\n	width: 43px;\r\n	height: 45px;\r\n}\r\n\r\n#AutoAttackIcon .auto-attack-icon {\r\n	position: relative;\r\n	width: 100%;\r\n	height: 100%;\r\n	border: 2px solid rgba(234, 242, 255, 0.4);\r\n	border-radius: 8px;\r\n	background-color: rgba(15, 23, 42, 0.65);\r\n	cursor: pointer;\r\n	display: flex;\r\n	align-items: center;\r\n	justify-content: center;\r\n	transform: scale(1);\r\n	transition:\r\n		transform 0.15s ease,\r\n		border-color 0.15s ease,\r\n		box-shadow 0.15s ease;\r\n}\r\n#AutoAttackIcon .auto-attack-icon:hover {\r\n	transform: scale(1.15);\r\n}\r\n#AutoAttackIcon .auto-attack-icon.active {\r\n	border-color: #4ade80;\r\n	box-shadow: 0 0 8px rgba(74, 222, 128, 0.8);\r\n}\r\n\r\n#AutoAttackIcon .icon-glyph {\r\n	font-size: 20px;\r\n	pointer-events: none;\r\n}\r\n\r\n#AutoAttackIcon .icon-label {\r\n	position: absolute;\r\n	left: 50%;\r\n	top: calc(100% + 4px);\r\n	transform: translateX(-50%);\r\n	padding: 3px 8px;\r\n	border-radius: 4px;\r\n	background: rgba(15, 23, 42, 0.85);\r\n	color: #eaf2ff;\r\n	font-size: 11px;\r\n	font-weight: 600;\r\n	white-space: nowrap;\r\n	pointer-events: none;\r\n	opacity: 0;\r\n	visibility: hidden;\r\n	transition: opacity 0.12s ease;\r\n}\r\n#AutoAttackIcon .auto-attack-icon:hover .icon-label {\r\n	opacity: 1;\r\n	visibility: visible;\r\n}\r\n";
+}));
+//#endregion
+//#region src/UI/Components/AutoAttackIcon/AutoAttackIcon.js
+function tick() {
+	const player = SessionStorage_default.Entity;
+	if (!player || !SessionStorage_default.Playing) return;
+	const current = EntityManager.getFocusEntity();
+	if (!current || current.action === current.ACTION.DIE) {
+		const closest = EntityManager.getClosestEntity(player, Entity.TYPE_MOB);
+		if (closest) {
+			closest.onFocus();
+			EntityManager.setFocusEntity(closest);
+		}
+	}
+	if (SessionStorage_default.autoAttackEnabled) timer = window.setTimeout(tick, TICK_DELAY);
+}
+function toggle() {
+	SessionStorage_default.autoAttackEnabled = !SessionStorage_default.autoAttackEnabled;
+	AutoAttackIcon.getRoot().querySelector(".auto-attack-icon").classList.toggle("active", SessionStorage_default.autoAttackEnabled);
+	if (SessionStorage_default.autoAttackEnabled) tick();
+	else window.clearTimeout(timer);
+}
+var AutoAttackIcon, TICK_DELAY, timer, AutoAttackIcon_default;
+var init_AutoAttackIcon = __esmMin((() => {
+	init_SessionStorage();
+	init_EntityManager();
+	init_Entity$1();
+	init_UIManager();
+	init_GUIComponent();
+	init_Elements();
+	init_AutoAttackIcon$2();
+	init_AutoAttackIcon$1();
+	AutoAttackIcon = new GUIComponent("AutoAttackIcon", AutoAttackIcon_default$1);
+	AutoAttackIcon.render = () => AutoAttackIcon_default$2;
+	TICK_DELAY = 500;
+	timer = null;
+	AutoAttackIcon.init = function init() {
+		const btn = this.getRoot().querySelector(".auto-attack-icon");
+		btn.addEventListener("mousedown", (e) => e.stopImmediatePropagation());
+		btn.addEventListener("click", toggle);
+	};
+	AutoAttackIcon.needFocus = false;
+	AutoAttackIcon.mouseMode = GUIComponent.MouseMode.CROSS;
+	AutoAttackIcon_default = UIManager.addComponent(AutoAttackIcon);
 }));
 //#endregion
 //#region src/DB/Status/StatusProperty.js
@@ -333971,6 +334028,11 @@ function onMapChange(pkt) {
 		} catch (e) {
 			console.error("[SeROja] SeROjaMarketIcon.append() failed:", e);
 		}
+		try {
+			AutoAttackIcon_default.append();
+		} catch (e) {
+			console.error("[SeROja] AutoAttackIcon.append() failed:", e);
+		}
 		if (Configs.get("enableCheckAttendance") && PacketVerManager_default.value >= 20180307) CheckAttendance_default.append();
 		try {
 			DonorBadge_default.refresh();
@@ -334456,6 +334518,7 @@ var init_MapEngine = __esmMin((() => {
 	init_CashShopIcon();
 	init_SeROjaMallIcon();
 	init_SeROjaMarketIcon();
+	init_AutoAttackIcon();
 	init_DonorBadge();
 	init_Achievement$1();
 	init_Main();
@@ -334667,6 +334730,11 @@ var init_MapEngine = __esmMin((() => {
 					SeROjaMarketIcon_default.prepare();
 				} catch (e) {
 					console.error("[SeROja] SeROjaMarketIcon.prepare() failed:", e);
+				}
+				try {
+					AutoAttackIcon_default.prepare();
+				} catch (e) {
+					console.error("[SeROja] AutoAttackIcon.prepare() failed:", e);
 				}
 				if (Configs.get("enableBank")) Bank_default.prepare();
 				if (PacketVerManager_default.value >= 20090617) {
