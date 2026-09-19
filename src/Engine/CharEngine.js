@@ -395,18 +395,9 @@ function onDeleteRequest(charID) {
 		onDeleteAnswer({ ErrorCode: -2 });
 	}
 
-	// Ask the mail/birthdate
+	// Confirmed: server no longer checks a delete key, so skip straight to deletion.
 	function onOk() {
-		InputBox.append();
-		if (PACKETVER.value >= 20100803) {
-			InputBox.setType('birthdate', true);
-		} else {
-			InputBox.setType('mail', true);
-		}
-		InputBox.onSubmitRequest = onSubmit;
-		_ui_box._host.style.zIndex = '50'; // ui same zIndex bg
-		_overlay.style.zIndex = '51'; // overlay same zIndex input
-		_ui_box.append(); // don't remove message box
+		onSubmit('');
 	}
 
 	// Display prompt message
