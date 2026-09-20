@@ -74,6 +74,11 @@ function render() {
 }
 let _loading = [];
 
+// Number of loading0X.jpg variants actually deployed to roclient's texture
+// overlay right now. Bump this alongside dropping new compressed art into
+// every texture-dir alias (see architecture/roclient.md) to grow the pool.
+const SEROJA_LOADING_READY = 10;
+
 /**
  * Background Namespace
  */
@@ -97,8 +102,8 @@ class Background {
 		}
 
 		// Generate default loadings
-		_loading.length = 10;
-		for (i = 1; i <= 10; ++i) {
+		_loading.length = SEROJA_LOADING_READY;
+		for (i = 1; i <= SEROJA_LOADING_READY; ++i) {
 			_loading[i - 1] = `loading${i < 10 ? '0' + i : i}.jpg`;
 		}
 	}
@@ -251,13 +256,18 @@ class Background {
 	}
 
 	/**
-	 * Add loading background — same backdrop as the login screen (t_login.jpg),
-	 * used for every loading transition, no separate logo/tagline overlay.
+	 * Add loading background — picks randomly from the SeROja loading0X.jpg
+	 * variants each transition (see SEROJA_LOADING_READY above), falling back
+	 * to the login backdrop if no variants are configured.
 	 *
 	 * @param {function} callback once the loading is display (optional)
 	 */
 	static setLoading(callback) {
-		Background.setImage(Background.getLoginBackgroundName(), () => {
+		const file = _loading.length
+			? _loading[Math.floor(Math.random() * _loading.length)]
+			: Background.getLoginBackgroundName();
+
+		Background.setImage(file, () => {
 			_canvas.style.zIndex = '999';
 			Background.setPercent(0.0);
 

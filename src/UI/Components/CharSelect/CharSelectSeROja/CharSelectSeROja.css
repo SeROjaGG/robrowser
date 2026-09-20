@@ -52,16 +52,15 @@
 	opacity: 0.5;
 }
 
-/* full-bleed painted background — placeholder gradient until Task 2 art lands
-   (swap to `background-image: url(...)` with no other change) */
+/* full-bleed painted background. Relative url() resolves against the document's
+   base URL (this CSS is injected as shadow-DOM <style> text, not a linked
+   stylesheet) — served from robrowser's Vite `public/` dir, so it lands at the
+   page root both in dev (:3000) and in the /play/ deploy. */
 .cs-bg {
 	position: absolute;
 	inset: 0;
 	z-index: -1;
-	background:
-		radial-gradient(circle at 22% 18%, rgba(79, 195, 247, 0.28), transparent 55%),
-		radial-gradient(circle at 82% 80%, rgba(56, 189, 248, 0.22), transparent 55%),
-		linear-gradient(160deg, #0c0c16 0%, #05050a 60%, #0a0a12 100%);
+	background: #05050a url('charselect-bg.jpg') center/cover no-repeat;
 }
 
 /* ── top bar ─────────────────────────────────────────────── */
