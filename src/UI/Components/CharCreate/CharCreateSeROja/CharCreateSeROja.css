@@ -22,11 +22,10 @@
 	inset: 0;
 	z-index: 50;
 	display: grid;
-	grid-template-columns: 1fr 360px;
 	grid-template-rows: auto 1fr;
 	grid-template-areas:
-		'top   top'
-		'stage panel';
+		'top'
+		'shell';
 	gap: 24px;
 	padding: 26px 30px;
 	box-sizing: border-box;
@@ -34,6 +33,24 @@
 	color: var(--sj-text);
 	background: var(--sj-bg);
 	user-select: none;
+}
+
+/* single centered card — preview + form live inside one shell instead of
+   two disconnected floating panels */
+.cc-shell {
+	grid-area: shell;
+	align-self: center;
+	justify-self: center;
+	display: flex;
+	align-items: stretch;
+	width: 100%;
+	max-width: 960px;
+	border: 1px solid var(--sj-border);
+	border-radius: var(--sj-radius);
+	background: var(--sj-glass);
+	backdrop-filter: blur(var(--sj-blur));
+	box-shadow: 0 18px 50px -20px rgba(0, 0, 0, 0.7);
+	overflow: hidden;
 }
 
 /* full-bleed painted background, same art as char-select (CharSelectSeROja.css
@@ -77,12 +94,14 @@
 
 /* ── stage / preview ─────────────────────────────────────── */
 .cc-stage {
-	grid-area: stage;
+	flex: 1;
+	min-width: 0;
 	position: relative;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	gap: 18px;
+	padding: 30px;
 }
 .cc-card {
 	display: flex;
@@ -125,19 +144,14 @@
 	cursor: pointer;
 }
 
-/* ── right panel ─────────────────────────────────────────── */
+/* ── right panel (inner column of .cc-shell, not its own card) ────────── */
 .cc-panel {
-	grid-area: panel;
-	align-self: center;
+	flex: 0 0 360px;
 	display: flex;
 	flex-direction: column;
 	gap: 16px;
-	padding: 22px;
-	border: 1px solid var(--sj-border);
-	border-radius: var(--sj-radius);
-	background: var(--sj-glass);
-	backdrop-filter: blur(var(--sj-blur));
-	box-shadow: 0 18px 50px -20px rgba(0, 0, 0, 0.7);
+	padding: 26px 22px;
+	border-left: 1px solid var(--sj-border);
 }
 .cc-label {
 	font-size: 12px;
