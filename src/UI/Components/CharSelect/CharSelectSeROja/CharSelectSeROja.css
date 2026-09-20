@@ -348,8 +348,10 @@
 	padding: 12px 14px;
 	border: 1px dashed var(--sj-border);
 	border-radius: var(--sj-radius);
-	background: none;
-	color: var(--sj-muted);
+	background: var(--sj-glass);
+	backdrop-filter: blur(var(--sj-blur));
+	-webkit-backdrop-filter: blur(var(--sj-blur));
+	color: var(--sj-text);
 	font-size: 13px;
 	text-align: left;
 	cursor: pointer;
@@ -387,7 +389,11 @@
 }
 .slot.on {
 	border-color: rgba(79, 195, 247, 0.6);
-	background: var(--cs-accent-tint);
+	/* accent tint alone (no dark base) washed out over the bright background
+	   art — layer it over the same dark glass every other row uses */
+	background: linear-gradient(var(--cs-accent-tint), var(--cs-accent-tint)), var(--sj-glass);
+	backdrop-filter: blur(var(--sj-blur));
+	-webkit-backdrop-filter: blur(var(--sj-blur));
 }
 .slot canvas.por {
 	width: 52px;
