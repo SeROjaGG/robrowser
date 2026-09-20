@@ -66,12 +66,11 @@
 /* ── top bar ─────────────────────────────────────────────── */
 .cs-top {
 	grid-area: top;
-	display: grid;
-	grid-template-columns: 1fr auto 1fr;
+	display: flex;
 	align-items: center;
+	justify-content: space-between;
 }
 .cs-back {
-	justify-self: start;
 	padding: 7px 14px;
 	border: 1px solid var(--sj-border);
 	border-radius: 999px;
@@ -83,18 +82,6 @@
 }
 .cs-back:hover {
 	color: var(--sj-text);
-}
-.cs-brand {
-	justify-self: center;
-	font-size: 30px;
-	font-weight: 800;
-	letter-spacing: 0.02em;
-}
-.cs-brand .ro {
-	color: var(--sj-accent-2);
-}
-.cs-count {
-	justify-self: end;
 }
 .cs-count {
 	padding: 6px 14px;
@@ -387,12 +374,16 @@
 	padding: 8px 12px;
 	border: 1px solid var(--sj-border);
 	border-radius: 12px;
-	background: rgba(255, 255, 255, 0.02);
+	background: var(--sj-glass);
+	backdrop-filter: blur(var(--sj-blur));
+	-webkit-backdrop-filter: blur(var(--sj-blur));
 	cursor: pointer;
 	transition: background 0.15s ease, border-color 0.15s ease;
 }
 .slot:hover {
-	background: rgba(255, 255, 255, 0.05);
+	/* stronger than --sj-glass; that token isn't locally pinned to this
+	   screen's dark theme (see the PLAN-024 note above), only --sj-glass is */
+	background: rgba(18, 30, 54, 0.75);
 }
 .slot.on {
 	border-color: rgba(79, 195, 247, 0.6);
