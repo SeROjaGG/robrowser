@@ -44,7 +44,8 @@
 	display: flex;
 	align-items: stretch;
 	width: 100%;
-	max-width: 960px;
+	max-width: 760px;
+	max-height: 560px;
 	border: 1px solid var(--sj-border);
 	border-radius: var(--sj-radius);
 	background: var(--sj-glass);
@@ -103,17 +104,12 @@
 	gap: 18px;
 	padding: 30px;
 }
+/* no card-in-card — sprite + label sit directly on .cc-shell's own panel */
 .cc-card {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	gap: 6px;
-	padding: 14px 18px 16px;
-	border: 1px solid rgba(79, 195, 247, 0.5);
-	border-radius: var(--sj-radius);
-	background: rgba(10, 10, 18, 0.5);
-	box-shadow: 0 0 0 1px rgba(79, 195, 247, 0.3), 0 28px 70px -28px rgba(79, 195, 247, 0.5);
-	overflow: hidden;
 }
 .cc-canvas {
 	width: 190px;
@@ -146,12 +142,13 @@
 
 /* ── right panel (inner column of .cc-shell, not its own card) ────────── */
 .cc-panel {
-	flex: 0 0 360px;
+	flex: 0 0 340px;
 	display: flex;
 	flex-direction: column;
 	gap: 16px;
 	padding: 26px 22px;
 	border-left: 1px solid var(--sj-border);
+	overflow-y: auto;
 }
 .cc-label {
 	font-size: 12px;
