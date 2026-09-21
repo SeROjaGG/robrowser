@@ -89565,7 +89565,11 @@ var init_MonsterTable = __esmMin((() => {
 		10250: "4_woodbox",
 		10251: "4_m_popfesta",
 		10252: "4_bonfire",
-		10253: "clear_npc"
+		10253: "clear_npc",
+		20834: "abr_battle_warior",
+		20835: "abr_dual_cannon",
+		20836: "abr_mother_net",
+		20837: "abr_infinity"
 	};
 }));
 //#endregion
@@ -298010,6 +298014,21 @@ function loadSkillTreeView(filename, callback, onEnd) {
 		try {
 			console.log(`Loading file "${DB.LUA_PATH}skillinfoz/jobinheritlist.lub"...`);
 			const buffer = file instanceof ArrayBuffer ? new Uint8Array(file) : file;
+			const ctx = lua.ctx;
+			const jobIdWithJT = { ...JobConst_default };
+			for (const [key, value] of Object.entries(JobConst_default)) jobIdWithJT[`JT_${key}`] = value;
+			ctx.JOBID = jobIdWithJT;
+			await lua.doString(`
+						if JOBID then
+							__JOBID_ORIGINAL = JOBID
+							JOBID = setmetatable({}, {
+								__index = function(t, k)
+									local id = __JOBID_ORIGINAL[k]
+									return id ~= nil and id or 0
+								end
+							})
+						end
+					`);
 			lua.mountFile("jobinheritlist.lub", buffer);
 			await lua.doFile("jobinheritlist.lub");
 			loadSkillTreeViewData(filename, callback, onEnd);
