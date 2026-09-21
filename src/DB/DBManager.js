@@ -6618,6 +6618,27 @@ function loadSkillTreeView(filename, callback, onEnd) {
 				console.log(`Loading file "${DB.LUA_PATH}skillinfoz/jobinheritlist.lub"...`);
 				const buffer = file instanceof ArrayBuffer ? new Uint8Array(file) : file;
 
+				// jobinheritlist.lub indexes JOBID.JT_* directly; it must exist before doFile runs,
+				// wrapped with a fallback so an unmapped job id returns 0 instead of nil (nil as a
+				// table-constructor key throws "table index is nil").
+				const ctx = lua.ctx;
+				const jobIdWithJT = { ...JobId };
+				for (const [key, value] of Object.entries(JobId)) {
+					jobIdWithJT[`JT_${key}`] = value;
+				}
+				ctx.JOBID = jobIdWithJT;
+				await lua.doString(`
+						if JOBID then
+							__JOBID_ORIGINAL = JOBID
+							JOBID = setmetatable({}, {
+								__index = function(t, k)
+									local id = __JOBID_ORIGINAL[k]
+									return id ~= nil and id or 0
+								end
+							})
+						end
+					`);
+
 				// Mount and execute jobinheritlist.lub
 				lua.mountFile('jobinheritlist.lub', buffer);
 				await lua.doFile('jobinheritlist.lub');

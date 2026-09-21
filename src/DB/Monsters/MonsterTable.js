@@ -3750,5 +3750,12 @@ export default {
 	10250: '4_woodbox',
 	10251: '4_m_popfesta',
 	10252: '4_bonfire',
-	10253: 'clear_npc'
+	10253: 'clear_npc',
+
+	// Meister's ABR (Autonomous Battle Robot) summons - missing entries fell through
+	// to MonsterTable[1001] (Scorpion), the default fallback in DB.getBodyPath.
+	20834: 'abr_battle_warior',
+	20835: 'abr_dual_cannon',
+	20836: 'abr_mother_net',
+	20837: 'abr_infinity'
 };
