@@ -698,6 +698,7 @@ export function createEquipment({
 		const HasAttachmentState =
 			StatusConst.EffectState.FALCON |
 			StatusConst.EffectState.RIDING |
+			StatusConst.EffectState.WUGRIDER |
 			StatusConst.EffectState.DRAGON1 |
 			StatusConst.EffectState.DRAGON2 |
 			StatusConst.EffectState.DRAGON3 |

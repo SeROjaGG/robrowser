@@ -273,6 +273,7 @@
 	height: 20px;
 	background: white;
 	pointer-events: none;
+	z-index: 0;
 }
 #EquipmentV4 .ammo {
 	position: absolute;
@@ -294,6 +295,7 @@
 	background-color: transparent;
 	border: none;
 	display: none;
+	z-index: 1;
 }
 #EquipmentV4 .removeOption {
 	position: absolute;
@@ -305,6 +307,7 @@
 	background-color: transparent;
 	border: none;
 	display: none;
+	z-index: 1;
 }
 
 #EquipmentV4 .footer {
