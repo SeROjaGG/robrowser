@@ -784,11 +784,12 @@ function onMapChange(pkt) {
 		}
 		// GM-only: no login/char packet carries group_id to the client, so these
 		// only appear once npc/custom/seroja/gm_flag.txt's OnPCLoginEvent push
-		// confirms it server-side (see serojaBridge.js hooks.onGMFlag).
-		serojaBridge.hooks.onGMFlag = isGM => {
-			if (!isGM) {
-				return;
-			}
+		// confirms it server-side (see serojaBridge.js hooks.onGMFlag). That
+		// push is login-only and never re-sent on a map change, so re-append
+		// here directly whenever Session.isGM is already known true (set by an
+		// earlier push this session) -- otherwise the icons only ever show on
+		// the map the player logged in on.
+		const appendGMIcons = () => {
 			try {
 				AutoAttackIcon.append();
 			} catch (e) {
@@ -800,6 +801,14 @@ function onMapChange(pkt) {
 				console.error('[SeROja] AutoSkillIcon.append() failed:', e);
 			}
 		};
+		serojaBridge.hooks.onGMFlag = isGM => {
+			if (isGM) {
+				appendGMIcons();
+			}
+		};
+		if (Session.isGM) {
+			appendGMIcons();
+		}
 
 		if (Configs.get('enableCheckAttendance') && PACKETVER.value >= 20180307) {
 			CheckAttendance.append();
