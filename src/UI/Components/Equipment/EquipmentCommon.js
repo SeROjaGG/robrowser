@@ -682,6 +682,7 @@ export function createEquipment({
 	const renderCharacter = (function renderCharacterClosure() {
 		let _lastState = 0;
 		let _hasCart = 0;
+		let _hasAllRiding = 0;
 
 		const _cleanColor = new Float32Array([1.0, 1.0, 1.0, 1.0]);
 		const _savedColor = new Float32Array(4);
@@ -719,12 +720,17 @@ export function createEquipment({
 			StatusConst.EffectState.CART5;
 
 		function updateAttachmentButtons() {
-			if (Session.Entity.effectState !== _lastState || _hasCart !== Session.Entity.hasCart) {
+			if (
+				Session.Entity.effectState !== _lastState ||
+				_hasCart !== Session.Entity.hasCart ||
+				_hasAllRiding !== Session.Entity.hasAllRiding
+			) {
 				_lastState = Session.Entity.effectState;
 				_hasCart = Session.Entity.hasCart;
+				_hasAllRiding = Session.Entity.hasAllRiding;
 
 				const root = Component.getRoot();
-				const removeOptDisplay = _lastState & HasAttachmentState || _hasCart ? '' : 'none';
+				const removeOptDisplay = (_lastState & HasAttachmentState || _hasCart || _hasAllRiding) ? '' : 'none';
 				const cartBtnDisplay = _lastState & HasCartState || _hasCart ? '' : 'none';
 
 				root.querySelectorAll('.removeOption').forEach(btn => (btn.style.display = removeOptDisplay));

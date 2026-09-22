@@ -640,6 +640,7 @@ Entity.prototype.attack_speed = 300;
 Entity.prototype.effectColor = null;
 Entity.prototype.isAdmin = false;
 Entity.prototype.hasCart = false;
+Entity.prototype.hasAllRiding = false;
 Entity.prototype.CartNum = 0;
 Entity.prototype.lastSKID = 0;
 Entity.prototype.lastSkLvl = 0;

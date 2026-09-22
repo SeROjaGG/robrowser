@@ -1992,6 +1992,12 @@ function onEntityStatusChange(pkt) {
 			}
 			break;
 
+		// Rental "All Riding" mount (SC_ALL_RIDING) -- a status effect, not an
+		// OPTION_* bit, so it doesn't show up in effectState at all.
+		case StatusConst.ALL_RIDING:
+			entity.hasAllRiding = pkt.state || !pkt.hasOwnProperty('state');
+			break;
+
 		case StatusConst.HIDING: {
 			const EF_Init_Par = {
 				effectId: EffectConst.EF_SUMMONSLAVE,
