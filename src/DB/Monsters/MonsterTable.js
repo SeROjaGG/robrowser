@@ -3906,4 +3906,17 @@ export default {
 	20177: 'jeniffer',
 	20178: 'general_orc',
 	20179: 'sieglouse',
+
+	// Issgard field mobs (jor_back1-3) -- rAthena's mob_db shipped these as
+	// commented-out Id/AegisName-only stubs (no stats) too; sprite names
+	// checked against the GRF file table.
+	21520: 'ep19_limacina',
+	21521: 'ep19_unfrost_flower',
+	21522: 'ep19_calmaring',
+	21523: 'ep19_ice_straw',
+	21524: 'ep19_shining_seaweed',
+	21525: 'ep19_ice_gangu',
+	21526: 'ep19_rgan_a',
+	21527: 'ep19_rgan_b',
+	21537: 'ep19_limacina_boss',
 };
