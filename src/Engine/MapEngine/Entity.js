@@ -1993,9 +1993,11 @@ function onEntityStatusChange(pkt) {
 			break;
 
 		// Rental "All Riding" mount (SC_ALL_RIDING) -- a status effect, not an
-		// OPTION_* bit, so it doesn't show up in effectState at all.
+		// OPTION_* bit, so it doesn't show up in effectState at all. Feeds the
+		// same allRidingState setter EntityState.js/EntityRender.js already use
+		// to draw the mount sprite.
 		case StatusConst.ALL_RIDING:
-			entity.hasAllRiding = pkt.state || !pkt.hasOwnProperty('state');
+			entity.allRidingState = pkt.state || !pkt.hasOwnProperty('state');
 			break;
 
 		case StatusConst.HIDING: {
