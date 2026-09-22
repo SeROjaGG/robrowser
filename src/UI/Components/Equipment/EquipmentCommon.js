@@ -212,8 +212,9 @@ export function createEquipment({
 			});
 		}
 
-		const removeOptBtn = root.querySelector('.removeOption');
-		if (removeOptBtn) removeOptBtn.addEventListener('mousedown', onRemoveOption);
+		// SeROja: General and Costume tabs each have their own .removeOption/.cartitems
+		// (one ammo_container per tab), not one shared instance -- bind every copy.
+		root.querySelectorAll('.removeOption').forEach(btn => btn.addEventListener('mousedown', onRemoveOption));
 		const viewStatusBtn = root.querySelector('.view_status');
 		if (viewStatusBtn) viewStatusBtn.addEventListener('mousedown', toggleStatus);
 		const showEquipBtn = root.querySelector('.show_equip');
@@ -222,8 +223,7 @@ export function createEquipment({
 			const showCostumeBtn = root.querySelector('.show_costume');
 			if (showCostumeBtn) showCostumeBtn.addEventListener('mousedown', toggleCostume);
 		}
-		const cartBtn = root.querySelector('.cartitems');
-		if (cartBtn) cartBtn.addEventListener('click', onCartItems);
+		root.querySelectorAll('.cartitems').forEach(btn => btn.addEventListener('click', onCartItems));
 		if (switchEquip) {
 			const switchEquipBtn = root.querySelector('.switch_equip');
 			if (switchEquipBtn) switchEquipBtn.addEventListener('click', onSwtichEquip);
@@ -724,20 +724,11 @@ export function createEquipment({
 				_hasCart = Session.Entity.hasCart;
 
 				const root = Component.getRoot();
-				const removeOpt = root.querySelector('.removeOption');
-				const cartBtn = root.querySelector('.cartitems');
+				const removeOptDisplay = _lastState & HasAttachmentState || _hasCart ? '' : 'none';
+				const cartBtnDisplay = _lastState & HasCartState || _hasCart ? '' : 'none';
 
-				if (_lastState & HasAttachmentState || _hasCart) {
-					if (removeOpt) removeOpt.style.display = '';
-				} else {
-					if (removeOpt) removeOpt.style.display = 'none';
-				}
-
-				if (_lastState & HasCartState || _hasCart) {
-					if (cartBtn) cartBtn.style.display = '';
-				} else {
-					if (cartBtn) cartBtn.style.display = 'none';
-				}
+				root.querySelectorAll('.removeOption').forEach(btn => (btn.style.display = removeOptDisplay));
+				root.querySelectorAll('.cartitems').forEach(btn => (btn.style.display = cartBtnDisplay));
 			}
 		}
 
