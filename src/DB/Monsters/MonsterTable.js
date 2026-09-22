@@ -3896,4 +3896,14 @@ export default {
 	22228: 'spirit_f_land_s',
 	22229: 'spirit_f_land_m',
 	22230: 'spirit_f_land_l',
+
+	// Clock Tower: Unknown Basement (clock_01) -- rAthena's mob_db shipped these
+	// as commented-out Id/AegisName-only stubs (no stats) until this fix filled
+	// them in; sprite names checked against the actual GRF file table.
+	20118: 'goblin_king',
+	20175: 'extra_joker',
+	20176: 'erzsebet',
+	20177: 'jeniffer',
+	20178: 'general_orc',
+	20179: 'sieglouse',
 };
