@@ -680,10 +680,6 @@ export function createEquipment({
 	}
 
 	const renderCharacter = (function renderCharacterClosure() {
-		let _lastState = 0;
-		let _hasCart = 0;
-		let _allRidingState = 0;
-
 		const _cleanColor = new Float32Array([1.0, 1.0, 1.0, 1.0]);
 		const _savedColor = new Float32Array(4);
 		const _animation = {
@@ -720,22 +716,25 @@ export function createEquipment({
 			StatusConst.EffectState.CART5;
 
 		function updateAttachmentButtons() {
-			if (
-				Session.Entity.effectState !== _lastState ||
-				_hasCart !== Session.Entity.hasCart ||
-				_allRidingState !== Session.Entity.allRidingState
-			) {
-				_lastState = Session.Entity.effectState;
-				_hasCart = Session.Entity.hasCart;
-				_allRidingState = Session.Entity.allRidingState;
+			// SeROja: this used to skip the DOM write when Session.Entity's values
+			// matched the closure's last-seen ones (_lastState/_hasCart/_allRidingState).
+			// That memoization outlives any single login -- this closure is created
+			// once for the app's lifetime, not per character -- so if it ever cached a
+			// wrong snapshot (e.g. the equip window's render loop ticking once before
+			// Session.Entity was fully populated), the buttons stayed stuck at that
+			// wrong visibility for the rest of the session, through relogs, even once
+			// the real data was correct. Recompute unconditionally instead; writing
+			// the same display value every frame is effectively free.
+			const state = Session.Entity.effectState;
+			const hasCart = Session.Entity.hasCart;
+			const allRiding = Session.Entity.allRidingState;
 
-				const root = Component.getRoot();
-				const removeOptDisplay = (_lastState & HasAttachmentState || _hasCart || _allRidingState) ? '' : 'none';
-				const cartBtnDisplay = _lastState & HasCartState || _hasCart ? '' : 'none';
+			const root = Component.getRoot();
+			const removeOptDisplay = (state & HasAttachmentState || hasCart || allRiding) ? '' : 'none';
+			const cartBtnDisplay = state & HasCartState || hasCart ? '' : 'none';
 
-				root.querySelectorAll('.removeOption').forEach(btn => (btn.style.display = removeOptDisplay));
-				root.querySelectorAll('.cartitems').forEach(btn => (btn.style.display = cartBtnDisplay));
-			}
+			root.querySelectorAll('.removeOption').forEach(btn => (btn.style.display = removeOptDisplay));
+			root.querySelectorAll('.cartitems').forEach(btn => (btn.style.display = cartBtnDisplay));
 		}
 
 		function renderLegacy() {
