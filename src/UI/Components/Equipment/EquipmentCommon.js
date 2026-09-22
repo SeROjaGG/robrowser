@@ -729,9 +729,13 @@ export function createEquipment({
 			const hasCart = Session.Entity.hasCart;
 			const allRiding = Session.Entity.allRidingState;
 
+			// Both buttons' base CSS rule bakes in `display: none` (hidden until a
+			// mount/cart is active) -- an inline style.display = '' only clears any
+			// inline override, it doesn't beat that class rule, so it must be an
+			// explicit non-none value to actually show the button.
 			const root = Component.getRoot();
-			const removeOptDisplay = (state & HasAttachmentState || hasCart || allRiding) ? '' : 'none';
-			const cartBtnDisplay = state & HasCartState || hasCart ? '' : 'none';
+			const removeOptDisplay = (state & HasAttachmentState || hasCart || allRiding) ? 'block' : 'none';
+			const cartBtnDisplay = state & HasCartState || hasCart ? 'block' : 'none';
 
 			root.querySelectorAll('.removeOption').forEach(btn => (btn.style.display = removeOptDisplay));
 			root.querySelectorAll('.cartitems').forEach(btn => (btn.style.display = cartBtnDisplay));
